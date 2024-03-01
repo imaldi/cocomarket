@@ -1,10 +1,10 @@
 <template>
-  <div class="container text-center">
+  <div class="container pt-4">
     <div class="login-title">
       <h1>Sign In</h1>
       <h5>Hi Welcome Back, you've been missed</h5>
     </div>
-
+  
     <form @submit.prevent="login" class="login-form">
       <p class="input-title">Email</p>
       <input type="text" v-model="username" placeholder="Username" class="input-field" />
@@ -15,22 +15,22 @@
     </form>
 
     <div class="or-sign-section">
-      <hr class="line" />
+      <hr class="line">
       <p class="or-sign-in-with">Or Sign In With</p>
-      <hr class="line" />
+      <hr class="line">
     </div>
 
     <div class="sign-in-social">
-      <div class="apple">
-        <img src="../assets/apple-logo.svg" alt="Logo Apple" class="logo-icon" />
+      <div class="apple"> 
+        <img src="../assets/apple-logo.svg" alt="Logo Apple" class="logo-icon">
       </div>
-      <div class="google">
-        <img src="../assets/google-logo.svg" alt="Logo Apple" class="logo-icon" />
+      <div class="google"> 
+        <img src="../assets/google-logo.svg" alt="Logo Apple" class="logo-icon">
       </div>
-      <div class="facebook">
-        <img src="../assets/facebook-logo.svg" alt="Logo Apple" class="logo-icon" />
-      </div>
-    </div>
+      <div class="facebook"> 
+
+        <img src="../assets/facebook-logo.svg" alt="Logo Apple" class="logo-icon">
+      </div>    </div>
 
     <p class="sign-up-title">Don't Have an account? <a href="#" class="sign-up">Sign Up</a></p>
   </div>
@@ -61,7 +61,7 @@ export default defineComponent({
 </script>
 
 <style scoped lang="scss">
-.container {
+.container{
   background-color: white;
   display: flex;
   flex-direction: column;
@@ -71,19 +71,19 @@ export default defineComponent({
   height: 100vh;
 }
 
-.login-title {
+.login-title{
   display: flex;
   flex-direction: column;
   justify-content: center;
   color: black;
 }
 
-.login-title h1 {
+.login-title h1{
   font-size: 28px;
   margin: 0;
 }
 
-.login-title h5 {
+.login-title h5{
   font-size: 12px;
   font-weight: 600;
   letter-spacing: -0.5px;
@@ -98,7 +98,7 @@ export default defineComponent({
   border-radius: 5px;
 }
 
-.input-title {
+.input-title{
   margin: 5px 0;
   color: black;
   text-align: left;
@@ -116,11 +116,11 @@ export default defineComponent({
   border-radius: 5px;
 }
 
-.forgot-password {
+.forgot-password{
   font-size: 12px;
   display: flex;
   justify-content: end;
-  color: rgb(33, 227, 33);
+  color: #7ACDD6;
 }
 
 .submit-button {
@@ -128,68 +128,66 @@ export default defineComponent({
   margin-top: 30px;
   width: 100%;
   padding: 10px;
-  background-color: rgb(33, 227, 33);
+  background-color: #7ACDD6;
   color: #fff;
   border: none;
   border-radius: 14px;
   cursor: pointer;
   transition: background-color 0.3s;
 }
-.or-sign-section {
+.or-sign-section{
   width: 80%;
   display: flex;
   align-items: center;
   justify-content: space-evenly;
 }
 
-.or-sign-in-with {
+.or-sign-in-with{
   color: grey;
   font-size: 12px;
   font-weight: 400;
 }
 
-.line {
+.line{
   width: 30%;
   height: 0;
   border: 1px solid lightgray;
 }
 
-.sign-in-social {
+.sign-in-social{
   margin: 30px 0;
   display: flex;
   width: 70%;
   justify-content: space-around;
 }
 
-.apple,
-.google,
-.facebook {
+.apple, .google, .facebook{
   border-radius: 50%;
   padding: 13px 16px;
 }
 
-.apple {
+.apple{
   border: solid black 1.5px;
 }
-.google {
+ .google{
   border: solid red 1.5px;
-}
-.facebook {
+ }
+ .facebook{
   border: solid blue 1.5px;
-}
+ }
 
-.logo-icon {
+.logo-icon{
   width: 32px;
 }
 
-.sign-up-title {
+.sign-up-title{
   color: black;
   font-size: 14px;
   font-weight: 500;
   letter-spacing: -0.5px;
 }
 
-.sign-up {
-  color: rgb(33, 227, 33);
+.sign-up{
+  color: #7ACDD6;
 }
 </style>
