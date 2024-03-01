@@ -130,7 +130,7 @@ export default defineComponent({
 }
 
 .term-condition{
-  color: rgb(33, 227, 33);
+  color: #7ACDD6;
 }
 
 .submit-button {
@@ -138,7 +138,7 @@ export default defineComponent({
   margin-top: 30px;
   width: 100%;
   padding: 10px;
-  background-color: rgb(33, 227, 33);
+  background-color: #7ACDD6;
   color: #fff;
   border: none;
   border-radius: 14px;
@@ -198,6 +198,6 @@ export default defineComponent({
 }
 
 .sign-up{
-  color: rgb(33, 227, 33);
+  color: #7ACDD6;
 }
 </style>

@@ -51,6 +51,26 @@ const routes: RouteRecordRaw[] = [
         name: "CompleteYourProfile",
         component: () => import("../views/CompleteYourProfile.vue"),
       },
+      {
+        path: "/newpassword",
+        name: "NewPassword",
+        component: () => import("../views/NewPassword.vue"),
+      },
+      {
+        path: "/ordersuccess",
+        name: "OrderSuccess",
+        component: () => import("../views/OrderSuccess.vue"),
+      },
+      {
+        path: "/verifycode",
+        name: "VerifyCode",
+        component: () => import("../views/VerifyCode.vue"),
+      },
+      {
+      path: "/allowlocationaccess",
+      name: "AllowLocationAccess",
+      component: () => import("../views/AllowLocationAccess.vue"),
+      },
     ],
   },
 ];
