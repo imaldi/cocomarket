@@ -22,6 +22,16 @@ const routes: RouteRecordRaw[] = [
         component: () => import("../views/Profile.vue"),
       },
       {
+        path: "/splashScreen",
+        name: "SplashScreen",
+        component: () => import("../views/SplashScreen/SplashScreen.vue"),
+      },
+      {
+        path: "/splashScreen1",
+        name: "SplashScreen1",
+        component: () => import("../views/SplashScreen/SplashScreen1.vue"),
+      },
+      {
         path: "/completeyourprofile",
         name: "CompleteYourProfile",
         component: () => import("../views/CompleteYourProfile.vue"),
