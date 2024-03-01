@@ -1,5 +1,5 @@
 <template>
-  <div class="container">
+  <div class="container text-center">
     <div class="register-title">
       <h1>Create Account</h1>
       <h5>Fill your information below or register with your social account</h5>

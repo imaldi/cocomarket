@@ -58,11 +58,21 @@ button:focus-visible {
   padding: 2em;
 }
 
-#app {
+/* #app {
   /* max-width: 1280px;
   margin: 0 auto;
   padding: 2rem; */
-  text-align: center;
+/* text-align: center; */
+/* } */
+
+.circle-icon {
+  display: inline-block; /* Ensure the icon behaves like an inline element */
+  width: 78px; /* Set width and height to create a square */
+  height: 78px;
+  border-radius: 80%; /* Set border-radius to 50% to create a circle */
+  overflow: hidden; /* Hide any overflow content */
+  padding: 34px;
+  border: 2px solid #000; /* Black border */
 }
 
 @media (prefers-color-scheme: light) {
