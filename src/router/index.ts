@@ -21,6 +21,11 @@ const routes: RouteRecordRaw[] = [
         name: "Profile",
         component: () => import("../views/Profile.vue"),
       },
+      {
+        path: "/completeyourprofile",
+        name: "CompleteYourProfile",
+        component: () => import("../views/CompleteYourProfile.vue"),
+      },
     ],
   },
 ];
