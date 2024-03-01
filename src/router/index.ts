@@ -32,6 +32,21 @@ const routes: RouteRecordRaw[] = [
         component: () => import("../views/SplashScreen/SplashScreen1.vue"),
       },
       {
+        path: "/splashScreen2",
+        name: "SplashScreen2",
+        component: () => import("../views/SplashScreen/SplashScreen2.vue"),
+      },
+      {
+        path: "/splashScreen3",
+        name: "SplashScreen3",
+        component: () => import("../views/SplashScreen/SplashScreen3.vue"),
+      },
+      {
+        path: "/splashScreen4",
+        name: "SplashScreen4",
+        component: () => import("../views/SplashScreen/SplashScreen4.vue"),
+      },
+      {
         path: "/completeyourprofile",
         name: "CompleteYourProfile",
         component: () => import("../views/CompleteYourProfile.vue"),
