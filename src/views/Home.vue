@@ -1,9 +1,10 @@
 <template>
   <div>
-    <Profile />
+    <Home />
   </div>
 </template>
 
 <script setup lang="ts">
-import Profile from "../components/ProfileForm.vue";
+import Home from "../components/HomeForm.vue";
+
 </script>
