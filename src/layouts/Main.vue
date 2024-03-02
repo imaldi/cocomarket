@@ -27,7 +27,8 @@
         $route.path !== '/checkout' &&
         $route.path !== '/gmaps' &&
         $route.path !== '/reviewsummary' &&
-        $route.path !== '/cocolingmitra'
+        $route.path !== '/cocolingmitra' &&
+        $route.path !== '/cart'
       "
       class="bottom-navigation"
     >
