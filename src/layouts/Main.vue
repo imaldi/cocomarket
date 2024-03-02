@@ -17,7 +17,10 @@
         $route.path !== '/findfreshfood' &&
         $route.path !== '/freshfooddetail' &&
         $route.path !== '/addfreshfood' &&
-        $route.path !== '/configaddfreshfood'
+        $route.path !== '/configaddfreshfood' &&
+        $route.path !== '/checkout' &&
+        $route.path !== '/paymentmethod' &&
+        $route.path !== '/coupon'
       "
       class="bottom-navigation"
     >

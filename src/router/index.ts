@@ -101,6 +101,26 @@ const routes: RouteRecordRaw[] = [
         name: "FindFreshFood",
         component: () => import("../views/FindFreshFood.vue"),
       },
+      {
+        path: "/searchlocation",
+        name: "SearchLocation",
+        component: () => import("../views/SearchLocation.vue"),
+      },
+      {
+        path: "/checkout",
+        name: "Checkout",
+        component: () => import("../views/Checkout.vue"),
+      },
+      {
+        path: "/paymentmethod",
+        name: "PaymentMethod",
+        component: () => import("../views/PaymentMethod.vue"),
+      },
+      {
+        path: "/coupon",
+        name: "Coupon",
+        component: () => import("../views/Coupon.vue"),
+      },
     ],
   },
 ];
