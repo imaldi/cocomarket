@@ -14,7 +14,9 @@
         $route.path !== '/newpassword' &&
         $route.path !== '/verifycode' &&
         $route.path !== '/allowlocationaccess' &&
-        $route.path !== '/findfreshfood'
+        $route.path !== '/findfreshfood' &&
+        $route.path !== '/freshfooddetail' &&
+        $route.path !== '/addfreshfood'
       "
       class="bottom-navigation"
     >

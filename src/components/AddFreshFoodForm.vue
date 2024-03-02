@@ -30,11 +30,11 @@
         <div>
           <div class="flex justify-between pb-6">
             <div class="w-1/2 rounded-xl p-6 mr-6 border border-solid" style="background-color: #53b175">
-                <img src="../assets/shimla1.png" width="80" height="80" class="w-full justify-center" alt="" />
-                <div class="text-center font-500">
-                  Fresh Fruits <br />
-                  and Vegetables
-                </div>
+              <img src="../assets/shimla1.png" width="80" height="80" class="w-full justify-center" alt="" />
+              <div class="text-center font-500">
+                Fresh Fruits <br />
+                and Vegetables
+              </div>
             </div>
             <div class="w-1/2 rounded-xl p-6 border border-solid" style="background-color: #f8a44c">
               <img src="../assets/shimla2.png" width="80" height="80" class="w-full justify-center" alt="" />
@@ -98,6 +98,25 @@
           </div>
         </div>
       </div>
+
+      <div class="relative">
+        <div class="fixed w-full bg-white rounded-lg shadow-md" style="bottom: 0">
+          <div class="flex w-full justify-between p-4">
+            <div class="flex p-4 mr-8 rounded-2xl bg-primary w-full justify-center text-white">
+              <div class="flex justify-between w-full">
+                <div class="my-auto">
+                  <div class="font-bold text-xl">3 Item</div>
+                  <div class="text-xs">Kangkung, Bayam, Bro..</div>
+                </div>
+                <div class="flex my-auto">
+                  <div class="text-2xl font-bold mr-2">Rp.35.000</div>
+                  <icon icon="tabler:shopping-bag-plus" class="mr-4" color="#fff" width="28" height="28" />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </template>
@@ -105,10 +124,10 @@
 <style scoped lang="scss">
 .container {
   background-color: white;
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  height: 100vh;
+  // display: flex;
+  // flex-direction: column;
+  // width: 100%;
+  // height: 100vh;
   color: #000000;
 }
 </style>
