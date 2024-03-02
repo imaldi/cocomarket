@@ -59,7 +59,7 @@
 
         <hr />
 
-        <div class="">
+        <div>
           <div class="-mt-6 px-4 py-6 flex">
             <img class="p-2 rounded-full bg-[#7ACDD6]" src="../assets/checkout.png" alt="Driver Picture" width="28" />
             <div class="flex flex-col justify-center mx-4">
@@ -72,6 +72,25 @@
               >
                 Switch
               </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="relative">
+          <div class="fixed w-full bg-white rounded-lg shadow-md" style="bottom: 0">
+            <div class="flex w-full justify-between p-4">
+              <div class="flex p-4 mr-8 rounded-2xl bg-primary w-full justify-center text-white">
+                <div class="flex justify-between w-full">
+                  <div class="my-auto">
+                    <div class="font-bold text-xl">3 Item</div>
+                    <div class="text-xs">Kangkung, Bayam, Bro..</div>
+                  </div>
+                  <div class="flex my-auto">
+                    <div class="text-2xl font-bold mr-2">Rp.35.000</div>
+                    <icon icon="tabler:shopping-bag-plus" class="mr-4" color="#fff" width="28" height="28" />
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
