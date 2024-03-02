@@ -124,10 +124,10 @@
 <style scoped lang="scss">
 .container {
   background-color: white;
-  // display: flex;
-  // flex-direction: column;
-  // width: 100%;
-  // height: 100vh;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100vh;
   color: #000000;
 }
 </style>

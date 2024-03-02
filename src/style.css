@@ -90,6 +90,10 @@ hr {
   border-top: 20px #69696b;
 }
 
+.no-space {
+  line-height: 16px;
+}
+
 @media (prefers-color-scheme: light) {
   :root {
     color: #213547;

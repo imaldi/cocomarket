@@ -16,7 +16,8 @@
         $route.path !== '/allowlocationaccess' &&
         $route.path !== '/findfreshfood' &&
         $route.path !== '/freshfooddetail' &&
-        $route.path !== '/addfreshfood'
+        $route.path !== '/addfreshfood' &&
+        $route.path !== '/configaddfreshfood'
       "
       class="bottom-navigation"
     >
