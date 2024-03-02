@@ -102,6 +102,21 @@ const routes: RouteRecordRaw[] = [
         component: () => import("../views/FindFreshFood.vue"),
       },
       {
+        path: "/forgotpassword",
+        name: "ForgotPassword",
+        component: () => import("../views/ForgotPassword.vue"),
+      },
+      {
+        path: "/resetPassword",
+        name: "resetPassword",
+        component: () => import("../views/ResetPassword.vue"),
+      },
+      {
+        path: "/gmaps",
+        name: "GMaps",
+        component: () => import("../views/GMaps.vue"),
+      },
+      {
         path: "/searchlocation",
         name: "SearchLocation",
         component: () => import("../views/SearchLocation.vue"),

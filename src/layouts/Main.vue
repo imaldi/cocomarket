@@ -20,7 +20,12 @@
         $route.path !== '/configaddfreshfood' &&
         $route.path !== '/checkout' &&
         $route.path !== '/paymentmethod' &&
-        $route.path !== '/coupon'
+        $route.path !== '/coupon' &&
+        $route.path !== '/configaddfreshfood' &&
+        $route.path !== '/forgotpassword' &&
+        $route.path !== '/resetPassword' &&
+        $route.path !== '/checkout' &&
+        $route.path !== '/gmaps'
       "
       class="bottom-navigation"
     >
