@@ -25,7 +25,8 @@
         $route.path !== '/forgotpassword' &&
         $route.path !== '/resetPassword' &&
         $route.path !== '/checkout' &&
-        $route.path !== '/gmaps'
+        $route.path !== '/gmaps' &&
+        $route.path !== '/reviewsummary'
       "
       class="bottom-navigation"
     >
