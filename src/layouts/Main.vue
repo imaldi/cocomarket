@@ -26,7 +26,8 @@
         $route.path !== '/resetPassword' &&
         $route.path !== '/checkout' &&
         $route.path !== '/gmaps' &&
-        $route.path !== '/reviewsummary'
+        $route.path !== '/reviewsummary' &&
+        $route.path !== '/cocolingmitra'
       "
       class="bottom-navigation"
     >

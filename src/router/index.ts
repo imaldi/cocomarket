@@ -117,6 +117,11 @@ const routes: RouteRecordRaw[] = [
         component: () => import("../views/GMaps.vue"),
       },
       {
+        path: "/cocolingmitra",
+        name: "CocolingMitra.vue",
+        component: () => import("../views/CocolingMitra.vue"),
+      },
+      {
         path: "/searchlocation",
         name: "SearchLocation",
         component: () => import("../views/SearchLocation.vue"),

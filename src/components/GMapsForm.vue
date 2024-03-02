@@ -35,10 +35,11 @@
           <div class="my-auto">
             <div class="my-auto">Bakso Solo Kang Emil</div>
             <div class="text-gray">Bakso & Mie Ayam, Minuman, & Aneka Nasi</div>
+            <div>Diantar dalam 10-20 Menit</div>
+            <div>Diskon 50%</div>
           </div>
         </div>
         <hr />
-        <div>Diantar dalam 10-20 Menit</div>
       </div>
     </div>
   </div>
