@@ -75,6 +75,18 @@ button:focus-visible {
   border: 2px solid #000; /* Black border */
 }
 
+.bottom-navigation {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background-color: #fff;
+  display: flex;
+  justify-content: space-around;
+  padding: 10px;
+}
+
+
 @media (prefers-color-scheme: light) {
   :root {
     color: #213547;
