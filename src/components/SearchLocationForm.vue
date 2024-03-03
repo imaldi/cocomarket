@@ -24,7 +24,7 @@
 
         
             <div class="flex py-6 border-solid border-x-0 border-t-0 border-b w-[75vw] border-gray self-center">
-                <icon icon="fluent:triangle-left-16-filled" color="1ADB73" width="26" height="26" />
+                <icon icon="gravity-ui:paper-plane" color="1ADB73" width="26" height="26" />
                 <div class="px-2 font-semibold">Use my current location</div>
             </div>
 
@@ -33,84 +33,84 @@
 
                 <div class="flex flex-col py-2">
                     <div class="flex px-2">
-                        <icon icon="fluent:triangle-left-16-filled" color="1ADB73" width="26" height="26" />
+                        <icon icon="gravity-ui:paper-plane" color="1ADB73" width="26" height="26" />
                     <div class="px-2 font-semibold">Perum. Orchid Park</div>
                     </div>
                     <div class="px-2 font-normal">Blok C2 No.271, Batam Kota, Kota first</div>
                 </div>
                 <div class="flex flex-col py-2">
                     <div class="flex px-2">
-                        <icon icon="fluent:triangle-left-16-filled" color="1ADB73" width="26" height="26" />
+                        <icon icon="gravity-ui:paper-plane" color="1ADB73" width="26" height="26" />
                     <div class="px-2 font-semibold">Perum. Orchid Park</div>
                     </div>
                     <div class="px-2 font-normal">Blok C2 No.271, Batam Kota, Kota</div>
                 </div>
                 <div class="flex flex-col py-2">
                     <div class="flex px-2">
-                        <icon icon="fluent:triangle-left-16-filled" color="1ADB73" width="26" height="26" />
+                        <icon icon="gravity-ui:paper-plane" color="1ADB73" width="26" height="26" />
                     <div class="px-2 font-semibold">Perum. Orchid Park</div>
                     </div>
                     <div class="px-2 font-normal">Blok C2 No.271, Batam Kota, Kota</div>
                 </div>
                 <div class="flex flex-col py-2">
                     <div class="flex px-2">
-                        <icon icon="fluent:triangle-left-16-filled" color="1ADB73" width="26" height="26" />
+                        <icon icon="gravity-ui:paper-plane" color="1ADB73" width="26" height="26" />
                     <div class="px-2 font-semibold">Perum. Orchid Park</div>
                     </div>
                     <div class="px-2 font-normal">Blok C2 No.271, Batam Kota, Kota</div>
                 </div>
                 <div class="flex flex-col py-2">
                     <div class="flex px-2">
-                        <icon icon="fluent:triangle-left-16-filled" color="1ADB73" width="26" height="26" />
+                        <icon icon="gravity-ui:paper-plane" color="1ADB73" width="26" height="26" />
                     <div class="px-2 font-semibold">Perum. Orchid Park</div>
                     </div>
                     <div class="px-2 font-normal">Blok C2 No.271, Batam Kota, Kota</div>
                 </div>
                 <div class="flex flex-col py-2">
                     <div class="flex px-2">
-                        <icon icon="fluent:triangle-left-16-filled" color="1ADB73" width="26" height="26" />
+                        <icon icon="gravity-ui:paper-plane" color="1ADB73" width="26" height="26" />
                     <div class="px-2 font-semibold">Perum. Orchid Park</div>
                     </div>
                     <div class="px-2 font-normal">Blok C2 No.271, Batam Kota, Kota</div>
                 </div>
                 <div class="flex flex-col py-2">
                     <div class="flex px-2">
-                        <icon icon="fluent:triangle-left-16-filled" color="1ADB73" width="26" height="26" />
+                        <icon icon="gravity-ui:paper-plane" color="1ADB73" width="26" height="26" />
                     <div class="px-2 font-semibold">Perum. Orchid Park</div>
                     </div>
                     <div class="px-2 font-normal">Blok C2 No.271, Batam Kota, Kota</div>
                 </div>
                 <div class="flex flex-col py-2">
                     <div class="flex px-2">
-                        <icon icon="fluent:triangle-left-16-filled" color="1ADB73" width="26" height="26" />
+                        <icon icon="gravity-ui:paper-plane" color="1ADB73" width="26" height="26" />
                     <div class="px-2 font-semibold">Perum. Orchid Park</div>
                     </div>
                     <div class="px-2 font-normal">Blok C2 No.271, Batam Kota, Kota</div>
                 </div>
                 <div class="flex flex-col py-2">
                     <div class="flex px-2">
-                        <icon icon="fluent:triangle-left-16-filled" color="1ADB73" width="26" height="26" />
+                        <icon icon="gravity-ui:paper-plane" color="1ADB73" width="26" height="26" />
                     <div class="px-2 font-semibold">Perum. Orchid Park</div>
                     </div>
                     <div class="px-2 font-normal">Blok C2 No.271, Batam Kota, Kota</div>
                 </div>
                 <div class="flex flex-col py-2">
                     <div class="flex px-2">
-                        <icon icon="fluent:triangle-left-16-filled" color="1ADB73" width="26" height="26" />
+                        <icon icon="gravity-ui:paper-plane" color="1ADB73" width="26" height="26" />
                     <div class="px-2 font-semibold">Perum. Orchid Park</div>
                     </div>
                     <div class="px-2 font-normal">Blok C2 No.271, Batam Kota, Kota</div>
                 </div>
                 <div class="flex flex-col py-2">
                     <div class="flex px-2">
-                        <icon icon="fluent:triangle-left-16-filled" color="1ADB73" width="26" height="26" />
+                        <icon icon="gravity-ui:paper-plane" color="1ADB73" width="26" height="26" />
                     <div class="px-2 font-semibold">Perum. Orchid Park</div>
                     </div>
                     <div class="px-2 font-normal">Blok C2 No.271, Batam Kota, Kota</div>
                 </div>
                 <div class="flex flex-col py-2">
                     <div class="flex px-2">
-                        <icon icon="fluent:triangle-left-16-filled" color="1ADB73" width="26" height="26" />
+                        <icon icon="gravity-ui:paper-plane" color="1ADB73" width="26" height="26" />
                     <div class="px-2 font-semibold">Perum. Orchid Park</div>
                     </div>
                     <div class="px-2 font-normal">Blok C2 No.271, Batam Kota, Kota last</div>

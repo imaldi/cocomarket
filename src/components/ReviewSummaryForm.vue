@@ -71,7 +71,7 @@
                 <div class="p-4 flex flex-col justify-between rounded-2xl rounded-t-0">
                     <div class="flex justify-between my-2 text-md"> 
                         <div class="font-bold">Total Payment</div>
-                        <div class="font-bold text-[#E68027]">- 47.900</div>
+                        <div class="font-bold text-[#E68027]"> 47.900</div>
                     </div>
                 </div>
         </div>

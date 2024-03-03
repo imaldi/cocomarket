@@ -31,20 +31,18 @@
         <div class="border-solid border-0 border-b my-4 border-gray"></div>
 
         <div class="mx-8">
-            <div class="text-sm font-semibold mb-4">Order List</div>
-
             <div>
                 <div class="border-solid border border-gray rounded-2xl p-4 my-2">
                     <div class="text-sm font-semibold mb-4">Order List</div>
 
                     <div class=" py-6 rounded-xl flex justify-start items-center">
-                    <img class="p-2" src="../assets/cart.png" alt="Driver Picture" width="28">
+                    <img class="p-2" src="../assets/cartstall.png" alt="Driver Picture" width="28">
                     <div class="flex flex-col justify-center">
-                        <div class="text-xs font-bold ">Bakso Solo Kang Emil</div>
-                        <div class="text-xs font-normal ">Delivery time on the same day</div>
+                        <div class="text-sm font-semibold ">Bakso Solo Kang Emil</div>
+                        <div class="text-[10px] font-normal ">Delivery time on the same day</div>
                     </div>
                 </div>
-                    <div class="mb-2">
+                    <div class="mb-6">
                         <div class="flex flex-row items-center">
                             <form class="mr-2" action=""><input type="checkbox"></form>
                             <div class="border border-solid border-gray rounded-2xl" >                          
@@ -70,7 +68,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="mb-2">
+                    <div class="mb-6">
                         <div class="flex flex-row items-center">
                             <form class="mr-2" action=""><input type="checkbox"></form>
                             <div class="border border-solid border-gray rounded-2xl" >                          
@@ -96,7 +94,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="mb-2">
+                    <div class="mb-6">
                         <div class="flex flex-row items-center">
                             <form class="mr-2" action=""><input type="checkbox"></form>
                             <div class="border border-solid border-gray rounded-2xl" >                          

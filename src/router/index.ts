@@ -151,6 +151,21 @@ const routes: RouteRecordRaw[] = [
         name: "Cart",
         component: () => import("../views/Cart.vue"),
       },
+      {
+        path: "/coupondetail",
+        name: "CouponDetail",
+        component: () => import("../views/CouponDetail.vue"),
+      },
+      {
+        path: "/revieworder",
+        name: "ReviewOrder",
+        component: () => import("../views/ReviewOrder.vue"),
+      },
+      {
+        path: "/pedagangdetail",
+        name: "PedagangDetail",
+        component: () => import("../views/PedagangDetail.vue"),
+      },
     ],
   },
 ];
