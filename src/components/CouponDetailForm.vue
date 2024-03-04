@@ -10,7 +10,7 @@
           </div>
           <div class="my-8">
                     <div class="flex border border-solid py-4 border-[#7ACDD6] rounded-xl bg-white z-2 -mb-2">
-                        <div class="flex items-center px-4 border border-dashed border-t-0 border-b-0 border-l-0"><img src="../assets/coupon.png" alt="Coupon Logo" width="60"></div>
+                        <div class="flex items-center px-4 border border-dashed border-t-0 border-b-0 border-l-0"><img src="../assets/img/coupon.png" alt="Coupon Logo" width="60"></div>
                         <div class="pl-4">
                             <div class="text-xl font-bold">20% OFF</div>
                             <div class="text-xs font-normal">WELCOME200</div>

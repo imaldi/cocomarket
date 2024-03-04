@@ -34,7 +34,7 @@
           <div v-for="(item, n) in 4" :key="n" class="flex pt-4">
             <div class="flex pt-4">
               <div class="circle-bg">
-                <img src="../assets/notif1.png" class="" width="28" height="28" alt="notif" />
+                <img src="../assets/img/notif1.png" class="" width="28" height="28" alt="notif" />
               </div>
             </div>
             <div class="my-auto ml-4">
@@ -52,7 +52,7 @@
           <div v-for="(item, n) in 4" :key="n" class="flex pt-4">
             <div class="flex pt-4">
               <div class="circle-bg">
-                <img src="../assets/notif1.png" class="" width="28" height="28" alt="notif" />
+                <img src="../assets/img/notif1.png" class="" width="28" height="28" alt="notif" />
               </div>
             </div>
             <div class="my-auto ml-4">

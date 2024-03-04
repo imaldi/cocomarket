@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-    <div class="mt-20 mx-8">
+    <div class="mx-8">
       <div>
         <icon icon="ion:arrow-back-outline" color="#7ACDD6" width="38" height="38" />
       </div>
@@ -13,14 +13,14 @@
       </div>
 
       <form @submit.prevent="login" class="login-form">
-        <p class="input-title">Name</p>
+        <div class="mb-2 font-500">Name</div>
         <input type="text" v-model="username" placeholder="Username" class="input-field" />
 
-        <p class="input-title">Phone Number</p>
+        <div class="mb-2 font-500">Phone Number</div>
         <input type="number" v-model="phoneNumber" placeholder="Enter Phone Number" class="input-field" />
 
-        <p class="input-title">Gender</p>
-        <input type="number" v-model="gender" placeholder="Select" class="input-field" />
+        <!-- <p>Gender</p>
+        <input type="number" v-model="gender" placeholder="Select" class="input-field" /> -->
 
         <button type="submit" class="submit-button">Complete Profile</button>
       </form>
@@ -41,8 +41,8 @@ const gender = ref("");
   display: flex;
   flex-direction: column;
   width: 100%;
-  height: 100vh;
   color: #000000;
+  margin-top: 20%;
 }
 
 .input-field {

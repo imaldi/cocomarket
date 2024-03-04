@@ -13,7 +13,7 @@
       <div class="mx-8 pt-4">
         <div v-for="(item, n) in 4" :key="n" class="flex shadow-md p-4 rounded-md">
           <div class="bg-gray rounded-lg">
-            <img src="../assets/meat1.png" alt="" />
+            <img src="../assets/img/meat1.png" alt="" />
           </div>
           <div class="flex justify-between w-full">
             <div class="ml-4 my-auto">

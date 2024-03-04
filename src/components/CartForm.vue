@@ -13,7 +13,7 @@
         <div class="mx-8">
             <div class="my-2 ">
                 <div class="bg-white px-4 py-6 rounded-xl flex justify-between items-center">
-                    <img class="p-2 rounded-full bg-white border border-solid border-gray" src="../assets/cart.png" alt="Driver Picture" width="28">
+                    <img class="p-2 rounded-full bg-white border border-solid border-gray" src="../assets/img/cart.png" alt="Driver Picture" width="28">
                     <div class="flex flex-col justify-center mr-6">
                         <div class="text-sm flex">Send to: <div class= "ml-2 font-bold ">Delivery</div></div>
                         <div class="text-xs font-normal tracking-tighter">Jl. Raya Batam Centre Blok A No. 1...</div>
@@ -36,7 +36,7 @@
                     <div class="text-sm font-semibold mb-4">Order List</div>
 
                     <div class=" py-6 rounded-xl flex justify-start items-center">
-                    <img class="p-2" src="../assets/cartstall.png" alt="Driver Picture" width="28">
+                    <img class="p-2" src="../assets/img/cartstall.png" alt="Driver Picture" width="28">
                     <div class="flex flex-col justify-center">
                         <div class="text-sm font-semibold ">Bakso Solo Kang Emil</div>
                         <div class="text-[10px] font-normal ">Delivery time on the same day</div>
@@ -46,7 +46,7 @@
                         <div class="flex flex-row items-center">
                             <form class="mr-2" action=""><input type="checkbox"></form>
                             <div class="border border-solid border-gray rounded-2xl" >                          
-                                <img class="p-2" src="../assets/tehobeng.png" alt="Order Picture" width="48">
+                                <img class="p-2" src="../assets/img/tehobeng.png" alt="Order Picture" width="48">
                             </div>
                             <div class="mx-4 flex flex-col justify-center">
                                 <div class="color-black text-sm font-semibold">Teh Obeng</div>
@@ -72,7 +72,7 @@
                         <div class="flex flex-row items-center">
                             <form class="mr-2" action=""><input type="checkbox"></form>
                             <div class="border border-solid border-gray rounded-2xl" >                          
-                                <img class="p-2" src="../assets/meat 4.png" alt="Order Picture" width="48">
+                                <img class="p-2" src="../assets/img/meat 4.png" alt="Order Picture" width="48">
                             </div>
                             <div class="mx-4 flex flex-col justify-center">
                                 <div class="color-black text-sm font-semibold">Mie Ayam</div>
@@ -98,7 +98,7 @@
                         <div class="flex flex-row items-center">
                             <form class="mr-2" action=""><input type="checkbox"></form>
                             <div class="border border-solid border-gray rounded-2xl" >                          
-                                <img class="p-0" src="../assets/bakso.png" alt="Order Picture" width="64">
+                                <img class="p-0" src="../assets/img/bakso.png" alt="Order Picture" width="64">
                             </div>
                             <div class="mx-4 flex flex-col justify-center">
                                 <div class="color-black text-sm font-semibold">Bakso Campur Enak</div>

@@ -23,14 +23,14 @@
       </div>
 
       <div>
-        <div class="w-full"><img src="../assets/maps.png" width="100%" height="20%" alt="maps" /></div>
+        <div class="w-full"><img src="../assets/img/maps.png" width="100%" height="20%" alt="maps" /></div>
         <div class="text-center bg-white rounded-2xl shadow-xl p-4 font-bold">Near my Location</div>
       </div>
 
       <div>
         <div class="mx-4 pt-2 flex">
           <div>
-            <img src="../assets/gerobak.png" width="100" height="100" alt="gerobak" />
+            <img src="../assets/img/gerobak.png" width="100" height="100" alt="gerobak" />
           </div>
           <div class="my-auto">
             <div class="my-auto">Bakso Solo Kang Emil</div>

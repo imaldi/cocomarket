@@ -30,14 +30,14 @@
         <div>
           <div class="flex justify-between pb-6">
             <div class="w-1/2 rounded-xl p-6 mr-6 border border-solid" style="background-color: #53b175">
-              <img src="../assets/shimla1.png" width="80" height="80" class="w-full justify-center" alt="" />
+              <img src="../assets/img/shimla1.png" width="80" height="80" class="w-full justify-center" alt="" />
               <div class="text-center font-500">
                 Fresh Fruits <br />
                 and Vegetables
               </div>
             </div>
             <div class="w-1/2 rounded-xl p-6 border border-solid" style="background-color: #f8a44c">
-              <img src="../assets/shimla2.png" width="80" height="80" class="w-full justify-center" alt="" />
+              <img src="../assets/img/shimla2.png" width="80" height="80" class="w-full justify-center" alt="" />
               <div class="text-center font-500">
                 Cooking Oil <br />
                 & Ghee
@@ -46,14 +46,14 @@
           </div>
           <div class="flex justify-between">
             <div class="w-1/2 rounded-xl p-6 mr-6 border border-solid" style="background-color: #f7a593">
-              <img src="../assets/shimla3.png" width="80" height="80" class="w-full justify-center" alt="" />
+              <img src="../assets/img/shimla3.png" width="80" height="80" class="w-full justify-center" alt="" />
               <div class="text-center font-500">
                 Meat <br />
                 & Fish
               </div>
             </div>
             <div class="w-1/2 rounded-xl p-6 border border-solid" style="background-color: #d3b0e0">
-              <img src="../assets/shimla4.png" width="80" height="80" class="w-full justify-center" alt="" />
+              <img src="../assets/img/shimla4.png" width="80" height="80" class="w-full justify-center" alt="" />
               <div class="text-center font-500">
                 Bakery <br />
                 & Snacks
@@ -71,7 +71,7 @@
         <div class="flex justify-between pb-6">
           <div>
             <div class="w-1/2 rounded-xl p-6 mr-6 bg-white">
-              <img src="../assets/meat1.png" width="80" height="80" class="w-full justify-center" alt="" />
+              <img src="../assets/img/meat1.png" width="80" height="80" class="w-full justify-center" alt="" />
             </div>
             <div>
               <div>Kangkung</div>
@@ -85,7 +85,7 @@
 
           <div>
             <div class="w-1/2 rounded-xl p-6 mr-6 bg-white">
-              <img src="../assets/meat2.png" width="80" height="80" class="w-full justify-center" alt="" />
+              <img src="../assets/img/meat2.png" width="80" height="80" class="w-full justify-center" alt="" />
             </div>
             <div>
               <div>Bayam Segar</div>

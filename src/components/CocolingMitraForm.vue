@@ -61,7 +61,7 @@
 
         <div>
           <div class="-mt-6 px-4 py-6 flex">
-            <img class="p-2 rounded-full bg-[#7ACDD6]" src="../assets/checkout.png" alt="Driver Picture" width="28" />
+            <img class="p-2 rounded-full bg-[#7ACDD6]" src="../assets/img/checkout.png" alt="Driver Picture" width="28" />
             <div class="flex flex-col justify-center mx-4">
               <div class="text-sm font-bold">Delivery</div>
               <div class="text-xs font-normal tracking-tighter">10 - 15 Menit</div>

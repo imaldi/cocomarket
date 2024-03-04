@@ -14,7 +14,7 @@
             <div class="my-6 ">
                 <div class="bg-[#7ACDD640] px-4 pt-2 pb-8 rounded-xl text-xs">Want to change the order type? Click “Switch”</div>
                 <div class="bg-white -mt-6 px-4 py-6 rounded-xl flex">
-                    <img class="p-2 rounded-full bg-[#7ACDD6]" src="../assets/checkout.png" alt="Driver Picture" width="28">
+                    <img class="p-2 rounded-full bg-[#7ACDD6]" src="../assets/img/checkout.png" alt="Driver Picture" width="28">
                     <div class="flex flex-col justify-center mx-4">
                         <div class="text-sm font-bold ">Delivery</div>
                         <div class="text-xs font-normal tracking-tighter">10 - 15 Menit</div>
@@ -48,7 +48,7 @@
             <div>
                 <div class="border-solid border border-gray rounded-2xl p-4 my-2">
                     <div class="flex flex-row">
-                        <img class="bg-[#F2F3F2] px-4 rounded-2xl" src="../assets/meat1.png" alt="Order Picture" width="70">
+                        <img class="bg-[#F2F3F2] px-4 rounded-2xl" src="../assets/img/meat1.png" alt="Order Picture" width="70">
                         <div class="mx-4 flex flex-col justify-center">
                             <div class="color-black text-sm ">Kangkung</div>
                             <div class="color-gray text-sm ">5 Ons, Fresh first</div>
@@ -65,7 +65,7 @@
                 </div>
                 <div class="border-solid border border-gray rounded-2xl p-4 my-2">
                     <div class="flex flex-row">
-                        <img class="bg-[#F2F3F2] px-4 rounded-2xl" src="../assets/meat1.png" alt="Order Picture" width="70">
+                        <img class="bg-[#F2F3F2] px-4 rounded-2xl" src="../assets/img/meat1.png" alt="Order Picture" width="70">
                         <div class="mx-4 flex flex-col justify-center">
                             <div class="color-black text-sm ">Kangkung</div>
                             <div class="color-gray text-sm ">5 Ons, Fresh</div>
@@ -82,7 +82,7 @@
                 </div>
                 <div class="border-solid border border-gray rounded-2xl p-4 my-2">
                     <div class="flex flex-row">
-                        <img class="bg-[#F2F3F2] px-4 rounded-2xl" src="../assets/meat1.png" alt="Order Picture" width="70">
+                        <img class="bg-[#F2F3F2] px-4 rounded-2xl" src="../assets/img/meat1.png" alt="Order Picture" width="70">
                         <div class="mx-4 flex flex-col justify-center">
                             <div class="color-black text-sm ">Kangkung</div>
                             <div class="color-gray text-sm ">5 Ons, Fresh</div>
@@ -99,7 +99,7 @@
                 </div>
                 <div class="border-solid border border-gray rounded-2xl p-4 my-2">
                     <div class="flex flex-row">
-                        <img class="bg-[#F2F3F2] px-4 rounded-2xl" src="../assets/meat1.png" alt="Order Picture" width="70">
+                        <img class="bg-[#F2F3F2] px-4 rounded-2xl" src="../assets/img/meat1.png" alt="Order Picture" width="70">
                         <div class="mx-4 flex flex-col justify-center">
                             <div class="color-black text-sm ">Kangkung</div>
                             <div class="color-gray text-sm ">5 Ons, Fresh</div>
@@ -116,7 +116,7 @@
                 </div>
                 <div class="border-solid border border-gray rounded-2xl p-4 my-2">
                     <div class="flex flex-row">
-                        <img class="bg-[#F2F3F2] px-4 rounded-2xl" src="../assets/meat1.png" alt="Order Picture" width="70">
+                        <img class="bg-[#F2F3F2] px-4 rounded-2xl" src="../assets/img/meat1.png" alt="Order Picture" width="70">
                         <div class="mx-4 flex flex-col justify-center">
                             <div class="color-black text-sm ">Kangkung</div>
                             <div class="color-gray text-sm ">5 Ons, Fresh last</div>

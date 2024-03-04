@@ -76,7 +76,7 @@
         <div class="mx-8">
             <div class="my-6 ">
                 <div class="bg-white px-4 py-2 rounded-xl flex">
-                    <img class="p-2 rounded-full bg-[#7ACDD6]" src="../assets/checkout.png" alt="Driver Picture" width="28">
+                    <img class="p-2 rounded-full bg-[#7ACDD6]" src="../assets/img/checkout.png" alt="Driver Picture" width="28">
                     <div class="flex flex-col justify-center mx-4">
                         <div class="text-sm font-bold ">Delivery</div>
                         <div class="text-xs font-normal tracking-tighter">10 - 15 Menit</div>
@@ -104,7 +104,7 @@
             <div class="text-md font-bold my-2">Resto’s top Picks</div>
             <div class="flex flex-wrap">
                 <div class="flex flex-col w-1/2">
-                    <img class="p-2 rounded-2xl rounded-2xl" src="../assets/bakso2.png" alt="Top Picks Product">
+                    <img class="p-2 rounded-2xl rounded-2xl" src="../assets/img/bakso2.png" alt="Top Picks Product">
                     <div class="px-2">
                         <div class="font-semibold text-md my-2">
                             Bakso
@@ -121,7 +121,7 @@
                 </div>
 
                 <div class="flex flex-col w-1/2">
-                    <img class="p-2 rounded-2xl" src="../assets/bakso2.png" alt="Top Picks Product">
+                    <img class="p-2 rounded-2xl" src="../assets/img/bakso2.png" alt="Top Picks Product">
                     <div class="px-2">
                         <div class="flex justify-between items-center">
                             <div class="font-semibold text-md my-2">
@@ -148,7 +148,7 @@
                 </div>
 
                 <div class="flex flex-col w-1/2">
-                    <img class="p-2 rounded-2xl" src="../assets/bakso2.png" alt="Top Picks Product">
+                    <img class="p-2 rounded-2xl" src="../assets/img/bakso2.png" alt="Top Picks Product">
                     <div class="px-2">
                         <div class="font-semibold text-md my-2">
                             Bakso
@@ -165,7 +165,7 @@
                 </div>
 
                 <div class="flex flex-col w-1/2">
-                    <img class="p-2 rounded-2xl" src="../assets/bakso2.png" alt="Top Picks Product">
+                    <img class="p-2 rounded-2xl" src="../assets/img/bakso2.png" alt="Top Picks Product">
                     <div class="px-2">
                         <div class="font-semibold text-md my-2">
                             Bakso
@@ -196,7 +196,7 @@
                         <div class="text-sm font-bold ">22.000</div>
                     </div>
                     <div>
-                        <img class="rounded-2xl" src="../assets/bakso2.png" alt="" width="120">
+                        <img class="rounded-2xl" src="../assets/img/bakso2.png" alt="" width="120">
                     </div>
                 </div>
                 <div class="flex justify-between mt-4">
@@ -218,7 +218,7 @@
                         <div class="text-sm font-bold ">22.000</div>
                     </div>
                     <div>
-                        <img class="rounded-2xl" src="../assets/bakso2.png" alt="" width="120">
+                        <img class="rounded-2xl" src="../assets/img/bakso2.png" alt="" width="120">
                     </div>
                 </div>
                 <div class="flex justify-between mt-4">
@@ -240,7 +240,7 @@
                         <div class="text-sm font-bold ">22.000</div>
                     </div>
                     <div>
-                        <img class="rounded-2xl" src="../assets/bakso2.png" alt="" width="120">
+                        <img class="rounded-2xl" src="../assets/img/bakso2.png" alt="" width="120">
                     </div>
                 </div>
                 <div class="flex justify-between mt-4">
@@ -271,7 +271,7 @@
                         <div class="text-sm font-bold ">7.000</div>
                     </div>
                     <div>
-                        <img class="rounded-2xl" src="../assets/teh.png" alt="" width="120">
+                        <img class="rounded-2xl" src="../assets/img/teh.png" alt="" width="120">
                     </div>
                 </div>
                 <div class="flex justify-between mt-4">
@@ -292,7 +292,7 @@
                         <div class="text-sm font-bold ">7.000</div>
                     </div>
                     <div>
-                        <img class="rounded-2xl" src="../assets/teh.png" alt="" width="120">
+                        <img class="rounded-2xl" src="../assets/img/teh.png" alt="" width="120">
                     </div>
                 </div>
                 <div class="flex justify-between mt-4">

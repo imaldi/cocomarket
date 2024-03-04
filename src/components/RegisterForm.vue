@@ -22,13 +22,13 @@
 
     <div class="sign-in-social">
       <div class="apple"> 
-        <img src="../assets/apple-logo.svg" alt="Logo Apple" class="logo-icon">
+        <img src="../assets/img/apple-logo.svg" alt="Logo Apple" class="logo-icon">
       </div>
       <div class="google"> 
-        <img src="../assets/google-logo.svg" alt="Logo Apple" class="logo-icon">
+        <img src="../assets/img/google-logo.svg" alt="Logo Apple" class="logo-icon">
       </div>
       <div class="facebook"> 
-        <img src="../assets/facebook-logo.svg" alt="Logo Apple" class="logo-icon">
+        <img src="../assets/img/facebook-logo.svg" alt="Logo Apple" class="logo-icon">
       </div>    </div>
 
     <p class="sign-up-title">Already Have an account? <a href="#" class="sign-up">Sign In</a></p>
@@ -67,7 +67,8 @@ export default defineComponent({
   align-items: center;
   justify-content: center;
   width: 100%;
-  height: 100vh;
+  margin-top: 30%;
+  // height: 100vh;
 }
 
 .register-title{

@@ -92,7 +92,7 @@
                    
                     <div class="py-2">
                         <div class="flex py-2">
-                            <div class="w-1/4"><img class="rounded-xl" src="../assets/bakso2.png" alt="" width="60"></div>
+                            <div class="w-1/4"><img class="rounded-xl" src="../assets/img/bakso2.png" alt="" width="60"></div>
                             <div class="w-3/4 flex flex-col justify-around">
                                 <div class="text-sm font-bold">Bakso Campur Enak</div>
                                 <div class="flex justify-between">
@@ -102,7 +102,7 @@
                             </div>
                         </div>
                         <div class="flex py-2">
-                            <div class="w-1/4"><img class="rounded-xl" src="../assets/teh.png" alt="" width="60"></div>
+                            <div class="w-1/4"><img class="rounded-xl" src="../assets/img/teh.png" alt="" width="60"></div>
                             <div class="w-3/4 flex flex-col justify-around">
                                 <div class="text-sm font-bold">Teh Obengk</div>
                                 <div class="flex justify-between">
@@ -112,7 +112,7 @@
                             </div>
                         </div>
                         <div class="flex py-2">
-                            <div class="w-1/4"><img class="rounded-xl" src="../assets/meat 4.png" alt="" width="60"></div>
+                            <div class="w-1/4"><img class="rounded-xl" src="../assets/img/meat 4.png" alt="" width="60"></div>
                             <div class="w-3/4 flex flex-col justify-around">
                                 <div class="text-sm font-bold">Mie Ayam</div>
                                 <div class="flex justify-between">

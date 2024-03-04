@@ -12,7 +12,7 @@
 
       <div class="bg-gray rounded-xl p-8">
         <div class="text-center" style="height: 30vh">
-          <img src="../assets/food1.png" width="200" height="200" alt="" />
+          <img src="../assets/img/food1.png" width="200" height="200" alt="" />
         </div>
         <div class="text-center text-4xl">...</div>
       </div>

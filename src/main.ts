@@ -5,7 +5,7 @@ import { createPinia } from "pinia";
 
 import "./style.css";
 import "virtual:uno.css";
-// import "./assets/style/style.scss";
+import "./assets/style/style.scss";
 import { Icon } from "@iconify/vue";
 
 const app = createApp(App);

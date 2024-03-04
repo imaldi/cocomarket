@@ -12,7 +12,7 @@
 
         <div class="mx-8 my-6">
             <div class="flex border border-solid border-gray rounded-xl p2 mb-2">
-                <div class="bg-[#F2F3F2] px-2 py-0 rounded-xl"><img src="../assets/meat1.png" alt="Product Image" width="120"></div>
+                <div class="bg-[#F2F3F2] px-2 py-0 rounded-xl"><img src="../assets/img/meat1.png" alt="Product Image" width="120"></div>
                 <div class="mx-4 text-sm flex flex-col justify-center">
                     <div class="font-semibold">Kangkung</div>
                     <div class="font-normal text-gray">5 Ons, Fresh</div>
@@ -20,7 +20,7 @@
                 </div>
             </div>
             <div class="flex border border-solid border-gray rounded-xl p2 mb-2">
-                <div class="bg-[#F2F3F2] px-2 py-0 rounded-xl"><img src="../assets/meat1.png" alt="Product Image" width="120"></div>
+                <div class="bg-[#F2F3F2] px-2 py-0 rounded-xl"><img src="../assets/img/meat1.png" alt="Product Image" width="120"></div>
                 <div class="mx-4 text-sm flex flex-col justify-center">
                     <div class="font-semibold">Kangkung</div>
                     <div class="font-normal text-gray">5 Ons, Fresh</div>
@@ -28,7 +28,7 @@
                 </div>
             </div>
             <div class="flex border border-solid border-gray rounded-xl p2 mb-2">
-                <div class="bg-[#F2F3F2] px-2 py-0 rounded-xl"><img src="../assets/meat1.png" alt="Product Image" width="120"></div>
+                <div class="bg-[#F2F3F2] px-2 py-0 rounded-xl"><img src="../assets/img/meat1.png" alt="Product Image" width="120"></div>
                 <div class="mx-4 text-sm flex flex-col justify-center">
                     <div class="font-semibold">Kangkung</div>
                     <div class="font-normal text-gray">5 Ons, Fresh</div>

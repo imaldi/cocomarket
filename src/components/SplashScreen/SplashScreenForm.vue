@@ -1,6 +1,6 @@
 <template>
   <div class="container text-center">
-    <img class="image-logo" src="../../assets/logo-cocomaret.png" alt="Cocomaret Logo" />
+    <img class="image-logo" src="../../assets/img/logo-cocomaret.png" alt="Cocomaret Logo" />
     <p class="title-logo">COCOMARET.</p>
   </div>
 </template>

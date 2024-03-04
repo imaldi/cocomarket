@@ -1,7 +1,7 @@
 <template>
   <div class="container bg-white h-[100vh] text-center">
     <div class="w-screen bg-[#7ACDD6] z-0 pt-20">
-      <img class="splash-img h-[100vw]" src="../../assets/splash3.png" alt="Splash Screen picture 1" />
+      <img class="splash-img h-[100vw]" src="../../assets/img/splash3.png" alt="Splash Screen picture 1" />
     </div>
     <div class="content bg-white pt-10 flex flex-col items-center z-10">
       <h1 class="color-black text-2xl w-[80vw]">

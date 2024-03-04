@@ -48,14 +48,14 @@
           <div class="rounded-2xl p-4 flex" style="background-color: #ffe7b1">
             <div class="my-auto mr-2">
               <!-- <icon icon="noto-v1:pot-of-food" color="#000" width="28" height="28" /> -->
-              <img src="../assets/fresh-food.png" alt="fresh-food" />
+              <img src="../assets/img/fresh-food.png" alt="fresh-food" />
             </div>
             <div class="my-auto">Fresh Food</div>
           </div>
           <div class="bg-secondary rounded-2xl p-4 flex" style="background-color: #f6d6d0">
             <div class="my-auto mr-2">
               <!-- <icon icon="mdi:deal-outline" color="#000" width="28" height="28" /> -->
-              <img src="../assets/cocoling.png" alt="cocoling" />
+              <img src="../assets/img/cocoling.png" alt="cocoling" />
             </div>
             <div class="my-auto">COCOLING</div>
           </div>
@@ -73,7 +73,7 @@
               <div class="bg-white rounded-full p-2 pr-6 pl-6 text-black w-1/4 text-center mt-2">Buy Now</div>
             </div>
           </div>
-          <img src="../assets/promos.png" width="328" height="228" alt="" />
+          <img src="../assets/img/promos.png" width="328" height="228" alt="" />
         </div>
 
         <div>Best Deal</div>
@@ -89,7 +89,7 @@
   display: flex;
   flex-direction: column;
   width: 100%;
-  height: 100vh;
+  // height: 100vh;
   color: #000000;
 }
 </style>
