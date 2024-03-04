@@ -31,9 +31,14 @@
         $route.path !== '/cart' &&
         $route.path !== '/coupondetail' &&
         $route.path !== '/revieworder' &&
-        $route.path !== '/pedagangdetail' 
+        $route.path !== '/pedagangdetail' &&
+        $route.path !== '/rating'  &&
+        $route.path !== '/changepassword' &&
+        $route.path !== '/changeprofile'
+
+
       "
-      class="bottom-navigation"
+      class="bottom-navigation z-2"
     >
       <router-link to="/home" class="nav-item">
         <div>

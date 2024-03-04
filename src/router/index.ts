@@ -166,6 +166,26 @@ const routes: RouteRecordRaw[] = [
         name: "PedagangDetail",
         component: () => import("../views/PedagangDetail.vue"),
       },
+      {
+        path: "/history",
+        name: "History",
+        component: () => import("../views/History.vue"),
+      },
+      {
+        path: "/rating",
+        name: "Rating",
+        component: () => import("../views/Rating.vue"),
+      },
+      {
+        path: "/changepassword",
+        name: "ChangePassword",
+        component: () => import("../views/ChangePassword.vue"),
+      },
+      {
+        path: "/changeprofile",
+        name: "ChangeProfile",
+        component: () => import("../views/ChangeProfile.vue"),
+      },
     ],
   },
 ];
