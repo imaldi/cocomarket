@@ -32,15 +32,13 @@
         $route.path !== '/coupondetail' &&
         $route.path !== '/revieworder' &&
         $route.path !== '/pedagangdetail' &&
-        $route.path !== '/order' &&
-        $route.path !== '/orderfreshfood' &&
-        $route.path !== '/orderCocoStore'  &&
-        $route.path !== '/trackOrder' &&
-        $route.path !== '/reviewOrderTrack' &&
-        $route.path !== '/orderCompleted' &&
-        $route.path !== '/reviewOrderList' 
+        $route.path !== '/rating'  &&
+        $route.path !== '/changepassword' &&
+        $route.path !== '/changeprofile'
+
+
       "
-      class="bottom-navigation"
+      class="bottom-navigation z-2"
     >
       <router-link to="/home" class="nav-item">
         <div>
