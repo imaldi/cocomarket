@@ -17,6 +17,96 @@ const routes: RouteRecordRaw[] = [
         component: () => import("../views/Register.vue"),
       },
       {
+        path: "/verifycode",
+        name: "VerifyCode",
+        component: () => import("../views/VerifyCode.vue"),
+      },
+      {
+        path: "/completeyourprofile",
+        name: "CompleteYourProfile",
+        component: () => import("../views/CompleteYourProfile.vue"),
+      },
+      {
+        path: "/allowlocationaccess",
+        name: "AllowLocationAccess",
+        component: () => import("../views/AllowLocationAccess.vue"),
+      },
+      {
+        path: "/searchlocation",
+        name: "SearchLocation",
+        component: () => import("../views/SearchLocation.vue"),
+      },
+      {
+        path: "/newpassword",
+        name: "NewPassword",
+        component: () => import("../views/NewPassword.vue"),
+      },
+      {
+        path: "/home",
+        name: "Home",
+        component: () => import("../views/Home.vue"),
+      },
+      {
+        path: "/notification",
+        name: "Notification",
+        component: () => import("../views/Notification.vue"),
+      },
+      {
+        path: "/addfreshfood",
+        name: "AddFreshFood",
+        component: () => import("../views/AddFreshFood.vue"),
+      },
+      {
+        path: "/findfreshfood",
+        name: "FindFreshFood",
+        component: () => import("../views/FindFreshFood.vue"),
+      },
+      {
+        path: "/freshfooddetail",
+        name: "FreshFoodDetail",
+        component: () => import("../views/FreshFoodDetail.vue"),
+      },
+      {
+        path: "/configaddfreshfood",
+        name: "ConfigAddFreshFood",
+        component: () => import("../views/ConfigAddFreshFood.vue"),
+      },
+      {
+        path: "/checkout",
+        name: "Checkout",
+        component: () => import("../views/Checkout.vue"),
+      },
+      {
+        path: "/ordersuccess",
+        name: "OrderSuccess",
+        component: () => import("../views/OrderSuccess.vue"),
+      },
+      {
+        path: "/paymentmethod",
+        name: "PaymentMethod",
+        component: () => import("../views/PaymentMethod.vue"),
+      },
+      {
+        path: "/gmaps",
+        name: "GMaps",
+        component: () => import("../views/GMaps.vue"),
+      },
+      {
+        path: "/cart",
+        name: "Cart",
+        component: () => import("../views/Cart.vue"),
+      },
+      {
+        path: "/history",
+        name: "History",
+        component: () => import("../views/History.vue"),
+      },
+      {
+        path: "/changeprofile",
+        name: "ChangeProfile",
+        component: () => import("../views/ChangeProfile.vue"),
+      },
+      {
         path: "/profile",
         name: "Profile",
         component: () => import("../views/Profile.vue"),
@@ -47,61 +137,6 @@ const routes: RouteRecordRaw[] = [
         component: () => import("../views/SplashScreen/SplashScreen4.vue"),
       },
       {
-        path: "/completeyourprofile",
-        name: "CompleteYourProfile",
-        component: () => import("../views/CompleteYourProfile.vue"),
-      },
-      {
-        path: "/newpassword",
-        name: "NewPassword",
-        component: () => import("../views/NewPassword.vue"),
-      },
-      {
-        path: "/freshfooddetail",
-        name: "FreshFoodDetail",
-        component: () => import("../views/FreshFoodDetail.vue"),
-      },
-      {
-        path: "/addfreshfood",
-        name: "AddFreshFood",
-        component: () => import("../views/AddFreshFood.vue"),
-      },
-      {
-        path: "/configaddfreshfood",
-        name: "ConfigAddFreshFood",
-        component: () => import("../views/ConfigAddFreshFood.vue"),
-      },
-      {
-        path: "/notification",
-        name: "Notification",
-        component: () => import("../views/Notification.vue"),
-      },
-      {
-        path: "/ordersuccess",
-        name: "OrderSuccess",
-        component: () => import("../views/OrderSuccess.vue"),
-      },
-      {
-        path: "/verifycode",
-        name: "VerifyCode",
-        component: () => import("../views/VerifyCode.vue"),
-      },
-      {
-        path: "/allowlocationaccess",
-        name: "AllowLocationAccess",
-        component: () => import("../views/AllowLocationAccess.vue"),
-      },
-      {
-        path: "/home",
-        name: "Home",
-        component: () => import("../views/Home.vue"),
-      },
-      {
-        path: "/findfreshfood",
-        name: "FindFreshFood",
-        component: () => import("../views/FindFreshFood.vue"),
-      },
-      {
         path: "/forgotpassword",
         name: "ForgotPassword",
         component: () => import("../views/ForgotPassword.vue"),
@@ -112,29 +147,9 @@ const routes: RouteRecordRaw[] = [
         component: () => import("../views/ResetPassword.vue"),
       },
       {
-        path: "/gmaps",
-        name: "GMaps",
-        component: () => import("../views/GMaps.vue"),
-      },
-      {
         path: "/cocolingmitra",
         name: "CocolingMitra.vue",
         component: () => import("../views/CocolingMitra.vue"),
-      },
-      {
-        path: "/searchlocation",
-        name: "SearchLocation",
-        component: () => import("../views/SearchLocation.vue"),
-      },
-      {
-        path: "/checkout",
-        name: "Checkout",
-        component: () => import("../views/Checkout.vue"),
-      },
-      {
-        path: "/paymentmethod",
-        name: "PaymentMethod",
-        component: () => import("../views/PaymentMethod.vue"),
       },
       {
         path: "/coupon",
@@ -145,11 +160,6 @@ const routes: RouteRecordRaw[] = [
         path: "/reviewsummary",
         name: "ReviewSummary",
         component: () => import("../views/ReviewSummary.vue"),
-      },
-      {
-        path: "/cart",
-        name: "Cart",
-        component: () => import("../views/Cart.vue"),
       },
       {
         path: "/coupondetail",
@@ -167,11 +177,6 @@ const routes: RouteRecordRaw[] = [
         component: () => import("../views/PedagangDetail.vue"),
       },
       {
-        path: "/history",
-        name: "History",
-        component: () => import("../views/History.vue"),
-      },
-      {
         path: "/rating",
         name: "Rating",
         component: () => import("../views/Rating.vue"),
@@ -180,11 +185,6 @@ const routes: RouteRecordRaw[] = [
         path: "/changepassword",
         name: "ChangePassword",
         component: () => import("../views/ChangePassword.vue"),
-      },
-      {
-        path: "/changeprofile",
-        name: "ChangeProfile",
-        component: () => import("../views/ChangeProfile.vue"),
       },
     ],
   },
