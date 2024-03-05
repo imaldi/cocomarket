@@ -1,9 +1,9 @@
 <template>
   <div>
-    <Cart />
+    <Chat />
   </div>
 </template>
 
 <script setup lang="ts">
-import Cart from "../components/CartForm.vue";
+import Chat from "../components/ChatForm.vue";
 </script>

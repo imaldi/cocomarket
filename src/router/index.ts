@@ -186,6 +186,52 @@ const routes: RouteRecordRaw[] = [
         name: "ChangePassword",
         component: () => import("../views/ChangePassword.vue"),
       },
+
+      {
+        path: "/chat",
+        name: "Chat",
+        component: () => import("../views/Chat.vue"),
+      },
+      {
+        path: "/order",
+        name: "Order",
+        component: () => import("../views/Order.vue"),
+      },
+      {
+        path: "/orderfreshfood",
+        name: "OrderFreshfood",
+        component: () => import("../views/OrderFreshfood.vue"),
+      },
+      {
+        path: "/orderCocostore",
+        name: "OrderCocostore",
+        component: () => import("../views/OrderCocostore.vue"),
+      },
+      {
+        path: "/trackOrder",
+        name: "TrackOrder",
+        component: () => import("../views/TrackOrder.vue"),
+      },
+      {
+        path: "/trackOrderDetail",
+        name: "TrackOrderDetail",
+        component: () => import("../views/TrackOrderDetail.vue"),
+      },
+      {
+        path: "/reviewOrderTrack",
+        name: "ReviewOrderTrack",
+        component: () => import("../views/ReviewOrderTrack.vue"),
+      },
+      {
+        path: "/orderCompleted",
+        name: "OrderCompleted",
+        component: () => import("../views/OrderCompleted.vue"),
+      },
+      {
+        path: "/reviewOrderList",
+        name: "ReviewOrderList",
+        component: () => import("../views/ReviewOrderList.vue"),
+      },
     ],
   },
 ];

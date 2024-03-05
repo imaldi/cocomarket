@@ -34,7 +34,13 @@
         $route.path !== '/pedagangdetail' &&
         $route.path !== '/rating' &&
         $route.path !== '/changepassword' &&
-        $route.path !== '/changeprofile'
+        $route.path !== '/changeprofile' &&
+        $route.path !== '/orderfreshfood' &&
+        $route.path !== '/orderCocoStore' &&
+        $route.path !== '/trackOrder' &&
+        $route.path !== '/reviewOrderTrack' &&
+        $route.path !== '/orderCompleted' &&
+        $route.path !== '/reviewOrderList'
       "
       class="bottom-navigation z-2"
     >
