@@ -40,8 +40,15 @@
         $route.path !== '/trackOrder' &&
         $route.path !== '/reviewOrderTrack' &&
         $route.path !== '/orderCompleted' &&
-        $route.path !== '/reviewOrderList'
-      "
+        $route.path !== '/reviewOrderList' &&
+        $route.path !== '/myaddress' &&
+        $route.path !== '/addaddress' &&
+        $route.path !== '/chooseprovince' &&
+        $route.path !== '/choosecity' &&
+        $route.path !== '/choosecdistrict' &&
+        $route.path !== '/chooseczipcode'
+        
+        "
       class="bottom-navigation z-2"
     >
       <router-link to="/home" class="nav-item">
