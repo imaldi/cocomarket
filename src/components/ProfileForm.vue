@@ -1,5 +1,5 @@
 <template>
     <div>
-        <div>Laman Profile</div>
+        <div class="text-black">Laman Profile</div>
     </div>
 </template>

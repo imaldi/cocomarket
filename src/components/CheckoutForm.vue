@@ -262,7 +262,7 @@
               />
             </div>
           </div>
-          <div class="flex w-full justify-between p-4">
+          <div @click="router.push('/ordersuccess')" class="flex w-full justify-between p-4">
             <div class="flex p-2 mr-8 rounded-2xl bg-primary w-full justify-center">
               <div class="text-2xl text-white">Confirm Order</div>
             </div>
