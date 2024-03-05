@@ -31,7 +31,14 @@
         $route.path !== '/cart' &&
         $route.path !== '/coupondetail' &&
         $route.path !== '/revieworder' &&
-        $route.path !== '/pedagangdetail' 
+        $route.path !== '/pedagangdetail' &&
+        $route.path !== '/order' &&
+        $route.path !== '/orderfreshfood' &&
+        $route.path !== '/orderCocoStore'  &&
+        $route.path !== '/trackOrder' &&
+        $route.path !== '/reviewOrderTrack' &&
+        $route.path !== '/orderCompleted' &&
+        $route.path !== '/reviewOrderList' 
       "
       class="bottom-navigation"
     >
