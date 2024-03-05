@@ -25,10 +25,10 @@
       <div class="mx-8">
         <div class="flex justify-between pt-4 pb-4">
           <div class="font-bold">Category</div>
-          <div class="text-gray">See all</div>
+          <div @click="seeAll" class="text-gray">See all</div>
         </div>
         <div>
-          <div class="flex justify-between pb-6">
+          <div @click="router.push('/configaddfreshfood')" class="flex justify-between pb-6">
             <div class="w-1/2 rounded-xl p-6 mr-6 border border-solid" style="background-color: #53b175">
               <img src="../assets/img/shimla1.png" width="80" height="80" class="w-full justify-center" alt="" />
               <div class="text-center font-500">
@@ -60,6 +60,25 @@
               </div>
             </div>
           </div>
+
+          <template v-for="(item, n) in 4" :key="n">
+            <div v-if="seeAllShow" class="flex justify-between pt-4">
+              <div class="w-1/2 rounded-xl p-6 mr-6 border border-solid" style="background-color: #f7a593">
+                <img src="../assets/img/shimla3.png" width="80" height="80" class="w-full justify-center" alt="" />
+                <div class="text-center font-500">
+                  Meat <br />
+                  & Fish
+                </div>
+              </div>
+              <div class="w-1/2 rounded-xl p-6 border border-solid" style="background-color: #d3b0e0">
+                <img src="../assets/img/shimla4.png" width="80" height="80" class="w-full justify-center" alt="" />
+                <div class="text-center font-500">
+                  Bakery <br />
+                  & Snacks
+                </div>
+              </div>
+            </div>
+          </template>
         </div>
       </div>
 
@@ -68,7 +87,7 @@
           <div class="font-bold">Fresh Vegan</div>
         </div>
 
-        <div class="flex justify-between pb-6">
+        <div v-for="(item, n) in 4" :key="n" @click="router.push('/freshfooddetail')" class="flex justify-between pb-6">
           <div>
             <div class="w-1/2 rounded-xl p-6 mr-6 bg-white">
               <img src="../assets/img/meat1.png" width="80" height="80" class="w-full justify-center" alt="" />
@@ -101,6 +120,22 @@
     </div>
   </div>
 </template>
+
+<script setup lang="ts">
+import { ref } from "vue";
+import { useRouter } from "vue-router";
+
+const router = useRouter();
+
+const username = ref("");
+const seeAllShow = ref(false);
+
+const seeAll = async () => {
+  seeAllShow.value = !seeAllShow.value;
+  // let login: LoginType = { PhoneNumber: phoneNumber.value, Password: password.value };
+  // const res = await Api.login(login);
+};
+</script>
 
 <style scoped lang="scss">
 .container {

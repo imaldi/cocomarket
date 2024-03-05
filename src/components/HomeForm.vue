@@ -18,8 +18,9 @@
       <div class="mx-4 pt-4">
         <div class="bg-white rounded-xl shadow-lg">
           <div class="mx-4 p-2">
-            <div class="">
+            <div class="flex">
               <icon icon="streamline:wallet-solid" color="#E68027" width="28" height="28" />
+              <div class="my-auto ml-2 font-bold">CocoPay</div>
             </div>
             <div class="flex justify-between text-center">
               <div class="text-3xl font-bold">Rp. 230.200</div>
@@ -45,7 +46,7 @@
       <div class="mx-8">
         <div class="pt-4 pb-4 font-bold">Menu</div>
         <div class="flex justify-between">
-          <div class="rounded-2xl p-4 flex" style="background-color: #ffe7b1">
+          <div @click="router.push('/findfreshfood')" class="rounded-2xl p-4 flex" style="background-color: #ffe7b1">
             <div class="my-auto mr-2">
               <!-- <icon icon="noto-v1:pot-of-food" color="#000" width="28" height="28" /> -->
               <img src="../assets/img/fresh-food.png" alt="fresh-food" />
@@ -76,12 +77,28 @@
           <img src="../assets/img/promos.png" width="328" height="228" alt="" />
         </div>
 
-        <div>Best Deal</div>
-        <div></div>
+        <div class="font-bold">Best Deal</div>
       </div>
     </div>
   </div>
 </template>
+
+<script setup lang="ts">
+import { ref } from "vue";
+import { useRouter } from "vue-router";
+
+const router = useRouter();
+
+const username = ref("");
+const password = ref("");
+
+const freshFoodAction = async () => {
+  router.push("/addfreshfood");
+
+  // let login: LoginType = { PhoneNumber: phoneNumber.value, Password: password.value };
+  // const res = await Api.login(login);
+};
+</script>
 
 <style scoped lang="scss">
 .container {

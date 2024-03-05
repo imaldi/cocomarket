@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <div class="mt-20 mx-8">
-      <div>
+      <div @click="router.push('/')">
         <icon icon="ion:arrow-back-outline" color="#7ACDD6" width="38" height="38" />
       </div>
       <div class="mt-4 text-center">
@@ -24,7 +24,7 @@
       </div>
 
       <div class="flex flex-col items-center">
-        <Button class="w-[80vw] bg-[#7ACDD6] mt-6 font-bold">Continue</Button>
+        <Button @click="forgotAction" class="w-[80vw] bg-[#7ACDD6] mt-6 font-bold">Continue</Button>
       </div>
     </div>
   </div>
@@ -32,6 +32,14 @@
 
 <script setup lang="ts">
 import { ref } from "vue";
+import { useRouter } from "vue-router";
+
+const router = useRouter();
+
+const forgotAction = async () => {
+  router.push("/home");
+};
+
 const username = ref("");
 const phoneNumber = ref("");
 const gender = ref("");
