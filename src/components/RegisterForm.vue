@@ -4,63 +4,64 @@
       <h1>Create Account</h1>
       <h5>Fill your information below or register with your social account</h5>
     </div>
-  
+
     <form @submit.prevent="register" class="register-form">
       <p class="input-title">Email</p>
       <input type="text" v-model="username" placeholder="Username" class="input-field" />
       <p class="input-title">Password</p>
       <input type="password" v-model="password" placeholder="Password" class="input-field" />
-      <div class="term-checkbox"><input type="checkbox" ><label class="term-label">Agree with <a href="#" class="term-condition">Term & Condition</a></label></div>
+      <div class="term-checkbox">
+        <input type="checkbox" /><label class="term-label"
+          >Agree with <a href="#" class="term-condition">Term & Condition</a></label
+        >
+      </div>
       <button type="submit" class="submit-button">Sign Up</button>
     </form>
 
     <div class="or-sign-section">
-      <hr class="line">
+      <hr class="line" />
       <p class="or-sign-in-with">Or With</p>
-      <hr class="line">
+      <hr class="line" />
     </div>
 
     <div class="sign-in-social">
-      <div class="apple"> 
-        <img src="../assets/img/apple-logo.svg" alt="Logo Apple" class="logo-icon">
+      <div class="apple">
+        <img src="../assets/img/apple-logo.svg" alt="Logo Apple" class="logo-icon" />
       </div>
-      <div class="google"> 
-        <img src="../assets/img/google-logo.svg" alt="Logo Apple" class="logo-icon">
+      <div class="google">
+        <img src="../assets/img/google-logo.svg" alt="Logo Apple" class="logo-icon" />
       </div>
-      <div class="facebook"> 
-        <img src="../assets/img/facebook-logo.svg" alt="Logo Apple" class="logo-icon">
-      </div>    </div>
+      <div class="facebook">
+        <img src="../assets/img/facebook-logo.svg" alt="Logo Apple" class="logo-icon" />
+      </div>
+    </div>
 
     <p class="sign-up-title">Already Have an account? <a href="#" class="sign-up">Sign In</a></p>
   </div>
 </template>
 
-<script lang="ts">
-import { defineComponent, ref } from "vue";
+<script setup lang="ts">
+import { ref } from "vue";
+import { useRouter } from "vue-router";
 
-export default defineComponent({
-  setup() {
-    const username = ref("");
-    const password = ref("");
+const router = useRouter();
 
-    const register = () => {
-      // Here, you can implement your register logic
-      console.log("Logging in...");
-      console.log("Username:", username.value);
-      console.log("Password:", password.value);
-    };
+const username = ref("");
+const password = ref("");
 
-    return {
-      username,
-      password,
-      register,
-    };
-  },
-});
+const register = async () => {
+  router.push("/home");
+
+  console.log("Username:", username.value);
+  console.log("Password:", password.value);
+
+  // let login: LoginType = { PhoneNumber: phoneNumber.value, Password: password.value };
+  // const res = await Api.login(login);
+};
 </script>
 
 <style scoped lang="scss">
-.container{
+.container {
   background-color: white;
   display: flex;
   flex-direction: column;
@@ -71,19 +72,19 @@ export default defineComponent({
   // height: 100vh;
 }
 
-.register-title{
+.register-title {
   display: flex;
   flex-direction: column;
   justify-content: center;
   color: black;
 }
 
-.register-title h1{
+.register-title h1 {
   font-size: 28px;
   margin: 0;
 }
 
-.register-title h5{
+.register-title h5 {
   width: 65%;
   align-self: center;
   font-size: 12px;
@@ -100,7 +101,7 @@ export default defineComponent({
   border-radius: 5px;
 }
 
-.input-title{
+.input-title {
   margin: 5px 0;
   color: black;
   text-align: left;
@@ -118,20 +119,20 @@ export default defineComponent({
   border-radius: 5px;
 }
 
-.term-checkbox{
+.term-checkbox {
   display: flex;
   flex-direction: row;
   justify-content: start;
 }
 
-.term-label{
+.term-label {
   align-self: start;
   color: black;
   font-size: 12px;
 }
 
-.term-condition{
-  color: #7ACDD6;
+.term-condition {
+  color: #7acdd6;
 }
 
 .submit-button {
@@ -139,66 +140,68 @@ export default defineComponent({
   margin-top: 30px;
   width: 100%;
   padding: 10px;
-  background-color: #7ACDD6;
+  background-color: #7acdd6;
   color: #fff;
   border: none;
   border-radius: 14px;
   cursor: pointer;
   transition: background-color 0.3s;
 }
-.or-sign-section{
+.or-sign-section {
   width: 80%;
   display: flex;
   align-items: center;
   justify-content: space-evenly;
 }
 
-.or-sign-in-with{
+.or-sign-in-with {
   color: grey;
   font-size: 12px;
   font-weight: 400;
 }
 
-.line{
+.line {
   width: 30%;
   height: 0;
   border: 1px solid lightgray;
 }
 
-.sign-in-social{
+.sign-in-social {
   margin: 30px 0;
   display: flex;
   width: 70%;
   justify-content: space-around;
 }
 
-.apple, .google, .facebook{
+.apple,
+.google,
+.facebook {
   border-radius: 50%;
   padding: 13px 16px;
 }
 
-.apple{
+.apple {
   border: solid black 1.5px;
 }
- .google{
+.google {
   border: solid red 1.5px;
- }
- .facebook{
+}
+.facebook {
   border: solid blue 1.5px;
- }
+}
 
-.logo-icon{
+.logo-icon {
   width: 32px;
 }
 
-.sign-up-title{
+.sign-up-title {
   color: black;
   font-size: 14px;
   font-weight: 500;
   letter-spacing: -0.5px;
 }
 
-.sign-up{
-  color: #7ACDD6;
+.sign-up {
+  color: #7acdd6;
 }
 </style>

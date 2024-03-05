@@ -3,7 +3,7 @@
     <div class="container">
       <div class="bg-white shadow-md rounded-xl p-8">
         <div class="flex">
-          <div>
+          <div @click="router.push('/home')">
             <icon icon="ion:arrow-back-circle-outline" color="#000" width="28" height="28" />
           </div>
           <div class="w-full justify-center flex font-bold">Find Fresh Food</div>
@@ -99,7 +99,7 @@
         </div>
       </div>
 
-      <div class="relative">
+      <div @click="router.push('/configaddfreshfood')" class="relative">
         <div class="fixed w-full bg-white rounded-lg shadow-md" style="bottom: 0">
           <div class="flex w-full justify-between p-4">
             <div class="flex p-4 mr-8 rounded-2xl bg-primary w-full justify-center text-white">
@@ -120,6 +120,13 @@
     </div>
   </div>
 </template>
+
+<script setup lang="ts">
+import { ref } from "vue";
+import { useRouter } from "vue-router";
+
+const router = useRouter();
+</script>
 
 <style scoped lang="scss">
 .container {

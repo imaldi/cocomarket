@@ -32,11 +32,9 @@
         $route.path !== '/coupondetail' &&
         $route.path !== '/revieworder' &&
         $route.path !== '/pedagangdetail' &&
-        $route.path !== '/rating'  &&
+        $route.path !== '/rating' &&
         $route.path !== '/changepassword' &&
         $route.path !== '/changeprofile'
-
-
       "
       class="bottom-navigation z-2"
     >

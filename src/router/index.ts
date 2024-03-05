@@ -37,6 +37,16 @@ const routes: RouteRecordRaw[] = [
         component: () => import("../views/SearchLocation.vue"),
       },
       {
+        path: "/forgotpassword",
+        name: "ForgotPassword",
+        component: () => import("../views/ForgotPassword.vue"),
+      },
+      {
+        path: "/resetPassword",
+        name: "resetPassword",
+        component: () => import("../views/ResetPassword.vue"),
+      },
+      {
         path: "/newpassword",
         name: "NewPassword",
         component: () => import("../views/NewPassword.vue"),
@@ -47,19 +57,14 @@ const routes: RouteRecordRaw[] = [
         component: () => import("../views/Home.vue"),
       },
       {
-        path: "/notification",
-        name: "Notification",
-        component: () => import("../views/Notification.vue"),
+        path: "/findfreshfood",
+        name: "FindFreshFood",
+        component: () => import("../views/FindFreshFood.vue"),
       },
       {
         path: "/addfreshfood",
         name: "AddFreshFood",
         component: () => import("../views/AddFreshFood.vue"),
-      },
-      {
-        path: "/findfreshfood",
-        name: "FindFreshFood",
-        component: () => import("../views/FindFreshFood.vue"),
       },
       {
         path: "/freshfooddetail",
@@ -112,6 +117,11 @@ const routes: RouteRecordRaw[] = [
         component: () => import("../views/Profile.vue"),
       },
       {
+        path: "/notification",
+        name: "Notification",
+        component: () => import("../views/Notification.vue"),
+      },
+      {
         path: "/splashScreen",
         name: "SplashScreen",
         component: () => import("../views/SplashScreen/SplashScreen.vue"),
@@ -135,16 +145,6 @@ const routes: RouteRecordRaw[] = [
         path: "/splashScreen4",
         name: "SplashScreen4",
         component: () => import("../views/SplashScreen/SplashScreen4.vue"),
-      },
-      {
-        path: "/forgotpassword",
-        name: "ForgotPassword",
-        component: () => import("../views/ForgotPassword.vue"),
-      },
-      {
-        path: "/resetPassword",
-        name: "resetPassword",
-        component: () => import("../views/ResetPassword.vue"),
       },
       {
         path: "/cocolingmitra",

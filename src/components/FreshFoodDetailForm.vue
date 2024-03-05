@@ -3,7 +3,7 @@
     <div class="container">
       <div class="w-full flex">
         <div class="absolute w-full">
-          <div class="justify-between flex w-full">
+          <div @click="router.push('/findfreshfood')" class="justify-between flex w-full">
             <icon class="relative p-8" icon="ion:chevron-back" color="#000" width="28" height="28" />
             <icon class="relative p-8" icon="ion:share-outline" color="#000" width="28" height="28" />
           </div>
@@ -34,7 +34,7 @@
                   <icon icon="mage:plus-square" color="#555" width="50" height="50" />
                 </div>
               </div>
-              <div class="font-600 text-2xl">Rp. 7.500</div>
+              <div class="font-bold text-2xl">Rp. 7.500</div>
             </div>
           </div>
         </div>
@@ -58,11 +58,14 @@
           <div class="flex w-full justify-between p-4">
             <div class="my-auto">
               <div>Total Price</div>
-              <div class="font-500">Rp. 15.000</div>
+              <div class="font-bold">Rp. 15.000</div>
             </div>
-            <div class="flex p-4 mr-8 rounded-2xl bg-primary w-1/2 justify-center">
+            <div
+              @click="router.push('/addfreshfood')"
+              class="flex p-4 mr-8 rounded-2xl bg-primary w-1/2 justify-center"
+            >
               <icon icon="tabler:shopping-bag-plus" class="mr-4" color="#fff" width="28" height="28" />
-              <div class="text-2xl text-white">Add Cart</div>
+              <div class="text-lg font-500 text-white">Add to Cart</div>
             </div>
           </div>
         </div>
@@ -70,6 +73,13 @@
     </div>
   </div>
 </template>
+
+<script setup lang="ts">
+// import { ref } from "vue";
+import { useRouter } from "vue-router";
+
+const router = useRouter();
+</script>
 
 <style scoped lang="scss">
 .container {
