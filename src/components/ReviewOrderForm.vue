@@ -22,6 +22,19 @@
             </div>
         </div>
         
+        
+        <div class="mx-8 ">
+            <div class="border-solid border border-gray rounded-2xl py-4 px-2 mb-4 flex  justify-center items-center">
+                <div>
+                  <icon class="p-2 mr-2 border border-black border-solid rounded-full"icon="mage:message-info-round-fill" color="#000" width="28" height="28" />
+                </div>
+                <div>
+                    <div class="text-[10px] text-black font-300">You are the 11th person to be served out of 11. </div>
+                    <div class="text-[10px] text-black font-semibold">Now Bakso Solo Kang Emil is serving the 8th person</div>
+                </div>
+            </div>
+        </div>   
+
 
         <div class="mx-8">
                   <div class="border-solid border border-gray rounded-2xl px-4 py-2 mb-4 flex flex-col justify-between">
@@ -151,6 +164,16 @@
                 </div>
                 
         </div>
+
+        <div class="relative">
+        <div class="fixed w-full bg-white rounded-lg shadow-md" style="bottom: 0">
+          <div class="flex w-full justify-between p-4">
+            <div class="flex border-2 border-dashed border-red p-2 mr-8 rounded-2xl bg-white w-full justify-center">
+              <div class="text-2xl text-red">Cancel</div>
+            </div>
+          </div>
+        </div>
+      </div>
         
     </div>
     </div>

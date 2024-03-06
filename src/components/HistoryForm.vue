@@ -24,7 +24,7 @@
         <div class="flex px-8 py-6">
             <div class="px-6 py-2 bg-[#7ACDD6] rounded-2xl font-bold text-white text-sm">All</div>
             <div class="px-4 py-2 bg-[#D9D9D9] rounded-2xl font-bold text-black text-sm mx-2">Fresh Food</div>
-            <div class="px-4 py-2 bg-[#D9D9D9] rounded-2xl font-bold text-black text-sm">COCOSTORE</div>
+            <div class="px-4 py-2 bg-[#D9D9D9] rounded-2xl font-bold text-black text-sm">Storling</div>
         </div>
 
         <div class="flex flex-col px-4">

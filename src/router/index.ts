@@ -262,6 +262,16 @@ const routes: RouteRecordRaw[] = [
         name: "ChooseZipCode",
         component: () => import("../views/ChooseZipCode.vue"),
       },
+      {
+        path: "/storling",
+        name: "Storling",
+        component: () => import("../views/Storling.vue"),
+      },
+      {
+        path: "/revieworder2",
+        name: "ReviewOrder2",
+        component: () => import("../views/ReviewOrder2.vue"),
+      },
     ],
   },
 ];

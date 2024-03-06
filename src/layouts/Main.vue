@@ -46,8 +46,10 @@
         $route.path !== '/chooseprovince' &&
         $route.path !== '/choosecity' &&
         $route.path !== '/choosecdistrict' &&
-        $route.path !== '/chooseczipcode'
-        
+        $route.path !== '/chooseczipcode' &&
+        $route.path !== '/storling' &&
+        $route.path !== '/revieworder2' 
+
         "
       class="bottom-navigation z-2"
     >
@@ -116,6 +118,7 @@
 </template>
 
 <script setup lang="ts">
+import { useRoute } from "vue-router";
 
 // const excludedPaths = [
 //   "/",
