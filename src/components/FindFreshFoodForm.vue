@@ -4,19 +4,38 @@
       <div class="bg-white shadow-md rounded-xl p-8">
         <div class="flex">
           <div @click="router.back()">
-            <icon icon="ion:arrow-back-circle-outline" color="#000" width="28" height="28" />
+            <icon
+              icon="ion:arrow-back-circle-outline"
+              color="#000"
+              width="28"
+              height="28"
+            />
           </div>
-          <div class="w-full justify-center flex font-bold">Find Fresh Food</div>
+          <div class="w-full justify-center flex font-bold">
+            Find Fresh Food
+          </div>
         </div>
 
         <div class="flex pt-4">
-          <div class="w-full border border-solid border-gray rounded-full p-2 pl-4 my-auto flex">
-            <icon icon="iconamoon:search-light" color="#000" width="28" height="28" />
+          <div
+            class="w-full border border-solid border-gray rounded-full p-2 pl-4 my-auto flex"
+          >
+            <icon
+              icon="iconamoon:search-light"
+              color="#000"
+              width="28"
+              height="28"
+            />
             <div class="ml-4 my-auto">Search Food, Drinks, etc</div>
           </div>
           <div class="my-auto ml-2">
             <div class="bg-light rounded-md p-1">
-              <icon icon="fluent:toggle-multiple-16-regular" color="#7ACDD6" width="28" height="28" />
+              <icon
+                icon="fluent:toggle-multiple-16-regular"
+                color="#7ACDD6"
+                width="28"
+                height="28"
+              />
             </div>
           </div>
         </div>
@@ -28,57 +47,26 @@
           <div @click="seeAll" class="text-gray">See all</div>
         </div>
         <div>
-          <div @click="router.push('/configaddfreshfood')" class="flex justify-between pb-6">
-            <div class="w-1/2 rounded-xl p-6 mr-6 border border-solid" style="background-color: #53b175">
-              <img src="../assets/img/shimla1.png" width="80" height="80" class="w-full justify-center" alt="" />
+          <div class="grid grid-cols-2 gap-6">
+            <div
+              @click="GoDetail(list.id)"
+              v-for="(list, index) in dataCategory"
+              :key="index"
+              class="rounded-xl p-6 border border-solid"
+              :style="{ backgroundColor: generateBackgroundColor(index) }"
+            >
+              <img
+                :src="list.image"
+                width="80"
+                height="80"
+                class="w-full justify-center"
+                alt=""
+              />
               <div class="text-center font-500">
-                Fresh Fruits <br />
-                and Vegetables
-              </div>
-            </div>
-            <div class="w-1/2 rounded-xl p-6 border border-solid" style="background-color: #f8a44c">
-              <img src="../assets/img/shimla2.png" width="80" height="80" class="w-full justify-center" alt="" />
-              <div class="text-center font-500">
-                Cooking Oil <br />
-                & Ghee
+                {{ list.name }}
               </div>
             </div>
           </div>
-          <div class="flex justify-between">
-            <div class="w-1/2 rounded-xl p-6 mr-6 border border-solid" style="background-color: #f7a593">
-              <img src="../assets/img/shimla3.png" width="80" height="80" class="w-full justify-center" alt="" />
-              <div class="text-center font-500">
-                Meat <br />
-                & Fish
-              </div>
-            </div>
-            <div class="w-1/2 rounded-xl p-6 border border-solid" style="background-color: #d3b0e0">
-              <img src="../assets/img/shimla4.png" width="80" height="80" class="w-full justify-center" alt="" />
-              <div class="text-center font-500">
-                Bakery <br />
-                & Snacks
-              </div>
-            </div>
-          </div>
-
-          <template v-for="(item, n) in 4" :key="n">
-            <div v-if="seeAllShow" class="flex justify-between pt-4">
-              <div class="w-1/2 rounded-xl p-6 mr-6 border border-solid" style="background-color: #f7a593">
-                <img src="../assets/img/shimla3.png" width="80" height="80" class="w-full justify-center" alt="" />
-                <div class="text-center font-500">
-                  Meat <br />
-                  & Fish
-                </div>
-              </div>
-              <div class="w-1/2 rounded-xl p-6 border border-solid" style="background-color: #d3b0e0">
-                <img src="../assets/img/shimla4.png" width="80" height="80" class="w-full justify-center" alt="" />
-                <div class="text-center font-500">
-                  Bakery <br />
-                  & Snacks
-                </div>
-              </div>
-            </div>
-          </template>
         </div>
       </div>
 
@@ -86,33 +74,33 @@
         <div class="flex justify-between pt-4 pb-4">
           <div class="font-bold">Fresh Vegan</div>
         </div>
-
-        <div v-for="(item, n) in 4" :key="n" @click="router.push('/freshfooddetail')" class="flex justify-between pb-6">
-          <div>
-            <div class="w-1/2 rounded-xl p-6 mr-6 bg-white">
-              <img src="../assets/img/meat1.png" width="80" height="80" class="w-full justify-center" alt="" />
-            </div>
-            <div>
-              <div>Kangkung</div>
-              <div class="text-gray text-sm">5 Ons, Fresh</div>
-            </div>
-            <div class="flex justify-between">
-              <div class="font-500">Rp. 7.500</div>
-              <icon icon="iconoir:add-square" color="#7ACDD6" width="28" height="28" />
-            </div>
-          </div>
-
-          <div>
-            <div class="w-1/2 rounded-xl p-6 mr-6 bg-white">
-              <img src="../assets/img/meat2.png" width="80" height="80" class="w-full justify-center" alt="" />
-            </div>
-            <div>
-              <div>Bayam Segar</div>
-              <div class="text-gray text-sm">8 Ons, Fresh</div>
-            </div>
-            <div class="flex justify-between">
-              <div class="font-500">Rp. 5.000</div>
-              <icon icon="iconoir:add-square" color="#7ACDD6" width="28" height="28" />
+        <div>
+          <div class="grid grid-cols-2 gap-6">
+            <div
+              v-for="(item, index) in dataProduct"
+              :key="index"
+              class="rounded-xl p-0 mr-6 bg-white"
+              @click="router.push('/freshfooddetail')"
+            >
+              <img
+                :src="item.image"
+                width="80"
+                height="80"
+                class="w-full justify-center"
+                alt=""
+              />
+              <div>
+                <div>{{ item.name }}</div>
+              </div>
+              <div class="flex justify-between">
+                <div class="font-500">{{ item.price }}</div>
+                <icon
+                  icon="iconoir:add-square"
+                  color="#7ACDD6"
+                  width="28"
+                  height="28"
+                />
+              </div>
             </div>
           </div>
         </div>
@@ -122,19 +110,61 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from "vue";
+import { onMounted, ref, computed } from "vue";
 import { useRouter } from "vue-router";
+import { useCategoryStore } from "../store/modules/category";
+import { useProductStore } from "../store/modules/product";
 
 const router = useRouter();
-
+const categoryStore = useCategoryStore();
+const productStore = useProductStore();
 const username = ref("");
 const seeAllShow = ref(false);
-
-const seeAll = async () => {
-  seeAllShow.value = !seeAllShow.value;
-  // let login: LoginType = { PhoneNumber: phoneNumber.value, Password: password.value };
-  // const res = await Api.login(login);
+const dataCategory = ref([]);
+const dataProduct = ref([]);
+const displayAllCategories = ref(false);
+const seeAll = () => {
+  displayAllCategories.value = !displayAllCategories.value;
 };
+const displayedCategories = computed(() => {
+  return displayAllCategories.value
+    ? dataCategory.value
+    : dataCategory.value.slice(0, 4);
+});
+
+const getListCategory = async () => {
+  try {
+    const res = await categoryStore.getAllCategory();
+    console.log(res);
+    dataCategory.value = res.data;
+  } catch (error) {
+    console.log(error);
+  } finally {
+  }
+};
+const getListProduct = async () => {
+  try {
+    const res = await categoryStore.getAllProduct();
+    dataProduct.value = res.data;
+  } catch (error) {
+    console.log(error);
+  } finally {
+  }
+};
+
+const generateBackgroundColor = (index: number) => {
+  const colors = ["#eef8f2", "#f2eef8", "#f8f2ee", "#eeeff8"];
+  return colors[index % colors.length];
+};
+
+const GoDetail = (id: number) => {
+  router.push(`/configaddfreshfood/${id}`);
+};
+
+onMounted(() => {
+  getListCategory();
+  getListProduct();
+});
 </script>
 
 <style scoped lang="scss">

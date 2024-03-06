@@ -37,7 +37,7 @@ import { useRouter } from "vue-router";
 const router = useRouter();
 
 const forgotAction = async () => {
-  router.push("/home");
+  router.push("/resetPassword");
 };
 
 const username = ref("");

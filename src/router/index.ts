@@ -72,7 +72,7 @@ const routes: RouteRecordRaw[] = [
         component: () => import("../views/FreshFoodDetail.vue"),
       },
       {
-        path: "/configaddfreshfood",
+        path: "/configaddfreshfood/:id",
         name: "ConfigAddFreshFood",
         component: () => import("../views/ConfigAddFreshFood.vue"),
       },

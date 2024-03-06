@@ -4,14 +4,23 @@
       <div class="bg-white shadow-md rounded-xl p-8">
         <div class="flex">
           <div @click="router.back()">
-            <icon icon="ion:arrow-back-circle-outline" color="#000" width="28" height="28" />
+            <icon
+              icon="ion:arrow-back-circle-outline"
+              color="#000"
+              width="28"
+              height="28"
+            />
           </div>
           <div class="w-full justify-center flex font-bold">Shopping Cart</div>
         </div>
       </div>
 
       <div class="mx-8 pt-4">
-        <div v-for="(item, n) in 4" :key="n" class="flex shadow-md p-4 rounded-md">
+        <div
+          v-for="(item, n) in 4"
+          :key="n"
+          class="flex shadow-md p-4 rounded-md"
+        >
           <div class="bg-gray rounded-lg">
             <img src="../assets/img/meat1.png" alt="" />
           </div>
@@ -23,14 +32,29 @@
             </div>
             <div class="ml-4 my-auto">
               <div>
-                <icon icon="mage:minus-square" color="#7ACDD6" width="28" height="28" />
+                <icon
+                  icon="mage:minus-square"
+                  color="#7ACDD6"
+                  width="28"
+                  height="28"
+                />
               </div>
               <div class="p-2 text-gray">2</div>
               <div>
-                <icon icon="mage:plus-square" color="#7ACDD6" width="28" height="28" />
+                <icon
+                  icon="mage:plus-square"
+                  color="#7ACDD6"
+                  width="28"
+                  height="28"
+                />
               </div>
               <div>
-                <icon icon="mage:trash" color="#7ACDD6" width="28" height="28" />
+                <icon
+                  icon="mage:trash"
+                  color="#7ACDD6"
+                  width="28"
+                  height="28"
+                />
               </div>
             </div>
           </div>
@@ -38,13 +62,19 @@
       </div>
 
       <div class="relative">
-        <div class="fixed w-full bg-white rounded-lg shadow-md" style="bottom: 0">
+        <div
+          class="fixed w-full bg-white rounded-lg shadow-md"
+          style="bottom: em"
+        >
           <div class="flex w-full justify-between p-4">
             <div class="my-auto">
               <div>Total Price</div>
               <div class="font-500">Rp. 230.000</div>
             </div>
-            <div @click="router.push('/checkout')" class="flex p-4 mr-8 rounded-2xl bg-primary w-1/2 justify-center">
+            <div
+              @click="router.push('/checkout')"
+              class="flex p-4 mr-8 rounded-2xl bg-primary w-1/2 justify-center"
+            >
               <div class="text-2xl text-white">Continue</div>
             </div>
           </div>
@@ -55,10 +85,28 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from "vue";
-import { useRouter } from "vue-router";
+import { onMounted, ref } from "vue";
+import { useRoute, useRouter } from "vue-router";
+import { useProductStore } from "../store/modules/product";
+import { useCategoryStore } from "../store/modules/category";
 
 const router = useRouter();
+const route = useRoute();
+const categoryStore = useCategoryStore();
+const detailCategory = ref([]);
+const getCategorybyId = async (id:any) => {
+  try {
+    const res = await categoryStore.getProductByCategory(id);
+    console.log(res);
+    detailCategory.value = res.data;
+  } catch (error) {
+    console.log(error);
+  } finally {
+  }
+};
+onMounted(() => {
+  getCategorybyId(route.params.id);
+});
 </script>
 
 <style scoped lang="scss">

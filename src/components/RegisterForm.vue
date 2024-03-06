@@ -6,13 +6,31 @@
     </div>
 
     <form @submit.prevent="register" class="register-form">
+      <p class="input-title">Name</p>
+      <input
+        type="text"
+        v-model="name"
+        placeholder="name"
+        class="input-field"
+      />
       <p class="input-title">Email</p>
-      <input type="text" v-model="username" placeholder="Username" class="input-field" />
+      <input
+        type="text"
+        v-model="username"
+        placeholder="Username"
+        class="input-field"
+      />
       <p class="input-title">Password</p>
-      <input type="password" v-model="password" placeholder="Password" class="input-field" />
+      <input
+        type="password"
+        v-model="password"
+        placeholder="Password"
+        class="input-field"
+      />
       <div class="term-checkbox">
         <input type="checkbox" /><label class="term-label"
-          >Agree with <a href="#" class="term-condition">Term & Condition</a></label
+          >Agree with
+          <a href="#" class="term-condition">Term & Condition</a></label
         >
       </div>
       <button type="submit" class="submit-button">Sign Up</button>
@@ -26,37 +44,55 @@
 
     <div class="sign-in-social">
       <div class="apple">
-        <img src="../assets/img/apple-logo.svg" alt="Logo Apple" class="logo-icon" />
+        <img
+          src="../assets/img/apple-logo.svg"
+          alt="Logo Apple"
+          class="logo-icon"
+        />
       </div>
       <div class="google">
-        <img src="../assets/img/google-logo.svg" alt="Logo Apple" class="logo-icon" />
+        <img
+          src="../assets/img/google-logo.svg"
+          alt="Logo Apple"
+          class="logo-icon"
+        />
       </div>
       <div class="facebook">
-        <img src="../assets/img/facebook-logo.svg" alt="Logo Apple" class="logo-icon" />
+        <img
+          src="../assets/img/facebook-logo.svg"
+          alt="Logo Apple"
+          class="logo-icon"
+        />
       </div>
     </div>
 
-    <p class="sign-up-title">Already Have an account? <a href="#" class="sign-up">Sign In</a></p>
+    <p class="sign-up-title">
+      Already Have an account? <a href="#" class="sign-up">Sign In</a>
+    </p>
   </div>
 </template>
 
 <script setup lang="ts">
 import { ref } from "vue";
 import { useRouter } from "vue-router";
+import { useAuthStore } from "../store/modules/auth";
 
 const router = useRouter();
-
+const authStore = useAuthStore();
 const username = ref("");
 const password = ref("");
-
+const name = ref("")
 const register = async () => {
-  router.push("/home");
-
-  console.log("Username:", username.value);
-  console.log("Password:", password.value);
-
-  // let login: LoginType = { PhoneNumber: phoneNumber.value, Password: password.value };
-  // const res = await Api.login(login);
+  const payload = {
+    email: username.value,
+    password: password.value,
+    name:name.value
+  };
+  try {
+    const response = await authStore.register(payload);
+    console.log(response);
+    router.push(`/`);
+  } catch (error) {}
 };
 </script>
 

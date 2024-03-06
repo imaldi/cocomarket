@@ -7,9 +7,19 @@
 
     <form @submit.prevent="login" class="login-form">
       <p class="input-title">Email</p>
-      <input type="text" v-model="username" placeholder="Username" class="input-field" />
+      <input
+        type="text"
+        v-model="username"
+        placeholder="Username"
+        class="input-field"
+      />
       <p class="input-title">Password</p>
-      <input type="password" v-model="password" placeholder="Password" class="input-field" />
+      <input
+        type="password"
+        v-model="password"
+        placeholder="Password"
+        class="input-field"
+      />
       <a href="#/forgotpassword" class="forgot-password">Forgot Password?</a>
       <button type="submit" class="submit-button">Sign In</button>
     </form>
@@ -22,37 +32,54 @@
 
     <div class="sign-in-social">
       <div class="apple">
-        <img src="../assets/img/apple-logo.svg" alt="Logo Apple" class="logo-icon" />
+        <img
+          src="../assets/img/apple-logo.svg"
+          alt="Logo Apple"
+          class="logo-icon"
+        />
       </div>
       <div class="google">
-        <img src="../assets/img/google-logo.svg" alt="Logo Apple" class="logo-icon" />
+        <img
+          src="../assets/img/google-logo.svg"
+          alt="Logo Apple"
+          class="logo-icon"
+        />
       </div>
       <div class="facebook">
-        <img src="../assets/img/facebook-logo.svg" alt="Logo Apple" class="logo-icon" />
+        <img
+          src="../assets/img/facebook-logo.svg"
+          alt="Logo Apple"
+          class="logo-icon"
+        />
       </div>
     </div>
 
-    <p class="sign-up-title">Don't Have an account? <a href="#/register" class="sign-up">Sign Up</a></p>
+    <p class="sign-up-title">
+      Don't Have an account? <a href="#/register" class="sign-up">Sign Up</a>
+    </p>
   </div>
 </template>
 
 <script setup lang="ts">
 import { ref } from "vue";
 import { useRouter } from "vue-router";
-
+import { useAuthStore } from "../store/modules/auth";
 const router = useRouter();
-
+const authStore = useAuthStore();
 const username = ref("");
 const password = ref("");
 
 const login = async () => {
-  router.push("/home");
-
-  console.log("Username:", username.value);
-  console.log("Password:", password.value);
-
-  // let login: LoginType = { PhoneNumber: phoneNumber.value, Password: password.value };
-  // const res = await Api.login(login);
+  const payload = {
+    email: username.value,
+    password: password.value,
+  };
+  try {
+    const response = await authStore.login(payload);
+    localStorage.setItem("token", response.access_token);
+    console.log(response);
+    router.push(`/home`);
+  } catch (error) {}
 };
 </script>
 
