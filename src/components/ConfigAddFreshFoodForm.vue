@@ -15,46 +15,48 @@
         </div>
       </div>
 
-      <div class="mx-8 pt-4">
-        <div
-          v-for="(item, n) in 4"
-          :key="n"
-          class="flex shadow-md p-4 rounded-md"
-        >
-          <div class="bg-gray rounded-lg">
-            <img src="../assets/img/meat1.png" alt="" />
-          </div>
-          <div class="flex justify-between w-full">
-            <div class="ml-4 my-auto">
-              <div class="font-500">Kangkung</div>
-              <div>5 Ons, Fresh</div>
-              <div class="font-bold">Rp. 15.000</div>
+      <div class="mx-8 pt-4 h-screen overflow-y">
+        <div class="scrollable-content">
+          <div
+            v-for="(item, index) in detailCategory"
+            :key="index"
+            class="flex shadow-md p-4 rounded-md"
+          >
+            <div class="bg-gray rounded-lg">
+              <img src="../assets/img/meat1.png" alt="" />
             </div>
-            <div class="ml-4 my-auto">
-              <div>
-                <icon
-                  icon="mage:minus-square"
-                  color="#7ACDD6"
-                  width="28"
-                  height="28"
-                />
+            <div class="flex justify-between w-full">
+              <div class="ml-4 my-auto">
+                <div class="font-500">{{ item.name }}</div>
+                <div>Stock : {{ item.total_stock }}</div>
+                <div class="font-bold">Rp. {{ item.price }}</div>
               </div>
-              <div class="p-2 text-gray">2</div>
-              <div>
-                <icon
-                  icon="mage:plus-square"
-                  color="#7ACDD6"
-                  width="28"
-                  height="28"
-                />
-              </div>
-              <div>
-                <icon
-                  icon="mage:trash"
-                  color="#7ACDD6"
-                  width="28"
-                  height="28"
-                />
+              <div class="ml-4 my-auto">
+                <div @click="decreaseQuantity(index)">
+                  <icon
+                    icon="mage:minus-square"
+                    color="#7ACDD6"
+                    width="28"
+                    height="28"
+                  />
+                </div>
+                <div class="p-2 text-gray">{{ quantity[index] }}</div>
+                <div @click="increaseQuantity(index)">
+                  <icon
+                    icon="mage:plus-square"
+                    color="#7ACDD6"
+                    width="28"
+                    height="28"
+                  />
+                </div>
+                <div @click="removeItem(index)">
+                  <icon
+                    icon="mage:trash"
+                    color="#7ACDD6"
+                    width="28"
+                    height="28"
+                  />
+                </div>
               </div>
             </div>
           </div>
@@ -64,12 +66,12 @@
       <div class="relative">
         <div
           class="fixed w-full bg-white rounded-lg shadow-md"
-          style="bottom: em"
+          style="bottom: 4em"
         >
           <div class="flex w-full justify-between p-4">
             <div class="my-auto">
               <div>Total Price</div>
-              <div class="font-500">Rp. 230.000</div>
+              <div class="font-500">Rp. {{ calculateTotalPrice() }}</div>
             </div>
             <div
               @click="router.push('/checkout')"
@@ -87,25 +89,65 @@
 <script setup lang="ts">
 import { onMounted, ref } from "vue";
 import { useRoute, useRouter } from "vue-router";
-import { useProductStore } from "../store/modules/product";
 import { useCategoryStore } from "../store/modules/category";
+import { useCartStore } from "../store/modules/cart";
 
 const router = useRouter();
 const route = useRoute();
 const categoryStore = useCategoryStore();
+const cartStore = useCartStore();
+const listCart = ref([]);
 const detailCategory = ref([]);
-const getCategorybyId = async (id:any) => {
+const quantity = ref("");
+
+const calculateTotalPrice = () => {
+  let total = 0;
+
+  detailCategory.value.forEach((item, index) => {
+    total += item.price * quantity.value[index];
+  });
+
+  return total;
+};
+
+const getCategorybyId = async (id: any) => {
   try {
     const res = await categoryStore.getProductByCategory(id);
     console.log(res);
+    quantity.value = new Array(res.data.length).fill(1);
     detailCategory.value = res.data;
   } catch (error) {
     console.log(error);
-  } finally {
   }
 };
+
+const getCartDetails = async (id: any) => {
+  try {
+    const res = await cartStore.getCartDetail(id);
+    console.log(res);
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+const increaseQuantity = (index: number) => {
+  quantity.value[index] += 1;
+};
+
+const decreaseQuantity = (index: number) => {
+  if (quantity.value[index] > 0) {
+    quantity.value[index] -= 1;
+  }
+};
+
+const removeItem = (index: number) => {
+  detailCategory.value.splice(index, 1);
+  quantity.value.splice(index, 1);
+};
+
 onMounted(() => {
   getCategorybyId(route.params.id);
+  getCartDetails(route.params.id);
 });
 </script>
 
@@ -117,5 +159,10 @@ onMounted(() => {
   width: 100%;
   height: 100vh;
   color: #000000;
+}
+
+.scrollable-content {
+  max-height: calc(72vh - 2rem); /* 2rem is the padding top (pt-4) */
+  overflow-y: auto;
 }
 </style>

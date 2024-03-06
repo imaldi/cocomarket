@@ -80,7 +80,7 @@
               v-for="(item, index) in dataProduct"
               :key="index"
               class="rounded-xl p-0 mr-6 bg-white"
-              @click="router.push('/freshfooddetail')"
+              @click="addCart(item.id)"
             >
               <img
                 :src="item.image"
@@ -105,6 +105,44 @@
           </div>
         </div>
       </div>
+
+      <div
+        v-if="totalItem"
+        @click="router.push('/configaddfreshfood')"
+        class="relative"
+      >
+        <div
+          class="fixed w-full bg-white rounded-lg shadow-md"
+          style="bottom: 0.5em"
+        >
+          <div class="flex w-full justify-between p-4">
+            <div
+              class="flex p-4 mr-8 rounded-2xl bg-primary w-full justify-center text-white"
+            >
+              <div class="flex justify-between w-full">
+                <div class="my-auto">
+                  <div class="font-bold text-xl">
+                    {{ totalItem.total }} Item
+                  </div>
+                  <div class="text-xs">{{ names.value }}</div>
+                </div>
+                <div class="flex my-auto">
+                  <div class="text-2xl font-bold mr-2">
+                    Rp.{{ totalItem.amount }}
+                  </div>
+                  <icon
+                    icon="tabler:shopping-bag-plus"
+                    class="mr-4"
+                    color="#fff"
+                    width="28"
+                    height="28"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </template>
@@ -113,13 +151,10 @@
 import { onMounted, ref, computed } from "vue";
 import { useRouter } from "vue-router";
 import { useCategoryStore } from "../store/modules/category";
-import { useProductStore } from "../store/modules/product";
-
+import { useCartStore } from "../store/modules/cart";
 const router = useRouter();
 const categoryStore = useCategoryStore();
-const productStore = useProductStore();
-const username = ref("");
-const seeAllShow = ref(false);
+const cartStore = useCartStore();
 const dataCategory = ref([]);
 const dataProduct = ref([]);
 const displayAllCategories = ref(false);
@@ -135,8 +170,28 @@ const displayedCategories = computed(() => {
 const getListCategory = async () => {
   try {
     const res = await categoryStore.getAllCategory();
-    console.log(res);
     dataCategory.value = res.data;
+  } catch (error) {
+    console.log(error);
+  } finally {
+  }
+};
+
+const totalItem = ref([]);
+const names = ref("");
+const getListCart = async () => {
+  try {
+    const res = await cartStore.getCartTotal();
+    totalItem.value = res.data;
+    const products = res.data.products;
+    const namesWithoutNumbers = totalItem.value.products.map(
+      (item) => item.name
+    );
+
+    const namesWithoutNumbersCleaned = namesWithoutNumbers.map((name) =>
+      name.replace(/\d+/g, "")
+    );
+    console.log(namesWithoutNumbersCleaned);
   } catch (error) {
     console.log(error);
   } finally {
@@ -160,10 +215,14 @@ const generateBackgroundColor = (index: number) => {
 const GoDetail = (id: number) => {
   router.push(`/configaddfreshfood/${id}`);
 };
+const addCart = (id: number) => {
+  router.push(`/freshfooddetail/${id}`);
+};
 
 onMounted(() => {
   getListCategory();
   getListProduct();
+  getListCart();
 });
 </script>
 

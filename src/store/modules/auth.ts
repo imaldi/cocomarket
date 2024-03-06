@@ -12,7 +12,7 @@ export const useAuthStore = defineStore("auth", () => {
   };
   const register: AuthStore["login"] = async (payload) => {
     return axiosClient.post("/api/auth/register", payload);
-  };
+  }; 
   return {
     login,
     register

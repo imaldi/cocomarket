@@ -67,7 +67,7 @@ const routes: RouteRecordRaw[] = [
         component: () => import("../views/AddFreshFood.vue"),
       },
       {
-        path: "/freshfooddetail",
+        path: "/freshfooddetail/:id",
         name: "FreshFoodDetail",
         component: () => import("../views/FreshFoodDetail.vue"),
       },
