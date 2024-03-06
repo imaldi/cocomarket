@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <div class="mx-8">
-      <div>
+      <div @click="router.push('/verifycode')">
         <icon icon="ion:arrow-back-outline" color="#7ACDD6" width="38" height="38" />
       </div>
       <div class="mt-4 text-center">
@@ -22,14 +22,17 @@
         <!-- <p>Gender</p>
         <input type="number" v-model="gender" placeholder="Select" class="input-field" /> -->
 
-        <button type="submit" class="submit-button">Complete Profile</button>
+        <button @click="router.push('/home')" type="submit" class="submit-button">Complete Profile</button>
       </form>
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
+import { useRouter } from "vue-router";
 import { ref } from "vue";
+const router = useRouter();
+
 const username = ref("");
 const phoneNumber = ref("");
 </script>

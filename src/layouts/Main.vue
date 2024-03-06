@@ -48,9 +48,9 @@
         $route.path !== '/choosecdistrict' &&
         $route.path !== '/chooseczipcode' &&
         $route.path !== '/storling' &&
-        $route.path !== '/revieworder2' 
-
-        "
+        $route.path !== '/revieworder2' &&
+        $route.path !== '/ordersuccess'
+      "
       class="bottom-navigation z-2"
     >
       <router-link to="/home" class="nav-item">

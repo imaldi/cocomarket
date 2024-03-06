@@ -78,7 +78,8 @@ const login = async () => {
     const response = await authStore.login(payload);
     localStorage.setItem("token", response.access_token);
     console.log(response);
-    router.push(`/home`);
+    router.push(`verifycode`)
+    // router.push(`/home`);
   } catch (error) {}
 };
 </script>

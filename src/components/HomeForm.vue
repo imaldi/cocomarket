@@ -3,6 +3,20 @@
     <div class="container">
       <div class="bg-white shadow-md rounded-xl p-8">
         <div class="flex">
+          <!-- <input
+            class="w-full border border-solid border-gray rounded-full p-2 pl-4 my-auto flex"
+            type="text"
+            placeholder="Search Food, Drinks, etc"
+            v-model="inputValue"
+            @input="handleInput"
+            @focus="showAutocomplete"
+            @blur="hideAutocomplete"
+          />
+          <div class="autocomplete-items">
+            <div class="autocomplete-item" v-for="(item, index) in dataSearch" :key="index">
+              {{ item.name }}
+            </div>
+          </div> -->
           <div class="w-full border border-solid border-gray rounded-full p-2 pl-4 my-auto flex">
             <icon icon="iconamoon:search-light" color="#000" width="28" height="28" />
             <div class="ml-4 my-auto">Search Food, Drinks, etc</div>
@@ -84,10 +98,45 @@
 </template>
 
 <script setup lang="ts">
+import { onMounted, ref } from "vue";
 import { useRouter } from "vue-router";
+import { useHomeStore } from "../store/modules/home";
 
 const router = useRouter();
+const homeStore = useHomeStore();
 
+const inputValue = ref("");
+const showSuggestions = ref(false);
+const dataSearch = ref([]);
+const dataAmountWallet = ref([]);
+
+const getAmountWallet = async () => {
+  const res = await homeStore.getAmountWallet();
+  dataAmountWallet.value = res.data;
+};
+
+const handleInput = async (e: any) => {
+  const res = await homeStore.getAllSearch(e.target.value);
+  dataSearch.value = res.data;
+  try {
+  } catch (error) {
+    console.log(error);
+  } finally {
+  }
+};
+const showAutocomplete = () => {
+  if (inputValue.value.length > 0) {
+    showSuggestions.value = true;
+  }
+};
+
+const hideAutocomplete = () => {
+  showSuggestions.value = false;
+};
+
+onMounted(() => {
+  getAmountWallet();
+});
 </script>
 
 <style scoped lang="scss">
@@ -96,7 +145,25 @@ const router = useRouter();
   display: flex;
   flex-direction: column;
   width: 100%;
-  // height: 100vh;
   color: #000000;
+}
+
+.autocomplete-items {
+  position: absolute;
+  background-color: #f1f1f1;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  max-height: 200px;
+  overflow-y: auto;
+  z-index: 99;
+}
+
+.autocomplete-item {
+  padding: 10px;
+  cursor: pointer;
+}
+
+.autocomplete-item:hover {
+  background-color: #e9e9e9;
 }
 </style>
