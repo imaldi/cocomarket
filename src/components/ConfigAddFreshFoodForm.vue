@@ -96,14 +96,18 @@ const router = useRouter();
 const route = useRoute();
 const categoryStore = useCategoryStore();
 const cartStore = useCartStore();
-const detailCategory = ref<string[]>([]);
+const detailCategory = ref<Item[]>([]);
 const quantity = ref<number[]>([]);
-
-
+interface Item {
+  id: string;
+  name: string;
+  subtitle: string;
+  price: number;
+  total_stock:string;
+}
 
 const calculateTotalPrice = () => {
   let total = 0;
-
   detailCategory.value.forEach((item, index) => {
     total += item.price * quantity.value[index];
   });
@@ -115,7 +119,7 @@ const getCategorybyId = async (id: any) => {
   try {
     const res = await categoryStore.getProductByCategory(id);
     quantity.value = new Array(res.data.length).fill(1);
-    detailCategory.value = res.data;
+    detailCategory.value = res.data as Item[];
   } catch (error) {
     console.log(error);
   }
@@ -162,7 +166,7 @@ onMounted(() => {
 }
 
 .scrollable-content {
-  max-height: calc(72vh - 2rem); /* 2rem is the padding top (pt-4) */
+  max-height: calc(72vh - 2rem); 
   overflow-y: auto;
 }
 </style>

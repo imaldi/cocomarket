@@ -31,7 +31,7 @@
       <div class="mx-8">
         <div>
           <div class="text-gray">Today</div>
-          <div v-for="(item, n) in 4" :key="n" class="flex pt-4">
+          <div v-for="(n) in 4" :key="n" class="flex pt-4">
             <div class="flex pt-4">
               <div class="circle-bg">
                 <img src="../assets/img/notif1.png" class="" width="28" height="28" alt="notif" />
@@ -49,7 +49,7 @@
 
         <div class="pt-4">
           <div class="text-gray">Yesterday</div>
-          <div v-for="(item, n) in 4" :key="n" class="flex pt-4">
+          <div v-for="( n) in 4" :key="n" class="flex pt-4">
             <div class="flex pt-4">
               <div class="circle-bg">
                 <img src="../assets/img/notif1.png" class="" width="28" height="28" alt="notif" />

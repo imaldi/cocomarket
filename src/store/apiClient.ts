@@ -1,5 +1,6 @@
 import axios, { AxiosInstance, AxiosResponse } from 'axios';
-
+import { useRouter } from 'vue-router';
+const router = useRouter();
 const BASE_URL: string | undefined = import.meta.env.VITE_BASE_URL;
 const token: string | null = localStorage.getItem('token');
 

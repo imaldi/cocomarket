@@ -84,20 +84,10 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from "vue";
 import { useRouter } from "vue-router";
 
 const router = useRouter();
 
-const username = ref("");
-const password = ref("");
-
-const freshFoodAction = async () => {
-  router.push("/addfreshfood");
-
-  // let login: LoginType = { PhoneNumber: phoneNumber.value, Password: password.value };
-  // const res = await Api.login(login);
-};
 </script>
 
 <style scoped lang="scss">

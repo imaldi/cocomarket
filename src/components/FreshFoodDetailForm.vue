@@ -92,7 +92,7 @@
           <div class="flex w-full justify-between p-4">
             <div class="my-auto">
               <div>Total Price</div>
-              <div class="font-bold">Rp. {{totalPrice}}</div>
+              <div class="font-bold">Rp. {{ totalPrice }}</div>
             </div>
             <div
               @click="goToCart(detailProduct.id)"
@@ -105,7 +105,9 @@
                 width="28"
                 height="28"
               />
-              <div type="button" class="text-lg font-500 text-white">Add to Cart</div>
+              <div type="button" class="text-lg font-500 text-white">
+                Add to Cart
+              </div>
             </div>
           </div>
         </div>
@@ -122,7 +124,7 @@ import { useCartStore } from "../store/modules/cart";
 const route = useRoute();
 const produkStore = useProdukStore();
 const cartStore = useCartStore();
-const detailProduct = ref("");
+const detailProduct = ref<Item | null>(null);
 
 const quantity = ref(1);
 
@@ -136,25 +138,40 @@ const decreaseQuantity = () => {
   }
 };
 
+interface Item {
+  id: string;
+  name: string;
+  image: string;
+  price: number;
+  description: string;
+}
+
 const goToCart = (id:any) => {
-  const payload = {
-    products_id: detailProduct.value.id,
-  };
-  try {
-    const response =  cartStore.addToCart(payload);
-    console.log(response);
-    router.push(`/addfreshfood`);
-  } catch (error) {}
+  if (detailProduct.value) {
+    const payload = {
+      products_id: id,
+    };
+
+    try {
+      const response = cartStore.addToCart(payload);
+      console.log(response);
+      router.push(`/addfreshfood`);
+    } catch (error) {}
+  }
 };
+
 const totalPrice = computed(() => {
-  return detailProduct.value.price * quantity.value;
+  if (detailProduct.value) {
+    return detailProduct.value.price * quantity.value;
+  }
+  return 0;
 });
 
 const getDetail = async (id: any) => {
   try {
     const res = await produkStore.getProductById(id);
     console.log(res);
-    detailProduct.value = res.data.product;
+    detailProduct.value = res.data.product as Item;
   } catch (error) {
     console.log(error);
   } finally {

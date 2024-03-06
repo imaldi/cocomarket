@@ -31,7 +31,6 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from "vue";
 import { useRouter } from "vue-router";
 
 const router = useRouter();
@@ -40,9 +39,6 @@ const forgotAction = async () => {
   router.push("/resetPassword");
 };
 
-const username = ref("");
-const phoneNumber = ref("");
-const gender = ref("");
 </script>
 
 <style scoped lang="scss">

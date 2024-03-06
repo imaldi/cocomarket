@@ -124,7 +124,9 @@
                   <div class="font-bold text-xl">
                     {{ totalItem.total }} Item
                   </div>
-                  <div class="text-xs">{{ names.value }}</div>
+                  <div class="text-xs">
+                    {{ namesWithoutNumbers.join(", ") }}
+                  </div>
                 </div>
                 <div class="flex my-auto">
                   <div class="text-2xl font-bold mr-2">
@@ -148,47 +150,61 @@
 </template>
 
 <script setup lang="ts">
-import { onMounted, ref, computed } from "vue";
+import { onMounted, ref } from "vue";
 import { useRouter } from "vue-router";
 import { useCategoryStore } from "../store/modules/category";
 import { useCartStore } from "../store/modules/cart";
 const router = useRouter();
 const categoryStore = useCategoryStore();
 const cartStore = useCartStore();
-const dataCategory = ref([]);
-const dataProduct = ref([]);
+const dataCategory = ref<Item[]>([]);
+const dataProduct = ref<Items[]>([]);
 const displayAllCategories = ref(false);
 const seeAll = () => {
   displayAllCategories.value = !displayAllCategories.value;
 };
-const displayedCategories = computed(() => {
-  return displayAllCategories.value
-    ? dataCategory.value
-    : dataCategory.value.slice(0, 4);
-});
+interface Item {
+  id: number;
+  image: string;
+  name: string;
+  subtitle: string;
+  price: number;
+  total_stock: string;
+}
+interface Items {
+  id: number;
+  image: string;
+  name: string;
+  subtitle: string;
+  price: number;
+}
+interface ItemsTotal {
+  price: string;
+  total: string;
+  amount: number;
+  products: { name: string }[];
+}
 
 const getListCategory = async () => {
   try {
     const res = await categoryStore.getAllCategory();
-    dataCategory.value = res.data;
+    dataCategory.value = res.data as Item[];
   } catch (error) {
     console.log(error);
   } finally {
   }
 };
 
-const totalItem = ref([]);
-const names = ref("");
+const namesWithoutNumbers = ref<string[]>([]);
+const totalItem = ref<ItemsTotal | null>(null);
 const getListCart = async () => {
   try {
     const res = await cartStore.getCartTotal();
-    totalItem.value = res.data;
-    const products = res.data.products;
-    const namesWithoutNumbers = totalItem.value.products.map(
-      (item) => item.name
+    totalItem.value = res.data as ItemsTotal;
+    namesWithoutNumbers.value = totalItem.value.products.map((item) =>
+      item.name.replace(/\d+/g, "")
     );
-
-    const namesWithoutNumbersCleaned = namesWithoutNumbers.map((name) =>
+    const namesWithoutNumbersCleaned = namesWithoutNumbers.value.map((name: string) =>
       name.replace(/\d+/g, "")
     );
     console.log(namesWithoutNumbersCleaned);
@@ -197,10 +213,11 @@ const getListCart = async () => {
   } finally {
   }
 };
+
 const getListProduct = async () => {
   try {
     const res = await categoryStore.getAllProduct();
-    dataProduct.value = res.data;
+    dataProduct.value = res.data as Items[];
   } catch (error) {
     console.log(error);
   } finally {

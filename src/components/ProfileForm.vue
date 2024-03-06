@@ -51,12 +51,16 @@ import { useProfileStore } from "../store/modules/profile";
 import { onMounted, ref } from "vue";
 
 const profileStore = useProfileStore();
-const dataProfile = ref(null);
+const dataProfile = ref<Item | null>(null);
+interface Item {
+  profile_picture: string;
+  name: string;
+}
 const getProfiles = async () => {
   try {
     const res = await profileStore.getProfile();
     console.log(res);
-    dataProfile.value = res.data;
+    dataProfile.value = res.data as Item;
   } catch (error) {
     console.log(error);
   } finally {
