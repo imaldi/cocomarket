@@ -12,7 +12,7 @@
         <icon class="circle-icon" icon="basil:user-outline" color="#000" width="38" height="38" />
       </div>
 
-      <form @submit.prevent="login" class="login-form">
+      <form class="login-form">
         <div class="mb-2 font-500">Name</div>
         <input type="text" v-model="username" placeholder="Username" class="input-field" />
 
@@ -32,7 +32,6 @@
 import { ref } from "vue";
 const username = ref("");
 const phoneNumber = ref("");
-const gender = ref("");
 </script>
 
 <style scoped lang="scss">

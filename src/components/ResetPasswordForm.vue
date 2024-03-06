@@ -47,9 +47,6 @@
 <script setup lang="ts">
 import { ref } from "vue";
 import { useRouter } from "vue-router";
-const username = ref("");
-const phoneNumber = ref("");
-const gender = ref("");
 const emailConfirm = ref("")
 const router = useRouter()
 </script>

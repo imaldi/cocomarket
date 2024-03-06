@@ -1,5 +1,4 @@
 import axios, { AxiosInstance, AxiosResponse } from 'axios';
-import router from '../../src/router/index';
 
 const BASE_URL: string | undefined = import.meta.env.VITE_BASE_URL;
 const token: string | null = localStorage.getItem('token');
@@ -18,10 +17,10 @@ axiosClient.interceptors.response.use(
   },
   (error) => {
     console.log(error);
-    // if (error.response && error.response.status === 401) {
-    //   localStorage.removeItem('auth_token');
-    //   router.push('/');
-    // }
+    if (error.response && error.response.status === 401) {
+      localStorage.removeItem('auth_token');
+      router.push('/');
+    }
     return Promise.reject(error);
   }
 );

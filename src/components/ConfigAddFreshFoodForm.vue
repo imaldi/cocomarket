@@ -96,9 +96,10 @@ const router = useRouter();
 const route = useRoute();
 const categoryStore = useCategoryStore();
 const cartStore = useCartStore();
-const listCart = ref([]);
-const detailCategory = ref([]);
-const quantity = ref("");
+const detailCategory = ref<string[]>([]);
+const quantity = ref<number[]>([]);
+
+
 
 const calculateTotalPrice = () => {
   let total = 0;
@@ -113,7 +114,6 @@ const calculateTotalPrice = () => {
 const getCategorybyId = async (id: any) => {
   try {
     const res = await categoryStore.getProductByCategory(id);
-    console.log(res);
     quantity.value = new Array(res.data.length).fill(1);
     detailCategory.value = res.data;
   } catch (error) {
