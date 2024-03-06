@@ -1,0 +1,1 @@
+import{k as e}from"./index-DHLn-rP9.js";import{a as t}from"./apiClient-DuBlyIv1.js";const u=e("auth",()=>({getAllProduct:async()=>t.get("/api/product"),getProductByCategory:async r=>t.get(`/api/category/${r}/product`),getAllCategory:async()=>t.get("/api/category")}));export{u};
