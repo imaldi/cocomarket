@@ -41,7 +41,7 @@
       </div>
     </div>
     <div class="flex py-4 mx-8 border border-dotted border-x-0 border-t-0 border-gray">
-      <div class="w-full my-auto flex">
+      <div  @click="router.push('changepassword')" class="w-full my-auto flex">
         <img src="../assets/img/change-password.svg" class="justify-center" alt="" />
         <div class="ml-4 my-auto text-dark fw-bold">Change Password</div>
       </div>
@@ -52,7 +52,7 @@
       </div>
     </div>
     <div class="flex py-4 mx-8 border border-dotted border-x-0 border-t-0 border-gray">
-      <div class="w-full my-auto flex">
+      <div @click="router.push('myaddress')" class="w-full my-auto flex">
         <img src="../assets/img/my-address.svg" class="justify-center" alt="" />
         <div class="ml-4 my-auto text-dark fw-bold">My Address</div>
       </div>

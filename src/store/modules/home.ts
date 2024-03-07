@@ -6,7 +6,7 @@ interface CategoryStore {
   getAmountWallet(): Promise<any>;
 }
 
-export const useHomeStore = defineStore("auth", () => {
+export const useHomeStore = defineStore("homeStore", () => {
   const getAllSearch: CategoryStore["getAllSearch"] = async (e: any) => {
     return axiosClient.get(`/api/product?search=${e}`);
   };

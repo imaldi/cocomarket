@@ -2,7 +2,7 @@
     <div>
       <div class="container">
         <div class="bg-white shadow-md rounded-xl p-8">
-          <div class="flex">
+          <div class="flex" @click="router.push('profile')" >
             <div>
               <icon icon="ion:arrow-back-circle-outline" color="#000" width="28" height="28" />
             </div>
@@ -57,7 +57,10 @@
       </div>
     </div>
   </template>
-  
+  <script setup lang="ts">
+  import { useRouter } from "vue-router"
+  const router = useRouter()
+  </script>
   <style scoped lang="scss">
   .container {
     background-color: white;

@@ -7,7 +7,7 @@ interface CategoryStore {
   getProductByCategory(id: any): Promise<any>;
 }
 
-export const useCategoryStore = defineStore("auth", () => {
+export const useCategoryStore = defineStore("category", () => {
   const getAllCategory: CategoryStore["getAllCategory"] = async () => {
     return axiosClient.get("/api/category");
   };

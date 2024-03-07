@@ -3,7 +3,7 @@
     <div class="container">
       <div class="bg-white shadow-md rounded-xl p-8">
         <div class="flex">
-          <!-- <input
+          <input
             class="w-full border border-solid border-gray rounded-full p-2 pl-4 my-auto flex"
             type="text"
             placeholder="Search Food, Drinks, etc"
@@ -12,15 +12,15 @@
             @focus="showAutocomplete"
             @blur="hideAutocomplete"
           />
-          <div class="autocomplete-items">
+          <!-- <div class="autocomplete-items">
             <div class="autocomplete-item" v-for="(item, index) in dataSearch" :key="index">
               {{ item.name }}
             </div>
-          </div> -->
+          </div>
           <div class="w-full border border-solid border-gray rounded-full p-2 pl-4 my-auto flex">
             <icon icon="iconamoon:search-light" color="#000" width="28" height="28" />
             <div class="ml-4 my-auto">Search Food, Drinks, etc</div>
-          </div>
+          </div> -->
           <div class="my-auto ml-2">
             <div class="bg-light rounded-md p-1">
               <icon icon="clarity:bell-solid-badged" color="#000" width="28" height="28" />
