@@ -68,13 +68,13 @@
           class="fixed w-full bg-white rounded-lg shadow-md"
           style="bottom: 4em"
         >
-          <div class="flex w-full justify-between p-4">
+          <div v-if="detailCategory" class="flex w-full justify-between p-4">
             <div class="my-auto">
               <div>Total Price</div>
               <div class="font-500">Rp. {{ calculateTotalPrice() }}</div>
             </div>
             <div
-              @click="router.push('/checkout')"
+              @click="router.push(`/checkout`)"
               class="flex p-4 mr-8 rounded-2xl bg-primary w-1/2 justify-center"
             >
               <div class="text-2xl text-white">Continue</div>
@@ -103,8 +103,19 @@ interface Item {
   name: string;
   subtitle: string;
   price: number;
-  total_stock:string;
+  total_stock: string;
 }
+// const goToCart = (id: any) => {
+//   const payload = {
+//     products_id: id,
+//   };
+
+//   try {
+//     const response = cartStore.addToCart(payload);
+//     console.log(response);
+//     // router.push(`/checkout`);
+//   } catch (error) {}
+// };
 
 const calculateTotalPrice = () => {
   let total = 0;
@@ -166,7 +177,7 @@ onMounted(() => {
 }
 
 .scrollable-content {
-  max-height: calc(72vh - 2rem); 
+  max-height: calc(72vh - 2rem);
   overflow-y: auto;
 }
 </style>

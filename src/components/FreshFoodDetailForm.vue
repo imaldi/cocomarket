@@ -155,7 +155,7 @@ const goToCart = (id:any) => {
     try {
       const response = cartStore.addToCart(payload);
       console.log(response);
-      router.push(`/addfreshfood`);
+      router.push(`/findfreshfood`);
     } catch (error) {}
   }
 };

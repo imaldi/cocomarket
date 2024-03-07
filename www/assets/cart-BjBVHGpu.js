@@ -1,0 +1,1 @@
+import{m as a}from"./index-C3_Lqle8.js";import{a as t}from"./apiClient-D15GJ5Te.js";const d=a("cart",()=>({confirmOrders:async()=>t.post("/api/orders"),getCartTotal:async()=>t.get("/api/cart/total"),getCartDetail:async r=>t.get(`/api/cart/${r}/show-details`),addToCart:async r=>t.post("/api/cart",r)}));export{d as u};
