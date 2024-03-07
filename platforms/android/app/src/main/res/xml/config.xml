@@ -1,5 +1,8 @@
 <?xml version='1.0' encoding='utf-8'?>
 <widget id="io.cordova.hellocordova" version="1.0.0" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+    <feature name="OneSignalPush">
+        <param name="android-package" value="com.onesignal.cordova.OneSignalPush" />
+    </feature>
     <name>Cocomarket</name>
     <description>
         A sample Apache Cordova application that responds to the deviceready event.
@@ -16,5 +19,15 @@
     <allow-intent href="mailto:*" />
     <allow-intent href="geo:*" />
     <allow-intent href="market:*" />
+    <icon density="mdpi" src="src/assets/img/resources/android/icon/mdpi-logo.png" />
+    <icon density="hdpi" src="src/assets/img/resources/android/icon/hdpi-logo.png" />
+    <icon density="xhdpi" src="src/assets/img/resources/android/icon/xhdpi-logo.png" />
+    <icon density="xxhdpi" src="src/assets/img/resources/android/icon/xxhdpi-logo.png" />
+    <icon density="xxxhdpi" src="src/assets/img/resources/android/icon/xxxhdpi-logo.png" />
     <preference name="loglevel" value="DEBUG" />
+    <preference name="orientation" value="portrait" />
+    <preference name="SplashScreenDelay" value="2000" />
+    <preference name="SplashMaintainAspectRatio" value="true" />
+    <preference name="AutoHideSplashScreen" value="true" />
+    <preference name="AndroidWindowSplashScreenAnimatedIcon" value="src/assets/img/resources/android/splash-screen/drawable-xxxhdpi.png" />
 </widget>

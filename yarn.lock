@@ -1174,6 +1174,11 @@ cordova-common@^5.0.0:
     read-chunk "^3.2.0"
     strip-bom "^4.0.0"
 
+cordova-plugin-splashscreen@^6.0.2:
+  version "6.0.2"
+  resolved "https://registry.yarnpkg.com/cordova-plugin-splashscreen/-/cordova-plugin-splashscreen-6.0.2.tgz#2151ee7256fbd64f07a84951854687855c56856f"
+  integrity sha512-7JiUfnInir+SCOEgTJ+5/cHF3UFl69jp6cAQfHtJaaQt9Pli8D8yTJjU0HGlJCvryvsVs4Xlc7/sEJM7vLJgvg==
+
 cross-spawn@^7.0.3:
   version "7.0.3"
   resolved "https://registry.npmjs.org/cross-spawn/-/cross-spawn-7.0.3.tgz"
@@ -1755,6 +1760,11 @@ once@^1.3.0:
   integrity sha512-lNaJgI+2Q5URQBkccEKHTQOPaXdUxnZZElQTZY0MFUAuaEqe1E+Nyvgdz/aIyNi6Z9MzO5dv1H8n58/GELp3+w==
   dependencies:
     wrappy "1"
+
+onesignal-cordova-plugin@^3.3.1:
+  version "3.3.1"
+  resolved "https://registry.yarnpkg.com/onesignal-cordova-plugin/-/onesignal-cordova-plugin-3.3.1.tgz#97c8fe3f3ad180d784ff689b21212ab8f97bb25c"
+  integrity sha512-MAAZA1QALwHdVIw3ASVTUsna7XEKVZ5y7QEitJ0oFX7246l7nQhZIvyHyG9l7A6CQdcdW48H6nLT6izCNROB4g==
 
 onetime@^5.1.2:
   version "5.1.2"

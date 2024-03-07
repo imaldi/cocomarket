@@ -4,8 +4,51 @@
     "uninstalled": []
   },
   "config_munge": {
-    "files": {}
+    "files": {
+      "res/xml/config.xml": {
+        "parents": {
+          "/*": [
+            {
+              "xml": "<feature name=\"OneSignalPush\"><param name=\"android-package\" value=\"com.onesignal.cordova.OneSignalPush\" /></feature>",
+              "count": 1
+            }
+          ]
+        }
+      }
+    }
   },
-  "installed_plugins": {},
-  "dependent_plugins": {}
+  "installed_plugins": {
+    "onesignal-cordova-plugin": {
+      "PACKAGE_NAME": "io.cordova.hellocordova"
+    }
+  },
+  "dependent_plugins": {},
+  "modules": [
+    {
+      "id": "onesignal-cordova-plugin.OneSignalPlugin",
+      "file": "plugins/onesignal-cordova-plugin/dist/index.js",
+      "pluginId": "onesignal-cordova-plugin",
+      "clobbers": [
+        "OneSignal"
+      ]
+    },
+    {
+      "id": "onesignal-cordova-plugin.NotificationReceivedEvent",
+      "file": "plugins/onesignal-cordova-plugin/dist/NotificationReceivedEvent.js",
+      "pluginId": "onesignal-cordova-plugin"
+    },
+    {
+      "id": "onesignal-cordova-plugin.Subscription",
+      "file": "plugins/onesignal-cordova-plugin/dist/Subscription.js",
+      "pluginId": "onesignal-cordova-plugin"
+    },
+    {
+      "id": "onesignal-cordova-plugin.OSNotification",
+      "file": "plugins/onesignal-cordova-plugin/dist/OSNotification.js",
+      "pluginId": "onesignal-cordova-plugin"
+    }
+  ],
+  "plugin_metadata": {
+    "onesignal-cordova-plugin": "3.3.1"
+  }
 }
