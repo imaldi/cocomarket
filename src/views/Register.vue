@@ -2,9 +2,8 @@
   <div>
     <RegisterForm />
   </div>
-</template> 
+</template>
 
 <script setup lang="ts">
 import RegisterForm from "../components/RegisterForm.vue";
-
 </script>

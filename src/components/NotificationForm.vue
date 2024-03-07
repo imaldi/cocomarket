@@ -1,0 +1,89 @@
+<template>
+  <div>
+    <div class="container">
+      <div class="bg-white shadow-md rounded-xl p-8">
+        <div class="flex">
+          <div>
+            <icon icon="ion:arrow-back-circle-outline" color="#000" width="28" height="28" />
+          </div>
+          <div class="w-full justify-center flex font-bold">Notification</div>
+          <div>
+            <icon icon="solar:menu-dots-bold" style="transform: rotate(90deg)" color="#000" width="28" height="28" />
+          </div>
+          <!-- <div class="relative">
+            <div class="w-full absolute bg-white rounded-md shadow-md p-4" style="left: -50px">
+              <div>Mark all as read</div>
+              <div>Delete All</div>
+            </div>
+          </div> -->
+        </div>
+      </div>
+
+      <div class="mx-8 pt-4">
+        <div class="flex justify-center">
+          <div class="mr-4 text-lg text-danger">All</div>
+          <div class="mr-4 text-lg">Unread</div>
+          <div class="text-lg">Read</div>
+        </div>
+        <hr />
+      </div>
+
+      <div class="mx-8">
+        <div>
+          <div class="text-gray">Today</div>
+          <div v-for="(n) in 4" :key="n" class="flex pt-4">
+            <div class="flex pt-4">
+              <div class="circle-bg">
+                <img src="../assets/img/notif1.png" class="" width="28" height="28" alt="notif" />
+              </div>
+            </div>
+            <div class="my-auto ml-4">
+              <div class="text-gray text-sm">Transaction</div>
+              <div class="font-500 no-space">
+                Congratulations! You've earned reward points after completing today's purchase.
+              </div>
+            </div>
+            <div class="text-xs text-gray">1hr</div>
+          </div>
+        </div>
+
+        <div class="pt-4">
+          <div class="text-gray">Yesterday</div>
+          <div v-for="( n) in 4" :key="n" class="flex pt-4">
+            <div class="flex pt-4">
+              <div class="circle-bg">
+                <img src="../assets/img/notif1.png" class="" width="28" height="28" alt="notif" />
+              </div>
+            </div>
+            <div class="my-auto ml-4">
+              <div class="text-gray text-sm">Transaction</div>
+              <div class="font-500 no-space">
+                Congratulations! You've earned reward points after completing today's purchase.
+              </div>
+            </div>
+            <div class="text-xs text-gray">1d</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</template>
+
+<style scoped lang="scss">
+.container {
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100vh;
+  color: #000000;
+}
+.circle-bg {
+  padding: 8px;
+  border-radius: 50%;
+  overflow: hidden;
+  background-color: #7acdd6;
+  width: 30px;
+  height: 30px;
+}
+</style>

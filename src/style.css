@@ -3,9 +3,7 @@
   line-height: 1.5;
   font-weight: 400;
 
-  color-scheme: light dark;
   color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -24,10 +22,10 @@ a:hover {
 
 body {
   margin: 0;
-  display: flex;
+  /* display: flex; */
   place-items: center;
   min-width: 320px;
-  min-height: 100vh;
+  /* min-height: 100vh; */
 }
 
 h1 {
@@ -58,11 +56,40 @@ button:focus-visible {
   padding: 2em;
 }
 
-#app {
-  max-width: 1280px;
+/* #app {
+  /* max-width: 1280px;
   margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
+  padding: 2rem; */
+/* text-align: center; */
+/* } */
+
+.circle-icon {
+  display: inline-block; /* Ensure the icon behaves like an inline element */
+  width: 78px; /* Set width and height to create a square */
+  height: 78px;
+  border-radius: 80%; /* Set border-radius to 50% to create a circle */
+  overflow: hidden; /* Hide any overflow content */
+  padding: 34px;
+  border: 2px solid #000; /* Black border */
+}
+
+.bottom-navigation {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background-color: #fff;
+  display: flex;
+  justify-content: space-around;
+  padding: 10px;
+}
+
+hr {
+  border-top: 20px #69696b;
+}
+
+.no-space {
+  line-height: 16px;
 }
 
 @media (prefers-color-scheme: light) {
