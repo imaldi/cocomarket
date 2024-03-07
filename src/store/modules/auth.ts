@@ -9,7 +9,7 @@ interface AuthStore {
 }
 
 export const useAuthStore = defineStore("auth", () => {
-  const verifiedEmail = ref('');
+  const verifiedEmail = ref("");
   const login: AuthStore["login"] = async (payload) => {
     const response = await axiosClient.post("/api/auth/login", payload);
     if (response && response.data && response.data.email) {
@@ -19,13 +19,14 @@ export const useAuthStore = defineStore("auth", () => {
   };
   const register: AuthStore["login"] = async (payload) => {
     return axiosClient.post("/api/auth/register", payload);
-  }; 
+  };
   const verifyCode: AuthStore["verifyCode"] = async (payload) => {
-    return axiosClient.post("/api/auth/verify", payload);
-  }; 
+    const response = await axiosClient.post("/api/auth/verify", payload);
+    return response;
+  };
   return {
     verifyCode,
     login,
-    register
+    register,
   };
 });

@@ -1,0 +1,1 @@
+import{m as s,f as o}from"./index-CvbjM0q9.js";import{a}from"./apiClient-DZfQYoOf.js";const f=s("auth",()=>{const r=o("");return{verifyCode:async t=>await a.post("/api/auth/verify",t),login:async t=>{const e=await a.post("/api/auth/login",t);return e&&e.data&&e.data.email&&(r.value=e.data.email),e},register:async t=>a.post("/api/auth/register",t)}});export{f as u};

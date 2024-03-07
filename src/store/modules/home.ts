@@ -11,7 +11,7 @@ export const useHomeStore = defineStore("homeStore", () => {
     return axiosClient.get(`/api/product?search=${e}`);
   };
   const getAmountWallet: CategoryStore["getAmountWallet"] = async () => {
-    return axiosClient.get("/api/wallet/by/auth");
+    return axiosClient.get("/api/wallet");
   };
   return {
     getAllSearch,

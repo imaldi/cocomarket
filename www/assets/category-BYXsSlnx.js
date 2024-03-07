@@ -1,0 +1,1 @@
+import{m as e}from"./index-CvbjM0q9.js";import{a as t}from"./apiClient-DZfQYoOf.js";const y=e("category",()=>({getAllProduct:async()=>t.get("/api/product"),getProductByCategory:async r=>t.get(`/api/category/${r}/product`),getAllCategory:async()=>t.get("/api/category")}));export{y as u};

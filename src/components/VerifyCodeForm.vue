@@ -59,9 +59,8 @@ import { useAuthStore } from "../store/modules/auth";
 const authStore = useAuthStore();
 const router = useRouter();
 const code = ref(["", "", "", ""]);
-const email = ref(authStore.verifiedEmail);
 
-const emailConfirmation = ref(authStore.verifiedEmail);
+const emailConfirmation = ref("");
 const verifyCode = async () => {
   const enteredCode = code.value.join("");
   console.log(`Verifying code: ${enteredCode}`);

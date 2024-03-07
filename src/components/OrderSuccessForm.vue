@@ -13,7 +13,7 @@
     <div class="absolute justify-center flex w-full" style="bottom: 2rem">
       <div class="flex flex-col items-center">
         <a href="#" class="text-[#7ACDD6] font-bold mb-2">Receipt</a>
-        <div @click="router.push('home')" class="text-center p-2 rounded-md w-[80vw] bg-[#7ACDD6] font-bold text-white">
+        <div @click="router.push('reviewOrder')" class="text-center p-2 rounded-md w-[80vw] bg-[#7ACDD6] font-bold text-white">
           Riview Order
         </div>
       </div>
