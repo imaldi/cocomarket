@@ -6,7 +6,8 @@
     "dev": "vite",
     "build": "vue-tsc && vite build",
     "preview": "vite preview",
-    "build:android": "vue-tsc && vite build && cordova build android --prod --release --buildConfig=build.json"
+    "build:android": "vue-tsc && vite build && cordova build android --prod --release --buildConfig=build.json",
+    "debug:android": "vue-tsc && vite build && cordova build android --prod --debug --buildConfig=build.json"
   },
   "dependencies": {
     "@vuepic/vue-datepicker": "^8.1.1",

@@ -1,1 +1,0 @@
-import{_ as r,r as e,o as t,c as n,a as c,b as a}from"./index-CLc6i7Xm.js";const s={};function _(i,l){const o=e("router-view");return e("icon"),e("router-link"),t(),n("div",null,[c(o),a("",!0)])}const u=r(s,[["render",_]]);export{u as default};
