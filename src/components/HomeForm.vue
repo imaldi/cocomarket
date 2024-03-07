@@ -105,9 +105,9 @@ import { useHomeStore } from "../store/modules/home";
 const router = useRouter();
 const homeStore = useHomeStore();
 
-const inputValue = ref("");
-const showSuggestions = ref(false);
-const dataSearch = ref([]);
+// const inputValue = ref("");
+// const showSuggestions = ref(false);
+// const dataSearch = ref([]);
 const dataAmountWallet = ref([]);
 
 const getAmountWallet = async () => {
@@ -115,24 +115,24 @@ const getAmountWallet = async () => {
   dataAmountWallet.value = res.data;
 };
 
-const handleInput = async (e: any) => {
-  const res = await homeStore.getAllSearch(e.target.value);
-  dataSearch.value = res.data;
-  try {
-  } catch (error) {
-    console.log(error);
-  } finally {
-  }
-};
-const showAutocomplete = () => {
-  if (inputValue.value.length > 0) {
-    showSuggestions.value = true;
-  }
-};
+// const handleInput = async (e: any) => {
+//   const res = await homeStore.getAllSearch(e.target.value);
+//   dataSearch.value = res.data;
+//   try {
+//   } catch (error) {
+//     console.log(error);
+//   } finally {
+//   }
+// };
+// const showAutocomplete = () => {
+//   if (inputValue.value.length > 0) {
+//     showSuggestions.value = true;
+//   }
+// };
 
-const hideAutocomplete = () => {
-  showSuggestions.value = false;
-};
+// const hideAutocomplete = () => {
+//   showSuggestions.value = false;
+// };
 
 onMounted(() => {
   getAmountWallet();

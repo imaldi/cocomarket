@@ -52,10 +52,10 @@
 
 <script setup lang="ts">
 import { useRouter } from "vue-router";
-import { useHomeStore } from "../store/modules/home";
+// import { useHomeStore } from "../store/modules/home";
 
 const router = useRouter();
-const homeStore = useHomeStore();
+// const homeStore = useHomeStore();
 
 </script>
 
