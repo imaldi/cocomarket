@@ -49,7 +49,10 @@
         $route.path !== '/chooseczipcode' &&
         $route.path !== '/storling' &&
         $route.path !== '/revieworder2' &&
-        $route.path !== '/ordersuccess'
+        $route.path !== '/ordersuccess' &&
+        $route.path !== '/receipt' &&
+        $route.path !== '/cocopay' &&
+        $route.path !== '/cocopayselectmethod'
       "
       class="bottom-navigation z-2"
     >
