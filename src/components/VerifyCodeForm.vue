@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-    <div class="mx-8">
+    <div @click="router.back()" class="mx-8">
       <icon icon="ion:arrow-back-outline" color="#7ACDD6" width="38" height="38" />
     </div>
 
@@ -19,10 +19,18 @@
     <div class="text-center pt-4">
       <div>Didn't recieve OTP?</div>
       <a class="underline font-bold color-black" href="#">Resend Code</a>
-      <Button class="w-[80vw] bg-[#7ACDD6] mt-8 text-white font-bold">Verify</Button>
+      <Button @click="router.push(`/completeyourprofile`)" class="w-[80vw] bg-[#7ACDD6] mt-8 text-white font-bold"
+        >Verify</Button
+      >
     </div>
   </div>
 </template>
+
+<script setup lang="ts">
+import { ref } from "vue";
+import { useRouter } from "vue-router";
+const router = useRouter();
+</script>
 
 <style scoped lang="scss">
 .container {

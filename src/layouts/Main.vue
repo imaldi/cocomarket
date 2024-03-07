@@ -40,7 +40,16 @@
         $route.path !== '/trackOrder' &&
         $route.path !== '/reviewOrderTrack' &&
         $route.path !== '/orderCompleted' &&
-        $route.path !== '/reviewOrderList'
+        $route.path !== '/reviewOrderList' &&
+        $route.path !== '/myaddress' &&
+        $route.path !== '/addaddress' &&
+        $route.path !== '/chooseprovince' &&
+        $route.path !== '/choosecity' &&
+        $route.path !== '/choosecdistrict' &&
+        $route.path !== '/chooseczipcode' &&
+        $route.path !== '/storling' &&
+        $route.path !== '/revieworder2' &&
+        $route.path !== '/ordersuccess'
       "
       class="bottom-navigation z-2"
     >
@@ -109,6 +118,7 @@
 </template>
 
 <script setup lang="ts">
+import { useRoute } from "vue-router";
 
 // const excludedPaths = [
 //   "/",

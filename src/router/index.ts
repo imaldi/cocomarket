@@ -232,6 +232,46 @@ const routes: RouteRecordRaw[] = [
         name: "ReviewOrderList",
         component: () => import("../views/ReviewOrderList.vue"),
       },
+      {
+        path: "/myaddress",
+        name: "MyAddress",
+        component: () => import("../views/MyAddress.vue"),
+      },
+      {
+        path: "/addaddress",
+        name: "AddAddress",
+        component: () => import("../views/AddAddress.vue"),
+      },
+      {
+        path: "/chooseprovince",
+        name: "ChooseProvince",
+        component: () => import("../views/ChooseProvince.vue"),
+      },
+      {
+        path: "/choosecity",
+        name: "ChooseCity",
+        component: () => import("../views/ChooseCity.vue"),
+      },
+      {
+        path: "/choosedistrict",
+        name: "ChooseDistrict",
+        component: () => import("../views/ChooseDistrict.vue"),
+      },
+      {
+        path: "/choosezipcode",
+        name: "ChooseZipCode",
+        component: () => import("../views/ChooseZipCode.vue"),
+      },
+      {
+        path: "/storling",
+        name: "Storling",
+        component: () => import("../views/Storling.vue"),
+      },
+      {
+        path: "/revieworder2",
+        name: "ReviewOrder2",
+        component: () => import("../views/ReviewOrder2.vue"),
+      },
     ],
   },
 ];
