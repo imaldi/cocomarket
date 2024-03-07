@@ -6,20 +6,11 @@
     </div>
 
     <form @submit.prevent="login" class="login-form">
+      <img src="../../src/assets/icon/arrow-circle.svg" color="#ff0000" alt="arrow-circle" />
       <p class="input-title">Email</p>
-      <input
-        type="text"
-        v-model="username"
-        placeholder="Username"
-        class="input-field"
-      />
+      <input type="text" v-model="username" placeholder="Username" class="input-field" />
       <p class="input-title">Password</p>
-      <input
-        type="password"
-        v-model="password"
-        placeholder="Password"
-        class="input-field"
-      />
+      <input type="password" v-model="password" placeholder="Password" class="input-field" />
       <a href="#/forgotpassword" class="forgot-password">Forgot Password?</a>
       <button type="submit" class="submit-button">Sign In</button>
     </form>
@@ -32,31 +23,17 @@
 
     <div class="sign-in-social">
       <div class="apple">
-        <img
-          src="../assets/img/apple-logo.svg"
-          alt="Logo Apple"
-          class="logo-icon"
-        />
+        <img src="../assets/img/apple-logo.svg" alt="Logo Apple" class="logo-icon" />
       </div>
       <div class="google">
-        <img
-          src="../assets/img/google-logo.svg"
-          alt="Logo Apple"
-          class="logo-icon"
-        />
+        <img src="../assets/img/google-logo.svg" alt="Logo Apple" class="logo-icon" />
       </div>
       <div class="facebook">
-        <img
-          src="../assets/img/facebook-logo.svg"
-          alt="Logo Apple"
-          class="logo-icon"
-        />
+        <img src="../assets/img/facebook-logo.svg" alt="Logo Apple" class="logo-icon" />
       </div>
     </div>
 
-    <p class="sign-up-title">
-      Don't Have an account? <a href="#/register" class="sign-up">Sign Up</a>
-    </p>
+    <p class="sign-up-title">Don't Have an account? <a href="#/register" class="sign-up">Sign Up</a></p>
   </div>
 </template>
 
@@ -78,7 +55,7 @@ const login = async () => {
     const response = await authStore.login(payload);
     localStorage.setItem("token", response.access_token);
     console.log(response);
-    router.push(`verifycode`)
+    router.push(`verifycode`);
     // router.push(`/home`);
   } catch (error) {}
 };
