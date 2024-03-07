@@ -29,7 +29,7 @@
     </div>
     <div class="fw-bold text-xl text-dark pl-8 mt-5">Akun</div>
     <div class="flex pt-4 p-8">
-      <div class="w-full my-auto flex">
+      <div class="w-full my-auto flex" @click="router.push('/changeprofile')">
         <img
           src="../assets/img/icon-changeprofile.svg"
           class="justify-center"
@@ -43,13 +43,57 @@
         </div>
       </div>
     </div>
+    <div class="flex pt-0 p-8">
+      <div class="w-full my-auto flex">
+        <img
+          src="../assets/img/icon-changeprofile.svg"
+          class="justify-center"
+          alt=""
+        />
+        <div class="ml-4 my-auto text-dark fw-bold">Change Password</div>
+      </div>
+      <div class="my-auto ml-2">
+        <div class="bg-light rounded-md p-1">
+          <img src="../assets/img/Line.svg" class="justify-center" alt="" />
+        </div>
+      </div>
+    </div>
+
+    <div class="flex pt-0 p-8">
+      <div class="w-full my-auto flex">
+        <img src="../assets/img/address.svg" class="justify-center" alt="" />
+        <div class="ml-4 my-auto text-dark fw-bold">My Address</div>
+      </div>
+      <div class="my-auto ml-2">
+        <div class="bg-light rounded-md p-1">
+          <img src="../assets/img/Line.svg" class="justify-center" alt="" />
+        </div>
+      </div>
+    </div>
+    <div class="flex pt-0 p-8">
+      <div class="w-full my-auto flex">
+        <img
+          src="../assets/img/icon_logout.svg"
+          class="justify-center"
+          alt=""
+        />
+        <div class="ml-4 my-auto text-dark fw-bold">Sign Out</div>
+      </div>
+      <div class="my-auto ml-2">
+        <div class="bg-light rounded-md p-1">
+          <img src="../assets/img/Line.svg" class="justify-center" alt="" />
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
 <script setup lang="ts">
+import { useRouter } from "vue-router";
 import { useProfileStore } from "../store/modules/profile";
 import { onMounted, ref } from "vue";
 
+const router = useRouter();
 const profileStore = useProfileStore();
 const dataProfile = ref<Item | null>(null);
 interface Item {

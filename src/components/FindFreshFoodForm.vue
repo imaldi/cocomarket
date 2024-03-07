@@ -83,12 +83,22 @@
               @click="addCart(item.id)"
             >
               <img
+                v-if="item.image !== null"
                 :src="item.image"
                 width="80"
                 height="80"
                 class="w-full justify-center"
                 alt=""
               />
+              <template v-else>
+                <img
+                  src="../assets/img/template-food.jpg"
+                  width="80"
+                  height="80"
+                  class="w-full justify-center"
+                  alt=""
+                />
+              </template>
               <div>
                 <div>{{ item.name }}</div>
               </div>
@@ -204,8 +214,8 @@ const getListCart = async () => {
     namesWithoutNumbers.value = totalItem.value.products.map((item) =>
       item.name.replace(/\d+/g, "")
     );
-    const namesWithoutNumbersCleaned = namesWithoutNumbers.value.map((name: string) =>
-      name.replace(/\d+/g, "")
+    const namesWithoutNumbersCleaned = namesWithoutNumbers.value.map(
+      (name: string) => name.replace(/\d+/g, "")
     );
     console.log(namesWithoutNumbersCleaned);
   } catch (error) {
