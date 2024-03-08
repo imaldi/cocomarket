@@ -272,6 +272,21 @@ const routes: RouteRecordRaw[] = [
         name: "ReviewOrder2",
         component: () => import("../views/ReviewOrder2.vue"),
       },
+      {
+        path: "/receipt",
+        name: "Receipt",
+        component: () => import("../views/Receipt.vue"),
+      },
+      {
+        path: "/cocopay",
+        name: "Cocopay",
+        component: () => import("../views/Cocopay.vue"),
+      },
+      {
+        path: "/cocopayselectmethod",
+        name: "CocopaySelectMethod",
+        component: () => import("../views/CocopaySelectMethod.vue"),
+      },
     ],
   },
 ];
