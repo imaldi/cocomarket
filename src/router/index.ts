@@ -287,6 +287,11 @@ const routes: RouteRecordRaw[] = [
         name: "CocopaySelectMethod",
         component: () => import("../views/CocopaySelectMethod.vue"),
       },
+      {
+        path: "/detailcategory/:id",
+        name: "detailCategory",
+        component: () => import("../views/DetailCategory.vue"),
+      },
     ],
   },
 ];

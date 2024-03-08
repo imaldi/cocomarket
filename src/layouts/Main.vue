@@ -52,7 +52,8 @@
         $route.path !== '/ordersuccess' &&
         $route.path !== '/receipt' &&
         $route.path !== '/cocopay' &&
-        $route.path !== '/cocopayselectmethod'
+        $route.path !== '/cocopayselectmethod' &&
+        $route.path !== `/detailcategory/${$route.params.id}`
       "
       class="bottom-navigation z-2"
     >
@@ -119,41 +120,3 @@
     </nav>
   </div>
 </template>
-
-<script setup lang="ts">
-
-// const excludedPaths = [
-//   "/",
-//   "/register",
-//   "/splashScreen",
-//   "/splashScreen1",
-//   "/splashScreen2",
-//   "/splashScreen3",
-//   "/splashScreen4",
-//   "/completeyourprofile",
-//   "/newpassword",
-//   "/verifycode",
-//   "/allowlocationaccess",
-//   "/findfreshfood",
-//   "/freshfooddetail",
-//   "/addfreshfood",
-//   "/configaddfreshfood",
-//   "/checkout",
-//   "/paymentmethod",
-//   "/coupon",
-//   "/forgotpassword",
-//   "/resetPassword",
-//   "/gmaps",
-//   "/reviewsummary",
-//   "/cocolingmitra",
-//   "/cart",
-//   "/coupondetail",
-//   "/revieworder",
-//   "/pedagangdetail",
-//   "/rating",
-//   "/changepassword",
-//   "/changeprofile",
-// ];
-// const route = useRoute();
-// const shouldRender = !excludedPaths.includes(route.path);
-</script>

@@ -22,7 +22,7 @@
           </div> -->
           <div class="my-auto ml-2">
             <div class="bg-light rounded-md p-1">
-              <icon-native icon="bell-red-dot" color="#ff0000" width="28" height="28" />
+              <icon icon="clarity:bell-solid-badged" color="#000" width="28" height="28" />
             </div>
           </div>
         </div>
@@ -102,7 +102,6 @@
 import { onMounted, ref } from "vue";
 import { useRouter } from "vue-router";
 import { useHomeStore } from "../store/modules/home";
-import iconNative from "../icon/index.vue";
 
 const router = useRouter();
 const homeStore = useHomeStore();

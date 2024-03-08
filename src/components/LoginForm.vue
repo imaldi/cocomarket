@@ -45,7 +45,7 @@
       <hr class="line" />
     </div>
 
-    <div class="sign-in-social">
+    <!-- <div class="sign-in-social">
       <div class="apple">
         <img
           src="../assets/img/apple-logo.svg"
@@ -67,7 +67,7 @@
           class="logo-icon"
         />
       </div>
-    </div>
+    </div> -->
 
     <p class="sign-up-title">
       Don't Have an account? <a href="#/register" class="sign-up">Sign Up</a>

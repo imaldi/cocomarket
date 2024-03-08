@@ -3,13 +3,13 @@
     <div class="container">
       <div class="bg-white shadow-md rounded-xl p-8">
         <div class="flex">
-          <div @click="router.push('/home')">
+          <div @click="router.push('/findfreshfood')">
             <icon icon="ion:arrow-back-circle-outline" color="#000" width="28" height="28" />
           </div>
           <div class="w-full justify-center flex font-bold">Find Fresh Food</div>
         </div>
 
-        <div class="flex pt-4">
+        <!-- <div class="flex pt-4">
           <div class="w-full border border-solid border-gray rounded-full p-2 pl-4 my-auto flex">
             <icon icon="iconamoon:search-light" color="#000" width="28" height="28" />
             <div class="ml-4 my-auto">Search Food, Drinks, etc</div>
@@ -19,43 +19,17 @@
               <icon icon="fluent:toggle-multiple-16-regular" color="#7ACDD6" width="28" height="28" />
             </div>
           </div>
-        </div>
+        </div> -->
       </div>
 
       <div class="mx-8">
-        <div class="flex justify-between pt-4 pb-4">
-          <div class="font-bold">Category</div>
-          <div @click="seeAll" class="text-gray">See all</div>
-        </div>
         <div>
           <div class="grid grid-cols-2 gap-6">
             <div
-              @click="GoDetail(list.id)"
-              v-for="(list, index) in dataCategory"
-              :key="index"
-              class="rounded-xl p-6 border border-solid"
-              :style="{ backgroundColor: generateBackgroundColor(index) }"
-            >
-              <img :src="list.image" width="80" height="80" class="w-full justify-center" alt="" />
-              <div class="text-center font-500">
-                {{ list.name }}
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="mx-8">
-        <div class="flex justify-between pt-4 pb-4">
-          <div class="font-bold">Fresh Vegan</div>
-        </div>
-        <div>
-          <div class="grid grid-cols-2 gap-6">
-            <div
-              v-for="(item, index) in dataProduct"
+              v-for="(item, index) in detailCategory"
               :key="index"
               class="rounded-xl p-0 mr-6 bg-white"
-              @click="addCart(item.id)"
+              @click="GoDetail(item.id)"
             >
               <img
                 v-if="item.image !== null"
@@ -88,7 +62,7 @@
         </div>
       </div>
 
-      <div v-if="totalItem" @click="GoDetailCart(totalItem.carts_id)" class="relative">
+      <div v-if="totalItem" @click="GoDetail(totalItem.carts_id)" class="relative">
         <div class="fixed w-full bg-white rounded-lg shadow-md" style="bottom: 0.5em">
           <div class="flex w-full justify-between p-4">
             <div class="flex p-4 mr-8 rounded-2xl bg-primary w-full justify-center text-white">
@@ -116,7 +90,7 @@
 
 <script setup lang="ts">
 import { onMounted, ref, computed } from "vue";
-import { useRouter } from "vue-router";
+import { useRoute, useRouter } from "vue-router";
 import { useCategoryStore } from "../store/modules/category";
 import { useCartStore } from "../store/modules/cart";
 import rupiah from "../plugins/rupiah";
@@ -130,45 +104,26 @@ const totalPriceRupiah = computed(() => {
 });
 
 const router = useRouter();
+const route = useRoute();
 const categoryStore = useCategoryStore();
 const cartStore = useCartStore();
-const dataCategory = ref<Item[]>([]);
-const dataProduct = ref<Items[]>([]);
-const displayAllCategories = ref(false);
-const seeAll = () => {
-  displayAllCategories.value = !displayAllCategories.value;
-};
+
+const detailCategory = ref<Item[]>([]);
+const quantity = ref<number[]>([]);
 interface Item {
-  id: number;
-  image: string;
+  id: string;
   name: string;
   subtitle: string;
-  price: string;
+  price: number;
   total_stock: string;
 }
-interface Items {
-  id: number;
-  image: string;
-  name: string;
-  subtitle: string;
-  price: string;
-}
+
 interface ItemsTotal {
   price: string;
   total: string;
   amount: string;
   products: { name: string }[];
 }
-
-const getListCategory = async () => {
-  try {
-    const res = await categoryStore.getAllCategory();
-    dataCategory.value = res.data as Item[];
-  } catch (error) {
-    console.log(error);
-  } finally {
-  }
-};
 
 const namesWithoutNumbers = ref<string[]>([]);
 const totalItem = ref<ItemsTotal | null>(null);
@@ -185,41 +140,32 @@ const getListCart = async () => {
   }
 };
 
-const getListProduct = async () => {
-  try {
-    const res = await categoryStore.getAllProduct();
-    dataProduct.value = res.data as Items[];
-  } catch (error) {
-    console.log(error);
-  } finally {
-  }
-};
-
-const generateBackgroundColor = (index: number) => {
-  const colors = ["#eef8f2", "#f2eef8", "#f8f2ee", "#eeeff8"];
-  return colors[index % colors.length];
-};
-
-// const GoDetail = (id: number) => {
-//   router.push(`/configaddfreshfood/${id}`);
-// };
-
 const GoDetail = (id: number) => {
-  router.push(`/detailcategory/${id}`);
-};
-
-const GoDetailCart = (id: number) => {
-  router.push(`/configaddfreshfood/${id}`);
-};
-
-const addCart = (id: number) => {
   router.push(`/freshfooddetail/${id}`);
 };
 
+const getCategorybyId = async (id: any) => {
+  try {
+    const res = await categoryStore.getProductByCategory(id);
+    quantity.value = new Array(res.data.length).fill(1);
+    detailCategory.value = res.data as Item[];
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+// const getCartDetails = async (id: any) => {
+//   try {
+//     const res = await cartStore.getCartDetail(id);
+//     console.log(res);
+//   } catch (error) {
+//     console.log(error);
+//   }
+// };
 onMounted(() => {
-  getListCategory();
-  getListProduct();
+  getCategorybyId(route.params.id);
   getListCart();
+  // getCartDetails(route.params.id);
 });
 </script>
 
@@ -231,5 +177,10 @@ onMounted(() => {
   width: 100%;
   height: 100vh;
   color: #000000;
+}
+
+.scrollable-content {
+  max-height: calc(72vh - 2rem);
+  overflow-y: auto;
 }
 </style>

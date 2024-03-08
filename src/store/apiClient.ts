@@ -22,6 +22,7 @@ axiosClient.interceptors.response.use(
       localStorage.removeItem('auth_token');
       router.push('/');
     }
+    console.log('11', token)
     return Promise.reject(error);
   }
 );
