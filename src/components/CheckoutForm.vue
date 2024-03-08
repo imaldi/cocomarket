@@ -265,8 +265,10 @@
 import { useRouter } from "vue-router";
 import { useCartStore } from "../store/modules/cart";
 import { ref, onMounted, computed } from "vue";
+import { useAddressStore } from "../store/modules/address";
 
 const router = useRouter();
+const addressStore = useAddressStore();
 const cartStore = useCartStore();
 const namesWithoutNumbers = ref<string[]>([]);
 const totalItem = ref<ItemsTotal | null>(null);
@@ -296,9 +298,13 @@ const price = computed(() => {
   }
   return 0;
 });
+const cash = ref("cash")
 const confirmOrder = async () => {
+  const payload = {
+    cash:cash.value,
+  }
   try {
-    const res = await cartStore.confirmOrders();
+    const res = await cartStore.confirmOrders(payload);
     console.log(res);
     router.push(`/ordersuccess`)
   } catch (error) {
@@ -322,8 +328,18 @@ const getListCart = async () => {
   } finally {
   }
 };
+const getListAddress = async () => {
+  try {
+    const res = await addressStore.getListAddress();
+    console.log(res);
+  } catch (error) {
+    console.log(error);
+  } finally {
+  }
+};
 onMounted(() => {
   getListCart();
+  getListAddress();
 });
 </script>
 

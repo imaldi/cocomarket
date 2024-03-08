@@ -5,14 +5,23 @@
       <h5>Hi Welcome Back, you've been missed</h5>
     </div>
 
-    <form @submit.prevent="login" class="login-form">
+    <Form
+      v-slot="{ errors }"
+      autocomplete="off"
+      @submit.prevent="login"
+      class="login-form"
+    >
       <p class="input-title">Email</p>
-      <input
-        type="text"
+      <Field
         v-model="username"
-        placeholder="Username"
+        name="Username"
+        type="text"
         class="input-field"
+        rules="required|numeric|maxLength:3"
       />
+      <p class="text-danger text-sm mt-2">
+        {{ errors.username }}
+      </p>
       <p class="input-title">Password</p>
       <input
         type="password"
@@ -21,8 +30,8 @@
         class="input-field"
       />
       <a href="#/forgotpassword" class="forgot-password">Forgot Password?</a>
-      <button type="submit" class="submit-button">Sign In</button>
-    </form>
+      <button @click="login" type="submit" class="submit-button">Sign In</button>
+    </Form>
 
     <div class="or-sign-section">
       <hr class="line" />
@@ -63,6 +72,7 @@
 <script setup lang="ts">
 import { ref } from "vue";
 import { useRouter } from "vue-router";
+import { Form, Field } from "vee-validate";
 import { useAuthStore } from "../store/modules/auth";
 const router = useRouter();
 const authStore = useAuthStore();
@@ -78,7 +88,7 @@ const login = async () => {
     const response = await authStore.login(payload);
     localStorage.setItem("token", response.access_token);
     // router.push(`verifycode`)
-    router.push(`home`)
+    router.push(`home`);
   } catch (error) {}
 };
 </script>

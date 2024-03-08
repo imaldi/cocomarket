@@ -4,7 +4,7 @@ import axiosClient from "../apiClient";
 interface CartStore {
   addToCart(payload: any): Promise<any>;
   getCartTotal(): Promise<any>;
-  confirmOrders(): Promise<any>;
+  confirmOrders(payload:any): Promise<any>;
   getCartDetail(id:any): Promise<any>;
 }
 
@@ -18,8 +18,8 @@ export const useCartStore = defineStore("cart", () => {
   const getCartDetail: CartStore["getCartDetail"] = async (id:any) => {
     return axiosClient.get(`/api/cart/${id}/show-details`);
   };
-  const confirmOrders: CartStore["confirmOrders"] = async () => {
-    return axiosClient.post(`/api/orders`);
+  const confirmOrders: CartStore["confirmOrders"] = async (payload) => {
+    return axiosClient.post(`/api/orders`, payload);
   };
   return {
     confirmOrders,

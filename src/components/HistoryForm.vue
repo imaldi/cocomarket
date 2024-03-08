@@ -72,9 +72,9 @@
 
             <div>
               <div
-                class="px-4 py-2 bg-[#9BB0C1] text-white rounded-xl text-[8px] font-bold"
+                class="px-4 py-2 bg-[#51F862] text-white rounded-xl text-[8px] font-bold"
               >
-                Canceled
+              {{ item.status === "0" ? 'Canceled' : item.status === "1" ? 'Completed' : 'Unknown' }}
               </div>
             </div>
           </div>
@@ -138,6 +138,7 @@ interface Item {
   image: string;
   price: number;
   description: string;
+  status: string;
 }
 // interface ItemOrders {
 //   id: string;
