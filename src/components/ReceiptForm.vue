@@ -1,106 +1,184 @@
 <template>
-    <div>
-      <div class="container">
-        <div class="bg-white shadow-md rounded-xl p-8">
-          <div class="flex">
-            <div>
-              <icon icon="ion:arrow-back-circle-outline" color="#000" width="28" height="28" />
+  <div>
+    <div class="container">
+      <div class="bg-white shadow-md rounded-xl p-8">
+        <div @click="router.push('/findfreshfood')" class="flex">
+          <div>
+            <icon
+              icon="ion:arrow-back-circle-outline"
+              color="#000"
+              width="28"
+              height="28"
+            />
+          </div>
+          <div class="w-full justify-center flex font-bold">Receipt</div>
+        </div>
+      </div>
+
+      <div class="my-auto mx-8 py-8">
+        <div
+          class="bg-white border-solid border border-gray rounded-2xl px-4 py-2 mb-4 flex flex-col justify-between"
+        >
+          <div>
+            <div class="flex items-center justify-center my-4">
+              <div class="w-1/3 flex justify-center items-center">
+                <img
+                  class="border border-solid border-gray rounded-full bg-white p-2"
+                  src="../assets/img/gerobak.png"
+                  alt="Cocomaret Logo"
+                  width="28"
+                  height="28"
+                />
+              </div>
+
+              <div v-if="allDataDetail" class="w-1/1">
+                <div class="flex flex-col justify-center mr-2">
+                  <div class="font-bold text-md tracking-tighter">
+                    {{allDataDetail.description}}
+                  </div>
+                  <div class="font-normal text-gray text-sm">
+                    {{ allDataDetail.date }}
+                  </div>
+                </div>
+              </div>
             </div>
-            <div class="w-full justify-center flex font-bold">Receipt</div>
+          </div>
+          <div v-for="(item, index) in dataDetail" :key="index">
+            <div
+              class="border border-solid border-gray border-x-0 border-t-0 pb-2 mb-2"
+            >
+              <div class="px-4 flex items-center mb-2">
+                <div class="font-300 text-sm w-2/3">
+                  {{ item.products.name }}
+                </div>
+                <div class="font-300 text-sm w-1/10">{{ item.quantity }}</div>
+                <div class="font-semibold text-sm w-1/3 text-end">
+                  Rp.{{ item.price }}
+                </div>
+              </div>
+            </div>
+
+            <div
+              class="border border-solid border-gray border-x-0 border-t-0 pb-2 mb-2"
+            >
+              <div class="px-4 flex items-center mb-2">
+                <div class="font-300 text-md w-2/3">Sub Total</div>
+                <div class="font-300 text-md w-1/10">{{ item.quantity }}</div>
+                <div class="font-semibold text-md w-1/3 text-end">
+                  {{ item.price }}
+                </div>
+              </div>
+
+              <div v-if="allDataDetail" class="px-4 flex items-center mb-2">
+                <div class="font-300 text-sm w-2/3">Delivery Cost</div>
+                <div class="font-300 text-sm w-1/10"></div>
+                <div class="font-semibold text-sm w-1/3 text-end">
+                  {{ allDataDetail.delivery_cost }}
+                </div>
+              </div>
+
+              <div v-if="allDataDetail" class="px-4 flex items-center mb-2">
+                <div class="font-300 text-sm w-2/3">Tax</div>
+                <div class="font-300 text-sm w-1/10"></div>
+                <div class="font-semibold text-sm w-1/3 text-end">
+                  {{ allDataDetail.tax_amount }}
+                </div>
+              </div>
+
+              <div v-if="allDataDetail" class="px-4 flex items-center mb-2">
+                <div class="font-300 text-sm w-2/3">Discount</div>
+                <div class="font-300 text-sm w-1/10"></div>
+                <div class="font-semibold text-sm w-1/3 text-end">
+                  {{ allDataDetail.discount_amount }}
+                </div>
+              </div>
+            </div>
+          </div>
+          <div>
+              <div class="px-4 flex items-center mb-2">
+                <div class="font-bold text-md w-2/3">Total Payment</div>
+                <div class="font-300 text-md w-1/10"></div>
+                <div class="font-bold text-md w-1/3 text-end text-[#E68027]">
+                  {{ totalPrice }}
+                </div>
+              </div>
+            </div>
+          <div class="flex w-full justify-between p-4">
+            <div
+              class="flex p-2 mr-8 rounded-2xl bg-primary w-full justify-center items-center"
+            >
+              <div class="text-2xl text-white">Save Receipt</div>
+            </div>
           </div>
         </div>
-  
-        <div class="my-auto mx-8 py-8">
-                <div class="bg-white border-solid border border-gray rounded-2xl px-4 py-2 mb-4 flex flex-col justify-between">
-                    <div>
-                        <div class="flex items-center justify-center my-4">
-                            <div class="w-1/3 flex justify-center items-center">
-                                <img class="border border-solid border-gray rounded-full bg-white p-2" src="../assets/img/gerobak.png" alt="Cocomaret Logo" width="28" height="28">
-                            </div>
-
-                            <div class="w-1/1">
-                                <div class="flex flex-col justify-center mr-2">
-                                <div class="font-bold text-md tracking-tighter">Bakso Solo Kang Em...</div>
-                                <div class="font-normal  text-gray text-sm">7 Jan 2023 | 14.30 WIB</div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="border border-solid border-gray border-x-0 border-t-0 pb-2 mb-2">
-                        <div class="px-4 flex items-center mb-2">
-                            <div class="font-300 text-sm  w-2/3">Kangkung, 5 Ons, Fresh</div>
-                            <div class="font-300 text-sm w-1/10">1</div>
-                            <div class="font-semibold text-sm w-1/3 text-end">25.000</div>
-                        </div>
-                        
-                        <div class="px-4 flex items-center mb-2">
-                            <div class="font-300 text-sm  w-2/3">Kangkung, 5 Ons, Fresh</div>
-                            <div class="font-300 text-sm w-1/10">1</div>
-                            <div class="font-semibold text-sm w-1/3 text-end">25.000</div>
-                        </div>
-                        
-                        <div class="px-4 flex items-center mb-2">
-                            <div class="font-300 text-sm  w-2/3">Kangkung, 5 Ons, Fresh</div>
-                            <div class="font-300 text-sm w-1/10">1</div>
-                            <div class="font-semibold text-sm w-1/3 text-end">25.000</div>
-                        </div>
-                    </div>
-
-                    <div class="border border-solid border-gray border-x-0 border-t-0 pb-2 mb-2">
-                        <div class="px-4 flex items-center mb-2">
-                            <div class="font-300 text-md  w-2/3">Sub Total</div>
-                            <div class="font-300 text-md w-1/10">1</div>
-                            <div class="font-semibold text-md w-1/3 text-end">25.000</div>
-                        </div>
-                        
-                        <div class="px-4 flex items-center mb-2">
-                            <div class="font-300 text-sm  w-2/3">Delivery Cost</div>
-                            <div class="font-300 text-sm w-1/10"></div>
-                            <div class="font-semibold text-sm w-1/3 text-end">25.000</div>
-                        </div>
-                        
-                        <div class="px-4 flex items-center mb-2">
-                            <div class="font-300 text-sm  w-2/3">Tax</div>
-                            <div class="font-300 text-sm w-1/10"></div>
-                            <div class="font-semibold text-sm w-1/3 text-end">25.000</div>
-                        </div>
-
-                        <div class="px-4 flex items-center mb-2">
-                            <div class="font-300 text-sm  w-2/3">Discount</div>
-                            <div class="font-300 text-sm w-1/10"></div>
-                            <div class="font-semibold text-sm w-1/3 text-end">-25.000</div>
-                        </div>
-                    </div>
-
-                    <div>
-                        <div class="px-4 flex items-center mb-2">
-                            <div class="font-bold text-md  w-2/3">Total Payment</div>
-                            <div class="font-300 text-md w-1/10"></div>
-                            <div class="font-bold text-md w-1/3 text-end text-[#E68027]">25.000</div>
-                        </div>
-                    </div>
-
-                    <div class="flex w-full justify-between p-4">
-                        <div class="flex p-2 mr-8 rounded-2xl bg-primary w-full justify-center items-center">
-                            <div class="text-2xl text-white">Save Receipt</div>
-                        </div>
-                    </div>
-                  
-                </div>
-            </div>
-        </div>
+      </div>
     </div>
-  </template>
-  
-  <style scoped lang="scss">
-  .container {
-    background-color: #7ACDD6;
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    height: 100vh;
-    color: #000000;
+  </div>
+</template>
+<script setup lang="ts">
+import { ref, onMounted, computed } from "vue";
+import { useProdukStore } from "../store/modules/product";
+import { useRoute } from "vue-router";
+import router from "../router";
+
+const receiptStore = useProdukStore();
+const route = useRoute();
+const allDataDetail = ref<Items | null>(null);
+const dataDetail = ref<Item[]>([]);
+interface Item {
+  price: string;
+  total: string;
+  amount: number;
+  quantity: string;
+  products: {
+    name: string;
+  };
+}
+interface Items {
+  tax_amount: string;
+  delivery_cost: string;
+  discount_amount: string;
+  date: string;
+  description: string;
+}
+const totalPrice = computed(() => {
+  let totalPriceValue = 0;
+
+  if (dataDetail.value.length > 0 && allDataDetail.value) {
+    const totalPrices = dataDetail.value.reduce((acc, item) => {
+      return acc + parseFloat(item.price);
+    }, 0);
+
+    totalPriceValue =
+      totalPrices +
+      parseFloat(allDataDetail.value.delivery_cost) -
+      parseFloat(allDataDetail.value.discount_amount);
   }
-  </style>
-  
+
+  return totalPriceValue.toFixed(2);
+});
+const getReceipt = async (id: any) => {
+  try {
+    const res = await receiptStore.getHistoryByid(id);
+    console.log(res);
+    dataDetail.value = res.data.order_details as Item[];
+    allDataDetail.value = res.data as Items;
+  } catch (error) {
+    console.log(error);
+  } finally {
+  }
+};
+onMounted(() => {
+  getReceipt(route.params.id);
+});
+</script>
+<style scoped lang="scss">
+.container {
+  background-color: #7acdd6;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100vh;
+  color: #000000;
+}
+</style>
