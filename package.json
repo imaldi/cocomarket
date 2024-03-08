@@ -20,6 +20,7 @@
   },
   "devDependencies": {
     "@iconify/vue": "^4.1.1",
+    "@types/googlemaps": "^3.43.3",
     "@vitejs/plugin-vue": "^5.0.4",
     "sass": "^1.71.1",
     "typescript": "^5.2.2",
