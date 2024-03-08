@@ -68,6 +68,7 @@ const login = async () => {
   try {
     const response = await authStore.login(payload);
     localStorage.setItem("token", response.access_token);
+    localStorage.setItem("user_id", response.user.id);
     // router.push(`verifycode`)
     router.push(`home`);
   } catch (error) {}

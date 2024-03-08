@@ -17,12 +17,7 @@
 
       <div>
         <div class="w-full">
-          <img
-            src="../assets/img/track-order-map.png"
-            width="100%"
-            height="20%"
-            alt="maps"
-          />
+          <Map />
         </div>
       </div>
 
@@ -229,8 +224,25 @@
   </div>
 </template>
 <script setup lang="ts">
+import { onMounted } from "vue";
 import { useRouter } from "vue-router";
+import  Map  from "./mapsTracker.vue"
+import { useTrackingStore } from "../store/modules/tracking";
 const router = useRouter();
+
+const trackingStore = useTrackingStore();
+const getListAddress = async () => {
+  try {
+    const res = await trackingStore.allTrackingByOrderId();
+    console.log(res);
+  } catch (error) {
+    console.log(error);
+  } finally {
+  }
+};
+onMounted(() => {
+  getListAddress();
+});
 </script>
 
 <style scoped lang="scss">
@@ -242,4 +254,4 @@ const router = useRouter();
   height: 100vh;
   color: #000000;
 }
-</style>
+</style>./mapsTracker.vue
