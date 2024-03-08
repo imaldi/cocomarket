@@ -16,7 +16,7 @@ export const useCartStore = defineStore("cart", () => {
     return axiosClient.get("/api/cart/total");
   };
   const getCartDetail: CartStore["getCartDetail"] = async (id:any) => {
-    return axiosClient.get(`/api/cart/${id}/show-details`);
+    return axiosClient.get(`/api/cart/${id}/show-detail`);
   };
   const confirmOrders: CartStore["confirmOrders"] = async (payload) => {
     return axiosClient.post(`/api/orders`, payload);
