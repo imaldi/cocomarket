@@ -6,7 +6,6 @@
     </div>
 
     <form @submit.prevent="login" class="login-form">
-      <img src="../../src/assets/icon/arrow-circle.svg" color="#ff0000" alt="arrow-circle" />
       <p class="input-title">Email</p>
       <input type="text" v-model="username" placeholder="Username" class="input-field" />
       <p class="input-title">Password</p>

@@ -1,0 +1,4 @@
+#Thu Mar 07 21:32:34 ICT 2024
+base.0=D\:\\Ezb\\Cocomarket-FE\\platforms\\android\\app\\build\\intermediates\\dex\\release\\mergeDexRelease\\classes.dex
+renamed.0=classes.dex
+path.0=classes.dex
