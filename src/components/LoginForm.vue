@@ -23,12 +23,7 @@
         {{ errors.username }}
       </p>
       <p class="input-title">Password</p>
-      <input
-        type="password"
-        v-model="password"
-        placeholder="Password"
-        class="input-field"
-      />
+      <input type="password" v-model="password" placeholder="Password" class="input-field" />
       <a href="#/forgotpassword" class="forgot-password">Forgot Password?</a>
       <button @click="login" type="submit" class="submit-button">Sign In</button>
     </Form>
@@ -41,31 +36,17 @@
 
     <div class="sign-in-social">
       <div class="apple">
-        <img
-          src="../assets/img/apple-logo.svg"
-          alt="Logo Apple"
-          class="logo-icon"
-        />
+        <img src="../assets/img/apple-logo.svg" alt="Logo Apple" class="logo-icon" />
       </div>
       <div class="google">
-        <img
-          src="../assets/img/google-logo.svg"
-          alt="Logo Apple"
-          class="logo-icon"
-        />
+        <img src="../assets/img/google-logo.svg" alt="Logo Apple" class="logo-icon" />
       </div>
       <div class="facebook">
-        <img
-          src="../assets/img/facebook-logo.svg"
-          alt="Logo Apple"
-          class="logo-icon"
-        />
+        <img src="../assets/img/facebook-logo.svg" alt="Logo Apple" class="logo-icon" />
       </div>
     </div>
 
-    <p class="sign-up-title">
-      Don't Have an account? <a href="#/register" class="sign-up">Sign Up</a>
-    </p>
+    <p class="sign-up-title">Don't Have an account? <a href="#/register" class="sign-up">Sign Up</a></p>
   </div>
 </template>
 

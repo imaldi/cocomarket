@@ -10,7 +10,6 @@
             v-model="inputValue"
             @input="handleInput"
             @focus="showAutocomplete"
-            @blur="hideAutocomplete"
           />
           <!-- <div class="autocomplete-items">
             <div class="autocomplete-item" v-for="(item, index) in dataSearch" :key="index">
@@ -174,9 +173,9 @@ const showAutocomplete = () => {
   }
 };
 
-const hideAutocomplete = () => {
-  showSuggestions.value = false;
-};
+// const hideAutocomplete = () => {
+//   showSuggestions.value = false;
+// };
 
 onMounted(() => {
   getAllProduct(inputValue.value);
