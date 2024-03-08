@@ -104,7 +104,7 @@ const login = async () => {
     localStorage.setItem("token", response.access_token);
     localStorage.setItem("user_id", response.user.id);
     router.push(`home`);
-  } catch (error) {
+  } catch (error: any) {
     ElNotification({
       title: "Error",
       type: "error",

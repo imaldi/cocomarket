@@ -107,6 +107,8 @@ const register = async () => {
   };
   try {
     const response = await authStore.register(payload);
+    console.log(response);
+    
     ElNotification({
       title: "Sukses",
       type: "success",
@@ -115,7 +117,7 @@ const register = async () => {
       message: "berhasil!",
     });
     router.push(`/verifycode`);
-  } catch (error) {
+  } catch (error: any) {
     ElNotification({
       title: "Error",
       type: "error",
