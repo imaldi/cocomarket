@@ -5,36 +5,51 @@
       <h5>Fill your information below or register with your social account</h5>
     </div>
 
-    <form @submit.prevent="register" class="register-form">
+    <Form v-slot="{ errors }" @submit="register" class="register-form">
       <p class="input-title">Name</p>
-      <input
+      <Field
+        name="name"
         type="text"
         v-model="name"
         placeholder="name"
         class="input-field"
+        rules="required"
       />
+      <p class="text-danger text-left text-sm mt-0">
+        {{ errors.name }}
+      </p>
       <p class="input-title">Email</p>
-      <input
+      <Field
+        name="email"
         type="text"
         v-model="username"
         placeholder="Username"
         class="input-field"
+        rules="required"
       />
+      <p class="text-danger text-left text-sm mt-0">
+        {{ errors.email }}
+      </p>
       <p class="input-title">Password</p>
-      <input
+      <Field
+        name="password"
         type="password"
         v-model="password"
         placeholder="Password"
         class="input-field"
+        rules="required|minLength:8|maxLength:12"
       />
+      <p class="text-danger text-left text-sm mt-0">
+        {{ errors.password }}
+      </p>
       <div class="term-checkbox">
-        <input type="checkbox" /><label class="term-label"
+        <input name="agree" type="checkbox" /><label class="term-label"
           >Agree with
           <a href="#" class="term-condition">Term & Condition</a></label
         >
       </div>
       <button type="submit" class="submit-button">Sign Up</button>
-    </form>
+    </Form>
 
     <div class="or-sign-section">
       <hr class="line" />
@@ -76,23 +91,41 @@
 import { ref } from "vue";
 import { useRouter } from "vue-router";
 import { useAuthStore } from "../store/modules/auth";
+import { Form, Field } from "vee-validate";
+import { ElNotification } from "element-plus";
 
 const router = useRouter();
 const authStore = useAuthStore();
 const username = ref("");
 const password = ref("");
-const name = ref("")
+const name = ref("");
 const register = async () => {
   const payload = {
     email: username.value,
     password: password.value,
-    name:name.value
+    name: name.value,
   };
   try {
     const response = await authStore.register(payload);
     console.log(response);
-    router.push(`/`);
-  } catch (error) {}
+    
+    ElNotification({
+      title: "Sukses",
+      type: "success",
+      duration: 2000,
+      customClass: "successNotif",
+      message: "berhasil!",
+    });
+    router.push(`/verifycode`);
+  } catch (error: any) {
+    ElNotification({
+      title: "Error",
+      type: "error",
+      duration: 2000,
+      customClass: "errorNotif",
+      message: error.response.data.message,
+    });
+  }
 };
 </script>
 

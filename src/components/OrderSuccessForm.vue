@@ -28,7 +28,7 @@
           >Receipt</a
         >
         <div
-          @click="router.push('reviewOrder')"
+          @click="reviewOrder()"
           class="text-center p-2 rounded-md w-[80vw] bg-[#7ACDD6] font-bold text-white"
         >
           Review Order
@@ -45,5 +45,8 @@ const route = useRoute();
 const router = useRouter();
 const cekReceipt = () => {
   router.push(`/receipt/${route.params.id}`);
+};
+const reviewOrder = () => {
+  router.push(`/revieworder/${route.params.id}`);
 };
 </script>

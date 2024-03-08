@@ -46,7 +46,7 @@
               <div class="my-auto ml-2 font-bold">CocoPay</div>
             </div>
             <div class="flex justify-between text-center">
-              <div class="text-3xl font-bold">Rp. 230.200</div>
+              <div class="text-3xl font-bold">{{ Number(matchedData?.balance).toLocaleString('id-ID', { style: 'currency', currency: 'IDR' }) }}</div>
               <div class="flex">
                 <div class="mr-0.5">
                   <icon
@@ -145,12 +145,34 @@ const homeStore = useHomeStore();
 const inputValue = ref("");
 const showSuggestions = ref(false);
 const dataSearch = ref([]);
-const dataAmountWallet = ref([]);
+
+interface Item {
+  user_id: string;
+  balance: string;
+}
+
+const matchedData = ref<Item | undefined>(undefined);
 
 const getAmountWallet = async () => {
-  const res = await homeStore.getAmountWallet();
-  dataAmountWallet.value = res.data;
+  try {
+    const res = await homeStore.getAmountWallet();
+    const dataAmountWallet: Item[] = res.data;
+
+    const localStorageUserId = localStorage.getItem("user_id");
+    matchedData.value = dataAmountWallet.find(
+      (item) => item.user_id === localStorageUserId
+    );
+
+    if (matchedData.value) {
+      console.log("Data ditemukan:", matchedData.value);
+    } else {
+      console.log("Data tidak ditemukan");
+    }
+  } catch (error) {
+    console.error("Error:", error);
+  }
 };
+
 
 const handleInput = async (e: any) => {
   const res = await homeStore.getAllSearch(e.target.value);
@@ -172,10 +194,6 @@ const showAutocomplete = () => {
     showSuggestions.value = true;
   }
 };
-
-// const hideAutocomplete = () => {
-//   showSuggestions.value = false;
-// };
 
 onMounted(() => {
   getAllProduct(inputValue.value);
