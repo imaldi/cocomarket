@@ -82,7 +82,7 @@ const routes: RouteRecordRaw[] = [
         component: () => import("../views/Checkout.vue"),
       },
       {
-        path: "/ordersuccess",
+        path: "/ordersuccess/:id",
         name: "OrderSuccess",
         component: () => import("../views/OrderSuccess.vue"),
       },
@@ -273,7 +273,7 @@ const routes: RouteRecordRaw[] = [
         component: () => import("../views/ReviewOrder2.vue"),
       },
       {
-        path: "/receipt",
+        path: "/receipt/:id",
         name: "Receipt",
         component: () => import("../views/Receipt.vue"),
       },

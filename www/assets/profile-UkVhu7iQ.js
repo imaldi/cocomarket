@@ -1,0 +1,1 @@
+import{n as t}from"./index-UJJ6BYsd.js";import{a as r}from"./apiClient-CMYQdQh-.js";const p=t("profile",()=>({updateProfile:async e=>r.put("/api/user/profile",e),updatePassword:async e=>r.post("/api/auth/change",e),getProfile:async()=>r.get("/api/user/profile")}));export{p as u};

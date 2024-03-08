@@ -1,0 +1,1 @@
+import{n as a}from"./index-UJJ6BYsd.js";import{a as r}from"./apiClient-CMYQdQh-.js";const d=a("cart",()=>({confirmOrders:async t=>r.post("/api/orders",t),getCartTotal:async()=>r.get("/api/cart/total"),getCartDetail:async t=>r.get(`/api/cart/${t}/show-details`),addToCart:async t=>r.post("/api/cart",t)}));export{d as u};
