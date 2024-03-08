@@ -51,7 +51,7 @@
               <div>Total Price</div>
               <div class="font-500">Rp. {{ calculateTotalPrice() }}</div>
             </div>
-            <div @click="goToCart(route.params.id)" class="flex p-4 mr-8 rounded-2xl bg-primary w-1/2 justify-center">
+            <div @click="goToCart(detailCategory)" class="flex p-4 mr-8 rounded-2xl bg-primary w-1/2 justify-center">
               <div class="text-2xl text-white">Continue</div>
             </div>
           </div>
@@ -81,14 +81,14 @@ interface Item {
   total_stock: string;
 }
 
-const goToCart = (id: any) => {
-  const payload = {
-    products_id: id,
-  };
+const goToCart = (data: any) => {
+  var payload: any = [];
+  data.forEach((item: any) => {
+    payload.push({ products_id: item.products_id, qty: item.total });
+  });
 
   try {
-    const response = cartStore.addToCart(payload);
-    console.log(response);
+    cartStore.putToCart({ data: payload }, data[0].carts_id);
     router.push(`/checkout`);
   } catch (error) {}
 };
