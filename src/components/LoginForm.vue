@@ -8,7 +8,7 @@
     <Form
       v-slot="{ errors }"
       autocomplete="off"
-      @submit.prevent="login"
+      @submit="login"
       class="login-form"
     >
       <p class="input-title">Email</p>
@@ -17,15 +17,26 @@
         name="Username"
         type="text"
         class="input-field"
-        rules="required|numeric|maxLength:3"
+        placeholder="Email"
+        rules="required"
       />
-      <p class="text-danger text-sm mt-2">
-        {{ errors.username }}
+      <p class="text-danger text-left text-sm mt-0">
+        {{ errors.Username }}
       </p>
       <p class="input-title">Password</p>
-      <input type="password" v-model="password" placeholder="Password" class="input-field" />
+      <Field
+        type="password"
+        name="password"
+        v-model="password"
+        placeholder="Password"
+        class="input-field"
+        rules="required|minLength:8|maxLength:12"
+      />
+      <p class="text-danger text-left text-sm mt-0">
+        {{ errors.password }}
+      </p>
       <a href="#/forgotpassword" class="forgot-password">Forgot Password?</a>
-      <button @click="login" type="submit" class="submit-button">Sign In</button>
+      <button type="submit" class="submit-button">Sign In</button>
     </Form>
 
     <div class="or-sign-section">
@@ -36,17 +47,31 @@
 
     <div class="sign-in-social">
       <div class="apple">
-        <img src="../assets/img/apple-logo.svg" alt="Logo Apple" class="logo-icon" />
+        <img
+          src="../assets/img/apple-logo.svg"
+          alt="Logo Apple"
+          class="logo-icon"
+        />
       </div>
       <div class="google">
-        <img src="../assets/img/google-logo.svg" alt="Logo Apple" class="logo-icon" />
+        <img
+          src="../assets/img/google-logo.svg"
+          alt="Logo Apple"
+          class="logo-icon"
+        />
       </div>
       <div class="facebook">
-        <img src="../assets/img/facebook-logo.svg" alt="Logo Apple" class="logo-icon" />
+        <img
+          src="../assets/img/facebook-logo.svg"
+          alt="Logo Apple"
+          class="logo-icon"
+        />
       </div>
     </div>
 
-    <p class="sign-up-title">Don't Have an account? <a href="#/register" class="sign-up">Sign Up</a></p>
+    <p class="sign-up-title">
+      Don't Have an account? <a href="#/register" class="sign-up">Sign Up</a>
+    </p>
   </div>
 </template>
 
@@ -55,6 +80,8 @@ import { ref } from "vue";
 import { useRouter } from "vue-router";
 import { Form, Field } from "vee-validate";
 import { useAuthStore } from "../store/modules/auth";
+import { ElNotification } from "element-plus";
+
 const router = useRouter();
 const authStore = useAuthStore();
 const username = ref("");
@@ -67,11 +94,25 @@ const login = async () => {
   };
   try {
     const response = await authStore.login(payload);
+    ElNotification({
+      title: "Sukses",
+      type: "success",
+      duration: 2000,
+      customClass: "successNotif",
+      message: "Berhasil Login!",
+    });
     localStorage.setItem("token", response.access_token);
     localStorage.setItem("user_id", response.user.id);
-    // router.push(`verifycode`)
     router.push(`home`);
-  } catch (error) {}
+  } catch (error) {
+    ElNotification({
+      title: "Error",
+      type: "error",
+      duration: 2000,
+      customClass: "errorNotif",
+      message: error.response.data.message,
+    });
+  }
 };
 </script>
 

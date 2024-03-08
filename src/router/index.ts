@@ -167,7 +167,7 @@ const routes: RouteRecordRaw[] = [
         component: () => import("../views/CouponDetail.vue"),
       },
       {
-        path: "/revieworder",
+        path: "/revieworder/:id",
         name: "ReviewOrder",
         component: () => import("../views/ReviewOrder.vue"),
       },
