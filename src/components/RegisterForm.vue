@@ -82,9 +82,7 @@ const authStore = useAuthStore();
 const username = ref("");
 const password = ref("");
 const name = ref("");
-interface Product {
-  email: string;
-}
+
 const register = async () => {
   const payload = {
     email: username.value,
@@ -95,10 +93,7 @@ const register = async () => {
   try {
     const response = await authStore.register(payload);
     if (response && response.data && response.data.email) {
-      const productToAdd: Product = {
-        email: response.data.email,
-      };
-      authStore.addToCart(productToAdd);
+
     }
     console.log(response);
 

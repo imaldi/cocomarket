@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div id="map" ref="map" style="height: 310px"></div>
+    <div id="map" ref="map" style="height: 300px"></div>
   </div>
 </template>
 
@@ -21,12 +21,13 @@ const initializeMap = () => {
       subdomains: ["mt0", "mt1", "mt2", "mt3"],
     }
   ).addTo(map);
+
   L.marker(new LatLng(-6.946196, 107.624861)).addTo(map).bindPopup("Bandung");
   L.marker(new LatLng(-6.2088, 106.8456)).addTo(map).bindPopup("Jakarta");
 
   const latlngs: LatLng[] = [
-    new LatLng(-6.946196, 107.624861),
-    new LatLng(-6.2088, 106.8456),
+    new LatLng(-6.946196, 107.624861), 
+    new LatLng(-6.837565, 107.472050),
   ];
 
   L.polyline(latlngs, { color: "blue" }).addTo(map);

@@ -61,11 +61,7 @@ const router = useRouter();
 const code = ref(["", "", "", ""]);
 
 const emailConfirmation = ref("");
-onMounted(async () => {
-  const emailFromCart = await authStore.getEmailFromCart();
-  const emailConfirmation = emailFromCart;
-  console.log(emai);
-  
+onMounted(async () => {  
 });
 const verifyCode = async () => {
   const enteredCode = code.value.join("");
@@ -76,7 +72,6 @@ const verifyCode = async () => {
   };
   try {
     const response = await authStore.verifyCode(payload);
-    localStorage.setItem("token", response.access_token);
     console.log(response);
     // router.push(`/home`);
   } catch (error) {}

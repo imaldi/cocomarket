@@ -23,7 +23,7 @@
                 <div class="flex font-bold">
                   <div>Rp.</div>
                   <div>
-                    {{ item.products_price.toLocaleString("en-US", { useGrouping: true }).replace(/,/g, ".") }}
+                    {{ item.products_price.toLocaleString().replace(/,/g, ".") }}
                   </div>
                 </div>
               </div>
@@ -78,6 +78,10 @@ interface Item {
   name: string;
   subtitle: string;
   price: number;
+  products_name:string;
+  products_price:string;
+  products_subtitle:string;
+  total:number;
   total_stock: string;
 }
 
@@ -121,15 +125,15 @@ const getCartDetails = async (id: any) => {
   }
 };
 
-const increaseQuantity = (index: number) => {
-  quantity.value[index] += 1;
-};
+// const increaseQuantity = (index: number) => {
+//   quantity.value[index] += 1;
+// };
 
-const decreaseQuantity = (index: number) => {
-  if (quantity.value[index] > 0) {
-    quantity.value[index] -= 1;
-  }
-};
+// const decreaseQuantity = (index: number) => {
+//   if (quantity.value[index] > 0) {
+//     quantity.value[index] -= 1;
+//   }
+// };
 
 const removeItem = (index: number) => {
   detailCategory.value.splice(index, 1);
