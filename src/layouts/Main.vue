@@ -93,7 +93,7 @@
           <div class="text-sm pt-1 text-black" style="margin-top: -12px">Chat</div>
         </div>
       </router-link>
-      <router-link to="/profile" class="nav-item">
+      <router-link to="/profile" class="nav-item mr-4">
         <div>
           <div class="text-center">
             <iconnative
