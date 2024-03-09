@@ -1,0 +1,36 @@
+/* sweetAlertConfig.css */
+.swal-confirm-button {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    background-color: #000;
+    color: white;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .swal-confirm-button:hover {
+    background-color: #68b7d5; /* Ganti warna hover sesuai kebutuhan */
+  }
+  
+  .swal-cancel-button {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    background-color: transparent;
+    color: #7ACDD6;
+    border: 1px solid #7ACDD6; /* Ganti warna border sesuai kebutuhan */
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+  }
+  
+  .swal-cancel-button:hover {
+    background-color: #f0f0f0; /* Ganti warna hover sesuai kebutuhan */
+    color: #333; /* Ganti warna teks hover sesuai kebutuhan */
+  }
+  
