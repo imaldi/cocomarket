@@ -4,12 +4,7 @@
       <div class="bg-white shadow-md rounded-xl p-8">
         <div class="flex">
           <div @click="router.back()">
-            <icon
-              icon="ion:arrow-back-circle-outline"
-              color="#000"
-              width="28"
-              height="28"
-            />
+            <icon icon="ion:arrow-back-circle-outline" color="#000" width="28" height="28" />
           </div>
           <div class="w-full justify-center flex font-bold">Checkout</div>
         </div>
@@ -29,9 +24,7 @@
             />
             <div class="flex flex-col justify-center mx-4">
               <div class="text-sm font-bold">Delivery</div>
-              <div class="text-xs font-normal tracking-tighter">
-                10 - 15 Menit
-              </div>
+              <div class="text-xs font-normal tracking-tighter">10 - 15 Menit</div>
             </div>
             <div>
               <button
@@ -48,8 +41,7 @@
             <div class="text-xs font-bold">Delivery Address</div>
             <div class="text-base font-bold">Home</div>
             <div class="text-xs font-normal">
-              Jl. Raya Batam Centre Blok A No. 10 Perumahan Taman Baloi Indah
-              Batam, Kepulauan Riau 29432, Indonesia
+              Jl. Raya Batam Centre Blok A No. 10 Perumahan Taman Baloi Indah Batam, Kepulauan Riau 29432, Indonesia
             </div>
           </div>
           <div>
@@ -67,17 +59,9 @@
         <div class="text-sm font-semibold mb-4">Order List</div>
 
         <div>
-          <div
-            v-if="totalItem"
-            class="border-solid border border-gray rounded-2xl p-4 my-2"
-          >
+          <div v-if="totalItem" class="border-solid border border-gray rounded-2xl p-4 my-2">
             <div class="flex flex-row">
-              <img
-                class="bg-[#F2F3F2] px-4 rounded-2xl"
-                src="../assets/img/meat1.png"
-                alt="Order Picture"
-                width="70"
-              />
+              <img class="bg-[#F2F3F2] px-4 rounded-2xl" src="../assets/img/meat1.png" alt="Order Picture" width="70" />
               <div class="mx-4 flex flex-col justify-center">
                 <div class="color-black text-sm">
                   {{ namesWithoutNumbers.join(", ") }}
@@ -86,43 +70,23 @@
               </div>
             </div>
             <div class="flex w-full justify-between mt-4">
-              <div class="font-bold text-sm tracking-thighter">
-                Rp. {{ totalItem.amount }}
-              </div>
+              <div class="font-bold text-sm tracking-thighter">Rp. {{ totalItem.amount }}</div>
               <div class="flex items-center">
-                <button class="shadow bg-white border-0 outline-0 py-0 px-2">
-                  <icon
-                    icon="ic:round-minus"
-                    color="#E68027"
-                    width="14"
-                    height="14"
-                  />
-                </button>
-                <div class="text-sm color-gray mx-2">{{ totalItem.total }}</div>
-                <button
-                  class="shadow bg-[#E68027] border-0 outline-0 py-0 px-2"
-                >
-                  <icon
-                    icon="ic:round-plus"
-                    color="white"
-                    width="14"
-                    height="14"
-                  />
-                </button>
+                <!-- <button class="shadow bg-white border-0 outline-0 py-0 px-2">
+                  <icon icon="ic:round-minus" color="#E68027" width="14" height="14" />
+                </button> -->
+                <div class="text-xs font-bold color-gray mx-2">Total: {{ totalItem.total }}</div>
+                <!-- <button class="shadow bg-[#E68027] border-0 outline-0 py-0 px-2">
+                  <icon icon="ic:round-plus" color="white" width="14" height="14" />
+                </button> -->
               </div>
             </div>
           </div>
 
-          <div
-            class="border-solid border border-gray rounded-2xl p-4 my-2 flex"
-          >
+          <div class="border-solid border border-gray rounded-2xl p-4 my-2 flex">
             <div>
-              <div class="text-black text-xs tracking-tight">
-                Want To Add More Item?
-              </div>
-              <div class="text-gray text-xs tracking-tight">
-                You can still add other items.
-              </div>
+              <div class="text-black text-xs tracking-tight">Want To Add More Item?</div>
+              <div class="text-gray text-xs tracking-tight">You can still add other items.</div>
             </div>
             <button
               class="ml-14 bg-white border-[#E68027] text-color-[#E68027] rounded-full border-2 text-xs py-2 px-4"
@@ -136,9 +100,7 @@
       <div class="border-solid border-0 border-b my-4 border-gray"></div>
 
       <div class="mx-8">
-        <div
-          class="border-solid border border-gray rounded-2xl p-4 my-2 flex items-center justify-between"
-        >
+        <div class="border-solid border border-gray rounded-2xl p-4 my-2 flex items-center justify-between">
           <div class="">
             <icon
               class="bg-[#E68027] p-2 rounded-full"
@@ -149,16 +111,9 @@
             />
           </div>
 
-          <div class="text-black font-bold text-xs tracking-tight">
-            use the promo first, right?
-          </div>
+          <div class="text-black font-bold text-xs tracking-tight">use the promo first, right?</div>
 
-          <icon
-            icon="ph:arrow-circle-right"
-            color="#E68027"
-            width="28"
-            height="28"
-          />
+          <icon icon="ph:arrow-circle-right" color="#E68027" width="28" height="28" />
         </div>
 
         <div
@@ -179,36 +134,24 @@
             <div>{{ otherCost }}</div>
           </div>
         </div>
-        <div
-          class="border-solid border border-b-0 border-gray p-4 flex flex-col justify-between"
-        >
+        <div class="border-solid border border-b-0 border-gray p-4 flex flex-col justify-between">
           <div class="font-bold text-base flex justify-between my-2">
             <div>Price</div>
             <div>{{ totalPrice }}</div>
           </div>
         </div>
-        <div
-          class="border-solid border border-gray p-4 flex flex-col justify-between rounded-2xl rounded-t-0"
-        >
+        <div class="border-solid border border-gray p-4 flex flex-col justify-between rounded-2xl rounded-t-0">
           <div class="font-bold text-sm flex justify-between my-2">
             <div class="text-[#E68027]">Detail</div>
             <div>
-              <icon
-                icon="mingcute:right-line"
-                color="#E68027"
-                width="20"
-                height="20"
-              />
+              <icon icon="mingcute:right-line" color="#E68027" width="20" height="20" />
             </div>
           </div>
         </div>
       </div>
 
       <div class="relative">
-        <div
-          class="fixed w-full bg-white rounded-lg shadow-md"
-          style="bottom: 0"
-        >
+        <div class="fixed w-full bg-white rounded-lg shadow-md" style="bottom: 0">
           <div class="px-4 flex flex-row">
             <div class="flex items-center">
               <icon
@@ -243,16 +186,9 @@
               />
             </div>
           </div>
-          <div
-            @click="confirmOrder"
-            class="flex w-full justify-between p-4"
-          >
-            <div
-              class="flex p-2 mr-8 rounded-2xl bg-primary w-full justify-center"
-            >
-              <div  class="text-2xl text-white">
-                Confirm Order
-              </div>
+          <div @click="confirmOrder" class="flex w-full justify-between p-4">
+            <div class="flex p-2 mr-8 rounded-2xl bg-primary w-full justify-center">
+              <div class="text-2xl text-white">Confirm Order</div>
             </div>
           </div>
         </div>
@@ -283,11 +219,7 @@ const shippingCost = ref(5000);
 const otherCost = ref(2000);
 const totalPrice = computed(() => {
   if (totalItem.value) {
-    return (
-      totalItem.value.amount * total.value +
-      otherCost.value +
-      shippingCost.value
-    );
+    return totalItem.value.amount * total.value + otherCost.value + shippingCost.value;
   }
   return 0;
 });
@@ -298,15 +230,15 @@ const price = computed(() => {
   }
   return 0;
 });
-const cash = ref("cash")
+const cash = ref("cash");
 const confirmOrder = async () => {
   const payload = {
-    cash:cash.value,
-  }
+    cash: cash.value,
+  };
   try {
     const res = await cartStore.confirmOrders(payload);
     console.log(res);
-    router.push(`/ordersuccess/${res.data.orders.id}`)
+    router.push(`/ordersuccess/${res.data.orders.id}`);
   } catch (error) {
     console.log(error);
   } finally {
@@ -316,12 +248,8 @@ const getListCart = async () => {
   try {
     const res = await cartStore.getCartTotal();
     totalItem.value = res.data as ItemsTotal;
-    namesWithoutNumbers.value = totalItem.value.products.map((item) =>
-      item.name.replace(/\d+/g, "")
-    );
-    const namesWithoutNumbersCleaned = namesWithoutNumbers.value.map(
-      (name: string) => name.replace(/\d+/g, "")
-    );
+    namesWithoutNumbers.value = totalItem.value.products.map((item) => item.name.replace(/\d+/g, ""));
+    const namesWithoutNumbersCleaned = namesWithoutNumbers.value.map((name: string) => name.replace(/\d+/g, ""));
     console.log(namesWithoutNumbersCleaned);
   } catch (error) {
     console.log(error);
