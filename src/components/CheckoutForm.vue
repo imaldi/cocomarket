@@ -59,111 +59,30 @@
         <div class="text-sm font-semibold mb-4">Order List</div>
 
         <div>
-          <div class="border-solid border border-gray rounded-2xl p-4 my-2">
+          <div v-if="totalItem" class="border-solid border border-gray rounded-2xl p-4 my-2">
             <div class="flex flex-row">
               <img class="bg-[#F2F3F2] px-4 rounded-2xl" src="../assets/img/meat1.png" alt="Order Picture" width="70" />
               <div class="mx-4 flex flex-col justify-center">
-                <div class="color-black text-sm">Kangkung</div>
+                <div class="color-black text-sm">
+                  {{ namesWithoutNumbers.join(", ") }}
+                </div>
                 <div class="color-gray text-sm">5 Ons, Fresh first</div>
               </div>
             </div>
             <div class="flex w-full justify-between mt-4">
-              <div class="font-bold text-sm tracking-thighter">Rp. 15.000</div>
+              <div class="font-bold text-sm tracking-thighter">Rp. {{ totalItem.amount }}</div>
               <div class="flex items-center">
-                <button class="shadow bg-white border-0 outline-0 py-0 px-2">
+                <!-- <button class="shadow bg-white border-0 outline-0 py-0 px-2">
                   <icon icon="ic:round-minus" color="#E68027" width="14" height="14" />
-                </button>
-                <div class="text-sm color-gray mx-2">2</div>
-                <button class="shadow bg-[#E68027] border-0 outline-0 py-0 px-2">
+                </button> -->
+                <div class="text-xs font-bold color-gray mx-2">Total: {{ totalItem.total }}</div>
+                <!-- <button class="shadow bg-[#E68027] border-0 outline-0 py-0 px-2">
                   <icon icon="ic:round-plus" color="white" width="14" height="14" />
-                </button>
+                </button> -->
               </div>
             </div>
           </div>
-          <div class="border-solid border border-gray rounded-2xl p-4 my-2">
-            <div class="flex flex-row">
-              <img class="bg-[#F2F3F2] px-4 rounded-2xl" src="../assets/img/meat1.png" alt="Order Picture" width="70" />
-              <div class="mx-4 flex flex-col justify-center">
-                <div class="color-black text-sm">Kangkung</div>
-                <div class="color-gray text-sm">5 Ons, Fresh</div>
-              </div>
-            </div>
-            <div class="flex w-full justify-between mt-4">
-              <div class="font-bold text-sm tracking-thighter">Rp. 15.000</div>
-              <div class="flex items-center">
-                <button class="shadow bg-white border-0 outline-0 py-0 px-2">
-                  <icon icon="ic:round-minus" color="#E68027" width="14" height="14" />
-                </button>
-                <div class="text-sm color-gray mx-2">2</div>
-                <button class="shadow bg-[#E68027] border-0 outline-0 py-0 px-2">
-                  <icon icon="ic:round-plus" color="white" width="14" height="14" />
-                </button>
-              </div>
-            </div>
-          </div>
-          <div class="border-solid border border-gray rounded-2xl p-4 my-2">
-            <div class="flex flex-row">
-              <img class="bg-[#F2F3F2] px-4 rounded-2xl" src="../assets/img/meat1.png" alt="Order Picture" width="70" />
-              <div class="mx-4 flex flex-col justify-center">
-                <div class="color-black text-sm">Kangkung</div>
-                <div class="color-gray text-sm">5 Ons, Fresh</div>
-              </div>
-            </div>
-            <div class="flex w-full justify-between mt-4">
-              <div class="font-bold text-sm tracking-thighter">Rp. 15.000</div>
-              <div class="flex items-center">
-                <button class="shadow bg-white border-0 outline-0 py-0 px-2">
-                  <icon icon="ic:round-minus" color="#E68027" width="14" height="14" />
-                </button>
-                <div class="text-sm color-gray mx-2">2</div>
-                <button class="shadow bg-[#E68027] border-0 outline-0 py-0 px-2">
-                  <icon icon="ic:round-plus" color="white" width="14" height="14" />
-                </button>
-              </div>
-            </div>
-          </div>
-          <div class="border-solid border border-gray rounded-2xl p-4 my-2">
-            <div class="flex flex-row">
-              <img class="bg-[#F2F3F2] px-4 rounded-2xl" src="../assets/img/meat1.png" alt="Order Picture" width="70" />
-              <div class="mx-4 flex flex-col justify-center">
-                <div class="color-black text-sm">Kangkung</div>
-                <div class="color-gray text-sm">5 Ons, Fresh</div>
-              </div>
-            </div>
-            <div class="flex w-full justify-between mt-4">
-              <div class="font-bold text-sm tracking-thighter">Rp. 15.000</div>
-              <div class="flex items-center">
-                <button class="shadow bg-white border-0 outline-0 py-0 px-2">
-                  <icon icon="ic:round-minus" color="#E68027" width="14" height="14" />
-                </button>
-                <div class="text-sm color-gray mx-2">2</div>
-                <button class="shadow bg-[#E68027] border-0 outline-0 py-0 px-2">
-                  <icon icon="ic:round-plus" color="white" width="14" height="14" />
-                </button>
-              </div>
-            </div>
-          </div>
-          <div class="border-solid border border-gray rounded-2xl p-4 my-2">
-            <div class="flex flex-row">
-              <img class="bg-[#F2F3F2] px-4 rounded-2xl" src="../assets/img/meat1.png" alt="Order Picture" width="70" />
-              <div class="mx-4 flex flex-col justify-center">
-                <div class="color-black text-sm">Kangkung</div>
-                <div class="color-gray text-sm">5 Ons, Fresh last</div>
-              </div>
-            </div>
-            <div class="flex w-full justify-between mt-4">
-              <div class="font-bold text-sm tracking-thighter">Rp. 15.000</div>
-              <div class="flex items-center">
-                <button class="shadow bg-white border-0 outline-0 py-0 px-2">
-                  <icon icon="ic:round-minus" color="#E68027" width="14" height="14" />
-                </button>
-                <div class="text-sm color-gray mx-2">2</div>
-                <button class="shadow bg-[#E68027] border-0 outline-0 py-0 px-2">
-                  <icon icon="ic:round-plus" color="white" width="14" height="14" />
-                </button>
-              </div>
-            </div>
-          </div>
+
           <div class="border-solid border border-gray rounded-2xl p-4 my-2 flex">
             <div>
               <div class="text-black text-xs tracking-tight">Want To Add More Item?</div>
@@ -199,31 +118,34 @@
 
         <div
           class="border-solid border border-gray rounded-2xl rounded-b-0 border-b-0 p-4 mt-2 flex flex-col justify-between"
+          v-if="totalItem"
         >
           <div class="font-bold text-sm">Payment Summary</div>
           <div class="flex justify-between my-2 text-sm">
             <div>Price</div>
-            <div>38.000</div>
+            <div>RP. {{ price }}</div>
           </div>
           <div class="flex justify-between my-2 text-sm">
             <div>Shipping Costs</div>
-            <div>5.000</div>
+            <div>{{ shippingCost }}</div>
           </div>
           <div class="flex justify-between my-2 text-sm">
             <div>Other costs</div>
-            <div>2.000</div>
+            <div>{{ otherCost }}</div>
           </div>
         </div>
         <div class="border-solid border border-b-0 border-gray p-4 flex flex-col justify-between">
           <div class="font-bold text-base flex justify-between my-2">
             <div>Price</div>
-            <div>38.000</div>
+            <div>{{ totalPrice }}</div>
           </div>
         </div>
         <div class="border-solid border border-gray p-4 flex flex-col justify-between rounded-2xl rounded-t-0">
           <div class="font-bold text-sm flex justify-between my-2">
             <div class="text-[#E68027]">Detail</div>
-            <div><icon icon="mingcute:right-line" color="#E68027" width="20" height="20" /></div>
+            <div>
+              <icon icon="mingcute:right-line" color="#E68027" width="20" height="20" />
+            </div>
           </div>
         </div>
       </div>
@@ -244,12 +166,14 @@
                 <div class="text-sm">0</div>
               </div>
             </div>
-            <div class="flex items-center mr-4"><icon icon="ic:round-plus" color="gray" width="28" height="28" /></div>
+            <div class="flex items-center mr-4">
+              <icon icon="ic:round-plus" color="gray" width="28" height="28" />
+            </div>
             <div class="flex items-center">
               <icon icon="vaadin:cash" color="green" width="28" height="28" />
               <div class="mx-4">
                 <div class="text-xs">Cash</div>
-                <div class="text-sm">45.000</div>
+                <div class="text-sm">{{ totalPrice }}</div>
               </div>
             </div>
             <div class="flex items-center ml-8">
@@ -262,7 +186,7 @@
               />
             </div>
           </div>
-          <div @click="router.push('/ordersuccess')" class="flex w-full justify-between p-4">
+          <div @click="confirmOrder" class="flex w-full justify-between p-4">
             <div class="flex p-2 mr-8 rounded-2xl bg-primary w-full justify-center">
               <div class="text-2xl text-white">Confirm Order</div>
             </div>
@@ -275,8 +199,76 @@
 
 <script setup lang="ts">
 import { useRouter } from "vue-router";
+import { useCartStore } from "../store/modules/cart";
+import { ref, onMounted, computed } from "vue";
+import { useAddressStore } from "../store/modules/address";
 
 const router = useRouter();
+const addressStore = useAddressStore();
+const cartStore = useCartStore();
+const namesWithoutNumbers = ref<string[]>([]);
+const totalItem = ref<ItemsTotal | null>(null);
+interface ItemsTotal {
+  price: string;
+  total: string;
+  amount: number;
+  products: { name: string }[];
+}
+const total = ref(1);
+const shippingCost = ref(5000);
+const otherCost = ref(2000);
+const totalPrice = computed(() => {
+  if (totalItem.value) {
+    return totalItem.value.amount * total.value + otherCost.value + shippingCost.value;
+  }
+  return 0;
+});
+
+const price = computed(() => {
+  if (totalItem.value) {
+    return totalItem.value.amount * total.value;
+  }
+  return 0;
+});
+const cash = ref("cash");
+const confirmOrder = async () => {
+  const payload = {
+    cash: cash.value,
+  };
+  try {
+    const res = await cartStore.confirmOrders(payload);
+    console.log(res);
+    router.push(`/ordersuccess/${res.data.orders.id}`);
+  } catch (error) {
+    console.log(error);
+  } finally {
+  }
+};
+const getListCart = async () => {
+  try {
+    const res = await cartStore.getCartTotal();
+    totalItem.value = res.data as ItemsTotal;
+    namesWithoutNumbers.value = totalItem.value.products.map((item) => item.name.replace(/\d+/g, ""));
+    const namesWithoutNumbersCleaned = namesWithoutNumbers.value.map((name: string) => name.replace(/\d+/g, ""));
+    console.log(namesWithoutNumbersCleaned);
+  } catch (error) {
+    console.log(error);
+  } finally {
+  }
+};
+const getListAddress = async () => {
+  try {
+    const res = await addressStore.getListAddress();
+    console.log(res);
+  } catch (error) {
+    console.log(error);
+  } finally {
+  }
+};
+onMounted(() => {
+  getListCart();
+  getListAddress();
+});
 </script>
 
 <style scoped lang="scss">

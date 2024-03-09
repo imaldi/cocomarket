@@ -82,7 +82,7 @@ const routes: RouteRecordRaw[] = [
         component: () => import("../views/Checkout.vue"),
       },
       {
-        path: "/ordersuccess",
+        path: "/ordersuccess/:id",
         name: "OrderSuccess",
         component: () => import("../views/OrderSuccess.vue"),
       },
@@ -167,7 +167,7 @@ const routes: RouteRecordRaw[] = [
         component: () => import("../views/CouponDetail.vue"),
       },
       {
-        path: "/revieworder",
+        path: "/revieworder/:id",
         name: "ReviewOrder",
         component: () => import("../views/ReviewOrder.vue"),
       },
@@ -271,6 +271,26 @@ const routes: RouteRecordRaw[] = [
         path: "/revieworder2",
         name: "ReviewOrder2",
         component: () => import("../views/ReviewOrder2.vue"),
+      },
+      {
+        path: "/receipt/:id",
+        name: "Receipt",
+        component: () => import("../views/Receipt.vue"),
+      },
+      {
+        path: "/cocopay",
+        name: "Cocopay",
+        component: () => import("../views/Cocopay.vue"),
+      },
+      {
+        path: "/cocopayselectmethod",
+        name: "CocopaySelectMethod",
+        component: () => import("../views/CocopaySelectMethod.vue"),
+      },
+      {
+        path: "/detailcategory/:id",
+        name: "detailCategory",
+        component: () => import("../views/DetailCategory.vue"),
       },
     ],
   },

@@ -10,12 +10,6 @@
           <div>
             <icon icon="solar:menu-dots-bold" style="transform: rotate(90deg)" color="#000" width="28" height="28" />
           </div>
-          <!-- <div class="relative">
-            <div class="w-full absolute bg-white rounded-md shadow-md p-4" style="left: -50px">
-              <div>Mark all as read</div>
-              <div>Delete All</div>
-            </div>
-          </div> -->
         </div>
       </div>
 

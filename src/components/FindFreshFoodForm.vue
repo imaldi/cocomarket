@@ -1,15 +1,32 @@
 <template>
   <div>
     <div class="container">
-      <div class="bg-white shadow-md rounded-xl p-8">
+      <div class="bg-white shadow-xl rounded-xl p-8">
         <div class="flex">
-          <div @click="router.back()">
-            <icon icon="ion:arrow-back-circle-outline" color="#000" width="28" height="28" />
+          <div @click="router.push('/home')">
+            <iconnative icon="arrow-circle-black" color="#000" width="28" height="28" />
           </div>
           <div class="w-full justify-center flex font-bold">Find Fresh Food</div>
         </div>
 
-        <div class="flex pt-4">
+        <div class="flex relative pt-4">
+          <el-select
+            v-model="selectedValues"
+            filterable
+            remote
+            size="medium"
+            reserve-keyword
+            placeholder="Search Food, Drinks, etc"
+            remote-show-suffix
+            :remote-method="remoteMethod"
+            :loading="loading"
+            style="width: 100%"
+          >
+            <el-option v-for="item in dataSearch" :key="item.name" :label="item.name" :value="item.value" />
+          </el-select>
+          <iconnative icon="search" class="my-auto ml-2" color="#E68027" width="18" height="18" />
+        </div>
+        <!-- <div class="flex pt-4">
           <div class="w-full border border-solid border-gray rounded-full p-2 pl-4 my-auto flex">
             <icon icon="iconamoon:search-light" color="#000" width="28" height="28" />
             <div class="ml-4 my-auto">Search Food, Drinks, etc</div>
@@ -19,7 +36,7 @@
               <icon icon="fluent:toggle-multiple-16-regular" color="#7ACDD6" width="28" height="28" />
             </div>
           </div>
-        </div>
+        </div> -->
       </div>
 
       <div class="mx-8">
@@ -33,7 +50,7 @@
               @click="GoDetail(list.id)"
               v-for="(list, index) in dataCategory"
               :key="index"
-              class="rounded-xl p-6 border border-solid"
+              class="rounded-xl p-6 border border-solid border-[#00000035]"
               :style="{ backgroundColor: generateBackgroundColor(index) }"
             >
               <img :src="list.image" width="80" height="80" class="w-full justify-center" alt="" />
@@ -45,33 +62,51 @@
         </div>
       </div>
 
-      <div class="mx-8">
+      <div class="mx-8 pb-20">
         <div class="flex justify-between pt-4 pb-4">
           <div class="font-bold">Fresh Vegan</div>
         </div>
-        <div>
-          <div class="grid grid-cols-2 gap-6">
+        <div class="pl-4 pb-20">
+          <div class="grid grid-cols-2 gap-4">
             <div
               v-for="(item, index) in dataProduct"
               :key="index"
-              class="rounded-xl p-0 mr-6 bg-white"
+              class="rounded-xl p-0 mr-4 bg-white"
               @click="addCart(item.id)"
             >
-              <img :src="item.image" width="80" height="80" class="w-full justify-center" alt="" />
+              <img
+                v-if="item.image !== null"
+                :src="item.image"
+                width="80"
+                height="80"
+                class="w-full justify-center"
+                alt=""
+              />
+              <template v-else>
+                <img
+                  src="../assets/img/template-food.jpg"
+                  width="80"
+                  height="80"
+                  class="w-full justify-center"
+                  alt=""
+                />
+              </template>
               <div>
                 <div>{{ item.name }}</div>
               </div>
               <div class="flex justify-between">
-                <div class="font-500">{{ item.price }}</div>
-                <icon icon="iconoir:add-square" color="#7ACDD6" width="28" height="28" />
+                <div class="font-500">
+                  {{ Number(item.price).toLocaleString("id-ID", { style: "currency", currency: "IDR" }) }}
+                </div>
+                <iconnative icon="fill-plus" color="#7ACDD6" width="28" height="28" />
               </div>
             </div>
           </div>
         </div>
       </div>
 
-      <div v-if="totalItem" @click="router.push('/configaddfreshfood')" class="relative">
-        <div class="fixed w-full bg-white rounded-lg shadow-md" style="bottom: 0.5em">
+      <div v-if="totalItem && totalItem.total !== 0" @click="GoDetailCart(totalItem.carts_id)" class="relative">
+        <div class="fixed w-full bg-white rounded-lg shadow-md" style="bottom: 0">
           <div class="flex w-full justify-between p-4">
             <div class="flex p-4 mr-8 rounded-2xl bg-primary w-full justify-center text-white">
               <div class="flex justify-between w-full">
@@ -82,8 +117,10 @@
                   </div>
                 </div>
                 <div class="flex my-auto">
-                  <div class="text-2xl font-bold mr-2">Rp.{{ totalItem.amount }}</div>
-                  <icon icon="tabler:shopping-bag-plus" class="mr-4" color="#fff" width="28" height="28" />
+                  <div class="text-2xl font-bold mr-2">
+                    {{ totalPriceRupiah }}
+                  </div>
+                  <iconnative icon="shopping-bag" class="mr-4" color="#fff" width="28" height="28" />
                 </div>
               </div>
             </div>
@@ -95,10 +132,21 @@
 </template>
 
 <script setup lang="ts">
-import { onMounted, ref } from "vue";
+import { onMounted, ref, computed } from "vue";
 import { useRouter } from "vue-router";
 import { useCategoryStore } from "../store/modules/category";
 import { useCartStore } from "../store/modules/cart";
+import rupiah from "../plugins/rupiah";
+import iconnative from "../icon/index.vue";
+
+const totalPriceRupiah = computed(() => {
+  if (totalItem.value) {
+    const total = parseFloat(totalItem.value.amount);
+    return rupiah(total);
+  }
+  return "Rp. 0";
+});
+
 const router = useRouter();
 const categoryStore = useCategoryStore();
 const cartStore = useCartStore();
@@ -113,7 +161,7 @@ interface Item {
   image: string;
   name: string;
   subtitle: string;
-  price: number;
+  price: string;
   total_stock: string;
 }
 interface Items {
@@ -121,12 +169,13 @@ interface Items {
   image: string;
   name: string;
   subtitle: string;
-  price: number;
+  price: string;
 }
 interface ItemsTotal {
   price: string;
   total: string;
-  amount: number;
+  amount: string;
+  carts_id: number;
   products: { name: string }[];
 }
 
@@ -170,9 +219,18 @@ const generateBackgroundColor = (index: number) => {
   return colors[index % colors.length];
 };
 
+// const GoDetail = (id: number) => {
+//   router.push(`/configaddfreshfood/${id}`);
+// };
+
 const GoDetail = (id: number) => {
+  router.push(`/detailcategory/${id}`);
+};
+
+const GoDetailCart = (id: number) => {
   router.push(`/configaddfreshfood/${id}`);
 };
+
 const addCart = (id: number) => {
   router.push(`/freshfooddetail/${id}`);
 };

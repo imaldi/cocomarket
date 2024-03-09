@@ -3,17 +3,16 @@
     <div class="container" v-if="detailProduct">
       <div class="w-full flex">
         <div class="absolute w-full">
-          <div
-            @click="router.push('/findfreshfood')"
-            class="justify-between flex w-full"
-          >
-            <icon
-              class="relative p-8"
-              icon="ion:chevron-back"
-              color="#000"
-              width="28"
-              height="28"
-            />
+          <div class="justify-between flex w-full">
+            <div @click="router.back()">
+              <icon
+                class="p-8"
+                icon="ion:chevron-back"
+                color="#000"
+                width="28"
+                height="28"
+              />
+            </div>
             <icon
               class="relative p-8"
               icon="ion:share-outline"
@@ -24,12 +23,13 @@
           </div>
         </div>
       </div>
-
-      <div class="bg-gray rounded-xl p-8">
-        <div class="text-center" style="height: 30vh; opacity: 0.5">
-          <img :src="detailProduct.image" width="200" height="200" alt="" />
+      <div class="bg-gray rounded-xl">
+        <div
+          class="text-center"
+          style="height: 30vh;"
+        >
+          <img :src="detailProduct.image" style=" background: rgba(255, 255, 255, 0.5); width: 100%;height: 100%;"  alt="" />
         </div>
-        <div class="text-center text-4xl">...</div>
       </div>
 
       <div class="mx-8">
@@ -87,7 +87,7 @@
       <div class="relative">
         <div
           class="fixed w-full bg-white rounded-lg shadow-md"
-          style="bottom: 4em"
+          style="bottom: 0"
         >
           <div class="flex w-full justify-between p-4">
             <div class="my-auto">
@@ -95,7 +95,7 @@
               <div class="font-bold">Rp. {{ totalPrice }}</div>
             </div>
             <div
-              @click="goToCart(detailProduct.id)"
+              @click="goToCart(detailProduct.id, detailProduct.categories_id)"
               class="flex p-4 mr-8 rounded-2xl bg-primary w-1/2 justify-center"
             >
               <icon
@@ -143,19 +143,21 @@ interface Item {
   name: string;
   image: string;
   price: number;
+  categories_id: number;
   description: string;
 }
 
-const goToCart = (id:any) => {
+const goToCart = (id: any, catId: any) => {
   if (detailProduct.value) {
     const payload = {
       products_id: id,
+      qty: quantity.value,
     };
 
     try {
       const response = cartStore.addToCart(payload);
       console.log(response);
-      router.push(`/addfreshfood`);
+      router.push(`/detailcategory/${catId}`);
     } catch (error) {}
   }
 };
@@ -170,7 +172,7 @@ const totalPrice = computed(() => {
 const getDetail = async (id: any) => {
   try {
     const res = await produkStore.getProductById(id);
-    console.log(res);
+    console.log("res", res);
     detailProduct.value = res.data.product as Item;
   } catch (error) {
     console.log(error);
