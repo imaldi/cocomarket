@@ -15,7 +15,7 @@
         $route.path !== '/verifycode' &&
         $route.path !== '/allowlocationaccess' &&
         $route.path !== '/findfreshfood' &&
-        $route.path !== '/freshfooddetail' &&
+        $route.path !== `/freshfooddetail/${$route.params.id}` &&
         $route.path !== '/addfreshfood' &&
         $route.path !== '/configaddfreshfood' &&
         $route.path !== '/checkout' &&
