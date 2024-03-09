@@ -87,7 +87,7 @@
       <div class="relative">
         <div
           class="fixed w-full bg-white rounded-lg shadow-md"
-          style="bottom: 4em"
+          style="bottom: 0"
         >
           <div class="flex w-full justify-between p-4">
             <div class="my-auto">
