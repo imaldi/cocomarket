@@ -1,0 +1,1 @@
+import{q as e}from"./index-ChTS1shc.js";import{a as r}from"./apiClient-CjKOsRA0.js";const u=e("auth",()=>({login:async t=>r.post("/api/auth/login",t),verifyCode:async t=>r.post("/api/auth/verify",t),register:async t=>r.post("/api/auth/register",t)}));export{u};
