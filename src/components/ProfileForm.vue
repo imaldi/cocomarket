@@ -8,14 +8,18 @@
       </div>
     </div>
 
-
     <div class="d-flex flex-column mt-5 pt-5 justify-content-center">
       <label>
-        <div class="d-flex flex justify-center">
+        <div class="d-flex flex justify-center rounded-full">
           <img
             v-if="dataProfile && dataProfile.profile_picture"
             :src="dataProfile.profile_picture"
-            style="width: 10em; height: 15em; border-radius: 50%; cursor: pointer;"
+            style="
+              width: 50%;
+              height: 13em;
+              border-radius: 50%;
+              cursor: pointer;
+            "
             class="w-full justify-center rounded-full"
             alt=""
           />
@@ -24,8 +28,12 @@
         <div class="d-flex flex text-center justify-center ml-10 mt-0">
           <img
             src="../assets/icon/change-image-profile.svg"
-            @change="handleImageChange"
-            style="width: 3em; margin-top: -4em; margin-left: 6em; cursor: pointer;"
+            style="
+              width: 3em;
+              margin-top: -4em;
+              margin-left: 6em;
+              cursor: pointer;
+            "
             class="w-full justify-end rounded"
             alt=""
           />
@@ -33,7 +41,8 @@
             type="file"
             accept="image/*"
             ref="imageInput"
-            style="display: none;"
+            style="display: none"
+            @change="handleImageChange"
           />
         </div>
       </label>
@@ -93,9 +102,11 @@
     <div
       class="flex py-4 mx-8 border border-dotted border-x-0 border-t-0 border-gray"
     >
-      <div class="w-full my-auto flex">
+      <div @click="logout" class="w-full my-auto flex">
         <img src="../assets/img/sign-out.svg" class="justify-center" alt="" />
-        <div class="ml-4 my-auto text-dark fw-bold">Sign Out</div>
+        <div  class="ml-4 my-auto text-dark fw-bold">
+          Sign Out
+        </div>
       </div>
       <div class="my-auto ml-2">
         <div class="bg-light rounded-md p-1">
@@ -110,6 +121,33 @@
 import { useRouter } from "vue-router";
 import { useProfileStore } from "../store/modules/profile";
 import { onMounted, ref } from "vue";
+import { useAuthStore } from "../store/modules/auth";
+import { ElNotification } from "element-plus";
+
+const authStore = useAuthStore();
+const logout = async () => {
+  try {
+    const response = await authStore.logout();
+    ElNotification({
+      title: "Sukses",
+      type: "success",
+      duration: 2000,
+      customClass: "successNotif",
+      message: "Berhasil Logout!",
+    });
+    console.log(response);
+    localStorage.clear();
+    router.push(`/`);
+  } catch (error: any) {
+    ElNotification({
+      title: "Error",
+      type: "error",
+      duration: 2000,
+      customClass: "errorNotif",
+      message: error.response.data.message,
+    });
+  }
+};
 
 const router = useRouter();
 const profileStore = useProfileStore();
