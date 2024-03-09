@@ -1,1 +1,0 @@
-import{q as o}from"./index-ChTS1shc.js";import{a as r}from"./apiClient-CjKOsRA0.js";const d=o("cart",()=>({putToCart:async(t,a)=>r.put(`/api/cart/${a}/update`,t),confirmOrders:async t=>r.post("/api/orders",t),getCartTotal:async()=>r.get("/api/cart/total"),getCartDetail:async t=>r.get(`/api/cart/${t}/show-detail`),addToCart:async t=>r.post("/api/cart",t)}));export{d as u};
