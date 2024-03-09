@@ -65,6 +65,7 @@ const props = defineProps({
     require: false,
   },
 });
+console.log(props);
 
 const screenWidth = computed(() => screen.width);
 const dialogWidth = computed(() => (screenWidth.value > 768 ? "30%" : "80%"));
