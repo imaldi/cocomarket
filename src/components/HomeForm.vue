@@ -3,23 +3,34 @@
     <div class="container">
       <div class="bg-white shadow-md rounded-xl p-8">
         <div class="flex relative">
-          <img
-            src="../assets/icon/search.svg"
-            class="absolute left-3 top-1 my-auto"
-            width="20"
-            height="30"
-            alt=""
-          />
-
-          <input
-            class="w-full border border-solid border-gray rounded-full p-2 py-3 pl-12 my-auto"
-            type="text"
+          <el-select
+            v-model="selectedValues"
+            filterable
+            remote
+            size="large"
+            reserve-keyword
             placeholder="Search Food, Drinks, etc"
-            v-model="inputValue"
-            @input="handleInput"
-            @focus="showAutocomplete"
-          />
-
+            remote-show-suffix
+            :remote-method="remoteMethod"
+            :loading="loading"
+            style="width: 100%;"
+          >
+            <el-option
+              v-for="item in dataSearch"
+              :key="item.name"
+              :label="item.name"
+              :value="item.value"
+            />
+            <!-- <template #prefix>
+              <img
+                src="../assets/icon/search.svg"
+                class="absolute left-1 px-0 top-1"
+                width="20"
+                height="30"
+                alt=""
+              />
+            </template> -->
+          </el-select>
           <div class="my-auto ml-2">
             <div class="bg-light rounded-md p-1">
               <icon
@@ -137,12 +148,11 @@
 
         <div class="font-bold">Best Deal</div>
         <div style="height: 100%" class="mb-10 pb-8">
-          <div  v-if="dataSearch && dataSearch.length > 0" class="grid grid-cols-2 py-5 gap-6">
-            <div
-              v-for="(item, index) in dataSearch"
-              :key="index"
-             
-            >
+          <div
+            v-if="dataSearch && dataSearch.length > 0"
+            class="grid grid-cols-2 py-5 gap-6"
+          >
+            <div v-for="(item, index) in dataSearch" :key="index">
               <div class="rounded-xl p-0 mr-6 bg-white">
                 <img
                   :src="item.image"
@@ -167,14 +177,18 @@
               </div>
             </div>
           </div>
-          <div v-else-if="dataProduct && dataProduct.length > 0" class="grid grid-cols-2 py-5 gap-6">
+          <div
+            v-else-if="dataProduct && dataProduct.length > 0"
+            class="grid grid-cols-2 py-5 gap-6"
+          >
             <div
               v-for="(item, index) in dataProduct"
               :key="index"
               class="rounded-xl p-0 mr-6 bg-white"
+              @click="addCart(item.products.id)"
             >
               <img
-                v-if="!item.products.image"
+                v-if="item.products.image !== null"
                 :src="item.products.image"
                 width="80"
                 height="80"
@@ -218,19 +232,21 @@ import { useHomeStore } from "../store/modules/home";
 
 const router = useRouter();
 const homeStore = useHomeStore();
-
+const loading = ref(false);
 const inputValue = ref("");
 const showSuggestions = ref(false);
-const dataSearch = ref<ItemSearch[]>([]);
 
 interface Item {
   user_id: string;
   balance: string;
 }
+const dataSearch = ref<ItemSearch[]>([]);
 
 interface ItemSearch {
   image: string;
   name: string;
+  value: string;
+  label: string;
   price: string;
 }
 
@@ -273,27 +289,29 @@ const getBestDeals = async () => {
   }
 };
 
-const handleInput = async (e: any) => {
-  const res = await homeStore.getAllSearch(e.target.value);
-  dataSearch.value = res.data as ItemSearch[];
-  console.log(dataSearch.value);
-
-  try {
-  } catch (error) {
-    console.log(error);
-  } finally {
-  }
-};
-
 const getAllProduct = async (inputValue: string) => {
   const res = await homeStore.getAllSearch(inputValue);
-  // dataSearch.value = res.data;
   console.log(res);
 };
+const addCart = (id: number) => {
+  router.push(`/freshfooddetail/${id}`);
+};
 
-const showAutocomplete = () => {
-  if (inputValue.value.length > 0) {
-    showSuggestions.value = true;
+const selectedValues = ref<string[]>([]);
+
+const remoteMethod = async (query: string) => {
+  if (query) {
+    loading.value = true;
+    try {
+      const res = await homeStore.getAllSearch(query);
+      dataSearch.value = res.data as ItemSearch[];
+    } catch (error) {
+      console.error("Error:", error);
+    } finally {
+      loading.value = false;
+    }
+  } else {
+    dataSearch.value = [];
   }
 };
 
