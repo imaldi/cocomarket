@@ -4,8 +4,8 @@
       <div class="bg-white shadow-md rounded-xl p-8">
         <div @click="router.back()" class="flex">
           <div>
-            <icon
-              icon="ion:arrow-back-circle-outline"
+            <iconnative
+              icon="arrow-circle-black"
               color="#000"
               width="28"
               height="28"
@@ -63,8 +63,8 @@
                   <div
                     class="p2 bg-white rounded-full text-[8px] font-bold border border-solid border-#E68027 mr-2"
                   >
-                    <icon
-                      icon="humbleicons:chat"
+                    <iconnative
+                      icon="chat-single"
                       color="#E68027"
                       width="24"
                       height="20"
@@ -73,8 +73,8 @@
                   <div
                     class="p-2 bg-white rounded-full text-[8px] font-bold border border-solid border-#E68027"
                   >
-                    <icon
-                      icon="mingcute:phone-fill"
+                    <iconnative
+                      icon="phone"
                       color="#E68027"
                       width="24"
                       height="20"
@@ -90,8 +90,8 @@
               >
                 <div class="flex items-center">
                   <div class="mr-2">
-                    <icon
-                      icon="vaadin:dot-circle"
+                    <iconnative
+                      icon="circle-dot"
                       color="#E68027"
                       width="24"
                       height="20"
@@ -104,8 +104,8 @@
 
                 <div class="flex items-center">
                   <div>
-                    <icon
-                      icon="memory:box-light-dashed-vertical"
+                    <iconnative
+                      icon="line-dashed"
                       color="#E68027"
                       width="24"
                       height="20"
@@ -116,8 +116,8 @@
 
                 <div class="flex items-center">
                   <div>
-                    <icon
-                      icon="ph:map-pin-fill"
+                    <iconnative
+                      icon="location-orange"
                       color="#E68027"
                       width="24"
                       height="20"
@@ -228,6 +228,7 @@ import { onMounted } from "vue";
 import { useRouter } from "vue-router";
 import  Map  from "./mapsTracker.vue"
 import { useTrackingStore } from "../store/modules/tracking";
+import iconnative from "../icon/index.vue";
 const router = useRouter();
 
 const trackingStore = useTrackingStore();

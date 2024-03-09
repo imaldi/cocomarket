@@ -5,17 +5,17 @@
         <div class="absolute w-full">
           <div class="justify-between flex w-full">
             <div @click="router.back()">
-              <icon
+              <iconnative
                 class="p-8"
-                icon="ion:chevron-back"
+                icon="back-arrow"
                 color="#000"
                 width="28"
                 height="28"
               />
             </div>
-            <icon
+            <iconnative
               class="relative p-8"
-              icon="ion:share-outline"
+              icon="upload"
               color="#000"
               width="28"
               height="28"
@@ -98,8 +98,8 @@
               @click="goToCart(detailProduct.id, detailProduct.categories_id)"
               class="flex p-4 mr-8 rounded-2xl bg-primary w-1/2 justify-center"
             >
-              <icon
-                icon="tabler:shopping-bag-plus"
+              <iconnative
+                icon="shopping-bag"
                 class="mr-4"
                 color="#fff"
                 width="28"
@@ -121,6 +121,7 @@ import { useRoute, useRouter } from "vue-router";
 import { useProdukStore } from "../store/modules/product";
 import { onMounted, ref, computed } from "vue";
 import { useCartStore } from "../store/modules/cart";
+import iconnative from "../icon/index.vue";
 const route = useRoute();
 const produkStore = useProdukStore();
 const cartStore = useCartStore();

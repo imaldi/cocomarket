@@ -4,7 +4,7 @@
         <div class="bg-white shadow-md rounded-xl p-8">
           <div class="flex">
             <div>
-              <icon icon="ion:arrow-back-circle-outline" color="#000" width="28" height="28" />
+              <iconnative icon="arrow-circle-black" color="#000" width="28" height="28" />
             </div>
             <div class="w-full justify-center flex font-bold">Review Order</div>
           </div>
@@ -97,7 +97,7 @@
                     </div>
                     <div class="flex items-center justify-between mb-2 text-sm"> 
                         <div class="flex items-center">
-                            <icon class="mr-2" icon="flowbite:map-pin-solid" color="#E68027" width="24"  />
+                            <iconnative class="mr-2" icon="pin" color="#E68027" width="20"  />
                             <div>
                                 <div class="
                                 text-md font-semibold">On delivery by Nadhif</div>
@@ -108,7 +108,7 @@
                         
                         <div class="flex">
                             <div class="font-bold text-[#E68027]">Track </div>
-                            <div><icon class="mr-2" icon="mingcute:right-line" color="#E68027" width="24"  /></div>
+                            <div><iconnative class="mr-2" icon="next-arrow" color="#E68027" width="20"  /></div>
                         </div>
                     </div>
                 </div>
@@ -127,7 +127,11 @@
     </div>
     </div>
   </template>
-  
+
+  <script setup lang="ts">
+  import iconnative from "../icon/index.vue";
+  </script>
+
   <style scoped lang="scss">
   .container {
     background-color: white;

@@ -1,5 +1,6 @@
 declare var cordova: Cordova;
 declare var global: window;
+declare var google: google;
 
 interface Cordova {
   file: {
@@ -17,5 +18,13 @@ interface window {
   store: any;
   searchKey: string;
   resolveLocalFileSystemURL: any;
-  OneSignal: any
+  OneSignal: any;
+}
+
+interface google {
+  maps: any;
+  // maps: {
+  //   Map: any[];
+  //   Marker: any
+  // };
 }

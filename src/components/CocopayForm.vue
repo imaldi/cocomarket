@@ -4,7 +4,7 @@
         <div class="bg-white shadow-md rounded-xl p-8">
           <div class="flex">
             <div>
-              <icon icon="ion:arrow-back-circle-outline" color="#000" width="28" height="28" />
+              <iconnative icon="arrow-circle-black" color="#000" width="28" height="28" />
             </div>
             <div class="w-full justify-center flex font-bold">Cocopay</div>
           </div>
@@ -14,7 +14,7 @@
             <div class="mb-6">
                 <div class="flex items-center mb-2">
                     <div class="flex items-center mr-2">
-                        <icon class="#E68027 rounded-full" icon="ep:wallet-filled" color="#E68027" height="28"/>
+                        <iconnative class="#E68027 rounded-full" icon="wallet" color="#E68027" height="28"/>
                     </div>
                     <div class="font-bold ">Cocopay Balance</div>
                 </div>
@@ -64,9 +64,9 @@
             <div>
                 <div class="flex mb-4">
                     <div class="w-1/6 flex items-center">
-                        <icon
-                            class="bg-[#7ACDD6] p-2 rounded-full"
-                            icon="ep:wallet-filled"
+                        <iconnative
+                            class="bg-[#7ACDD6] px-2 py-1 rounded-full"
+                            icon="wallet-plus"
                             color="white"
                             width="20"
                             height="20"
@@ -76,12 +76,12 @@
                         <div class="font-semibold text-sm">Top Up with Xendit</div>
                         <div class="flex items-center text-xs text-gray">
                             <div>Sep 20th 2024</div>
-                            <icon
+                            <iconnative
                             class="mx-2"
-                            icon="icon-park-outline:dot"
+                            icon="dot-darkgray"
                             color="gray"
-                            width="10"
-                            height="10"
+                            width="4"
+                            height="4"
                             />
                             <div>08:15 AM</div>
                         </div>
@@ -91,9 +91,9 @@
                 </div>
                 <div class="flex mb-4">
                     <div class="w-1/6 flex items-center">
-                        <icon
-                            class="bg-[#7ACDD6] p-2 rounded-full"
-                            icon="lets-icons:size-down"
+                        <iconnative
+                            class="bg-[#7ACDD6] px-2 py-1 rounded-full"
+                            icon="withdraw-white"
                             color="white"
                             width="20"
                             height="20"
@@ -103,12 +103,12 @@
                         <div class="font-semibold text-sm">Withdraw to Bank Mandiri</div>
                         <div class="flex items-center text-xs text-gray">
                             <div>Sep 20th 2024</div>
-                            <icon
+                            <iconnative
                             class="mx-2"
-                            icon="icon-park-outline:dot"
+                            icon="dot-darkgray"
                             color="gray"
-                            width="10"
-                            height="10"
+                            width="4"
+                            height="4"
                             />
                             <div>08:15 AM</div>
                         </div>
@@ -118,9 +118,9 @@
                 </div>
                 <div class="flex mb-4">
                     <div class="w-1/6 flex items-center">
-                        <icon
-                            class="bg-[#7ACDD6] p-2 rounded-full"
-                            icon="lets-icons:size-down"
+                        <iconnative
+                            class="bg-[#7ACDD6] px-2 py-1 rounded-full"
+                            icon="withdraw-white"
                             color="white"
                             width="20"
                             height="20"
@@ -130,12 +130,12 @@
                         <div class="font-semibold text-sm">Withdraw to Bank Mandiri</div>
                         <div class="flex items-center text-xs text-gray">
                             <div>Sep 20th 2024</div>
-                            <icon
+                            <iconnative
                             class="mx-2"
-                            icon="icon-park-outline:dot"
+                            icon="dot-darkgray"
                             color="gray"
-                            width="10"
-                            height="10"
+                            width="4"
+                            height="4"
                             />
                             <div>08:15 AM</div>
                         </div>
@@ -145,9 +145,9 @@
                 </div>
                 <div class="flex mb-4">
                     <div class="w-1/6 flex items-center">
-                        <icon
-                            class="bg-[#7ACDD6] p-2 rounded-full"
-                            icon="lets-icons:size-down"
+                        <iconnative
+                            class="bg-[#7ACDD6] px-2 py-1 rounded-full"
+                            icon="withdraw-white"
                             color="white"
                             width="20"
                             height="20"
@@ -157,12 +157,12 @@
                         <div class="font-semibold text-sm">Withdraw to Bank Mandiri</div>
                         <div class="flex items-center text-xs text-gray">
                             <div>Sep 20th 2024</div>
-                            <icon
+                            <iconnative
                             class="mx-2"
-                            icon="icon-park-outline:dot"
+                            icon="dot-darkgray"
                             color="gray"
-                            width="10"
-                            height="10"
+                            width="4"
+                            height="4"
                             />
                             <div>08:15 AM</div>
                         </div>
@@ -172,9 +172,9 @@
                 </div>
                 <div class="flex mb-4">
                     <div class="w-1/6 flex items-center">
-                        <icon
-                            class="bg-[#7ACDD6] p-2 rounded-full"
-                            icon="lets-icons:size-down"
+                        <iconnative
+                            class="bg-[#7ACDD6] px-2 py-1 rounded-full"
+                            icon="withdraw-white"
                             color="white"
                             width="20"
                             height="20"
@@ -184,12 +184,12 @@
                         <div class="font-semibold text-sm">Withdraw to Bank Mandiri</div>
                         <div class="flex items-center text-xs text-gray">
                             <div>Sep 20th 2024</div>
-                            <icon
+                            <iconnative
                             class="mx-2"
-                            icon="icon-park-outline:dot"
+                            icon="dot-darkgray"
                             color="gray"
-                            width="10"
-                            height="10"
+                            width="4"
+                            height="4"
                             />
                             <div>08:15 AM</div>
                         </div>
@@ -199,9 +199,9 @@
                 </div>
                 <div class="flex mb-4">
                     <div class="w-1/6 flex items-center">
-                        <icon
-                            class="bg-[#7ACDD6] p-2 rounded-full"
-                            icon="lets-icons:size-down"
+                        <iconnative
+                            class="bg-[#7ACDD6] px-2 py-1 rounded-full"
+                            icon="withdraw-white"
                             color="white"
                             width="20"
                             height="20"
@@ -211,12 +211,12 @@
                         <div class="font-semibold text-sm">Withdraw to Bank Mandiri</div>
                         <div class="flex items-center text-xs text-gray">
                             <div>Sep 20th 2024</div>
-                            <icon
+                            <iconnative
                             class="mx-2"
-                            icon="icon-park-outline:dot"
+                            icon="dot-darkgray"
                             color="gray"
-                            width="10"
-                            height="10"
+                            width="4"
+                            height="4"
                             />
                             <div>08:15 AM</div>
                         </div>
@@ -226,9 +226,9 @@
                 </div>
                 <div class="flex mb-4">
                     <div class="w-1/6 flex items-center">
-                        <icon
-                            class="bg-[#7ACDD6] p-2 rounded-full"
-                            icon="lets-icons:size-down"
+                        <iconnative
+                            class="bg-[#7ACDD6] px-2 py-1 rounded-full"
+                            icon="withdraw-white"
                             color="white"
                             width="20"
                             height="20"
@@ -238,12 +238,12 @@
                         <div class="font-semibold text-sm">Withdraw to Bank Mandiri</div>
                         <div class="flex items-center text-xs text-gray">
                             <div>Sep 20th 2024</div>
-                            <icon
+                            <iconnative
                             class="mx-2"
-                            icon="icon-park-outline:dot"
+                            icon="dot-darkgray"
                             color="gray"
-                            width="10"
-                            height="10"
+                            width="4"
+                            height="4"
                             />
                             <div>08:15 AM</div>
                         </div>
@@ -253,9 +253,9 @@
                 </div>
                 <div class="flex mb-4">
                     <div class="w-1/6 flex items-center">
-                        <icon
-                            class="bg-[#7ACDD6] p-2 rounded-full"
-                            icon="lets-icons:size-down"
+                        <iconnative
+                            class="bg-[#7ACDD6] px-2 py-1 rounded-full"
+                            icon="withdraw-white"
                             color="white"
                             width="20"
                             height="20"
@@ -265,12 +265,12 @@
                         <div class="font-semibold text-sm">Withdraw to Bank Mandiri</div>
                         <div class="flex items-center text-xs text-gray">
                             <div>Sep 20th 2024</div>
-                            <icon
+                            <iconnative
                             class="mx-2"
-                            icon="icon-park-outline:dot"
+                            icon="dot-darkgray"
                             color="gray"
-                            width="10"
-                            height="10"
+                            width="4"
+                            height="4"
                             />
                             <div>08:15 AM</div>
                         </div>
@@ -280,9 +280,9 @@
                 </div>
                 <div class="flex mb-4">
                     <div class="w-1/6 flex items-center">
-                        <icon
-                            class="bg-[#7ACDD6] p-2 rounded-full"
-                            icon="lets-icons:size-down"
+                        <iconnative
+                            class="bg-[#7ACDD6] px-2 py-1 rounded-full"
+                            icon="withdraw-white"
                             color="white"
                             width="20"
                             height="20"
@@ -292,12 +292,12 @@
                         <div class="font-semibold text-sm">Withdraw to Bank Mandiri</div>
                         <div class="flex items-center text-xs text-gray">
                             <div>Sep 20th 2024</div>
-                            <icon
+                            <iconnative
                             class="mx-2"
-                            icon="icon-park-outline:dot"
+                            icon="dot-darkgray"
                             color="gray"
-                            width="10"
-                            height="10"
+                            width="4"
+                            height="4"
                             />
                             <div>08:15 AM</div>
                         </div>
@@ -307,9 +307,9 @@
                 </div>
                 <div class="flex mb-4">
                     <div class="w-1/6 flex items-center">
-                        <icon
-                            class="bg-[#7ACDD6] p-2 rounded-full"
-                            icon="lets-icons:size-down"
+                        <iconnative
+                            class="bg-[#7ACDD6] px-2 py-1 rounded-full"
+                            icon="withdraw-white"
                             color="white"
                             width="20"
                             height="20"
@@ -319,12 +319,12 @@
                         <div class="font-semibold text-sm">Withdraw to Bank Mandiri</div>
                         <div class="flex items-center text-xs text-gray">
                             <div>Sep 20th 2024</div>
-                            <icon
+                            <iconnative
                             class="mx-2"
-                            icon="icon-park-outline:dot"
+                            icon="dot-darkgray"
                             color="gray"
-                            width="10"
-                            height="10"
+                            width="4"
+                            height="4"
                             />
                             <div>08:15 AM</div>
                         </div>
@@ -349,6 +349,10 @@
     </div>
     </div>
   </template>
+<script setup lang="ts">
+import iconnative from "../icon/index.vue";
+</script>
+
   
   <style scoped lang="scss">
   .container {

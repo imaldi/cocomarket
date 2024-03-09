@@ -2,7 +2,7 @@
   <div class="container">
     <div class="mx-8">
       <div @click="router.push('/verifycode')">
-        <icon
+        <iconnative
       class="pt-20 pb-10"
         icon="outline-arrow-left"
         color="#7ACDD6"
@@ -15,7 +15,7 @@
         <div>Don't Worry, only you can see your personal data. No else will too able too see it.</div>
       </div>
       <div class="text-center mt-4">
-        <icon icon="complete-your-profile" color="#000" width="38" height="38" />
+        <iconnative icon="complete-your-profile" color="#000" width="120" height="120" />
       </div>
 
       <form class="login-form">
@@ -37,7 +37,7 @@
 <script setup lang="ts">
 import { useRouter } from "vue-router";
 import { ref } from "vue";
-import icon from '../icon/index.vue'
+import iconnative from "../icon/index.vue";
 
 const router = useRouter();
 
