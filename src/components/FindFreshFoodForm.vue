@@ -62,11 +62,11 @@
         </div>
       </div>
 
-      <div class="mx-8">
+      <div class="mx-8 pb-20">
         <div class="flex justify-between pt-4 pb-4">
           <div class="font-bold">Fresh Vegan</div>
         </div>
-        <div class="pl-4">
+        <div class="pl-4 pb-20">
           <div class="grid grid-cols-2 gap-4">
             <div
               v-for="(item, index) in dataProduct"
