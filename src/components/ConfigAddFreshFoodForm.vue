@@ -141,7 +141,7 @@ const removeItem = (index: number) => {
 };
 
 onMounted(() => {
-  getCategorybyId(route.params.id);
+  // getCategorybyId(route.params.id);
   getCartDetails(route.params.id);
 });
 </script>

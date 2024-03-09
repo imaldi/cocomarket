@@ -66,7 +66,7 @@
                 <div class="color-black text-sm">
                   {{ namesWithoutNumbers.join(", ") }}
                 </div>
-                <div class="color-gray text-sm">5 Ons, Fresh first</div>
+                <div class="color-gray text-sm"> Fresh {{ totalItem.products_subtitle }}</div>
               </div>
             </div>
             <div class="flex w-full justify-between mt-4">
@@ -89,6 +89,7 @@
               <div class="text-gray text-xs tracking-tight">You can still add other items.</div>
             </div>
             <button
+              @click="router.push('/findfreshfood')"
               class="ml-14 bg-white border-[#E68027] text-color-[#E68027] rounded-full border-2 text-xs py-2 px-4"
             >
               Add More

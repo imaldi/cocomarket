@@ -48,11 +48,11 @@
         $route.path !== '/chooseczipcode' &&
         $route.path !== '/storling' &&
         $route.path !== '/revieworder2' &&
-        $route.path !== '/ordersuccess' &&
         $route.path !== '/receipt' &&
         $route.path !== '/cocopay' &&
         $route.path !== '/cocopayselectmethod' &&
-        $route.path !== `/detailcategory/${$route.params.id}`
+        $route.path !== `/detailcategory/${$route.params.id}` &&
+        $route.path !== `/ordersuccess/${$route.params.id}`
       "
       class="bottom-navigation z-2"
     >
