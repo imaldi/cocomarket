@@ -234,7 +234,6 @@ const router = useRouter();
 const homeStore = useHomeStore();
 const loading = ref(false);
 const inputValue = ref("");
-const showSuggestions = ref(false);
 
 interface Item {
   user_id: string;

@@ -57,16 +57,22 @@
             </div>
 
             <div>
-              <div class="flex font-semibold text-black">Address Detail</div>
-              <form class="text-xs" action="">
+              <div class="flex font-semibold text-black mb-3">Address Detail</div>
+              <Form
+                v-slot="{ errors }"
+                @submit="addAddress()"
+                class="text-xs"
+                action=""
+              >
                 <div
                   class="rounded-xl flex bg-[#F2F2F2] justify-between px-6 my-0 py-0"
                 >
                   <input
                     ref="autocompleteInput"
-                    class="w-5/6 border-none rounded-xl bg-[#F2F2F2] px-5 py-2 my-2"
+                    class="w-5/6 border-none rounded-xl bg-[#F2F2F2] px-0 py-2 my-2"
                     type="text"
-                    name=""
+                    name="address"
+                    rules="required"
                     id=""
                     placeholder="Street Name, Building, Home Number"
                   />
@@ -78,17 +84,23 @@
                       color="gray"
                     ></icon>
                   </div>
+                  <div v-if="FieldEmpty" class="text-red-500 text-sm">
+                    Wajib Diisi !.
+                  </div>
                 </div>
 
-                <input
+                <Field
                   class="w-5/6 border-0 rounded-xl bg-[#F2F2F2] px-6 py-4 my-2"
                   type="text"
                   name="namaJalan"
+                  rules="required"
                   v-model="namaJalan"
                   id=""
                   placeholder="Street Name, Building, Home Number"
                 />
-
+                <p class="text-danger text-left text-sm mt-0">
+                  {{ errors.namaJalan }}
+                </p>
                 <input
                   class="w-5/6l border-0 rounded-xl bg-[#F2F2F2] px-6 py-4"
                   type="text"
@@ -98,17 +110,23 @@
                 />
 
                 <button
-                  @click="addAddress()"
-                  type="button"
+                  type="submit"
                   class="my-8 w-full flex justify-around px-10 py-4 bg-[#EFFDFF] border-dotted border-2 rounded-3xl border-[#7ACDD6] text-[#7ACDD6]"
                 >
                   Save Address
                 </button>
-              </form>
+              </Form>
             </div>
           </div>
         </div>
       </div>
+      <popup-notif
+        v-model="notifConfirm"
+        :message="`Address Add Successfully`"
+        :title="`Back To Profile`"
+        @confirm="goToProfile"
+      >
+      </popup-notif>
     </div>
   </div>
 </template>
@@ -117,18 +135,24 @@
 import { useRouter } from "vue-router";
 import { onMounted, ref } from "vue";
 import { useAddressStore } from "../store/modules/address";
+import { Form, Field } from "vee-validate";
+import PopupNotif from "../components/dialog/SuccessDialog.vue";
 
+const notifConfirm = ref(false);
+const FieldEmpty = ref(false);
 const addressStore = useAddressStore();
 const namaJalan = ref("");
 const latitude = ref(0);
 const longitude = ref(0);
 const addAddress = async () => {
-  // Validasi bahwa latitude dan longitude sudah ada
   if (!latitude || !longitude) {
     console.error("Latitude and longitude are required.");
     return;
   }
-
+  if (!latitude || !longitude) {
+    FieldEmpty.value = true;
+    return;
+  }
   const payload = {
     latitude: latitude.value,
     longitude: longitude.value,
@@ -138,9 +162,13 @@ const addAddress = async () => {
   try {
     const res = await addressStore.addAddress(payload);
     console.log(res);
+    notifConfirm.value = true;
   } catch (error) {
     console.error("Error adding address:", error);
   }
+};
+const goToProfile = () => {
+  router.push("/profile");
 };
 
 const router = useRouter();
