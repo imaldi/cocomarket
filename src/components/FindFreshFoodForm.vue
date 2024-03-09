@@ -9,7 +9,24 @@
           <div class="w-full justify-center flex font-bold">Find Fresh Food</div>
         </div>
 
-        <div class="flex pt-4">
+        <div class="flex relative pt-4">
+          <el-select
+            v-model="selectedValues"
+            filterable
+            remote
+            size="medium"
+            reserve-keyword
+            placeholder="Search Food, Drinks, etc"
+            remote-show-suffix
+            :remote-method="remoteMethod"
+            :loading="loading"
+            style="width: 100%"
+          >
+            <el-option v-for="item in dataSearch" :key="item.name" :label="item.name" :value="item.value" />
+          </el-select>
+          <iconnative icon="search" class="my-auto ml-2" color="#E68027" width="18" height="18" />
+        </div>
+        <!-- <div class="flex pt-4">
           <div class="w-full border border-solid border-gray rounded-full p-2 pl-4 my-auto flex">
             <icon icon="iconamoon:search-light" color="#000" width="28" height="28" />
             <div class="ml-4 my-auto">Search Food, Drinks, etc</div>
@@ -19,7 +36,7 @@
               <icon icon="fluent:toggle-multiple-16-regular" color="#7ACDD6" width="28" height="28" />
             </div>
           </div>
-        </div>
+        </div> -->
       </div>
 
       <div class="mx-8">
@@ -33,7 +50,7 @@
               @click="GoDetail(list.id)"
               v-for="(list, index) in dataCategory"
               :key="index"
-              class="rounded-xl p-6 border border-solid"
+              class="rounded-xl p-6 border border-solid border-[#00000035]"
               :style="{ backgroundColor: generateBackgroundColor(index) }"
             >
               <img :src="list.image" width="80" height="80" class="w-full justify-center" alt="" />
@@ -49,12 +66,12 @@
         <div class="flex justify-between pt-4 pb-4">
           <div class="font-bold">Fresh Vegan</div>
         </div>
-        <div>
-          <div class="grid grid-cols-2 gap-6">
+        <div class="pl-4">
+          <div class="grid grid-cols-2 gap-4">
             <div
               v-for="(item, index) in dataProduct"
               :key="index"
-              class="rounded-xl p-0 mr-6 bg-white"
+              class="rounded-xl p-0 mr-4 bg-white"
               @click="addCart(item.id)"
             >
               <img
@@ -120,6 +137,7 @@ import { useRouter } from "vue-router";
 import { useCategoryStore } from "../store/modules/category";
 import { useCartStore } from "../store/modules/cart";
 import rupiah from "../plugins/rupiah";
+import iconnative from "../icon/index.vue";
 
 const totalPriceRupiah = computed(() => {
   if (totalItem.value) {

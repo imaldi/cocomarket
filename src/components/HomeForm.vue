@@ -1,8 +1,9 @@
 <template>
   <div>
     <div class="container">
-      <div class="bg-white shadow-md rounded-xl p-8">
+      <div class="bg-white shadow-xl rounded-xl p-8">
         <div class="flex relative">
+          <iconnative icon="search" class="my-auto mr-2" color="#E68027" width="28" height="28" />
           <el-select
             v-model="selectedValues"
             filterable
@@ -28,7 +29,7 @@
           </el-select>
           <div class="my-auto ml-2">
             <div class="bg-light rounded-md p-1">
-              <icon icon="clarity:bell-solid-badged" color="#000" width="28" height="28" />
+              <iconnative icon="bell-red-dot" color="#000" width="28" height="28" />
             </div>
           </div>
         </div>
@@ -42,7 +43,7 @@
               <div class="my-auto ml-1 text-xs font-bold">CocoPay</div>
             </div>
             <div class="flex justify-between text-center">
-              <div class="text-3xl font-bold">
+              <div class="font-bold my-auto" style="font-size: 28px">
                 {{
                   matchedData?.balance
                     ? Number(matchedData.balance).toLocaleString("id-ID", {
@@ -53,17 +54,17 @@
                 }}
               </div>
               <div class="flex">
-                <div class="mr-0.5">
+                <div class="mr-1.4">
                   <iconnative icon="withdraw" color="#E68027" width="28" height="28" />
-                  <div class="text-xs">Pay</div>
+                  <div class="text-xs font-500">Pay</div>
                 </div>
-                <div class="mr-0.5">
+                <div class="mr-1.4">
                   <iconnative icon="outline-plus" color="#E68027" width="28" height="28" />
-                  <div class="text-xs">TopUp</div>
+                  <div class="text-xs font-500">TopUp</div>
                 </div>
-                <div class="mr-0.5">
+                <div class="mr-1.4">
                   <iconnative icon="more" color="#E68027" width="28" height="28" />
-                  <div class="text-xs">More</div>
+                  <div class="text-xs font-500">More</div>
                 </div>
               </div>
             </div>
@@ -74,17 +75,26 @@
       <div class="mx-8">
         <div class="pt-4 pb-4 font-bold">Menu</div>
         <div class="flex justify-between">
-          <div @click="router.push('/findfreshfood')" class="rounded-2xl p-4 flex" style="background-color: #ffe7b1">
-            <div class="my-auto mr-2">
-              <img src="../assets/img/fresh-food.png" alt="fresh-food" />
+          <div
+            @click="router.push('/findfreshfood')"
+            class="rounded-2xl p-4 w-1/2 mr-2 flex"
+            style="background-color: #ffe7b1"
+          >
+            <div class="w-full flex justify-center">
+              <div class="my-auto mr-2">
+                <iconnative icon="fresh-food" color="#E68027" width="28" height="28" />
+              </div>
+              <div class="my-auto font-500">Fresh Food</div>
             </div>
-            <div class="my-auto">Fresh Food</div>
           </div>
-          <div class="bg-secondary rounded-2xl p-4 flex" style="background-color: #f6d6d0">
-            <div class="my-auto mr-2">
-              <img src="../assets/img/cocoling.png" alt="cocoling" />
+
+          <div class="bg-secondary rounded-2xl p-4 w-1/2 ml-2 flex" style="background-color: #f6d6d0">
+            <div class="w-full flex justify-center">
+              <div class="my-auto mr-2">
+                <iconnative icon="storling" color="#E68027" width="28" height="28" />
+              </div>
+              <div class="my-auto font-500">Storling</div>
             </div>
-            <div class="my-auto">COCOLING</div>
           </div>
         </div>
 
@@ -100,14 +110,14 @@
               <div class="bg-white rounded-full p-2 pr-6 pl-6 text-black w-1/4 text-center mt-2">Buy Now</div>
             </div>
           </div>
-          <img src="../assets/img/promos.png" width="328" height="228" alt="" />
+          <img src="../assets/img/promos.png" style="width: 100%" alt="promos" />
         </div>
 
         <div class="font-bold">Best Deal</div>
-        <div style="height: 100%" class="mb-10 pb-8">
-          <div v-if="dataSearch && dataSearch.length > 0" class="grid grid-cols-2 py-5 gap-6">
+        <div class="mb-10 pb-8 pl-4" style="height: 100%">
+          <div v-if="dataSearch && dataSearch.length > 0" class="grid grid-cols-2 py-4 gap-4">
             <div v-for="(item, index) in dataSearch" :key="index">
-              <div class="rounded-xl p-0 mr-6 bg-white">
+              <div class="rounded-xl p-0 mr-4 bg-white">
                 <img :src="item.image" width="80" height="80" class="w-full justify-center" alt="" />
                 <div>
                   <div>{{ item.name }}</div>
@@ -125,11 +135,12 @@
               </div>
             </div>
           </div>
-          <div v-else-if="dataProduct && dataProduct.length > 0" class="grid grid-cols-2 py-5 gap-6">
+
+          <div v-else-if="dataProduct && dataProduct.length > 0" class="grid grid-cols-2 py-4 gap-4">
             <div
               v-for="(item, index) in dataProduct"
               :key="index"
-              class="rounded-xl p-0 mr-6 bg-white"
+              class="rounded-xl p-0 mr-4 bg-white"
               @click="addCart(item.products.id)"
             >
               <img
