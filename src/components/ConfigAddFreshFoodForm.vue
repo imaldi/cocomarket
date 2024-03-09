@@ -64,12 +64,12 @@
 <script setup lang="ts">
 import { onMounted, ref } from "vue";
 import { useRoute, useRouter } from "vue-router";
-import { useCategoryStore } from "../store/modules/category";
+// import { useCategoryStore } from "../store/modules/category";
 import { useCartStore } from "../store/modules/cart";
 
 const router = useRouter();
 const route = useRoute();
-const categoryStore = useCategoryStore();
+// const categoryStore = useCategoryStore();
 const cartStore = useCartStore();
 const detailCategory = ref<Item[]>([]);
 const quantity = ref<number[]>([]);
@@ -106,15 +106,15 @@ const calculateTotalPrice = () => {
   return total.toLocaleString("en-US", { useGrouping: true }).replace(/,/g, ".");
 };
 
-const getCategorybyId = async (id: any) => {
-  try {
-    const res = await categoryStore.getProductByCategory(id);
-    quantity.value = new Array(res.data.length).fill(1);
-    detailCategory.value = res.data as Item[];
-  } catch (error) {
-    console.log(error);
-  }
-};
+// const getCategorybyId = async (id: any) => {
+//   try {
+//     const res = await categoryStore.getProductByCategory(id);
+//     quantity.value = new Array(res.data.length).fill(1);
+//     detailCategory.value = res.data as Item[];
+//   } catch (error) {
+//     console.log(error);
+//   }
+// };
 
 const getCartDetails = async (id: any) => {
   try {

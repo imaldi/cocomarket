@@ -4,12 +4,7 @@
       <div class="bg-white shadow-md rounded-xl p-8">
         <div class="flex" @click="router.push('profile')">
           <div>
-            <icon
-              icon="ion:arrow-back-circle-outline"
-              color="#000"
-              width="28"
-              height="28"
-            />
+            <icon icon="ion:arrow-back-circle-outline" color="#000" width="28" height="28" />
           </div>
           <div class="w-full justify-center flex font-bold">Add Address</div>
         </div>
@@ -22,10 +17,7 @@
       </div>
 
       <div class="relative">
-        <div
-          class="fixed w-full h-[54vh] bg-white rounded-lg shadow-md"
-          style="bottom: 0"
-        >
+        <div class="fixed w-full h-[54vh] bg-white rounded-lg shadow-md" style="bottom: 0">
           <div class="flex justify-center">
             <div class="bg-gray rounded-full w-20 h-1 m-2"></div>
           </div>
@@ -39,34 +31,15 @@
             </div>
 
             <div class="flex my-4">
-              <div
-                class="px-4 py-2 bg-[#7ACDD6] rounded-2xl font-semibold text-white text-sm"
-              >
-                Home
-              </div>
-              <div
-                class="px-4 py-2 bg-[#D9D9D9] rounded-2xl font-semibold text-black text-sm mx-2"
-              >
-                Work
-              </div>
-              <div
-                class="px-4 py-2 bg-[#D9D9D9] rounded-2xl font-semibold text-black text-sm"
-              >
-                Other
-              </div>
+              <div class="px-4 py-2 bg-[#7ACDD6] rounded-2xl font-semibold text-white text-sm">Home</div>
+              <div class="px-4 py-2 bg-[#D9D9D9] rounded-2xl font-semibold text-black text-sm mx-2">Work</div>
+              <div class="px-4 py-2 bg-[#D9D9D9] rounded-2xl font-semibold text-black text-sm">Other</div>
             </div>
 
             <div>
               <div class="flex font-semibold text-black mb-3">Address Detail</div>
-              <Form
-                v-slot="{ errors }"
-                @submit="addAddress()"
-                class="text-xs"
-                action=""
-              >
-                <div
-                  class="rounded-xl flex bg-[#F2F2F2] justify-between px-6 my-0 py-0"
-                >
+              <Form v-slot="{ errors }" @submit="addAddress()" class="text-xs" action="">
+                <div class="rounded-xl flex bg-[#F2F2F2] justify-between px-6 my-0 py-0">
                   <input
                     ref="autocompleteInput"
                     class="w-5/6 border-none rounded-xl bg-[#F2F2F2] px-0 py-2 my-2"
@@ -77,16 +50,9 @@
                     placeholder="Street Name, Building, Home Number"
                   />
                   <div class="flex items-center justify-center">
-                    <icon
-                      class="rounded-full py-2"
-                      icon="mingcute:right-line"
-                      width="15"
-                      color="gray"
-                    ></icon>
+                    <icon class="rounded-full py-2" icon="mingcute:right-line" width="15" color="gray"></icon>
                   </div>
-                  <div v-if="FieldEmpty" class="text-red-500 text-sm">
-                    Wajib Diisi !.
-                  </div>
+                  <div v-if="FieldEmpty" class="text-red-500 text-sm">Wajib Diisi !.</div>
                 </div>
 
                 <Field
@@ -137,6 +103,7 @@ import { onMounted, ref } from "vue";
 import { useAddressStore } from "../store/modules/address";
 import { Form, Field } from "vee-validate";
 import PopupNotif from "../components/dialog/SuccessDialog.vue";
+// import { Map } from "googlemaps";
 
 const notifConfirm = ref(false);
 const FieldEmpty = ref(false);
@@ -173,8 +140,8 @@ const goToProfile = () => {
 
 const router = useRouter();
 const autocompleteInput = ref<HTMLInputElement | null>(null);
-let map: google.maps.Map<HTMLElement> | null = null;
-let marker: google.maps.Marker | null = null;
+let map: typeof google.maps.Map | null = null;
+let marker: typeof google.maps.Marker | null = null;
 
 const initMap = () => {
   const mapElement = document.getElementById("google-map");
@@ -184,10 +151,7 @@ const initMap = () => {
     center: { lat: -7.797068, lng: 110.370529 },
     zoom: 15,
   });
-  const autocomplete = new google.maps.places.Autocomplete(
-    autocompleteInput.value!,
-    { types: ["geocode"] }
-  );
+  const autocomplete = new google.maps.places.Autocomplete(autocompleteInput.value!, { types: ["geocode"] });
   autocomplete.addListener("place_changed", () => {
     const place = autocomplete.getPlace();
 

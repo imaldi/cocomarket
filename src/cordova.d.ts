@@ -22,7 +22,9 @@ interface window {
 }
 
 interface google {
-  maps: {
-    Map: any[];
-  };
+  maps: any;
+  // maps: {
+  //   Map: any[];
+  //   Marker: any
+  // };
 }

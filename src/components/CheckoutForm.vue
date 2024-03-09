@@ -67,7 +67,7 @@
                 <div class="color-black text-sm">
                   {{ namesWithoutNumbers.join(", ") }}
                 </div>
-                <div class="color-gray text-sm"> Fresh {{ totalItem.products_subtitle }}</div>
+                <div class="color-gray text-sm">Fresh {{ totalItem.products_subtitle }}</div>
               </div>
             </div>
             <div class="flex w-full justify-between mt-4">
@@ -104,13 +104,7 @@
       <div class="mx-8">
         <div class="border-solid border border-gray rounded-2xl p-4 my-2 flex items-center justify-between">
           <div class="">
-            <iconnative
-              class="bg-[#E6802760] px-2 py-1 rounded-full"
-              icon="coupon"
-              color="white"
-              width="28"
-              
-            />
+            <iconnative class="bg-[#E6802760] px-2 py-1 rounded-full" icon="coupon" color="white" width="28" />
           </div>
 
           <div class="text-black font-bold text-xs tracking-tight">use the promo first, right?</div>
@@ -156,13 +150,7 @@
         <div class="fixed w-full bg-white rounded-lg shadow-md" style="bottom: 0">
           <div class="px-4 flex flex-row justify-center">
             <div class="flex items-center">
-              <iconnative
-                class=""
-                icon="circle-wallet"
-                color="white"
-                width="32"
-                height="32"
-              />
+              <iconnative class="" icon="circle-wallet" color="white" width="32" height="32" />
               <div class="mx-4">
                 <div class="text-xs">CocoPay</div>
                 <div class="text-sm">0</div>
@@ -179,12 +167,7 @@
               </div>
             </div>
             <div class="flex items-center ml-8">
-              <iconnative
-                icon="dotted-circle"
-                color="white"
-                width="28"
-                height="28"
-              />
+              <iconnative icon="dotted-circle" color="white" width="28" height="28" />
             </div>
           </div>
           <div @click="confirmOrder" class="flex w-full justify-between p-4">
@@ -214,6 +197,7 @@ interface ItemsTotal {
   price: string;
   total: string;
   amount: number;
+  products_subtitle: string;
   products: { name: string }[];
 }
 const total = ref(1);
