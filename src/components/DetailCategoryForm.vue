@@ -111,7 +111,8 @@ const cartStore = useCartStore();
 const detailCategory = ref<Item[]>([]);
 const quantity = ref<number[]>([]);
 interface Item {
-  id: string;
+  id: number;
+  image:string;
   name: string;
   subtitle: string;
   price: number;
@@ -121,6 +122,7 @@ interface Item {
 interface ItemsTotal {
   price: string;
   total: string;
+  carts_id:number;
   amount: string;
   products: { name: string }[];
 }

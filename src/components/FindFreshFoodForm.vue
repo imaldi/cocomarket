@@ -157,6 +157,7 @@ interface ItemsTotal {
   price: string;
   total: string;
   amount: string;
+  carts_id:number;
   products: { name: string }[];
 }
 

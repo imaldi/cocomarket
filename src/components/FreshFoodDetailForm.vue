@@ -101,6 +101,7 @@ interface Item {
   name: string;
   image: string;
   price: number;
+  categories_id:number;
   description: string;
 }
 
