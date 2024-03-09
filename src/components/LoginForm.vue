@@ -5,9 +5,21 @@
       <h5>Hi Welcome Back, you've been missed</h5>
     </div>
 
-    <Form v-slot="{ errors }" autocomplete="off" @submit="login" class="login-form">
+    <Form
+      v-slot="{ errors }"
+      autocomplete="off"
+      @submit="login"
+      class="login-form"
+    >
       <p class="input-title">Email</p>
-      <Field v-model="username" name="Username" type="text" class="input-field" placeholder="Email" rules="required" />
+      <Field
+        v-model="username"
+        name="Username"
+        type="text"
+        class="input-field"
+        placeholder="Email"
+        rules="required"
+      />
       <p class="text-danger text-left text-sm mt-0">
         {{ errors.Username }}
       </p>
@@ -57,7 +69,9 @@
       </div>
     </div> -->
 
-    <p class="sign-up-title">Don't Have an account? <a href="#/register" class="sign-up">Sign Up</a></p>
+    <p class="sign-up-title">
+      Don't Have an account? <a href="#/register" class="sign-up">Sign Up</a>
+    </p>
   </div>
 </template>
 
@@ -78,27 +92,31 @@ const login = async () => {
     email: username.value,
     password: password.value,
   };
+
   try {
     const response = await authStore.login(payload);
-    ElNotification({
-      title: "Sukses",
-      type: "success",
-      duration: 2000,
-      customClass: "successNotif",
-      message: "Berhasil Login!",
-    });
-    localStorage.setItem("token", response.access_token);
-    localStorage.setItem("user_id", response.user.id);
-    router.push(`home`);
-  } catch (error: any) {
-    ElNotification({
-      title: "Error",
-      type: "error",
-      duration: 2000,
-      customClass: "errorNotif",
-      message: error.response.data.message,
-    });
-  }
+    if (response.error) {
+      ElNotification({
+        title: "Error",
+        type: "error",
+        duration: 2000,
+        customClass: "errorNotif",
+        message: "Gagal Login",
+      });
+    } else {
+      ElNotification({
+        title: "Sukses",
+        type: "success",
+        duration: 2000,
+        customClass: "successNotif",
+        message: "Berhasil Login!",
+      });
+
+      localStorage.setItem("token", response.access_token);
+      localStorage.setItem("user_id", response.user.id);
+      router.push(`/home`);
+    }
+  } catch (error) {}
 };
 </script>
 

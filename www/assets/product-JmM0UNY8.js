@@ -1,0 +1,1 @@
+import{A as o}from"./index-B9g0HWFr.js";import{a as r}from"./apiClient-Cq4AAmw1.js";const a=o("product",()=>({getHistory:async()=>r.get("/api/history"),getHistoryByid:async t=>r.get(`/api/history/${t}`),getProductById:async t=>r.get(`/api/product/${t}`)}));export{a as u};

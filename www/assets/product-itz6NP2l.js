@@ -1,1 +1,0 @@
-import{A as o}from"./index-B8-fnmfM.js";import{a as r}from"./apiClient-DM8wi-aP.js";const a=o("product",()=>({getHistory:async()=>r.get("/api/history"),getHistoryByid:async t=>r.get(`/api/history/${t}`),getProductById:async t=>r.get(`/api/product/${t}`)}));export{a as u};
