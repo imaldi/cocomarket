@@ -43,7 +43,7 @@
               <div class="my-auto ml-1 text-xs font-bold">CocoPay</div>
             </div>
             <div class="flex justify-between text-center">
-              <div class="font-bold my-auto" style="font-size: 28px">
+              <div class="font-bold" style="font-size: 28px">
                 {{
                   matchedData?.balance
                     ? Number(matchedData.balance).toLocaleString("id-ID", {

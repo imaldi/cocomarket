@@ -1,10 +1,10 @@
 <template>
   <div>
     <div class="container">
-      <div class="bg-white shadow-md rounded-xl p-8">
+      <div class="bg-white shadow-xl rounded-xl p-8">
         <div class="flex">
           <div @click="router.push('/home')">
-            <icon icon="ion:arrow-back-circle-outline" color="#000" width="28" height="28" />
+            <iconnative icon="arrow-circle-black" color="#000" width="28" height="28" />
           </div>
           <div class="w-full justify-center flex font-bold">Find Fresh Food</div>
         </div>
@@ -98,7 +98,7 @@
                 <div class="font-500">
                   {{ Number(item.price).toLocaleString("id-ID", { style: "currency", currency: "IDR" }) }}
                 </div>
-                <icon icon="iconoir:add-square" color="#7ACDD6" width="28" height="28" />
+                <iconnative icon="fill-plus" color="#7ACDD6" width="28" height="28" />
               </div>
             </div>
           </div>
@@ -120,7 +120,7 @@
                   <div class="text-2xl font-bold mr-2">
                     {{ totalPriceRupiah }}
                   </div>
-                  <icon icon="tabler:shopping-bag-plus" class="mr-4" color="#fff" width="28" height="28" />
+                  <iconnative icon="shopping-bag" class="mr-4" color="#fff" width="28" height="28" />
                 </div>
               </div>
             </div>

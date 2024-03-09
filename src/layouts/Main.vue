@@ -17,11 +17,10 @@
         $route.path !== '/findfreshfood' &&
         $route.path !== `/freshfooddetail/${$route.params.id}` &&
         $route.path !== '/addfreshfood' &&
-        $route.path !== '/configaddfreshfood' &&
+        $route.path !== `/configaddfreshfood/${$route.params.id}` &&
         $route.path !== '/checkout' &&
         $route.path !== '/paymentmethod' &&
         $route.path !== '/coupon' &&
-        $route.path !== '/configaddfreshfood' &&
         $route.path !== '/forgotpassword' &&
         $route.path !== '/resetPassword' &&
         $route.path !== '/checkout' &&

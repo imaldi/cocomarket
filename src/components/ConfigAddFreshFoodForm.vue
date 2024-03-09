@@ -45,7 +45,7 @@
       </div>
 
       <div class="relative">
-        <div class="fixed w-full bg-white rounded-lg shadow-md" style="bottom: 4em">
+        <div class="fixed w-full bg-white rounded-lg shadow-md" style="bottom: 0">
           <div v-if="detailCategory" class="flex w-full justify-between p-4">
             <div class="my-auto">
               <div>Total Price</div>
@@ -78,10 +78,10 @@ interface Item {
   name: string;
   subtitle: string;
   price: number;
-  products_name:string;
-  products_price:string;
-  products_subtitle:string;
-  total:number;
+  products_name: string;
+  products_price: string;
+  products_subtitle: string;
+  total: number;
   total_stock: string;
 }
 
