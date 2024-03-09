@@ -137,7 +137,37 @@
 
         <div class="font-bold">Best Deal</div>
         <div style="height: 100%" class="mb-10 pb-8">
-          <div class="grid grid-cols-2 py-5 gap-6">
+          <div  v-if="dataSearch && dataSearch.length > 0" class="grid grid-cols-2 py-5 gap-6">
+            <div
+              v-for="(item, index) in dataSearch"
+              :key="index"
+             
+            >
+              <div class="rounded-xl p-0 mr-6 bg-white">
+                <img
+                  :src="item.image"
+                  width="80"
+                  height="80"
+                  class="w-full justify-center"
+                  alt=""
+                />
+                <div>
+                  <div>{{ item.name }}</div>
+                </div>
+                <div class="flex justify-between">
+                  <div class="font-500">
+                    {{
+                      Number(item.price).toLocaleString("id-ID", {
+                        style: "currency",
+                        currency: "IDR",
+                      })
+                    }}
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div v-else-if="dataProduct && dataProduct.length > 0" class="grid grid-cols-2 py-5 gap-6">
             <div
               v-for="(item, index) in dataProduct"
               :key="index"
@@ -191,11 +221,17 @@ const homeStore = useHomeStore();
 
 const inputValue = ref("");
 const showSuggestions = ref(false);
-const dataSearch = ref([]);
+const dataSearch = ref<ItemSearch[]>([]);
 
 interface Item {
   user_id: string;
   balance: string;
+}
+
+interface ItemSearch {
+  image: string;
+  name: string;
+  price: string;
 }
 
 const matchedData = ref<Item | undefined>(undefined);
@@ -239,7 +275,9 @@ const getBestDeals = async () => {
 
 const handleInput = async (e: any) => {
   const res = await homeStore.getAllSearch(e.target.value);
-  dataSearch.value = res.data;
+  dataSearch.value = res.data as ItemSearch[];
+  console.log(dataSearch.value);
+
   try {
   } catch (error) {
     console.log(error);
@@ -249,7 +287,8 @@ const handleInput = async (e: any) => {
 
 const getAllProduct = async (inputValue: string) => {
   const res = await homeStore.getAllSearch(inputValue);
-  dataSearch.value = res.data;
+  // dataSearch.value = res.data;
+  console.log(res);
 };
 
 const showAutocomplete = () => {
