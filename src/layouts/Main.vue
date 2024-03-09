@@ -5,23 +5,22 @@
       v-if="
         $route.path !== '/' &&
         $route.path !== '/register' &&
-        $route.path !== '/splashScreen' &&
-        $route.path !== '/splashScreen1' &&
-        $route.path !== '/splashScreen2' &&
-        $route.path !== '/splashScreen3' &&
-        $route.path !== '/splashScreen4' &&
+        $route.path !== '/splashscreen' &&
+        $route.path !== '/splashscreen1' &&
+        $route.path !== '/splashscreen2' &&
+        $route.path !== '/splashscreen3' &&
+        $route.path !== '/splashscreen4' &&
         $route.path !== '/completeyourprofile' &&
         $route.path !== '/newpassword' &&
         $route.path !== '/verifycode' &&
         $route.path !== '/allowlocationaccess' &&
         $route.path !== '/findfreshfood' &&
-        $route.path !== '/freshfooddetail' &&
+        $route.path !== `/freshfooddetail/${$route.params.id}` &&
         $route.path !== '/addfreshfood' &&
-        $route.path !== '/configaddfreshfood' &&
+        $route.path !== `/configaddfreshfood/${$route.params.id}` &&
         $route.path !== '/checkout' &&
         $route.path !== '/paymentmethod' &&
         $route.path !== '/coupon' &&
-        $route.path !== '/configaddfreshfood' &&
         $route.path !== '/forgotpassword' &&
         $route.path !== '/resetPassword' &&
         $route.path !== '/checkout' &&
@@ -60,59 +59,49 @@
       <router-link to="/home" class="nav-item">
         <div>
           <div class="text-center">
-            <icon
-              icon="fluent:home-48-filled"
-              :color="$route.path == '/home' ? '#7ACDD6' : '#a6a6a6'"
-              width="30"
-              height="30"
-            />
+            <iconnative :icon="$route.path == '/home' ? 'home-active' : 'home'" width="28" height="28" />
           </div>
           <div class="text-sm pt-1 text-black" style="margin-top: -12px">Home</div>
         </div>
       </router-link>
       <router-link to="/history" class="nav-item">
         <div>
-          <div class="text-center mb-1">
-            <icon
-              icon="ic:baseline-history"
+          <div class="text-center">
+            <iconnative
+              icon="history"
               :color="$route.path == '/history' ? '#7ACDD6' : '#a6a6a6'"
-              width="26"
-              height="26"
+              width="28"
+              height="28"
             />
           </div>
-          <div class="text-sm pt-1 text-black" style="margin-top: -10px">History</div>
+          <div class="text-sm pt-1 text-black" style="margin-top: -12px">History</div>
         </div>
       </router-link>
       <router-link to="/order" class="nav-item">
         <div>
-          <div class="text-center mb-1">
-            <icon
-              icon="bi:cart-check-fill"
-              :color="$route.path == '/order' ? '#7ACDD6' : '#a6a6a6'"
-              width="26"
-              height="26"
-            />
+          <div class="text-center">
+            <iconnative icon="order" :color="$route.path == '/order' ? '#7ACDD6' : '#a6a6a6'" width="28" height="28" />
           </div>
-          <div class="text-sm pt-1 text-black" style="margin-top: -10px">Order</div>
+          <div class="text-sm pt-1 text-black" style="margin-top: -12px">Order</div>
         </div>
       </router-link>
       <router-link to="/chat" class="nav-item">
         <div>
           <div class="text-center">
-            <icon
-              icon="heroicons:chat-bubble-left-right-20-solid"
-              :color="$route.path == '/chat' ? '#7ACDD6' : '#a6a6a6'"
-              width="30"
-              height="30"
-            />
+            <iconnative icon="chat" :color="$route.path == '/chat' ? '#7ACDD6' : '#a6a6a6'" width="28" height="28" />
           </div>
           <div class="text-sm pt-1 text-black" style="margin-top: -12px">Chat</div>
         </div>
       </router-link>
-      <router-link to="/profile" class="nav-item">
+      <router-link to="/profile" class="nav-item mr-5">
         <div>
           <div class="text-center">
-            <icon icon="gg:profile" :color="$route.path == '/profile' ? '#7ACDD6' : '#a6a6a6'" width="30" height="30" />
+            <iconnative
+              icon="profile"
+              :color="$route.path == '/profile' ? '#7ACDD6' : '#a6a6a6'"
+              width="28"
+              height="28"
+            />
           </div>
           <div class="text-sm pt-1 text-black" style="margin-top: -12px">Profile</div>
         </div>
@@ -120,3 +109,7 @@
     </nav>
   </div>
 </template>
+
+<script setup lang="ts">
+import iconnative from "../icon/index.vue";
+</script>

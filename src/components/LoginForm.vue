@@ -5,21 +5,9 @@
       <h5>Hi Welcome Back, you've been missed</h5>
     </div>
 
-    <Form
-      v-slot="{ errors }"
-      autocomplete="off"
-      @submit="login"
-      class="login-form"
-    >
+    <Form v-slot="{ errors }" autocomplete="off" @submit="login" class="login-form">
       <p class="input-title">Email</p>
-      <Field
-        v-model="username"
-        name="Username"
-        type="text"
-        class="input-field"
-        placeholder="Email"
-        rules="required"
-      />
+      <Field v-model="username" name="Username" type="text" class="input-field" placeholder="Email" rules="required" />
       <p class="text-danger text-left text-sm mt-0">
         {{ errors.Username }}
       </p>
@@ -39,11 +27,11 @@
       <button type="submit" class="submit-button">Sign In</button>
     </Form>
 
-    <div class="or-sign-section">
+    <!-- <div class="or-sign-section">
       <hr class="line" />
       <p class="or-sign-in-with">Or Sign In With</p>
       <hr class="line" />
-    </div>
+    </div> -->
 
     <!-- <div class="sign-in-social">
       <div class="apple">
@@ -69,9 +57,7 @@
       </div>
     </div> -->
 
-    <p class="sign-up-title">
-      Don't Have an account? <a href="#/register" class="sign-up">Sign Up</a>
-    </p>
+    <p class="sign-up-title">Don't Have an account? <a href="#/register" class="sign-up">Sign Up</a></p>
   </div>
 </template>
 

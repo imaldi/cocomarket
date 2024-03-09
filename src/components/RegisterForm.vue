@@ -7,26 +7,12 @@
 
     <Form v-slot="{ errors }" @submit="register" class="register-form">
       <p class="input-title">Name</p>
-      <Field
-        name="name"
-        type="text"
-        v-model="name"
-        placeholder="name"
-        class="input-field"
-        rules="required"
-      />
+      <Field name="name" type="text" v-model="name" placeholder="name" class="input-field" rules="required" />
       <p class="text-danger text-left text-sm mt-0">
         {{ errors.name }}
       </p>
       <p class="input-title">Email</p>
-      <Field
-        name="email"
-        type="text"
-        v-model="username"
-        placeholder="Username"
-        class="input-field"
-        rules="required"
-      />
+      <Field name="email" type="text" v-model="username" placeholder="Username" class="input-field" rules="required" />
       <p class="text-danger text-left text-sm mt-0">
         {{ errors.email }}
       </p>
@@ -44,18 +30,17 @@
       </p>
       <div class="term-checkbox">
         <input name="agree" type="checkbox" /><label class="term-label"
-          >Agree with
-          <a href="#" class="term-condition">Term & Condition</a></label
+          >Agree with <a href="#" class="term-condition">Term & Condition</a></label
         >
       </div>
       <button type="submit" class="submit-button">Sign Up</button>
     </Form>
 
-    <div class="or-sign-section">
+    <!-- <div class="or-sign-section">
       <hr class="line" />
       <p class="or-sign-in-with">Or With</p>
       <hr class="line" />
-    </div>
+    </div> -->
 
     <!-- <div class="sign-in-social">
       <div class="apple">
@@ -81,9 +66,7 @@
       </div>
     </div> -->
 
-    <p class="sign-up-title">
-      Already Have an account? <a href="#" class="sign-up">Sign In</a>
-    </p>
+    <p class="sign-up-title">Already Have an account? <a href="#" class="sign-up">Sign In</a></p>
   </div>
 </template>
 

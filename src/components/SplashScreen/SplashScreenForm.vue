@@ -1,9 +1,15 @@
 <template>
   <div class="container text-center">
-    <img class="image-logo" src="../../assets/img/logo-cocomaret.png" alt="Cocomaret Logo" />
-    <p class="title-logo">COCOMARET.</p>
+    <icon icon="logo-title"
+          color="#000"
+          width="28"
+          height="28"/>
   </div>
 </template>
+
+<script setup lang="ts">
+import icon from '../../icon/index.vue'
+</script>
 
 <style scope lang="scss">
 .container {
@@ -14,18 +20,5 @@
   height: 100vh;
   width: 100vw;
   background-color: #7acdd6;
-}
-
-.image-logo {
-  margin-right: 14px;
-  width: 36px;
-  padding: 8px 10px;
-  background-color: white;
-  border-radius: 50%;
-}
-
-.title-logo {
-  font-weight: 700;
-  font-size: 20px;
 }
 </style>

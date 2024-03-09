@@ -15,10 +15,10 @@ import "./assets/style/style.scss";
 import { Icon } from "@iconify/vue";
 
 const app = createApp(App);
+
 app.use(ElementPlus);
 app.use(createPinia());
 app.config.globalProperties.$swal = Swal;
 app.use(initVeeValidate);
 app.component("icon", Icon);
 app.use(router).mount("#app");
-

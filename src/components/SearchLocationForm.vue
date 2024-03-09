@@ -2,23 +2,25 @@
     <div class="container">
         <div class="flex px-10 pt-12">
           <div>
-            <icon icon="ion:arrow-back-circle-outline" color="#000" width="28" height="28" />
+            <icon icon="outline-arrow-left" color="#000" width="28" height="28" />
           </div>
           <div class="w-full justify-center flex font-bold ">Enter Your Location</div>
         </div>
 
         <div class="flex self-center items-center justify-around w-[80%] border-[1px] border-solid rounded-xl mt-6 py-2">
             <div class="flex">
-                <a href="#" class="pr-4">
-                    <icon icon="ep:search" color="#000" width="22" height="22" />
-                </a>
+                <div class="pr-4">
+                    <icon 
+                    icon="search" color="#000" width="22" height="22" />
+                </div>
+
                 <form action="">
                     <input class="bg-white outline-none border-none text-black p-0 m-0" type="text" placeholder="Search Your Location">
             </form>
             </div>
 
             <div>
-                <a href="#"><icon icon="simple-line-icons:close" color="1ADB73" width="20" height="20" /></a>
+                <icon icon="close-b" color="1ADB73" width="20" height="20" />
             </div>
         </div>
 
@@ -122,8 +124,11 @@
     </div>
 </template>
 
+<script setup lang="ts">
+import icon from '../icon/index.vue'
+</script>
 
-<style>
+<style setup lang="scss">
 .container {
   background-color: white;
   display: flex;
