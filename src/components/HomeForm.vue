@@ -28,7 +28,7 @@
             </template> -->
           </el-select>
           <div class="my-auto ml-2">
-            <div class="bg-light rounded-md p-1">
+            <div @click="router.push('/notification')" class="bg-light rounded-md p-1">
               <iconnative icon="bell-red-dot" color="#000" width="28" height="28" />
             </div>
           </div>

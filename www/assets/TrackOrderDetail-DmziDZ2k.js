@@ -1,0 +1,1 @@
+import{_ as a,o as e,c,d as n,a as o}from"./index-B8-fnmfM.js";const s={},_={class:"fw-bold"};function d(r,t){return e(),c("div",_," track ")}const i=a(s,[["render",d]]),p=n({__name:"TrackOrderDetail",setup(r){return(t,l)=>(e(),c("div",null,[o(i)]))}});export{p as default};

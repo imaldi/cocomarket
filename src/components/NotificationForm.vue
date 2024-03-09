@@ -3,7 +3,7 @@
     <div class="container">
       <div class="bg-white shadow-md rounded-xl p-8">
         <div class="flex">
-          <div>
+          <div @click="router.back()">
             <icon icon="ion:arrow-back-circle-outline" color="#000" width="28" height="28" />
           </div>
           <div class="w-full justify-center flex font-bold">Notification</div>
@@ -63,10 +63,11 @@
   </div>
 </template>
 <script setup lang="ts">
+import { useRouter } from 'vue-router';
 import { useNotifStore } from '../store/modules/notification';
 import { ref, onMounted } from "vue";
 
-
+const router = useRouter();
 const notifStore = useNotifStore();
 const listNotifData = ref<Item[]>();
 interface Item {

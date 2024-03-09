@@ -105,7 +105,7 @@
         </div>
       </div>
 
-      <div v-if="totalItem && totalItem.total !== 0" @click="GoDetailCart(totalItem.carts_id)" class="relative">
+      <div v-if="totalItem && totalItem.total !== '0'" @click="GoDetailCart(totalItem.carts_id)" class="relative">
         <div class="fixed w-full bg-white rounded-lg shadow-md" style="bottom: 0">
           <div class="flex w-full justify-between p-4">
             <div class="flex p-4 mr-8 rounded-2xl bg-primary w-full justify-center text-white">
@@ -138,6 +138,7 @@ import { useCategoryStore } from "../store/modules/category";
 import { useCartStore } from "../store/modules/cart";
 import rupiah from "../plugins/rupiah";
 import iconnative from "../icon/index.vue";
+import { useHomeStore } from "../store/modules/home";
 
 const totalPriceRupiah = computed(() => {
   if (totalItem.value) {
@@ -152,6 +153,7 @@ const categoryStore = useCategoryStore();
 const cartStore = useCartStore();
 const dataCategory = ref<Item[]>([]);
 const dataProduct = ref<Items[]>([]);
+const selectedValues=ref("")
 const displayAllCategories = ref(false);
 const seeAll = () => {
   displayAllCategories.value = !displayAllCategories.value;
@@ -188,7 +190,31 @@ const getListCategory = async () => {
   } finally {
   }
 };
-
+const dataSearch = ref<ItemSearch[]>([]);
+const homeStore = useHomeStore();
+interface ItemSearch {
+  image: string;
+  name: string;
+  value: string;
+  label: string;
+  price: string;
+}
+const loading = ref(false)
+const remoteMethod = async (query: string) => {
+  if (query) {
+    loading.value = true;
+    try {
+      const res = await homeStore.getAllSearch(query);
+      dataSearch.value = res.data as ItemSearch[];
+    } catch (error) {
+      console.error("Error:", error);
+    } finally {
+      loading.value = false;
+    }
+  } else {
+    dataSearch.value = [];
+  }
+};
 const namesWithoutNumbers = ref<string[]>([]);
 const totalItem = ref<ItemsTotal | null>(null);
 const getListCart = async () => {
