@@ -88,6 +88,7 @@
 <script setup lang="ts">
 import { useProdukStore } from "../store/modules/product";
 import { ref, onMounted } from "vue";
+import iconnative from "../icon/index.vue";
 
 const useProduct = useProdukStore();
 const dataHistory = ref<Item[]>([]);
