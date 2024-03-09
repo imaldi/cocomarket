@@ -508,8 +508,8 @@ import infoBBlack from "../assets/icon/info-b-black.svg";
 export default {
   props: {
     icon: String,
-    height: Number,
-    width: Number,
+    height: String,
+    width: String,
   },
   data() {
     return {
@@ -646,7 +646,7 @@ export default {
       withdrawWhite,
       dotDarkgray,
       minusWhite,
-      infoBBlack
+      infoBBlack,
     };
   },
 };
