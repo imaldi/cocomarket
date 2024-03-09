@@ -1,1 +1,0 @@
-import{k as e}from"./index-Dygp_ztf.js";import{a as t}from"./apiClient-CkWH4JTq.js";const u=e("auth",()=>({getAllProduct:async()=>t.get("/api/product"),getProductByCategory:async r=>t.get(`/api/category/${r}/product`),getAllCategory:async()=>t.get("/api/category")}));export{u};
