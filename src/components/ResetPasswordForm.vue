@@ -2,7 +2,7 @@
   <div class="container">
     <div class="mt-20 mx-8">
       <div @click="router.back()"> 
-        <icon
+        <iconnative
           icon="outline-arrow-left"
           color="#7ACDD6"
           width="53"
@@ -20,7 +20,7 @@
         <div class="border border-solid border-primary p-4 rounded-xl mt-16">
           <div class="flex">
             <div class="flex w-8 p-2 text-center items-center rounded-xl">
-              <icon
+              <iconnative
                 icon="outline-email"
                 width="28"
                 height="28"
@@ -46,7 +46,7 @@
 <script setup lang="ts">
 import { ref } from "vue";
 import { useRouter } from "vue-router";
-import icon from '../icon/index.vue'
+import iconnative from "../icon/index.vue";
 
 const emailConfirm = ref("")
 const router = useRouter()
@@ -57,6 +57,7 @@ const router = useRouter()
   background-color: white;
   display: flex;
   flex-direction: column;
+  justify-content: start;
   width: 100%;
   height: 100vh;
   color: #000000;

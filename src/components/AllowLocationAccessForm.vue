@@ -9,7 +9,7 @@
       /></div>
 
         <div class="flex justify-center mt-20 mb-10">
-            <icon class="color-[#7ACDD6] bg-[#7ACDD615] p-6 rounded-full" icon="location" width="20vw"></icon>
+            <iconnative class="color-[#7ACDD6] bg-[#7ACDD615] p-6 rounded-full" icon="location" width="80" />
         </div>
 
         <div class="flex flex-col items-center">
@@ -25,5 +25,5 @@
 
 
 <script setup lang="ts">
-import icon from '../icon/index.vue'
+import iconnative from "../icon/index.vue";
 </script>

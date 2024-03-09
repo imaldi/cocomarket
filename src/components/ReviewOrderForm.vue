@@ -4,8 +4,8 @@
       <div class="bg-white shadow-md rounded-xl p-8">
         <div @click="router.back()" class="flex">
           <div>
-            <icon
-              icon="ion:arrow-back-circle-outline"
+            <iconnative
+              icon="arrow-circle-black"
               color="#000"
               width="28"
               height="28"
@@ -38,9 +38,9 @@
           class="border-solid border border-gray rounded-2xl py-4 px-2 mb-4 flex justify-center items-center"
         >
           <div>
-            <icon
+            <iconnative
               class="p-2 mr-2 border border-black border-solid rounded-full"
-              icon="mage:message-info-round-fill"
+              icon="info-b-black"
               color="#000"
               width="28"
               height="28"
@@ -73,9 +73,9 @@
           <div class="flex justify-between my-2 text-sm">
             <div>Payment Method</div>
             <div class="flex items-center">
-              <icon
+              <iconnative
                 class="mr-2"
-                icon="ep:wallet-filled"
+                icon="wallet"
                 color="#E68027"
                 width="24"
               />
@@ -98,9 +98,9 @@
           </div>
           <div class="flex items-center justify-between mb-2 text-sm">
             <div class="flex items-center">
-              <icon
+              <iconnative
                 class="mr-2"
-                icon="flowbite:map-pin-solid"
+                icon="pin"
                 color="#E68027"
                 width="24"
               />
@@ -118,9 +118,9 @@
                 Track
               </div>
               <div>
-                <icon
+                <iconnative
                   class="mr-2"
-                  icon="mingcute:right-line"
+                  icon="next-arrow"
                   color="#E68027"
                   width="24"
                 />
@@ -140,9 +140,9 @@
 
           <div class="flex items-center justify-between mb-2 text-sm">
             <div class="flex items-start mt-2">
-              <icon
+              <iconnative
                 class="mr-2 w-1/10"
-                icon="mage:map-marker-fill"
+                icon="location-orange"
                 color="#E68027"
                 width="24"
               />
@@ -268,6 +268,7 @@
 </template>
 <script setup lang="ts">
 import { useRouter } from "vue-router";
+import iconnative from "../icon/index.vue";
 
 const router = useRouter();
 </script>

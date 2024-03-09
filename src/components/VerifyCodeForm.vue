@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <div @click="router.back()" class="w-full flex justify-start">
-      <icon
+      <iconnative
       class="px-8 pt-20 pb-10"
         icon="outline-arrow-left"
         color="#7ACDD6"
@@ -56,7 +56,7 @@
 import { ref, onMounted } from "vue";
 import { useRouter } from "vue-router";
 import { useAuthStore } from "../store/modules/auth";
-import icon from '../icon/index.vue'
+import iconnative from "../icon/index.vue";
 
 const authStore = useAuthStore();
 const router = useRouter();
