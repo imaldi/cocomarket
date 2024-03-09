@@ -43,7 +43,7 @@
       <div>Didn't receive OTP?</div>
       <a class="underline font-bold color-black" href="#">Resend Code</a>
       <Button
-        @click="router.push(`/completeyourprofile`)"
+        @click="verifyCode"
         class="w-[80vw] bg-[#7ACDD6] mt-8 text-white font-bold"
         >Verify</Button
       >
@@ -52,7 +52,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from "vue";
+import { ref, onMounted } from "vue";
 import { useRouter } from "vue-router";
 import { useAuthStore } from "../store/modules/auth";
 
@@ -61,6 +61,8 @@ const router = useRouter();
 const code = ref(["", "", "", ""]);
 
 const emailConfirmation = ref("");
+onMounted(async () => {  
+});
 const verifyCode = async () => {
   const enteredCode = code.value.join("");
   console.log(`Verifying code: ${enteredCode}`);
@@ -70,7 +72,6 @@ const verifyCode = async () => {
   };
   try {
     const response = await authStore.verifyCode(payload);
-    localStorage.setItem("token", response.access_token);
     console.log(response);
     // router.push(`/home`);
   } catch (error) {}

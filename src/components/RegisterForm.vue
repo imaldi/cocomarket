@@ -82,14 +82,19 @@ const authStore = useAuthStore();
 const username = ref("");
 const password = ref("");
 const name = ref("");
+
 const register = async () => {
   const payload = {
     email: username.value,
     password: password.value,
     name: name.value,
   };
+
   try {
     const response = await authStore.register(payload);
+    if (response && response.data && response.data.email) {
+
+    }
     console.log(response);
 
     ElNotification({

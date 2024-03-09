@@ -60,14 +60,19 @@
               <div class="flex font-semibold text-black">Address Detail</div>
               <form class="text-xs" action="">
                 <div
-                  class="rounded-xl flex bg-[#F2F2F2] justify-between px-6 my-0 py-4"
+                  class="rounded-xl flex bg-[#F2F2F2] justify-between px-6 my-0 py-0"
                 >
-                  <div class="text-gray">
-                    Province, City, district, Zip Code
-                  </div>
+                  <input
+                    ref="autocompleteInput"
+                    class="w-5/6 border-none rounded-xl bg-[#F2F2F2] px-5 py-2 my-2"
+                    type="text"
+                    name=""
+                    id=""
+                    placeholder="Street Name, Building, Home Number"
+                  />
                   <div class="flex items-center justify-center">
                     <icon
-                      class="rounded-full"
+                      class="rounded-full py-2"
                       icon="mingcute:right-line"
                       width="15"
                       color="gray"
@@ -78,7 +83,8 @@
                 <input
                   class="w-5/6 border-0 rounded-xl bg-[#F2F2F2] px-6 py-4 my-2"
                   type="text"
-                  name=""
+                  name="namaJalan"
+                  v-model="namaJalan"
                   id=""
                   placeholder="Street Name, Building, Home Number"
                 />
@@ -92,6 +98,8 @@
                 />
 
                 <button
+                  @click="addAddress()"
+                  type="button"
                   class="my-8 w-full flex justify-around px-10 py-4 bg-[#EFFDFF] border-dotted border-2 rounded-3xl border-[#7ACDD6] text-[#7ACDD6]"
                 >
                   Save Address
@@ -107,15 +115,73 @@
 
 <script setup lang="ts">
 import { useRouter } from "vue-router";
-import { onMounted } from "vue";
+import { onMounted, ref } from "vue";
+import { useAddressStore } from "../store/modules/address";
+
+const addressStore = useAddressStore();
+const namaJalan = ref("");
+const latitude = ref(0);
+const longitude = ref(0);
+const addAddress = async () => {
+  // Validasi bahwa latitude dan longitude sudah ada
+  if (!latitude || !longitude) {
+    console.error("Latitude and longitude are required.");
+    return;
+  }
+
+  const payload = {
+    latitude: latitude.value,
+    longitude: longitude.value,
+    name: namaJalan.value,
+  };
+
+  try {
+    const res = await addressStore.addAddress(payload);
+    console.log(res);
+  } catch (error) {
+    console.error("Error adding address:", error);
+  }
+};
+
 const router = useRouter();
+const autocompleteInput = ref<HTMLInputElement | null>(null);
+let map: google.maps.Map<HTMLElement> | null = null;
+let marker: google.maps.Marker | null = null;
 
 const initMap = () => {
   const mapElement = document.getElementById("google-map");
   if (!mapElement) return;
-  new google.maps.Map(mapElement, {
+
+  map = new google.maps.Map(mapElement, {
     center: { lat: -7.797068, lng: 110.370529 },
     zoom: 15,
+  });
+  const autocomplete = new google.maps.places.Autocomplete(
+    autocompleteInput.value!,
+    { types: ["geocode"] }
+  );
+  autocomplete.addListener("place_changed", () => {
+    const place = autocomplete.getPlace();
+
+    if (!place.geometry || !place.geometry.location) {
+      return;
+    }
+    if (map) {
+      map.setCenter(place.geometry.location);
+      map.setZoom(15);
+      if (marker) {
+        marker.setMap(null);
+      }
+
+      marker = new google.maps.Marker({
+        map,
+        position: place.geometry.location,
+        title: place.name || place.formatted_address,
+      });
+    }
+
+    latitude.value = place.geometry.location.lat();
+    longitude.value = place.geometry.location.lng();
   });
 };
 
@@ -124,6 +190,16 @@ onMounted(() => {
 });
 </script>
 
+<style scoped lang="scss">
+.container {
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100vh;
+  color: #000000;
+}
+</style>
 
 <style scoped lang="scss">
 .container {
