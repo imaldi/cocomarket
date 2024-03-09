@@ -1,18 +1,15 @@
 <template>
   <div class="bg-white">
     <div @click="router.back()" class="flex justify-items-start px-6 pt-10">
-      <icon
-        class="color-black"
-        icon="ph:arrow-circle-left-thin"
-        width="15vw"
-      ></icon>
+      <iconnative icon="arrow-circle-black" color="#000" width="28" height="28" />
     </div>
     <div class="flex flex-col items-center mt-[15vh]">
-      <img
+      <iconnative icon="maskot-chicken" color="#000" width="150" />
+      <!-- <img
         class="w-[60vw]"
         src="../assets/img/order-success.png"
         alt="Order Success Picture"
-      />
+      /> -->
       <h1 class="text-2xl color-black font-bold my-1 w-[55vw] text-center">
         Your order successfully done
       </h1>
@@ -40,6 +37,7 @@
 
 <script setup lang="ts">
 import { useRoute, useRouter } from "vue-router";
+import iconnative from "../icon/index.vue";
 
 const route = useRoute();
 const router = useRouter();

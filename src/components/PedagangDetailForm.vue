@@ -4,7 +4,7 @@
         <div class="bg-white shadow-md rounded-xl p-8">
           <div class="flex items-center">
             <div>
-              <icon icon="ion:arrow-back-circle-outline" color="#000" width="28" height="28" />
+              <iconnative icon="arrow-circle-black" color="#000" width="28" height="28" />
             </div>
             <div class="ml-10">
                 <div class="w-full justify-center flex font-bold">Bakso Solo Kang Emil</div>
@@ -17,7 +17,7 @@
             <div class="pr-2 mr-2 border border-solid border-y-0 border-l-0 border-[#C3C3C3]" >
                 <div class="flex items-center">
                     <div class="pt-[4px]">
-                        <icon icon="iconoir:star-solid" color="#E68027" width="18" height="18" />
+                        <iconnative icon="star" color="#E68027" width="18" height="18" />
                     </div>
                     <div class="font-bold text-xs ml-2">
                         4.6
@@ -31,7 +31,7 @@
             <div class="pr-2 mr-2 border border-solid border-y-0 border-l-0 border-[#C3C3C3]" >
                 <div class="flex items-center">
                     <div class="pt-[4px]">
-                        <icon icon="mage:map-marker-fill" color="#E68027" width="18" height="18" />
+                        <iconnative icon="location-orange" color="#E68027" width="18" height="18" />
                     </div>
                     <div class="font-bold text-xs ml-2">
                         1.99 Km
@@ -45,7 +45,7 @@
             <div class="pr-2 mr-2 border border-solid border-y-0 border-l-0 border-[#C3C3C3]" >
                 <div class="flex items-center">
                     <div class="pt-[4px]">
-                        <icon icon="mdi:like" color="#E68027" width="18" height="18" />
+                        <iconnative icon="like" color="#E68027" width="18" height="18" />
                     </div>
                     <div class="font-bold text-xs ml-2">
                         982+ rating
@@ -59,7 +59,7 @@
             <div class="" >
                 <div class="flex items-center">
                     <div class="pt-[4px]">
-                        <icon icon="fluent-mdl2:gift-box-solid" color="#E68027" width="18" height="18" />
+                        <iconnative icon="packaging" color="#E68027" width="18" height="18" />
                     </div>
                     <div class="font-bold text-xs ml-2">
                         23+ rating
@@ -76,7 +76,7 @@
         <div class="mx-8">
             <div class="my-6 ">
                 <div class="bg-white px-4 py-2 rounded-xl flex">
-                    <img class="p-2 rounded-full bg-[#7ACDD6]" src="../assets/img/checkout.png" alt="Driver Picture" width="28">
+                    <iconnative icon="delivery-b" class="py-1 px-2 rounded-full bg-[#7ACDD6]" alt="Driver Picture" width="28"/>
                     <div class="flex flex-col justify-center mx-4">
                         <div class="text-sm font-bold ">Delivery</div>
                         <div class="text-xs font-normal tracking-tighter">10 - 15 Menit</div>
@@ -90,12 +90,11 @@
             </div>
             <div class="border-solid border border-gray rounded-2xl p-4 my-2 flex items-center justify-between">
                     
-                    <div class=""><icon class="bg-[#E68027] p-2 rounded-full" icon="streamline:discount-percent-coupon-solid" color="white" width="20" height="20" /></div>
+                    <div class=""><iconnative class="bg-[#E6802760] px-2 py-1 rounded-full" icon="coupon" color="white" width="20" height="20" /></div>
                     
                     <div class="text-black font-bold text-sm tracking-tight mr-24">12 idle promo</div>            
-                  
                 
-                    <icon icon="ph:arrow-circle-right" color="#E68027" width="28" height="28" />
+                    <iconnative icon="circle-arrow-right" color="#E68027" width="28" height="28" />
                 </div>
 
         </div>
@@ -114,7 +113,7 @@
                                 Rp.7.500
                             </div>
                             <div>
-                                <div class="bg-[#7ACDD6] rounded -3xl flex items-center "><icon icon="ic:round-plus" color="white" width="24" height="24" /></div>
+                                <div class="bg-[#7ACDD6] rounded px-2 py-1 flex items-center "><iconnative icon="plus-white" color="white" width="16" height="16" /></div>
                             </div>
                         </div>
                     </div>
@@ -132,16 +131,16 @@
                             </div>
                         </div>
                         <div class="flex p-0 items-center justify-between">
-                            <div class="flex items-center "><button class="bg-[#7ACDD6] text-color-white px-2 pb-2 rounded-xl text-[10px] ">
-                                <icon icon="ph:note-light" color="white" width="14"  />   
+                            <div class="flex items-center "><button class="bg-[#7ACDD6] text-color-white px-2 pb-2 rounded-xl text-[10px] flex">
+                                <iconnative icon="note" color="white" width="14"  />   
                            Note
                         </button></div>
                             <div class="flex items-center">
-                                <button class="shadow bg-[#7ACDD6] border-0 outline-0 py-[4px] px-2"><icon icon="ic:round-minus" color="white" width="14" height="14" /></button>
+                                <button class="shadow bg-[#7ACDD6] border-0 outline-0 px-2 py-0"><iconnative icon="minus-white" color="white" width="14" height="14" /></button>
 
                                 <div class="text-sm font-bold color-black mx-2">2</div>
 
-                                <button class="shadow bg-[#7ACDD6] border-0 outline-0 py-[4px]  px-2"><icon icon="ic:round-plus" color="white" width="14" height="14" /></button>
+                                <button class="shadow bg-[#7ACDD6] border-0 outline-0 py-0 px-2"><iconnative icon="plus-white" color="white" width="14" height="14" /></button>
                             </div>
                         </div>
                     </div>
@@ -158,7 +157,7 @@
                                 Rp.7.500
                             </div>
                             <div>
-                                <div class="bg-[#7ACDD6] rounded -3xl flex items-center "><icon icon="ic:round-plus" color="white" width="24" height="24" /></div>
+                               <div class="bg-[#7ACDD6] rounded px-2 py-1 flex items-center "><iconnative icon="plus-white" color="white" width="16" height="16" /></div>
                             </div>
                         </div>
                     </div>
@@ -175,7 +174,7 @@
                                 Rp.7.500
                             </div>
                             <div>
-                                <div class="bg-[#7ACDD6] rounded -3xl flex items-center "><icon icon="ic:round-plus" color="white" width="24" height="24" /></div>
+                               <div class="bg-[#7ACDD6] rounded px-2 py-1 flex items-center "><iconnative icon="plus-white" color="white" width="16" height="16" /></div>
                             </div>
                         </div>
                     </div>
@@ -201,7 +200,7 @@
                 </div>
                 <div class="flex justify-between mt-4">
                     <div>
-                        <icon icon="bi:heart" color="#000" width="20" height="20" />
+                        <iconnative icon="heart" color="#000" width="20" height="20" />
                     </div>
                     <div>
                         <button class="bg-[#7ACDD6] text-black py-[4px] rounded-xl font-400 tracking-widest text-xs w-30 ">
@@ -223,7 +222,7 @@
                 </div>
                 <div class="flex justify-between mt-4">
                     <div>
-                        <icon icon="bi:heart" color="#000" width="20" height="20" />
+                        <iconnative icon="heart" color="#000" width="20" height="20" />
                     </div>
                     <div>
                         <button class="bg-[#7ACDD6] text-black py-[4px] rounded-xl font-400 tracking-widest text-xs w-30 ">
@@ -245,7 +244,7 @@
                 </div>
                 <div class="flex justify-between mt-4">
                     <div>
-                        <icon icon="bi:heart" color="#000" width="20" height="20" />
+                        <iconnative icon="heart" color="#000" width="20" height="20" />
                     </div>
                     <div>
                         <button class="bg-[#7ACDD6] text-black py-[4px] rounded-xl font-400 tracking-widest text-xs w-30 ">
@@ -276,7 +275,7 @@
                 </div>
                 <div class="flex justify-between mt-4">
                     <div>
-                        <icon icon="bi:heart" color="#000" width="20" height="20" />
+                        <iconnative icon="heart" color="#000" width="20" height="20" />
                     </div>
                     <div>
                         <button class="bg-[#7ACDD6] text-black py-[4px] rounded-xl font-400 tracking-widest text-xs w-30 ">
@@ -297,7 +296,7 @@
                 </div>
                 <div class="flex justify-between mt-4">
                     <div>
-                        <icon icon="bi:heart" color="#000" width="20" height="20" />
+                        <iconnative icon="heart" color="#000" width="20" height="20" />
                     </div>
                     <div>
                         <button class="bg-[#7ACDD6] text-black py-[4px] rounded-xl font-400 tracking-widest text-xs w-30 ">
@@ -317,7 +316,7 @@
                     <div class="font-normal text-[8px]">Bakso Solo Kang Emil, Batam KO...</div>
                 </div>
               <div class="text-xl text-white px-4 font-bold">Rp.35.500</div>
-              <div><icon icon="iconamoon:shopping-bag" color="white" width="26" height="26" /></div>
+              <div><iconnative icon="shopping-bag" color="white" width="26" height="26" /></div>
             </div>
           </div>
         </div>
@@ -326,6 +325,10 @@
     </div>
     </div>
   </template>
+
+    <script setup lang="ts">
+    import iconnative from "../icon/index.vue";
+    </script>
   
   <style scoped lang="scss">
   .container {

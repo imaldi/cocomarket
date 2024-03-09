@@ -324,8 +324,8 @@
     <div v-else-if="icon == 'star'">
       <img :src="star" :width="width" :height="height" alt="star" />
     </div>
-    <div v-else-if="icon == 'term-condition'">
-      <img :src="termCondition" :width="width" :height="height" alt="termCondition" />
+    <div v-else-if="icon == 'terms-condition'">
+      <img :src="termsCondition" :width="width" :height="height" alt="termsCondition" />
     </div>
     <div v-else-if="icon == 'trash-b'">
       <img :src="trashB" :width="width" :height="height" alt="trashB" />
@@ -344,6 +344,36 @@
     </div>
     <div v-else-if="icon == 'xendit'">
       <img :src="xendit" :width="width" :height="height" alt="xendit" />
+    </div>
+    <div v-else-if="icon == 'fill-plus-b'">
+      <img :src="fillPlusB" :width="width" :height="height" alt="fillPlusB" />
+    </div>
+    <div v-else-if="icon == 'fill-minus'">
+      <img :src="fillMinus" :width="width" :height="height" alt="fillMinus" />
+    </div>
+    <div v-else-if="icon == 'plus-white'">
+      <img :src="plusWhite" :width="width" :height="height" alt="plusWhite" />
+    </div>
+    <div v-else-if="icon == 'minus-orange'">
+      <img :src="minusOrange" :width="width" :height="height" alt="minusOrange" />
+    </div>
+    <div v-else-if="icon == 'circle-wallet'">
+      <img :src="circleWallet" :width="width" :height="height" alt="circleWallet" />
+    </div>
+    <div v-else-if="icon == 'location-orange'">
+      <img :src="locationOrange" :width="width" :height="height" alt="locationOrange" />
+    </div>
+    <div v-else-if="icon == 'withdraw-white'">
+      <img :src="withdrawWhite" :width="width" :height="height" alt="withdrawWhite" />
+    </div>
+    <div v-else-if="icon == 'dot-darkgray'">
+      <img :src="dotDarkgray" :width="width" :height="height" alt="dotDarkgray" />
+    </div>
+    <div v-else-if="icon == 'minus-white'">
+      <img :src="minusWhite" :width="width" :height="height" alt="minusWhite" />
+    </div>
+    <div v-else-if="icon == 'info-b-black'">
+      <img :src="infoBBlack" :width="width" :height="height" alt="infoBBlack" />
     </div>
   </div>
 </template>
@@ -386,7 +416,7 @@ import coinStar from "../assets/icon/coin-star.svg";
 import completeYourProfile from "../assets/icon/complete-your-profile.svg";
 import coupon from "../assets/icon/coupon.svg";
 import currentLocation from "../assets/icon/current-location.svg";
-// import customer from "../assets/icon/customer.svg";
+import customer from "../assets/icon/customer.svg";
 import delivery from "../assets/icon/delivery.svg";
 import deliveryB from "../assets/icon/delivery-b.svg";
 import discount from "../assets/icon/discount.svg";
@@ -457,13 +487,23 @@ import signOut from "../assets/icon/sign-out.svg";
 import star from "../assets/icon/star.svg";
 import storling from "../assets/icon/storling.svg";
 import success from "../assets/icon/success.svg";
-// import termCondition from "../assets/icon/term-condition.svg";
+import termsCondition from "../assets/icon/terms-condition.svg";
 import trashB from "../assets/icon/trash-b.svg";
 import trash from "../assets/icon/trash.svg";
 import upload from "../assets/icon/upload.svg";
 import walkingPerson from "../assets/icon/walking-person.svg";
 import walletPlus from "../assets/icon/wallet-plus.svg";
 import xendit from "../assets/icon/xendit.svg";
+import fillPlusB from "../assets/icon/fill-plus-b.svg";
+import fillMinus from "../assets/icon/fill-minus.svg";
+import plusWhite from "../assets/icon/plus-white.svg";
+import minusOrange from "../assets/icon/minus-orange.svg";
+import circleWallet from "../assets/icon/circle-wallet.svg";
+import locationOrange from "../assets/icon/location-orange.svg";
+import withdrawWhite from "../assets/icon/withdraw-white.svg";
+import dotDarkgray from "../assets/icon/dot-darkgray.svg";
+import minusWhite from "../assets/icon/minus-white.svg";
+import infoBBlack from "../assets/icon/info-b-black.svg";
 
 export default {
   props: {
@@ -518,7 +558,7 @@ export default {
       completeYourProfile,
       coupon,
       currentLocation,
-      // customer,
+      customer,
       delivery,
       deliveryB,
       discount,
@@ -590,13 +630,23 @@ export default {
       star,
       storling,
       success,
-      // termCondition,
+      termsCondition,
       trashB,
       trash,
       upload,
       walkingPerson,
       walletPlus,
       xendit,
+      fillPlusB,
+      fillMinus,
+      plusWhite,
+      minusOrange,
+      circleWallet,
+      locationOrange,
+      withdrawWhite,
+      dotDarkgray,
+      minusWhite,
+      infoBBlack
     };
   },
 };

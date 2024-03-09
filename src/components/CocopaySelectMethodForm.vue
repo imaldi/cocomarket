@@ -351,7 +351,7 @@
                 <form action="">
                 <div class="text-sm font-semibold my-4">Select Method</div>
                 <div class="flex items-center justify-between border border-gray border-solid rounded-xl px-4 py-2">
-                    <div><icon icon="simple-icons:xendit" color="black" width="28" height="28" /></div>
+                    <div><iconnative icon="xendit" color="black" width="28" height="28" /></div>
                    <div class="text-sm font-semibold mr-38">Xendit</div> 
                    <input class="p-2" name="selectMethod" type="radio" id="Xendit" value="Xendit">
                 </div>
@@ -370,6 +370,9 @@
     </div>
     </div>
   </template>
+  <script setup lang="ts">
+  import iconnative from "../icon/index.vue";
+  </script>
   
   <style scoped lang="scss">
   .container {

@@ -1,14 +1,14 @@
 <template>
   <div class="container text-center">
-    <icon icon="logo-title"
+    <iconnative icon="logo-title"
           color="#000"
-          width="28"
-          height="28"/>
+          width="250"
+          height="250"/>
   </div>
 </template>
 
 <script setup lang="ts">
-import icon from '../../icon/index.vue'
+import iconnative from "../../icon/index.vue";
 </script>
 
 <style scope lang="scss">

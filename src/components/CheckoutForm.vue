@@ -4,7 +4,7 @@
       <div class="bg-white shadow-md rounded-xl p-8">
         <div class="flex">
           <div @click="router.back()">
-            <icon icon="ion:arrow-back-circle-outline" color="#000" width="28" height="28" />
+            <iconnative icon="arrow-circle-black" color="#000" width="28" height="28" />
           </div>
           <div class="w-full justify-center flex font-bold">Checkout</div>
         </div>
@@ -15,12 +15,13 @@
           <div class="bg-[#7ACDD640] px-4 pt-2 pb-8 rounded-xl text-xs">
             Want to change the order type? Click “Switch”
           </div>
-          <div class="bg-white -mt-6 px-4 py-6 rounded-xl flex">
-            <img
-              class="p-2 rounded-full bg-[#7ACDD6]"
-              src="../assets/img/checkout.png"
+          <div class="bg-white -mt-6 px-4 py-6 rounded-xl flex items-center">
+            <iconnative
+              class="px-2 py-1 rounded-full bg-[#7ACDD6]"
+              icon="delivery"
               alt="Driver Picture"
               width="28"
+              height="28"
             />
             <div class="flex flex-col justify-center mx-4">
               <div class="text-sm font-bold">Delivery</div>
@@ -73,11 +74,11 @@
               <div class="font-bold text-sm tracking-thighter">Rp. {{ totalItem.amount }}</div>
               <div class="flex items-center">
                 <!-- <button class="shadow bg-white border-0 outline-0 py-0 px-2">
-                  <icon icon="ic:round-minus" color="#E68027" width="14" height="14" />
+                  <iconnative icon="minus-orange" color="#E68027" width="14" height="14" />
                 </button> -->
                 <div class="text-xs font-bold color-gray mx-2">Total: {{ totalItem.total }}</div>
                 <!-- <button class="shadow bg-[#E68027] border-0 outline-0 py-0 px-2">
-                  <icon icon="ic:round-plus" color="white" width="14" height="14" />
+                  <iconnative icon="plus-white" color="white" width="14" height="14" />
                 </button> -->
               </div>
             </div>
@@ -102,18 +103,18 @@
       <div class="mx-8">
         <div class="border-solid border border-gray rounded-2xl p-4 my-2 flex items-center justify-between">
           <div class="">
-            <icon
-              class="bg-[#E68027] p-2 rounded-full"
-              icon="streamline:discount-percent-coupon-solid"
+            <iconnative
+              class="bg-[#E6802760] px-2 py-1 rounded-full"
+              icon="coupon"
               color="white"
-              width="20"
-              height="20"
+              width="28"
+              
             />
           </div>
 
           <div class="text-black font-bold text-xs tracking-tight">use the promo first, right?</div>
 
-          <icon icon="ph:arrow-circle-right" color="#E68027" width="28" height="28" />
+          <iconnative icon="circle-arrow-right" color="#E68027" width="28" height="28" />
         </div>
 
         <div
@@ -144,7 +145,7 @@
           <div class="font-bold text-sm flex justify-between my-2">
             <div class="text-[#E68027]">Detail</div>
             <div>
-              <icon icon="mingcute:right-line" color="#E68027" width="20" height="20" />
+              <iconnative icon="next-arrow" color="#E68027" width="20" height="20" />
             </div>
           </div>
         </div>
@@ -152,37 +153,36 @@
 
       <div class="relative">
         <div class="fixed w-full bg-white rounded-lg shadow-md" style="bottom: 0">
-          <div class="px-4 flex flex-row">
+          <div class="px-4 flex flex-row justify-center">
             <div class="flex items-center">
-              <icon
-                class="bg-[#E68027] p-2 rounded-full"
-                icon="ep:wallet-filled"
+              <iconnative
+                class=""
+                icon="circle-wallet"
                 color="white"
-                width="20"
-                height="20"
+                width="32"
+                height="32"
               />
               <div class="mx-4">
                 <div class="text-xs">CocoPay</div>
                 <div class="text-sm">0</div>
               </div>
             </div>
-            <div class="flex items-center mr-4">
-              <icon icon="ic:round-plus" color="gray" width="28" height="28" />
+            <div class="flex items-center mr-6">
+              <iconnative icon="plus" color="gray" width="20" height="20" />
             </div>
             <div class="flex items-center">
-              <icon icon="vaadin:cash" color="green" width="28" height="28" />
+              <iconnative icon="money" color="green" width="28" height="28" />
               <div class="mx-4">
                 <div class="text-xs">Cash</div>
                 <div class="text-sm">{{ totalPrice }}</div>
               </div>
             </div>
             <div class="flex items-center ml-8">
-              <icon
-                class="bg-black p-2 rounded-full"
-                icon="solar:menu-dots-bold"
+              <iconnative
+                icon="dotted-circle"
                 color="white"
-                width="20"
-                height="20"
+                width="28"
+                height="28"
               />
             </div>
           </div>
@@ -202,6 +202,7 @@ import { useRouter } from "vue-router";
 import { useCartStore } from "../store/modules/cart";
 import { ref, onMounted, computed } from "vue";
 import { useAddressStore } from "../store/modules/address";
+import iconnative from "../icon/index.vue";
 
 const router = useRouter();
 const addressStore = useAddressStore();

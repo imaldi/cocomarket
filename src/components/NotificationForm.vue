@@ -4,11 +4,11 @@
       <div class="bg-white shadow-md rounded-xl p-8">
         <div class="flex">
           <div>
-            <icon icon="ion:arrow-back-circle-outline" color="#000" width="28" height="28" />
+            <iconnative icon="arrow-circle-black" color="#000" width="28" height="28" />
           </div>
           <div class="w-full justify-center flex font-bold">Notification</div>
           <div>
-            <icon icon="solar:menu-dots-bold" style="transform: rotate(90deg)" color="#000" width="28" height="28" />
+            <iconnative icon="dot-vertical"  width="28" height="28" />
           </div>
         </div>
       </div>
@@ -25,10 +25,66 @@
       <div class="mx-8">
         <div>
           <div class="text-gray">Today</div>
-          <div v-for="(n) in 4" :key="n" class="flex pt-4">
+          <div v-for="(n) in 5" :key="n" class="flex pt-4">
             <div class="flex pt-4">
               <div class="circle-bg">
-                <img src="../assets/img/notif1.png" class="" width="28" height="28" alt="notif" />
+                <iconnative icon="coin-star"  width="28" height="28" alt="notif" />
+              </div>
+            </div>
+            <div class="my-auto ml-4">
+              <div class="text-gray text-sm">Transaction</div>
+              <div class="font-500 no-space">
+                Congratulations! You've earned reward points after completing today's purchase.
+              </div>
+            </div>
+            <div class="text-xs text-gray">1hr</div>
+          </div>
+          <div class="flex pt-4">
+            <div class="flex pt-4">
+              <div class="circle-bg">
+                <iconnative icon="coin-star"  width="28" height="28" alt="notif" />
+              </div>
+            </div>
+            <div class="my-auto ml-4">
+              <div class="text-gray text-sm">Transaction</div>
+              <div class="font-500 no-space">
+                Congratulations! You've earned reward points after completing today's purchase.
+              </div>
+            </div>
+            <div class="text-xs text-gray">1hr</div>
+          </div>
+          <div class="flex pt-4">
+            <div class="flex pt-4">
+              <div class="circle-bg">
+                <iconnative icon="card-checklist"  width="28" height="28" alt="notif" />
+              </div>
+            </div>
+            <div class="my-auto ml-4">
+              <div class="text-gray text-sm">Transaction</div>
+              <div class="font-500 no-space">
+                Congratulations! You've earned reward points after completing today's purchase.
+              </div>
+            </div>
+            <div class="text-xs text-gray">1hr</div>
+          </div>
+          <div class="flex pt-4">
+            <div class="flex pt-4">
+              <div class="circle-bg">
+                <iconnative icon="star"  width="28" height="28" alt="notif" />
+              </div>
+            </div>
+            <div class="my-auto ml-4">
+              <div class="text-gray text-sm">Transaction</div>
+              <div class="font-500 no-space">
+                Congratulations! You've earned reward points after completing today's purchase.
+              </div>
+            </div>
+            <div class="text-xs text-gray">1hr</div>
+          </div>
+          <div class="flex pt-4">
+            <div class="flex pt-4">
+              <div class="circle-bg">
+                <iconnative icon="shipping"  width="28" height="28" alt="notif" />
               </div>
             </div>
             <div class="my-auto ml-4">
@@ -40,13 +96,14 @@
             <div class="text-xs text-gray">1hr</div>
           </div>
         </div>
+        
 
         <div class="pt-4">
           <div class="text-gray">Yesterday</div>
           <div v-for="( n) in 4" :key="n" class="flex pt-4">
             <div class="flex pt-4">
               <div class="circle-bg">
-                <img src="../assets/img/notif1.png" class="" width="28" height="28" alt="notif" />
+                <iconnative icon="shipping"  width="28" height="28" alt="notif" />
               </div>
             </div>
             <div class="my-auto ml-4">
@@ -62,6 +119,10 @@
     </div>
   </div>
 </template>
+
+<script setup lang="ts">
+import iconnative from "../icon/index.vue";
+</script>
 
 <style scoped lang="scss">
 .container {

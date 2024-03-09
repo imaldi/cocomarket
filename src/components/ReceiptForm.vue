@@ -4,8 +4,8 @@
       <div class="bg-white shadow-md rounded-xl p-8">
         <div @click="router.push('/findfreshfood')" class="flex">
           <div>
-            <icon
-              icon="ion:arrow-back-circle-outline"
+            <iconnative
+              icon="fill-logo"
               color="#000"
               width="28"
               height="28"
@@ -120,6 +120,7 @@ import { ref, onMounted, computed } from "vue";
 import { useProdukStore } from "../store/modules/product";
 import { useRoute } from "vue-router";
 import router from "../router";
+import iconnative from "../icon/index.vue";
 
 const receiptStore = useProdukStore();
 const route = useRoute();
