@@ -5,11 +5,11 @@
       v-if="
         $route.path !== '/' &&
         $route.path !== '/register' &&
-        $route.path !== '/splashScreen' &&
-        $route.path !== '/splashScreen1' &&
-        $route.path !== '/splashScreen2' &&
-        $route.path !== '/splashScreen3' &&
-        $route.path !== '/splashScreen4' &&
+        $route.path !== '/splashscreen' &&
+        $route.path !== '/splashscreen1' &&
+        $route.path !== '/splashscreen2' &&
+        $route.path !== '/splashscreen3' &&
+        $route.path !== '/splashscreen4' &&
         $route.path !== '/completeyourprofile' &&
         $route.path !== '/newpassword' &&
         $route.path !== '/verifycode' &&

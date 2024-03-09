@@ -1,6 +1,6 @@
 <template>
-  <div class="container bg-white h-[100vh] text-center">
-    <div class="w-screen bg-[#7ACDD6] z-0 pt-20">
+  <div class="bg-white h-[100vh] text-center">
+    <div class="w-screen bg-[#7ACDD6] z-0 pt-20 -mb-10">
       <img class="splash-img h-[100vw]" src="../../assets/img/splash2.png" alt="Splash Screen picture 1" />
     </div>
     <div class="content bg-white pt-10 flex flex-col items-center z-10">

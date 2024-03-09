@@ -1,7 +1,10 @@
 <template>
   <div class="h-screen bg-white">
     <div class="flex justify-items-start px-6 pt-10">
-      <icon class="color-[#7ACDD6]" icon="ph:arrow-circle-left-thin" width="18vw"></icon>
+      <icon class="px-2" icon="outline-arrow-left"   
+      color="#7ACDD6"
+      width="53"
+      height="53"></icon>
     </div>
     <div class="flex flex-col items-center">
       <h1 class="text-2xl color-black font-bold my-1">New Password</h1>
@@ -21,13 +24,17 @@
       <input
         class="shadow appearance-none border border-black rounded py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline bg-white"
         id="confirmPassword"
-        type="confirmPassword"
+        type="password"
         placeholder="*********"
       />
     </form>
     <div class="flex flex-col items-center">
-      <Button class="w-[80vw] bg-[#7ACDD6] mt-6 font-bold">Create New Password</Button>
+      <Button class="w-[80vw] bg-[#7ACDD6] mt-6 font-bold text-white">Create New Password</Button>
       <a href="#" class="text-[#7ACDD6] font-bold my-4">Skip</a>
     </div>
   </div>
 </template>
+
+<script setup lang="ts">
+import icon from '../icon/index.vue'
+</script>
