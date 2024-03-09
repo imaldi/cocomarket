@@ -468,8 +468,8 @@ import xendit from "../assets/icon/xendit.svg";
 export default {
   props: {
     icon: String,
-    height: Number,
-    width: Number,
+    height: String,
+    width: String,
   },
   data() {
     return {
