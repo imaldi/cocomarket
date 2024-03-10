@@ -52,31 +52,42 @@
         $route.path !== '/cocopay' &&
         $route.path !== '/cocopayselectmethod' &&
         $route.path !== `/detailcategory/${$route.params.id}` &&
-        $route.path !== `/ordersuccess/${$route.params.id}`
+        $route.path !== `/ordersuccess/${$route.params.id}` &&
+        $route.path !== '/notification'
       "
       class="bottom-navigation justify-between w-full z-2"
     >
-      <div class="flex w-full justify-between mx-4">
-        <div @click="router.push('/home')" class="text-center p-4 bg-primary">
-          <iconnative :icon="$route.path == '/home' ? 'home-active' : 'home'" width="28" height="28" />
+      <div class="flex w-full justify-between">
+        <div @click="router.push('/home')" class="text-center p-4">
+          <iconnative :icon="$route.path == '/home' ? 'home-active' : 'home'" class="mb-2" width="28" height="28" />
           <div :class="$route.path == '/home' ? 'text-primary' : 'text-black'" style="margin-top: -12px">Home</div>
         </div>
-        <div @click="router.push('/history')" class="text-center p-4 bg-primary">
-          <iconnative :icon="$route.path == '/history' ? 'history-active' : 'history'" width="28" height="28" />
+        <div @click="router.push('/history')" class="text-center p-4">
+          <iconnative
+            :icon="$route.path == '/history' ? 'history-active' : 'history'"
+            class="mb-2"
+            width="28"
+            height="28"
+          />
           <div :class="$route.path == '/history' ? 'text-primary' : 'text-black'" style="margin-top: -12px">
             History
           </div>
         </div>
-        <div @click="router.push('/order')" class="text-center p-4 bg-primary">
-          <iconnative :icon="$route.path == '/order' ? 'order-active' : 'order'" width="28" height="28" />
+        <div @click="router.push('/order')" class="text-center p-4">
+          <iconnative :icon="$route.path == '/order' ? 'order-active' : 'order'" class="mb-2" width="28" height="28" />
           <div :class="$route.path == '/order' ? 'text-primary' : 'text-black'" style="margin-top: -12px">Order</div>
         </div>
-        <div @click="router.push('/chat')" class="text-center p-4 bg-primary">
-          <iconnative :icon="$route.path == '/chat' ? 'chat-active' : 'chat'" width="28" height="28" />
+        <div @click="chat()" class="text-center p-4">
+          <iconnative :icon="$route.path == '/chat' ? 'chat-active' : 'chat'" class="mb-2" width="28" height="28" />
           <div :class="$route.path == '/chat' ? 'text-primary' : 'text-black'" style="margin-top: -12px">Chat</div>
         </div>
-        <div @click="router.push('/profile')" class="text-center p-4 bg-primary">
-          <iconnative :icon="$route.path == '/profile' ? 'profile-active' : 'profile'" width="28" height="28" />
+        <div @click="router.push('/profile')" class="text-center p-4">
+          <iconnative
+            :icon="$route.path == '/profile' ? 'profile-active' : 'profile'"
+            class="mb-2"
+            width="28"
+            height="28"
+          />
           <div :class="$route.path == '/profile' ? 'text-primary' : 'text-black'" style="margin-top: -12px">
             Profile
           </div>
@@ -89,6 +100,17 @@
 <script setup lang="ts">
 import iconnative from "../icon/index.vue";
 import { useRouter } from "vue-router";
+import { ElNotification } from "element-plus";
 
 const router = useRouter();
+
+const chat = async () => {
+  ElNotification({
+    title: "Coming soon",
+    type: "warning",
+    duration: 2000,
+    customClass: "errorNotif",
+    message: "Chat, Coming Soon !!!",
+  });
+};
 </script>

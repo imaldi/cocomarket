@@ -1,15 +1,8 @@
 <template>
   <div>
-    <div class="container pb-220">
-      <div class="bg-white shadow-md rounded-xl px-8 pt-8 pb-0">
-        <div>
-          <div class="flex mb-8">
-            <div>
-              <iconnative icon="arrow-circle-black" color="#000" width="28" height="28" />
-            </div>
-            <div class="w-full justify-center flex font-bold">Order</div>
-          </div>
-        </div>
+    <div class="container pb-20">
+      <div class="bg-white shadow-md rounded-xl pt-10">
+        <div class="w-full justify-center flex font-bold text-xl pb-10">Order</div>
       </div>
 
       <div class="flex px-8 py-6">
@@ -328,7 +321,6 @@ import iconnative from "../icon/index.vue";
   display: flex;
   flex-direction: column;
   width: 100%;
-  height: 100vh;
   color: #000000;
 }
 </style>

@@ -1,22 +1,16 @@
 <template>
   <div>
-    <div class="container pb-106">
-      <div class="bg-white shadow-md rounded-xl px-8 pt-8 pb-0">
-        <div>
-          <div class="flex mb-8">
-            <!-- <div>
-              <icon icon="ion:arrow-back-circle-outline" color="#000" width="28" height="28" />
-            </div> -->
-            <div class="w-full justify-center flex font-bold">History</div>
+    <div class="container pb-20">
+      <div class="bg-white shadow-md rounded-xl pt-6">
+        <div class="w-full justify-center flex font-bold text-xl pb-4">History</div>
+
+        <div class="flex justify-evenly px-14">
+          <div class="flex flex-col">
+            <div class="font-bold mb-2">Completed</div>
+            <div class="bg-[#7ACDD6] h-2 rounded-t-4"></div>
           </div>
-          <div class="flex justify-evenly px-14">
-            <div class="flex flex-col">
-              <div class="font-bold mb-2">Completed</div>
-              <div class="bg-[#7ACDD6] h-2 rounded-t-4"></div>
-            </div>
-            <div class="flex flex-col">
-              <div class="font-bold mb-2">Canceled</div>
-            </div>
+          <div class="flex flex-col">
+            <div class="font-bold mb-2">Canceled</div>
           </div>
         </div>
       </div>
@@ -128,7 +122,6 @@ onMounted(() => {
   display: flex;
   flex-direction: column;
   width: 100%;
-  height: 100vh;
   color: #000000;
 }
 </style>

@@ -15,26 +15,26 @@
 
       <div class="mx-8 pt-4">
         <div class="flex justify-center">
-          <div class="mr-4 text-lg text-danger">All</div>
-          <div class="mr-4 text-lg">Unread</div>
-          <div class="text-lg">Read</div>
+          <div class="mr-4 text-lg text-danger font-500">All</div>
+          <div class="mr-4 text-lg font-500">Unread</div>
+          <div class="text-lg font-500">Read</div>
         </div>
         <hr />
       </div>
 
       <div class="mx-8">
         <div>
-          <div class="text-gray">Today</div>
+          <div class="text-gray font-500">Today</div>
           <div v-for="(item, index) in listNotifData" :key="index" class="flex pt-4">
             <div class="flex pt-4">
               <div class="circle-bg">
-                <iconnative icon="coin-star"  class="" width="28" height="28" alt="notif" />
+                <iconnative icon="coin-star" class="" width="28" height="28" alt="notif" />
               </div>
             </div>
             <div class="my-auto ml-4">
-              <div class="text-gray text-sm">{{item.type}}</div>
+              <div class="text-gray text-sm">{{ item.type }}</div>
               <div class="font-500 no-space">
-                {{item.subtitle}}
+                {{ item.subtitle }}
               </div>
             </div>
             <div class="text-xs text-gray">1hr</div>
@@ -63,8 +63,8 @@
   </div>
 </template>
 <script setup lang="ts">
-import { useRouter } from 'vue-router';
-import { useNotifStore } from '../store/modules/notification';
+import { useRouter } from "vue-router";
+import { useNotifStore } from "../store/modules/notification";
 import { ref, onMounted } from "vue";
 import iconnative from "../icon/index.vue";
 
@@ -74,7 +74,7 @@ const listNotifData = ref<Item[]>();
 interface Item {
   title: string;
   subtitle: string;
-  type:string;
+  type: string;
 }
 const getListNotif = async () => {
   try {
@@ -87,9 +87,9 @@ const getListNotif = async () => {
   }
 };
 
-onMounted(()=>{
+onMounted(() => {
   getListNotif();
-})
+});
 </script>
 <style scoped lang="scss">
 .container {

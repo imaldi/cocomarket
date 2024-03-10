@@ -5,21 +5,9 @@
       <h5>Hi Welcome Back, you've been missed</h5>
     </div>
 
-    <Form
-      v-slot="{ errors }"
-      autocomplete="off"
-      @submit="login"
-      class="login-form"
-    >
+    <Form v-slot="{ errors }" autocomplete="off" @submit="login" class="login-form">
       <p class="input-title">Email</p>
-      <Field
-        v-model="username"
-        name="Username"
-        type="text"
-        class="input-field"
-        placeholder="Email"
-        rules="required"
-      />
+      <Field v-model="username" name="Username" type="text" class="input-field" placeholder="Email" rules="required" />
       <p class="text-danger text-left text-sm mt-0">
         {{ errors.Username }}
       </p>
@@ -69,9 +57,7 @@
       </div>
     </div> -->
 
-    <p class="sign-up-title">
-      Don't Have an account? <a href="#/register" class="sign-up">Sign Up</a>
-    </p>
+    <p class="sign-up-title">Don't Have an account? <a href="#/register" class="sign-up">Sign Up</a></p>
   </div>
 </template>
 
@@ -95,13 +81,13 @@ const login = async () => {
 
   try {
     const response = await authStore.login(payload);
-    if (response.error) {
+    if (!response.access_token) {
       ElNotification({
         title: "Error",
         type: "error",
         duration: 2000,
         customClass: "errorNotif",
-        message: "Gagal Login",
+        message: "Maaf, tidak bisa Login",
       });
     } else {
       ElNotification({
@@ -116,7 +102,15 @@ const login = async () => {
       localStorage.setItem("user_id", response.user.id);
       router.push(`/home`);
     }
-  } catch (error) {}
+  } catch (error) {
+    ElNotification({
+      title: "Error",
+      type: "error",
+      duration: 2000,
+      customClass: "errorNotif",
+      message: "Maaf, tidak bisa Login",
+    });
+  }
 };
 </script>
 

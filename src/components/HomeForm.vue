@@ -27,10 +27,8 @@
               />
             </template> -->
           </el-select>
-          <div class="my-auto ml-2">
-            <div @click="router.push('/notification')" class="bg-light rounded-md p-1">
-              <iconnative icon="bell-red-dot" color="#000" width="28" height="28" />
-            </div>
+          <div class="bg-[#F7F7F7] rounded-lg ml-2 p-2">
+            <iconnative @click="router.push('/notification')" icon="bell-red-dot" color="#000" width="20" height="20" />
           </div>
         </div>
       </div>
@@ -88,7 +86,11 @@
             </div>
           </div>
 
-          <div class="bg-secondary rounded-2xl p-4 w-1/2 ml-2 flex" style="background-color: #f6d6d0">
+          <div
+            @click="storling()"
+            class="bg-secondary rounded-2xl p-4 w-1/2 ml-2 flex"
+            style="background-color: #f6d6d0"
+          >
             <div class="w-full flex justify-center">
               <div class="my-auto mr-2">
                 <iconnative icon="storling" color="#E68027" width="28" height="28" />
@@ -114,11 +116,13 @@
         </div>
 
         <div class="font-bold">Best Deal</div>
-        <div class="mb-10 pb-8 pl-4" style="height: 100%">
-          <div v-if="dataSearch && dataSearch.length > 0" class="grid grid-cols-2 py-4 gap-4">
+        <div style="height: 100%">
+          <div v-if="dataSearch && dataSearch.length > 0" class="grid grid-cols-2 py-4 gap-4 pb-20">
             <div v-for="(item, index) in dataSearch" :key="index">
-              <div class="rounded-xl p-0 mr-4 bg-white">
-                <img :src="item.image" width="80" height="80" class="w-full justify-center" alt="" />
+              <div class="rounded-xl">
+                <div class="p-4 bg-[#F8F8F8] rounded-lg">
+                  <img :src="item.image" width="80" height="80" class="w-full justify-center" alt="image" />
+                </div>
                 <div>
                   <div>{{ item.name }}</div>
                 </div>
@@ -131,37 +135,41 @@
                       })
                     }}
                   </div>
+                  <iconnative icon="fill-plus" color="#7ACDD6" width="28" height="28" />
                 </div>
               </div>
             </div>
           </div>
 
-          <div v-else-if="dataProduct && dataProduct.length > 0" class="grid grid-cols-2 py-4 gap-4">
+          <div v-else-if="dataProduct && dataProduct.length > 0" class="grid grid-cols-2 py-4 gap-4 pb-20">
             <div
               v-for="(item, index) in dataProduct"
               :key="index"
-              class="rounded-xl p-0 mr-4 bg-white"
+              class="rounded-xl"
               @click="addCart(item.products.id)"
             >
-              <img
-                v-if="item.products.image !== null"
-                :src="item.products.image"
-                width="80"
-                height="80"
-                class="w-full justify-center"
-                alt=""
-              />
-              <template v-else>
+              <div class="p-4 bg-[#F8F8F8] rounded-lg">
                 <img
-                  src="../assets/img/template-food.jpg"
+                  v-if="item.products.image !== null"
+                  :src="item.products.image"
                   width="80"
                   height="80"
-                  class="w-full justify-center"
-                  alt=""
+                  class="w-full justify-center bg-primary"
+                  alt="image"
                 />
-              </template>
+                <template v-else>
+                  <img
+                    src="../assets/img/template-food.jpg"
+                    width="80"
+                    height="80"
+                    class="w-full justify-center"
+                    alt=""
+                  />
+                </template>
+              </div>
               <div>
-                <div>{{ item.products.name }}</div>
+                <div class="font-500">{{ item.products.name }}</div>
+                <div class="text-gray">{{ item.products.subtitle }}</div>
               </div>
               <div class="flex justify-between">
                 <div class="font-500">
@@ -172,6 +180,7 @@
                     })
                   }}
                 </div>
+                <iconnative icon="fill-plus" color="#7ACDD6" width="28" height="28" />
               </div>
             </div>
           </div>
@@ -186,6 +195,7 @@ import { onMounted, ref } from "vue";
 import { useRouter } from "vue-router";
 import { useHomeStore } from "../store/modules/home";
 import iconnative from "../icon/index.vue";
+import { ElNotification } from "element-plus";
 
 const router = useRouter();
 const homeStore = useHomeStore();
@@ -219,7 +229,9 @@ const getAmountWallet = async () => {
     console.error("Error:", error);
   }
 };
+
 const dataProduct = ref<Items[]>([]);
+
 interface Items {
   id: number;
   image: string;
@@ -234,6 +246,17 @@ interface Items {
     price: string;
   };
 }
+
+const storling = async () => {
+  ElNotification({
+    title: "Coming soon",
+    type: "warning",
+    duration: 2000,
+    customClass: "errorNotif",
+    message: "Storling, Coming Soon !!!",
+  });
+};
+
 const getBestDeals = async () => {
   try {
     const res = await homeStore.getBestDeal();

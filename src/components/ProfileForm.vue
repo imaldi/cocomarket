@@ -3,7 +3,7 @@
     <div class="bg-white shadow-md rounded-xl p-8">
       <div class="flex">
         <div class="w-full p-2 flex text-center justify-center">
-          <div class="fw-bold text-xl text-dark">Profile</div>
+          <div class="font-bold text-dark text-xl">Profile</div>
         </div>
       </div>
     </div>
@@ -14,12 +14,7 @@
           <img
             v-if="dataProfile && dataProfile.profile_picture"
             :src="dataProfile.profile_picture"
-            style="
-              width: 106px;
-              height: 106px;
-              border-radius: 50%;
-              cursor: pointer;
-            "
+            style="width: 106px; height: 106px; border-radius: 50%; cursor: pointer"
             class="w-full justify-center rounded-full"
             alt=""
           />
@@ -28,22 +23,11 @@
         <div class="d-flex flex text-center justify-center ml-10 mt-0">
           <iconnative
             icon="edit-image-orange"
-            style="
-              width: 27px;
-              margin-top: -2em;
-              margin-left: 2em;
-              cursor: pointer;
-            "
+            style="width: 27px; margin-top: -2em; margin-left: 2em; cursor: pointer"
             class="w-full justify-end rounded"
             alt=""
           />
-          <input
-            type="file"
-            accept="image/*"
-            ref="imageInput"
-            style="display: none"
-            @change="handleImageChange"
-          />
+          <input type="file" accept="image/*" ref="imageInput" style="display: none" @change="handleImageChange" />
         </div>
       </label>
     </div>
@@ -52,15 +36,9 @@
       {{ dataProfile.name }}
     </div>
     <div class="fw-bold text-xl text-dark pl-8 mt-5">Akun</div>
-    <div
-      class="flex py-4 mx-8 border border-dotted border-x-0 border-t-0 border-gray"
-    >
+    <div class="flex py-4 mx-8 border border-dotted border-x-0 border-t-0 border-gray">
       <div @click="router.push('changeprofile')" class="w-full my-auto flex">
-        <iconnative
-          icon="edit-black"
-          class="justify-center"
-          alt=""
-        />
+        <iconnative icon="edit-black" class="justify-center" alt="" />
         <div class="ml-4 my-auto text-dark fw-bold">Change Profile</div>
       </div>
       <div class="my-auto ml-2">
@@ -69,39 +47,29 @@
         </div>
       </div>
     </div>
-    <div
-      class="flex py-4 mx-8 border border-dotted border-x-0 border-t-0 border-gray"
-    >
+    <div class="flex py-4 mx-8 border border-dotted border-x-0 border-t-0 border-gray">
       <div @click="router.push('changepassword')" class="w-full my-auto flex">
-        <img
-          src="../assets/img/change-password.svg"
-          class="justify-center"
-          alt=""
-        />
+        <img src="../assets/img/change-password.svg" class="justify-center" alt="" />
         <div class="ml-4 my-auto text-dark fw-bold">Change Password</div>
       </div>
       <div class="my-auto ml-2">
         <div class="bg-light rounded-md p-1">
-         <iconnative icon="next-arrow-black" class="justify-center" alt="" />
+          <iconnative icon="next-arrow-black" class="justify-center" alt="" />
         </div>
       </div>
     </div>
-    <div
-      class="flex py-4 mx-8 border border-dotted border-x-0 border-t-0 border-gray"
-    >
+    <div class="flex py-4 mx-8 border border-dotted border-x-0 border-t-0 border-gray">
       <div @click="router.push('myaddress')" class="w-full my-auto flex">
         <iconnative icon="outline-location" class="justify-center" alt="" />
         <div class="ml-4 my-auto text-dark fw-bold">My Address</div>
       </div>
       <div class="my-auto ml-2">
         <div class="bg-light rounded-md p-1">
-         <iconnative icon="next-arrow-black" class="justify-center" alt="" />
+          <iconnative icon="next-arrow-black" class="justify-center" alt="" />
         </div>
       </div>
     </div>
-    <div
-      class="flex py-4 mx-8 border border-dotted border-x-0 border-t-0 border-gray"
-    >
+    <div class="flex py-4 mx-8 border border-dotted border-x-0 border-t-0 border-gray">
       <div @click="selectItem()" class="w-full my-auto flex">
         <iconnative icon="sign-out" class="justify-center" alt="" />
         <div class="ml-4 my-auto text-dark fw-bold">Sign Out</div>
@@ -115,7 +83,7 @@
       </dialog-confirm>
       <div class="my-auto ml-2">
         <div class="bg-light rounded-md p-1">
-         <iconnative icon="next-arrow-black" class="justify-center" alt="" />
+          <iconnative icon="next-arrow-black" class="justify-center" alt="" />
         </div>
       </div>
     </div>

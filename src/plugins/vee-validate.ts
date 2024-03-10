@@ -1,4 +1,4 @@
-import { configure, defineRule } from 'vee-validate';
+import { configure, defineRule } from "vee-validate";
 
 export function initVeeValidate() {
   configure({
@@ -9,29 +9,28 @@ export function initVeeValidate() {
   });
 }
 
-defineRule('required', (value: any) => {
+defineRule("required", (value: any) => {
   if (!value || !value.length) {
-    return 'Wajib diisi!';
+    return "Harap isi terlebih dahulu!";
   }
   return true;
 });
 
-defineRule('email', (value: any) => {
-
+defineRule("email", (value: any) => {
   if (!/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(value)) {
-    return 'Email tidak valid';
+    return "Email tidak valid";
   }
   return true;
 });
 
-defineRule('numeric', (value: any) => {
+defineRule("numeric", (value: any) => {
   if (!/^\d+$/.test(value)) {
-    return 'Wajib diisi dengan angka';
+    return "Harap isi dengan angka";
   }
   return true;
 });
 
-defineRule('minMax', (value: any, [min, max]: any[]) => {
+defineRule("minMax", (value: any, [min, max]: any[]) => {
   const numericValue = Number(value);
   if (numericValue < min) {
     return `Harus lebih besar dari ${min}`;
@@ -42,14 +41,14 @@ defineRule('minMax', (value: any, [min, max]: any[]) => {
   return true;
 });
 
-defineRule('minLength', (value: any, [limit]: any[]) => {
+defineRule("minLength", (value: any, [limit]: any[]) => {
   if (value.length < limit) {
     return `Minimal harus ${limit} karakter`;
   }
   return true;
 });
 
-defineRule('maxLength', (value: any, [limit]: any[]) => {
+defineRule("maxLength", (value: any, [limit]: any[]) => {
   if (value.length > limit) {
     return `Maksimal harus ${limit} karakter`;
   }
