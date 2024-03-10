@@ -10,7 +10,6 @@
               width="28"
               height="28"
             />
-            <icon icon="ion:arrow-back-circle-outline" color="#000" width="28" height="28" />
           </div>
           <div class="w-full justify-center flex font-bold">Add Address</div>
         </div>

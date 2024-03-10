@@ -5,10 +5,10 @@ const BASE_URL: string | undefined = import.meta.env.VITE_BASE_URL;
 const apiClient = axios.create({
   baseURL: BASE_URL,
   withCredentials: false,
-  headers: {
-    Accept: 'application/json',
-    'Content-Type': 'multipart/form-data',
-  }, 
+  // headers: {
+  //   Accept: 'application/json',
+  //   'Content-Type': 'multipart/form-data',
+  // }, 
 });
 
 apiClient.interceptors.request.use(

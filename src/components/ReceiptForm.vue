@@ -2,7 +2,7 @@
   <div>
     <div class="container">
       <div class="bg-white shadow-md rounded-xl p-8">
-        <div @click="router.push('/findfreshfood')" class="flex">
+        <div @click="router.push('/home')" class="flex">
           <div>
             <iconnative icon="arrow-circle-black" color="#000" width="28" height="28" />
           </div>
@@ -64,13 +64,13 @@
                 </div>
               </div>
 
-              <div v-if="allDataDetail" class="px-4 flex items-center mb-2">
+              <!-- <div v-if="allDataDetail" class="px-4 flex items-center mb-2">
                 <div class="font-300 text-sm w-2/3">Tax</div>
                 <div class="font-300 text-sm w-1/10"></div>
                 <div class="font-semibold text-sm w-1/3 text-end">
                   {{ allDataDetail.tax_amount }}
                 </div>
-              </div>
+              </div> -->
 
               <div v-if="allDataDetail" class="px-4 flex items-center mb-2">
                 <div class="font-300 text-sm w-2/3">Discount</div>
@@ -92,7 +92,7 @@
           </div>
           <div class="flex w-full justify-between p-4">
             <div class="flex p-2 mr-8 rounded-2xl bg-primary w-full justify-center items-center">
-              <div class="text-2xl text-white">Save Receipt</div>
+              <div class="text-2xl text-white font-500">Save Receipt</div>
             </div>
           </div>
         </div>
@@ -144,7 +144,7 @@ const totalPrice = computed(() => {
 const getReceipt = async (id: any) => {
   try {
     const res = await receiptStore.getHistoryByid(id);
-    console.log(res);
+
     dataDetail.value = res.data.order_details as Item[];
     allDataDetail.value = res.data as Items;
   } catch (error) {

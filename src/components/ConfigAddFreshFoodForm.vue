@@ -12,7 +12,11 @@
 
       <div class="mx-8 pt-4 h-screen overflow-y">
         <div class="scrollable-content">
-          <div v-for="(item, index) in detailCategory" :key="index" class="flex shadow-md p-4 rounded-md">
+          <div
+            v-for="(item, index) in detailCategory"
+            :key="index"
+            class="flex border border-solid border-light shadow-md mb-4 p-4 rounded-md"
+          >
             <div class="bg-gray rounded-lg">
               <img src="../assets/img/meat1.png" alt="" />
             </div>
@@ -35,8 +39,8 @@
                 <div @click="item.total++">
                   <icon icon="mage:plus-square" color="#7ACDD6" width="28" height="28" />
                 </div>
-                <div @click="removeItem(index)">
-                  <icon icon="mage:trash" color="#7ACDD6" width="28" height="28" />
+                <div @click="removeItem(item.id, index)">
+                  <icon icon="mage:trash" color="#ff0000" width="28" height="28" />
                 </div>
               </div>
             </div>
@@ -66,6 +70,7 @@ import { onMounted, ref } from "vue";
 import { useRoute, useRouter } from "vue-router";
 // import { useCategoryStore } from "../store/modules/category";
 import { useCartStore } from "../store/modules/cart";
+import { ElNotification } from "element-plus";
 import iconnative from "../icon/index.vue";
 
 const router = useRouter();
@@ -88,14 +93,19 @@ interface Item {
 
 const goToCart = (data: any) => {
   var payload: any = [];
+
   data.forEach((item: any) => {
     payload.push({ products_id: item.products_id, qty: item.total });
   });
 
   try {
     cartStore.putToCart({ data: payload }, data[0].carts_id);
-    router.push(`/checkout`);
-  } catch (error) {}
+    setTimeout(() => {
+      router.push(`/checkout`);
+    }, 100);
+  } catch (error) {
+    console.error(error);
+  }
 };
 
 const calculateTotalPrice = () => {
@@ -136,9 +146,37 @@ const getCartDetails = async (id: any) => {
 //   }
 // };
 
-const removeItem = (index: number) => {
-  detailCategory.value.splice(index, 1);
-  quantity.value.splice(index, 1);
+const removeItem = async (id: any, index: number) => {
+  try {
+    let text;
+
+    if (confirm("Anda yakin delete product ?") == true) {
+      const res = await cartStore.removeCartDetail(id);
+
+      if (res) {
+        detailCategory.value.splice(index, 1);
+        quantity.value.splice(index, 1);
+
+        if (detailCategory.value?.length == 0) {
+          setTimeout(() => {
+            router.push("/findfreshfood");
+          }, 500);
+        }
+
+        ElNotification({
+          title: "Delete Success",
+          type: "success",
+          duration: 2000,
+          customClass: "successNotif",
+          message: "Product berhasil di update",
+        });
+      }
+    } else {
+      text = "You canceled!";
+    }
+  } catch (error) {
+    console.log(error);
+  }
 };
 
 onMounted(() => {
@@ -153,7 +191,7 @@ onMounted(() => {
   display: flex;
   flex-direction: column;
   width: 100%;
-  height: 100vh;
+  height: 96vh;
   color: #000000;
 }
 

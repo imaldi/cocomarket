@@ -154,7 +154,7 @@
                   :src="item.products.image"
                   width="80"
                   height="80"
-                  class="w-full justify-center bg-primary"
+                  class="w-full justify-center"
                   alt="image"
                 />
                 <template v-else>

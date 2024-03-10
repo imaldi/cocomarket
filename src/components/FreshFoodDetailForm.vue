@@ -130,7 +130,7 @@ const goToCart = (id: any, catId: any) => {
     try {
       const response = cartStore.addToCart(payload);
       console.log(response);
-      router.push(`/detailcategory/${catId}`);
+      router.push("/findfreshfood");
     } catch (error) {}
   }
 };

@@ -103,11 +103,14 @@ import iconnative from "../icon/index.vue";
 const selectItem = () => {
   deleteDialog.value = true;
 };
+
 const deleteDialog = ref(false);
 const authStore = useAuthStore();
+
 const logout = async () => {
   try {
-    const response = await authStore.logout();
+    await authStore.logout();
+
     ElNotification({
       title: "Sukses",
       type: "success",
@@ -115,8 +118,9 @@ const logout = async () => {
       customClass: "successNotif",
       message: "Berhasil Logout!",
     });
-    console.log(response);
+
     localStorage.clear();
+
     router.push(`/`);
   } catch (error: any) {
     ElNotification({

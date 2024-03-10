@@ -62,7 +62,7 @@
         </div>
       </div>
 
-      <div v-if="totalItem && totalItem.total !== '0'" @click="GoDetailCart(totalItem.carts_id)" class="relative">
+      <div v-if="totalItem && totalItem.total !== 0" @click="GoDetailCart(totalItem.carts_id)" class="relative">
         <div class="fixed w-full bg-white rounded-lg shadow-md" style="bottom: 0">
           <div class="flex w-full justify-between p-4">
             <div class="flex p-4 mr-8 rounded-2xl bg-primary w-full justify-center text-white">

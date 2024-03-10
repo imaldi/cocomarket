@@ -123,17 +123,38 @@
           </div>
           <div class="flex justify-between my-2 text-sm">
             <div>Shipping Costs</div>
-            <div>{{ shippingCost }}</div>
+            <div>
+              {{
+                Number(shippingCost).toLocaleString("id-ID", {
+                  style: "currency",
+                  currency: "IDR",
+                })
+              }}
+            </div>
           </div>
           <div class="flex justify-between my-2 text-sm">
             <div>Other costs</div>
-            <div>{{ otherCost }}</div>
+            <div>
+              {{
+                Number(otherCost).toLocaleString("id-ID", {
+                  style: "currency",
+                  currency: "IDR",
+                })
+              }}
+            </div>
           </div>
         </div>
         <div class="border-solid border border-b-0 border-gray p-4 flex flex-col justify-between">
           <div class="font-bold text-base flex justify-between my-2">
             <div>Price</div>
-            <div>{{ totalPrice }}</div>
+            <div>
+              {{
+                Number(totalPrice).toLocaleString("id-ID", {
+                  style: "currency",
+                  currency: "IDR",
+                })
+              }}
+            </div>
           </div>
         </div>
         <div class="border-solid border border-gray p-4 flex flex-col justify-between rounded-2xl rounded-t-0">
@@ -163,7 +184,14 @@
               <iconnative icon="money" color="green" width="28" height="28" />
               <div class="mx-4">
                 <div class="text-xs">Cash</div>
-                <div class="text-sm">{{ totalPrice }}</div>
+                <div class="text-sm">
+                  {{
+                    Number(totalPrice).toLocaleString("id-ID", {
+                      style: "currency",
+                      currency: "IDR",
+                    })
+                  }}
+                </div>
               </div>
             </div>
             <div class="flex items-center ml-8">
@@ -200,6 +228,7 @@ interface ItemsTotal {
   products_subtitle: string;
   products: { name: string }[];
 }
+
 const total = ref(1);
 const shippingCost = ref(5000);
 const otherCost = ref(2000);
@@ -231,9 +260,13 @@ const confirmOrder = async () => {
 };
 const getListCart = async () => {
   try {
-    const res = await cartStore.getCartTotal();
+    const res = await cartStore.getCartTotalAll();
+
     totalItem.value = res.data as ItemsTotal;
+    otherCost.value = totalItem.value.others_cost;
+    shippingCost.value = totalItem.value.shipping_cost;
     namesWithoutNumbers.value = totalItem.value.products.map((item) => item.name.replace(/\d+/g, ""));
+
     const namesWithoutNumbersCleaned = namesWithoutNumbers.value.map((name: string) => name.replace(/\d+/g, ""));
     console.log(namesWithoutNumbersCleaned);
   } catch (error) {
