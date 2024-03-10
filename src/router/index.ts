@@ -292,6 +292,11 @@ const routes: RouteRecordRaw[] = [
         name: "detailCategory",
         component: () => import("../views/DetailCategory.vue"),
       },
+      {
+        path: "/mitra/login",
+        name: "Login Mitra",
+        component: () => import("../views/Mitra/Login.vue"),
+      },
     ],
   },
 ];
