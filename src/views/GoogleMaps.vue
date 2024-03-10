@@ -1,21 +1,24 @@
 <template>
     <div class="mainWrapper">
         <p>Welcome to the Google Maps!</p>
+        <p v-if="displayRoute.distanceMeters !== null">{{displayRoute.distanceMeters}} Meter</p>
+        <p v-if="displayRoute.duration !== null">{{displayRoute.duration.split('s')[0]}} Detik</p>
         <div id="map"></div>
     </div>
 </template>
 
 <script setup lang="ts">
 import axios from 'axios';
-import { onMounted } from 'vue';
+import { onMounted, ref } from 'vue';
 import { Loader } from "@googlemaps/js-api-loader"
 import { dayjs } from 'element-plus';
 import { decode } from '@mapbox/polyline';
 
 // Membuat center atau menentukan titik tengah si tampilan Google Maps-nya
-const center = { lat: 37.419734, lng: -122.0827784 };
+const center = { lat: 1.1149361954501316, lng: 104.04005742568758 };
 // Menentukan seberapa zoom in tampilan Google Maps nya
 const zoom = 15;
+const displayRoute = ref({distanceMeters: null, duration: null});
 
 onMounted(async () => {
     fetchData()
@@ -30,8 +33,8 @@ const fetchData = async () => {
         "origin": {
             "location": {
                 "latLng": {
-                    "latitude": 37.419734,
-                    "longitude": -122.0827784
+                    "latitude": 1.1149361954501316,
+                    "longitude": 104.04005742568758
                 }
             }
         },
@@ -39,8 +42,8 @@ const fetchData = async () => {
         "destination": {
             "location": {
                 "latLng": {
-                    "latitude": 37.417670,
-                    "longitude": -122.079595
+                    "latitude": 1.1355836265175647,
+                    "longitude": 104.00739431132627
                 }
             }
         },
@@ -55,7 +58,7 @@ const fetchData = async () => {
         },
         "languageCode": "en-US",
         "units": "METRIC",
-        "polylineQuality": "HIGH_QUALITY",
+        // "polylineQuality": "HIGH_QUALITY",
     }, {
         'headers': {
             'Content-Type': 'application/json',
@@ -64,6 +67,7 @@ const fetchData = async () => {
         }
     })
 
+    displayRoute.value = routes[0]
     console.log("This is Routes", routes)
     // Decoding Polyline ataupun garis yang menunjukkan arah perjalanan kurir menjadi kompatibel untuk tampilan di Google Map
     const decoded = decode(routes[0].polyline.encodedPolyline).map((poly: any) => ({ lat: poly[0], lng: poly[1] }))
