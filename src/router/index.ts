@@ -307,6 +307,11 @@ const routes: RouteRecordRaw[] = [
         name: "VerifyCode Mitra",
         component: () => import("../views/Mitra/VerifyCode.vue"),
       },
+      {
+        path: "/mitra/completeyourstoreprofile",
+        name: "CompleteYourStoreProfile Mitra",
+        component: () => import("../views/Mitra/CompleteYourStoreProfile.vue"),
+      },
     ],
   },
 ];
