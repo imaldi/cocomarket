@@ -56,7 +56,10 @@
         $route.path !== '/mitra/login' &&
         $route.path !== '/mitra/splashscreen' &&
         $route.path !== '/mitra/verifycode' &&
-        $route.path !== '/mitra/completeyourstoreprofile' 
+        $route.path !== '/mitra/completeyourstoreprofile'  &&
+        $route.path !== '/mitra/businessdataverified'  &&
+        $route.path !== '/mitra/successfulverification' &&
+        $route.path !== '/mitra/completestoredata'
       "
       class="bottom-navigation z-2"
     >

@@ -154,7 +154,7 @@
       <img :src="filter" :width="width" :height="height" alt="filter" />
     </div>
     <div v-else-if="icon == 'fork-knife'">
-      <img :src="fork - knife" :width="width" :height="height" alt="fork-knife" />
+      <img :src="forkKnife" :width="width" :height="height" alt="forkKnife" />
     </div>
     <div v-else-if="icon == 'fresh-food'">
       <img :src="freshFood" :width="width" :height="height" alt="freshFood" />
@@ -225,7 +225,7 @@
     <div v-else-if="icon == 'maps'">
       <img :src="maps" :width="width" :height="height" alt="maps" />
     </div>
-    <div v-else-if="icon == 'maskot-chicked'">
+    <div v-else-if="icon == 'maskot-chicken'">
       <img :src="maskotChicken" :width="width" :height="height" alt="maskotChicken" />
     </div>
     <div v-else-if="icon == 'menu'">
@@ -408,6 +408,18 @@
     <div v-else-if="icon == 'fill-plus-blue'">
       <img :src="fillPlusBlue" :width="width" :height="height" alt="fillPlusBlue" />
     </div>
+    <div v-else-if="icon == 'fill-checklist'">
+      <img :src="fillChecklist" :width="width" :height="height" alt="fillChecklist" />
+    </div>
+    <div v-else-if="icon == 'line-blue'">
+      <img :src="lineBlue" :width="width" :height="height" alt="lineBlue" />
+    </div>
+    <div v-else-if="icon == 'circle-dot-blue'">
+      <img :src="circleDotBlue" :width="width" :height="height" alt="circleDotBlue" />
+    </div>
+    <div v-else-if="icon == 'outline-line'">
+      <img :src="outlineLine" :width="width" :height="height" alt="outlineLine" />
+    </div>
   </div>
 </template>
 
@@ -548,6 +560,10 @@ import addItemDisable from "../assets/icon/add-item-disable.svg";
 import reduceItemActive from "../assets/icon/reduce-item-active.svg";
 import reduceItemDisable from "../assets/icon/reduce-item-disable.svg";
 import fillPlusBlue from "../assets/icon/fill-plus-blue.svg";
+import fillChecklist from "../assets/icon/fill-checklist.svg";
+import lineBlue from "../assets/icon/line-blue.svg";
+import circleDotBlue from "../assets/icon/circle-dot-blue.svg";
+import outlineLine from "../assets/icon/outline-line.svg";
 
 export default {
   props: {
@@ -701,7 +717,11 @@ export default {
       addItemDisable,
       reduceItemActive,
       reduceItemDisable,
-      fillPlusBlue
+      fillPlusBlue,
+      fillChecklist,
+      lineBlue,
+      circleDotBlue,
+      outlineLine
 
       
     };
