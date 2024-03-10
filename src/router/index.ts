@@ -292,6 +292,11 @@ const routes: RouteRecordRaw[] = [
         name: "detailCategory",
         component: () => import("../views/DetailCategory.vue"),
       },
+      {
+        path: "/chatinside",
+        name: "chatInside",
+        component: () => import("../views/ChatInside.vue"),
+      },
     ],
   },
 ];
