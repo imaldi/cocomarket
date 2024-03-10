@@ -1,0 +1,1 @@
+import{A as r}from"./index-BCIiqLPX.js";import{a as o}from"./apiClient-C9X9s8qD.js";const p=r("auth",()=>({login:async t=>o.post("/api/auth/login",t),logout:async()=>o.post("/api/auth/logout"),verifyCode:async t=>o.post("/api/auth/verify",t),register:async t=>o.post("/api/auth/register",t)}));export{p as u};
