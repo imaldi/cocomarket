@@ -54,7 +54,9 @@
         $route.path !== `/detailcategory/${$route.params.id}` &&
         $route.path !== `/ordersuccess/${$route.params.id}` &&
         $route.path !== '/notification' &&
-        $route.path !== `/receipt/${$route.params.id}`
+        $route.path !== `/receipt/${$route.params.id}` && 
+        $route.path !== `/detailcategory/${$route.params.id}` &&
+        $route.path !== '/chatinside'
       "
       class="bottom-navigation justify-between w-full z-2"
     >
