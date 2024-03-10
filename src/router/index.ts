@@ -337,6 +337,16 @@ const routes: RouteRecordRaw[] = [
         name: "ChangeProfile Driver",
         component: () => import("../views/Driver/ChangeProfile.vue"),
       },
+      {
+        path: "/mitra/splashscreen",
+        name: "SplashScreen Mitra",
+        component: () => import("../views/Mitra/SplashScreen.vue"),
+      },
+      {
+        path: "/mitra/verifycode",
+        name: "VerifyCode Mitra",
+        component: () => import("../views/Mitra/VerifyCode.vue"),
+      },
     ],
   },
 ];

@@ -1,19 +1,16 @@
 <template>
   <div class="container text-center">
     <div class="login-title">
-      <h1>Sign In</h1>
-      <h5>Hi Welcome Back, you've been missed</h5>
+      <h1>Sign up to be a <div class="text-[#7ACDD6]">Storling</div></h1>
+      <h5>Fill your store information below </h5>
     </div>
 
     <Form
-      v-slot="{ errors }"
       autocomplete="off"
-      @submit="login"
       class="login-form"
     >
       <p class="input-title">Email</p>
       <Field
-        v-model="username"
         name="Username"
         type="text"
         class="input-field"
@@ -21,22 +18,23 @@
         rules="required"
       />
       <p class="text-danger text-left text-sm mt-0">
-        {{ errors.Username }}
       </p>
       <p class="input-title">Password</p>
       <Field
         type="password"
         name="password"
-        v-model="password"
         placeholder="Password"
         class="input-field"
         rules="required|minLength:8|maxLength:12"
       />
       <p class="text-danger text-left text-sm mt-0">
-        {{ errors.password }}
       </p>
-      <a href="#/forgotpassword" class="forgot-password">Forgot Password?</a>
-      <button type="submit" class="submit-button">Sign In</button>
+      <div class="term-checkbox">
+        <input name="agree" type="checkbox" /><label class="term-label"
+          >Agree with <a href="#" class="term-condition">Term & Condition</a></label
+        >
+      </div>
+      <button type="submit" class="submit-button">Sign Up</button>
     </Form>
 
     <!-- <div class="or-sign-section">
@@ -69,57 +67,11 @@
       </div>
     </div> -->
 
-    <p class="sign-up-title">
+    <!-- <p class="sign-up-title">
       Don't Have an account? <a href="#/register" class="sign-up">Sign Up</a>
-    </p>
+    </p> -->
   </div>
 </template>
-
-<script setup lang="ts">
-import { ref } from "vue";
-import { useRouter } from "vue-router";
-import { Form, Field } from "vee-validate";
-import { useAuthStore } from "../../store/modules/auth";
-import { ElNotification } from "element-plus";
-
-const router = useRouter();
-const authStore = useAuthStore();
-const username = ref("");
-const password = ref("");
-
-const login = async () => {
-  const payload = {
-    email: username.value,
-    password: password.value,
-  };
-
-  try {
-    const response = await authStore.login(payload);
-    if (response.error) {
-      ElNotification({
-        title: "Error",
-        type: "error",
-        duration: 2000,
-        customClass: "errorNotif",
-        message: "Gagal Login",
-      });
-    } else {
-      ElNotification({
-        title: "Sukses",
-        type: "success",
-        duration: 2000,
-        customClass: "successNotif",
-        message: "Berhasil Login!",
-      });
-
-      localStorage.setItem("token", response.access_token);
-      localStorage.setItem("user_id", response.user.id);
-      router.push(`/home`);
-    }
-  } catch (error) {}
-};
-</script>
-
 <style scoped lang="scss">
 .container {
   background-color: white;
@@ -167,9 +119,27 @@ const login = async () => {
   font-weight: 500;
 }
 
+.term-checkbox {
+  display: flex;
+  flex-direction: row;
+  justify-content: start;
+}
+
+.term-label {
+  align-self: start;
+  color: black;
+  font-size: 12px;
+}
+
+.term-condition {
+  color: #7acdd6;
+}
+
 .input-field {
+  display: flex;
   color: black;
   width: 94%;
+  height: 14px;
   margin-bottom: 10px;
   padding: 10px;
   background-color: white;
