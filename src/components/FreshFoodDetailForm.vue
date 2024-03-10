@@ -41,21 +41,33 @@
             <div class="flex justify-between">
               <div class="flex items-center">
                 <div @click="decreaseQuantity">
-                  <icon
-                    icon="mage:minus-square"
+                  <iconnative
+                    icon="reduce-item-active"
                     color="#555"
                     width="50"
                     height="50"
                   />
+                  <!-- <iconnative
+                    icon="reduce-item-disable"
+                    color="#555"
+                    width="50"
+                    height="50"
+                  /> -->
                 </div>
                 <div class="p-3">{{ quantity }}</div>
                 <div @click="increaseQuantity">
-                  <icon
-                    icon="mage:plus-square"
+                  <iconnative
+                    icon="add-item-active"
                     color="#555"
                     width="50"
                     height="50"
                   />
+                  <!-- <iconnative
+                    icon="add-item-disable"
+                    color="#555"
+                    width="50"
+                    height="50"
+                  /> -->
                 </div>
               </div>
               <div class="font-bold text-2xl">

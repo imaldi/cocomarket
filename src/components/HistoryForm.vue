@@ -65,7 +65,7 @@
               </div>
               <div class="font-normal text-xs text-gray my-[2px]">4 Produk</div>
               <div class="flex items-center font-normal text-xs text-gray">
-                <icon class="mr-[4px]" icon="mingcute:check-circle-fill" color="#51F862" width="14" height="14" />
+                <iconnative class="mr-[4px]" icon="circle-checklist" color="#51F862" width="14" height="14" />
                 Groceries has been delivered
               </div>
             </div>

@@ -26,8 +26,8 @@
         </div>
 
         <div class="d-flex flex text-center justify-center ml-10 mt-0">
-          <img
-            src="../assets/icon/change-image-profile.svg"
+          <iconnative
+            icon="edit-image-orange"
             style="
               width: 27px;
               margin-top: -2em;
@@ -56,8 +56,8 @@
       class="flex py-4 mx-8 border border-dotted border-x-0 border-t-0 border-gray"
     >
       <div @click="router.push('changeprofile')" class="w-full my-auto flex">
-        <img
-          src="../assets/img/icon-changeprofile.svg"
+        <iconnative
+          icon="edit-black"
           class="justify-center"
           alt=""
         />
@@ -65,7 +65,7 @@
       </div>
       <div class="my-auto ml-2">
         <div class="bg-light rounded-md p-1">
-          <img src="../assets/img/Line.svg" class="justify-center" alt="" />
+          <iconnative icon="next-arrow-black" class="justify-center" alt="" />
         </div>
       </div>
     </div>
@@ -82,7 +82,7 @@
       </div>
       <div class="my-auto ml-2">
         <div class="bg-light rounded-md p-1">
-          <img src="../assets/img/Line.svg" class="justify-center" alt="" />
+         <iconnative icon="next-arrow-black" class="justify-center" alt="" />
         </div>
       </div>
     </div>
@@ -90,12 +90,12 @@
       class="flex py-4 mx-8 border border-dotted border-x-0 border-t-0 border-gray"
     >
       <div @click="router.push('myaddress')" class="w-full my-auto flex">
-        <img src="../assets/img/my-address.svg" class="justify-center" alt="" />
+        <iconnative icon="outline-location" class="justify-center" alt="" />
         <div class="ml-4 my-auto text-dark fw-bold">My Address</div>
       </div>
       <div class="my-auto ml-2">
         <div class="bg-light rounded-md p-1">
-          <img src="../assets/img/Line.svg" class="justify-center" alt="" />
+         <iconnative icon="next-arrow-black" class="justify-center" alt="" />
         </div>
       </div>
     </div>
@@ -103,7 +103,7 @@
       class="flex py-4 mx-8 border border-dotted border-x-0 border-t-0 border-gray"
     >
       <div @click="selectItem()" class="w-full my-auto flex">
-        <img src="../assets/img/sign-out.svg" class="justify-center" alt="" />
+        <iconnative icon="sign-out" class="justify-center" alt="" />
         <div class="ml-4 my-auto text-dark fw-bold">Sign Out</div>
       </div>
       <dialog-confirm
@@ -115,7 +115,7 @@
       </dialog-confirm>
       <div class="my-auto ml-2">
         <div class="bg-light rounded-md p-1">
-          <img src="../assets/img/Line.svg" class="justify-center" alt="" />
+         <iconnative icon="next-arrow-black" class="justify-center" alt="" />
         </div>
       </div>
     </div>
@@ -130,6 +130,7 @@ import { useAuthStore } from "../store/modules/auth";
 import { ElNotification } from "element-plus";
 import "../plugins/sweet-alert.css";
 import DialogConfirm from "../components/dialog/ConfirmDialog.vue";
+import iconnative from "../icon/index.vue";
 
 const selectItem = () => {
   deleteDialog.value = true;

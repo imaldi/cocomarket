@@ -4,11 +4,11 @@
       <div class="bg-white shadow-md rounded-xl p-8">
         <div class="flex">
           <div @click="router.back()">
-            <icon icon="ion:arrow-back-circle-outline" color="#000" width="28" height="28" />
+            <iconnative icon="arrow-circle-black" color="#000" width="28" height="28" />
           </div>
           <div class="w-full justify-center flex font-bold">Notification</div>
           <div>
-            <icon icon="solar:menu-dots-bold" style="transform: rotate(90deg)" color="#000" width="28" height="28" />
+            <iconnative icon="dot-vertical" color="#000" width="28" height="28" />
           </div>
         </div>
       </div>
@@ -28,7 +28,7 @@
           <div v-for="(item, index) in listNotifData" :key="index" class="flex pt-4">
             <div class="flex pt-4">
               <div class="circle-bg">
-                <img src="../assets/img/notif1.png" class="" width="28" height="28" alt="notif" />
+                <iconnative icon="coin-star"  class="" width="28" height="28" alt="notif" />
               </div>
             </div>
             <div class="my-auto ml-4">
@@ -66,6 +66,7 @@
 import { useRouter } from 'vue-router';
 import { useNotifStore } from '../store/modules/notification';
 import { ref, onMounted } from "vue";
+import iconnative from "../icon/index.vue";
 
 const router = useRouter();
 const notifStore = useNotifStore();

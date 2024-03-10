@@ -4,8 +4,8 @@
       <div class="bg-white shadow-md rounded-xl p-8">
         <div @click="router.push('profile')" class="flex">
           <div>
-            <icon
-              icon="ion:arrow-back-circle-outline"
+            <iconnative
+              icon="arrow-circle-black"
               color="#000"
               width="28"
               height="28"
@@ -106,6 +106,7 @@ import { ref, onMounted } from "vue";
 import { useProfileStore } from "../store/modules/profile";
 import { Form, Field } from "vee-validate";
 import PopupNotif from "../components/dialog/SuccessDialog.vue";
+import iconnative from "../icon/index.vue";
 
 const notifConfirm = ref(false);
 const profileStore = useProfileStore();
