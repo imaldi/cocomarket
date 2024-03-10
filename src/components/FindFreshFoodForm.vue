@@ -6,37 +6,24 @@
           <div @click="router.push('/home')">
             <iconnative icon="arrow-circle-black" color="#000" width="28" height="28" />
           </div>
-          <div class="w-full justify-center flex font-bold">Find Fresh Food</div>
+          <div class="w-full justify-center flex font-bold text-xl">Find Fresh Food</div>
         </div>
 
-        <div class="flex relative pt-4">
-          <el-select
-            v-model="selectedValues"
-            filterable
-            remote
-            size="medium"
-            reserve-keyword
-            placeholder="Search Food, Drinks, etc"
-            remote-show-suffix
-            :remote-method="remoteMethod"
-            :loading="loading"
-            style="width: 100%"
-          >
-            <el-option v-for="item in dataSearch" :key="item.name" :label="item.name" :value="item.value" />
-          </el-select>
-          <iconnative icon="search" class="my-auto ml-2" color="#E68027" width="18" height="18" />
-        </div>
-        <!-- <div class="flex pt-4">
-          <div class="w-full border border-solid border-gray rounded-full p-2 pl-4 my-auto flex">
-            <icon icon="iconamoon:search-light" color="#000" width="28" height="28" />
-            <div class="ml-4 my-auto">Search Food, Drinks, etc</div>
-          </div>
-          <div class="my-auto ml-2">
-            <div class="bg-light rounded-md p-1">
-              <icon icon="fluent:toggle-multiple-16-regular" color="#7ACDD6" width="28" height="28" />
-            </div>
-          </div>
-        </div> -->
+        <el-select
+          v-model="selectedValues"
+          filterable
+          remote
+          size="medium"
+          reserve-keyword
+          placeholder="Search Food, Drinks, etc"
+          remote-show-suffix
+          :remote-method="remoteMethod"
+          :loading="loading"
+          class="mt-2"
+          style="width: 100%"
+        >
+          <el-option v-for="item in dataSearch" :key="item.name" :label="item.name" :value="item.value" />
+        </el-select>
       </div>
 
       <div class="mx-8">
@@ -153,7 +140,7 @@ const categoryStore = useCategoryStore();
 const cartStore = useCartStore();
 const dataCategory = ref<Item[]>([]);
 const dataProduct = ref<Items[]>([]);
-const selectedValues=ref("")
+const selectedValues = ref("");
 const displayAllCategories = ref(false);
 const seeAll = () => {
   displayAllCategories.value = !displayAllCategories.value;
@@ -199,7 +186,7 @@ interface ItemSearch {
   label: string;
   price: string;
 }
-const loading = ref(false)
+const loading = ref(false);
 const remoteMethod = async (query: string) => {
   if (query) {
     loading.value = true;

@@ -223,7 +223,6 @@ const confirmOrder = async () => {
   };
   try {
     const res = await cartStore.confirmOrders(payload);
-    console.log(res);
     router.push(`/ordersuccess/${res.data.orders.id}`);
   } catch (error) {
     console.log(error);

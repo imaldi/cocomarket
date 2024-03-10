@@ -225,7 +225,7 @@
     <div v-else-if="icon == 'maps'">
       <img :src="maps" :width="width" :height="height" alt="maps" />
     </div>
-    <div v-else-if="icon == 'maskot-chicked'">
+    <div v-else-if="icon == 'maskot-chicken'">
       <img :src="maskotChicken" :width="width" :height="height" alt="maskotChicken" />
     </div>
     <div v-else-if="icon == 'menu'">

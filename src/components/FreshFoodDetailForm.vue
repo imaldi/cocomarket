@@ -5,30 +5,19 @@
         <div class="absolute w-full">
           <div class="justify-between flex w-full">
             <div @click="router.back()">
-              <iconnative
-                class="p-8"
-                icon="back-arrow"
-                color="#000"
-                width="28"
-                height="28"
-              />
+              <iconnative class="p-8" icon="back-arrow" color="#000" width="28" height="28" />
             </div>
-            <iconnative
-              class="relative p-8"
-              icon="upload"
-              color="#000"
-              width="28"
-              height="28"
-            />
+            <iconnative class="relative p-8" icon="upload" color="#000" width="28" height="28" />
           </div>
         </div>
       </div>
       <div class="bg-gray rounded-xl">
-        <div
-          class="text-center"
-          style="height: 30vh;"
-        >
-          <img :src="detailProduct.image" style=" background: rgba(255, 255, 255, 0.5); width: 100%;height: 100%;"  alt="" />
+        <div class="text-center" style="height: 30vh">
+          <img
+            :src="detailProduct.image"
+            style="background: rgba(255, 255, 255, 0.5); width: 100%; height: 100%"
+            alt=""
+          />
         </div>
       </div>
 
@@ -41,12 +30,7 @@
             <div class="flex justify-between">
               <div class="flex items-center">
                 <div @click="decreaseQuantity">
-                  <iconnative
-                    icon="reduce-item-active"
-                    color="#555"
-                    width="50"
-                    height="50"
-                  />
+                  <iconnative icon="reduce-item-active" color="#555" width="50" height="50" />
                   <!-- <iconnative
                     icon="reduce-item-disable"
                     color="#555"
@@ -56,12 +40,7 @@
                 </div>
                 <div class="p-3">{{ quantity }}</div>
                 <div @click="increaseQuantity">
-                  <iconnative
-                    icon="add-item-active"
-                    color="#555"
-                    width="50"
-                    height="50"
-                  />
+                  <iconnative icon="add-item-active" color="#555" width="50" height="50" />
                   <!-- <iconnative
                     icon="add-item-disable"
                     color="#555"
@@ -70,9 +49,7 @@
                   /> -->
                 </div>
               </div>
-              <div class="font-bold text-2xl">
-                Rp. {{ detailProduct.price }}
-              </div>
+              <div class="font-bold text-2xl">Rp. {{ detailProduct.price }}</div>
             </div>
           </div>
         </div>
@@ -82,13 +59,7 @@
         <div class="flex justify-between">
           <div class="font-500 pt-2">Product Detail</div>
           <div class="mt-2">
-            <icon
-              icon="ion:chevron-down"
-              class="my-auto"
-              color="#555"
-              width="28"
-              height="28"
-            />
+            <icon icon="ion:chevron-down" class="my-auto" color="#555" width="28" height="28" />
           </div>
         </div>
         <div class="text-justify text-gray text-sm">
@@ -97,10 +68,7 @@
       </div>
 
       <div class="relative">
-        <div
-          class="fixed w-full bg-white rounded-lg shadow-md"
-          style="bottom: 0"
-        >
+        <div class="fixed w-full bg-white rounded-lg shadow-md" style="bottom: 0">
           <div class="flex w-full justify-between p-4">
             <div class="my-auto">
               <div>Total Price</div>
@@ -110,16 +78,8 @@
               @click="goToCart(detailProduct.id, detailProduct.categories_id)"
               class="flex p-4 mr-8 rounded-2xl bg-primary w-1/2 justify-center"
             >
-              <iconnative
-                icon="shopping-bag"
-                class="mr-4"
-                color="#fff"
-                width="28"
-                height="28"
-              />
-              <div type="button" class="text-lg font-500 text-white">
-                Add to Cart
-              </div>
+              <iconnative icon="shopping-bag" class="mr-4" color="#fff" width="28" height="28" />
+              <div type="button" class="text-lg font-500 text-white">Add to Cart</div>
             </div>
           </div>
         </div>
