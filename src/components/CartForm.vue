@@ -26,7 +26,7 @@
               </div>
               <div class="text-xs font-normal tracking-tighter">Jl. Raya Batam Centre Blok A No. 1...</div>
             </div>
-            <div><iconnative icon="next-arrow" color="#E68027" width="20" height="20" /></div>
+            <div><iconnative icon="next-arrow-blue" color="#E68027" width="20" height="20" /></div>
           </div>
         </div>
         <div>

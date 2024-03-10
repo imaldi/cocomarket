@@ -4,12 +4,12 @@
         <div class="bg-white shadow-md rounded-xl p-8">
           <div class="flex items-center">
             <div>
-              <icon icon="ion:arrow-back-circle-outline" color="#000" width="28" height="28" />
+              <iconnative icon="arrow-circle-black" color="#000" width="28" height="28" />
             </div>
             <div class="w-80 justify-between flex items-center font-bold border-solid border border-gray rounded-xl px-6 py-2 ml-4">
-                <div><icon icon="iconamoon:search-light" color="#000" width="20" height="20" /></div>
+                <div><iconnative icon="search" color="#000" width="20" height="20" /></div>
                 <input class="border-0" type="text" name="search" id="search" placeholder="Search Your Location">
-                <div><icon icon="ant-design:close-circle-outlined" color="green" width="20" height="20" /></div>
+                <div><iconnative icon="outline-close" color="green" width="20" height="20" /></div>
             </div>
           </div>
         </div>
@@ -28,7 +28,7 @@
             <div class="mt-4 px-10">
                 <div class="flex border border-solid border-gray rounded-xl justify-center py-2">
                     <div class="mr-2">
-                        <icon color="green" icon="mage:map-marker-fill" width="20"></icon>
+                        <iconnative color="green" icon="location" width="20"/>
                     </div>
                     <div class="font-semibold text-sm">Use my current location</div>
                 </div>
@@ -88,6 +88,10 @@
       </div>
     </div>
   </template>
+
+<script setup lang="ts">
+import iconnative from "../icon/index.vue";
+</script>
   
   <style scoped lang="scss">
   .container {
