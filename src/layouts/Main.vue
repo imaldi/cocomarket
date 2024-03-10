@@ -53,7 +53,9 @@
         $route.path !== '/cocopayselectmethod' &&
         $route.path !== `/detailcategory/${$route.params.id}` &&
         $route.path !== `/ordersuccess/${$route.params.id}` &&
-        $route.path !== '/mitra/login'
+        $route.path !== '/mitra/login' &&
+        $route.path !== '/mitra/splashscreen' &&
+        $route.path !== '/mitra/verifycode' 
       "
       class="bottom-navigation z-2"
     >

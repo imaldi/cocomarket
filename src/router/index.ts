@@ -297,6 +297,16 @@ const routes: RouteRecordRaw[] = [
         name: "Login Mitra",
         component: () => import("../views/Mitra/Login.vue"),
       },
+      {
+        path: "/mitra/splashscreen",
+        name: "SplashScreen Mitra",
+        component: () => import("../views/Mitra/SplashScreen.vue"),
+      },
+      {
+        path: "/mitra/verifycode",
+        name: "VerifyCode Mitra",
+        component: () => import("../views/Mitra/VerifyCode.vue"),
+      },
     ],
   },
 ];
