@@ -4,8 +4,8 @@
       <div class="bg-white shadow-md rounded-xl p-8">
         <div @click="goToProfile" class="flex">
           <div>
-            <icon
-              icon="ion:arrow-back-circle-outline"
+            <iconnative
+              icon="arrow-circle-black"
               color="#000"
               width="28"
               height="28"
@@ -18,25 +18,35 @@
       </div>
 
       <div class="mx-8 my-6">
-        <form class="flex flex-col px-2 pt-6" @submit.prevent="onSubmit">
+        <Form
+          v-slot="{ errors }"
+          class="flex flex-col px-2 pt-6"
+          @submit="onSubmit"
+        >
           <label
             for="password"
             class="my-2 text-base font-bold text-sm text-black text-left"
             >New Password</label
           >
-          <input
+          <Field
+            name="password"
             class="shadow appearance-none border border-black border-solid rounded py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline bg-white"
             id="password"
             v-model="newPassword"
             type="password"
+            rules="maxLength:12|minLength:8"
             placeholder="*********"
           />
+          <p class="text-danger text-left text-sm mt-0">
+            {{ errors.password }}
+          </p>
           <label
             class="my-2 text-base font-bold text-sm text-black text-left"
             for="confirmPassword"
             >Confirm New Password</label
           >
-          <input
+          <Field
+            name="confirmPassword"
             v-model="passConfirmation"
             class="shadow appearance-none border border-black border-solid rounded py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline bg-white"
             id="confirmPassword"
@@ -44,15 +54,22 @@
             placeholder="*********"
           />
           <div v-if="passwordsDoNotMatch" class="text-red-500 text-sm">
-            Passwords do not match.
+            Passwords tidak sesuai.
           </div>
           <Button
             type="submit"
             class="w-[80vw] bg-[#7ACDD6] text-white mt-6 font-bold"
             >Change Password</Button
           >
-        </form>
+        </Form>
       </div>
+      <popup-notif
+        v-model="notifConfirm"
+        :message="`Password Update Successfully`"
+        :title="`Back To Login`"
+        @confirm="goToLogin"
+      >
+      </popup-notif>
     </div>
   </div>
 </template>
@@ -61,7 +78,10 @@
 import { useRouter } from "vue-router";
 import { ref } from "vue";
 import { useProfileStore } from "../store/modules/profile";
-
+import PopupNotif from "../components/dialog/SuccessDialog.vue";
+import { Form, Field } from "vee-validate";
+import iconnative from "../icon/index.vue";
+const notifConfirm = ref(false);
 const newPassword = ref("");
 const passConfirmation = ref("");
 const passwordsDoNotMatch = ref(false);
@@ -70,6 +90,9 @@ const profileStore = useProfileStore();
 
 const goToProfile = () => {
   router.push("/profile");
+};
+const goToLogin = () => {
+  router.push("/");
 };
 
 const onSubmit = async () => {
@@ -86,7 +109,8 @@ const onSubmit = async () => {
   try {
     const response = await profileStore.updatePassword(payload);
     console.log(response);
-    router.push("/profile");
+    // router.push("/profile");
+    notifConfirm.value = true;
   } catch (error) {
     console.error(error);
   }

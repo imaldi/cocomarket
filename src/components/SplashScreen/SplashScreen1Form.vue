@@ -1,9 +1,9 @@
 <template>
-  <div class="container bg-white h-[100vh] text-center">
-    <div class="w-screen bg-[#7ACDD6] z-0 pt-20">
+  <div class="bg-white h-[100vh] text-center">
+    <div class="w-screen bg-[#7ACDD6] z-0 pt-20 -mb-10">
       <img class="splash-img h-[100vw]" src="../../assets/img/splash1.png" alt="Splash Screen picture 1" />
     </div>
-    <div class="content bg-white pt-10 flex flex-col items-center z-10">
+    <div class="content bg-white pt-10 flex flex-col items-center z-4">
       <h1 class="color-black text-2xl w-[80vw]">
         Let's Find the <span class="text-[#7ACDD6]">Best</span> & <span class="text-[#7ACDD6]">Healthy Grocery</span>
       </h1>

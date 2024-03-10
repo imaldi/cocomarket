@@ -1,11 +1,12 @@
 <template>
   <div class="container">
-    <div @click="router.back()" class="mx-8">
-      <icon
-        icon="ion:arrow-back-outline"
+    <div @click="router.back()" class="w-full flex justify-start">
+      <iconnative
+      class="px-8 pt-20 pb-10"
+        icon="outline-arrow-left"
         color="#7ACDD6"
-        width="38"
-        height="38"
+        width="53"
+        height="53"
       />
     </div>
 
@@ -55,6 +56,7 @@
 import { ref, onMounted } from "vue";
 import { useRouter } from "vue-router";
 import { useAuthStore } from "../store/modules/auth";
+import iconnative from "../icon/index.vue";
 
 const authStore = useAuthStore();
 const router = useRouter();
@@ -83,8 +85,9 @@ const verifyCode = async () => {
   background-color: white;
   display: flex;
   flex-direction: column;
+  justify-content: start;
   width: 100%;
   color: #000000;
-  margin-top: 20%;
+  height: 100vh;
 }
 </style>

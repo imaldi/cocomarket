@@ -5,18 +5,20 @@
         <div class="absolute w-full">
           <div class="justify-between flex w-full">
             <div @click="router.back()">
-              <icon class="p-8" icon="ion:chevron-back" color="#000" width="28" height="28" />
+              <iconnative class="p-8" icon="back-arrow" color="#000" width="28" height="28" />
             </div>
-            <icon class="relative p-8" icon="ion:share-outline" color="#000" width="28" height="28" />
+            <iconnative class="relative p-8" icon="upload" color="#000" width="28" height="28" />
           </div>
         </div>
       </div>
-
-      <div class="bg-gray rounded-xl p-8">
-        <div class="text-center" style="height: 30vh; opacity: 0.5">
-          <img :src="detailProduct.image" width="200" height="200" alt="" />
+      <div class="bg-gray rounded-xl">
+        <div class="text-center" style="height: 30vh">
+          <img
+            :src="detailProduct.image"
+            style="background: rgba(255, 255, 255, 0.5); width: 100%; height: 100%"
+            alt=""
+          />
         </div>
-        <div class="text-center text-4xl">...</div>
       </div>
 
       <div class="mx-8">
@@ -28,11 +30,23 @@
             <div class="flex justify-between">
               <div class="flex items-center">
                 <div @click="decreaseQuantity">
-                  <icon icon="mage:minus-square" color="#555" width="50" height="50" />
+                  <iconnative icon="reduce-item-active" color="#555" width="50" height="50" />
+                  <!-- <iconnative
+                    icon="reduce-item-disable"
+                    color="#555"
+                    width="50"
+                    height="50"
+                  /> -->
                 </div>
                 <div class="p-3">{{ quantity }}</div>
                 <div @click="increaseQuantity">
-                  <icon icon="mage:plus-square" color="#555" width="50" height="50" />
+                  <iconnative icon="add-item-active" color="#555" width="50" height="50" />
+                  <!-- <iconnative
+                    icon="add-item-disable"
+                    color="#555"
+                    width="50"
+                    height="50"
+                  /> -->
                 </div>
               </div>
               <div class="font-bold text-2xl">Rp. {{ detailProduct.price }}</div>
@@ -54,7 +68,7 @@
       </div>
 
       <div class="relative">
-        <div class="fixed w-full bg-white rounded-lg shadow-md" style="bottom: 4em">
+        <div class="fixed w-full bg-white rounded-lg shadow-md" style="bottom: 0">
           <div class="flex w-full justify-between p-4">
             <div class="my-auto">
               <div>Total Price</div>
@@ -64,7 +78,7 @@
               @click="goToCart(detailProduct.id, detailProduct.categories_id)"
               class="flex p-4 mr-8 rounded-2xl bg-primary w-1/2 justify-center"
             >
-              <icon icon="tabler:shopping-bag-plus" class="mr-4" color="#fff" width="28" height="28" />
+              <iconnative icon="shopping-bag" class="mr-4" color="#fff" width="28" height="28" />
               <div type="button" class="text-lg font-500 text-white">Add to Cart</div>
             </div>
           </div>
@@ -79,6 +93,7 @@ import { useRoute, useRouter } from "vue-router";
 import { useProdukStore } from "../store/modules/product";
 import { onMounted, ref, computed } from "vue";
 import { useCartStore } from "../store/modules/cart";
+import iconnative from "../icon/index.vue";
 const route = useRoute();
 const produkStore = useProdukStore();
 const cartStore = useCartStore();
@@ -101,7 +116,7 @@ interface Item {
   name: string;
   image: string;
   price: number;
-  categories_id:number;
+  categories_id: number;
   description: string;
 }
 
@@ -115,7 +130,7 @@ const goToCart = (id: any, catId: any) => {
     try {
       const response = cartStore.addToCart(payload);
       console.log(response);
-      router.push(`/detailcategory/${catId}`);
+      router.push("/findfreshfood");
     } catch (error) {}
   }
 };

@@ -1,27 +1,26 @@
 <template>
   <div>
     <router-view></router-view>
-    <nav
+    <div
       v-if="
         $route.path !== '/' &&
         $route.path !== '/register' &&
-        $route.path !== '/splashScreen' &&
-        $route.path !== '/splashScreen1' &&
-        $route.path !== '/splashScreen2' &&
-        $route.path !== '/splashScreen3' &&
-        $route.path !== '/splashScreen4' &&
+        $route.path !== '/splashscreen' &&
+        $route.path !== '/splashscreen1' &&
+        $route.path !== '/splashscreen2' &&
+        $route.path !== '/splashscreen3' &&
+        $route.path !== '/splashscreen4' &&
         $route.path !== '/completeyourprofile' &&
         $route.path !== '/newpassword' &&
         $route.path !== '/verifycode' &&
         $route.path !== '/allowlocationaccess' &&
         $route.path !== '/findfreshfood' &&
-        $route.path !== '/freshfooddetail' &&
+        $route.path !== `/freshfooddetail/${$route.params.id}` &&
         $route.path !== '/addfreshfood' &&
-        $route.path !== '/configaddfreshfood' &&
+        $route.path !== `/configaddfreshfood/${$route.params.id}` &&
         $route.path !== '/checkout' &&
         $route.path !== '/paymentmethod' &&
         $route.path !== '/coupon' &&
-        $route.path !== '/configaddfreshfood' &&
         $route.path !== '/forgotpassword' &&
         $route.path !== '/resetPassword' &&
         $route.path !== '/checkout' &&
@@ -49,74 +48,70 @@
         $route.path !== '/chooseczipcode' &&
         $route.path !== '/storling' &&
         $route.path !== '/revieworder2' &&
-        $route.path !== '/ordersuccess' &&
         $route.path !== '/receipt' &&
         $route.path !== '/cocopay' &&
         $route.path !== '/cocopayselectmethod' &&
-        $route.path !== `/detailcategory/${$route.params.id}`
+        $route.path !== `/detailcategory/${$route.params.id}` &&
+        $route.path !== `/ordersuccess/${$route.params.id}` &&
+        $route.path !== '/notification' &&
+        $route.path !== `/receipt/${$route.params.id}`
       "
-      class="bottom-navigation z-2"
+      class="bottom-navigation justify-between w-full z-2"
     >
-      <router-link to="/home" class="nav-item">
-        <div>
-          <div class="text-center">
-            <icon
-              icon="fluent:home-48-filled"
-              :color="$route.path == '/home' ? '#7ACDD6' : '#a6a6a6'"
-              width="30"
-              height="30"
-            />
-          </div>
-          <div class="text-sm pt-1 text-black" style="margin-top: -12px">Home</div>
+      <div class="flex w-full justify-between">
+        <div @click="router.push('/home')" class="text-center p-4">
+          <iconnative :icon="$route.path == '/home' ? 'home-active' : 'home'" class="mb-2" width="28" height="28" />
+          <div :class="$route.path == '/home' ? 'text-primary' : 'text-black'" style="margin-top: -12px">Home</div>
         </div>
-      </router-link>
-      <router-link to="/history" class="nav-item">
-        <div>
-          <div class="text-center mb-1">
-            <icon
-              icon="ic:baseline-history"
-              :color="$route.path == '/history' ? '#7ACDD6' : '#a6a6a6'"
-              width="26"
-              height="26"
-            />
+        <div @click="router.push('/history')" class="text-center p-4">
+          <iconnative
+            :icon="$route.path == '/history' ? 'history-active' : 'history'"
+            class="mb-2"
+            width="28"
+            height="28"
+          />
+          <div :class="$route.path == '/history' ? 'text-primary' : 'text-black'" style="margin-top: -12px">
+            History
           </div>
-          <div class="text-sm pt-1 text-black" style="margin-top: -10px">History</div>
         </div>
-      </router-link>
-      <router-link to="/order" class="nav-item">
-        <div>
-          <div class="text-center mb-1">
-            <icon
-              icon="bi:cart-check-fill"
-              :color="$route.path == '/order' ? '#7ACDD6' : '#a6a6a6'"
-              width="26"
-              height="26"
-            />
+        <div @click="router.push('/order')" class="text-center p-4">
+          <iconnative :icon="$route.path == '/order' ? 'order-active' : 'order'" class="mb-2" width="28" height="28" />
+          <div :class="$route.path == '/order' ? 'text-primary' : 'text-black'" style="margin-top: -12px">Order</div>
+        </div>
+        <div @click="chat()" class="text-center p-4">
+          <iconnative :icon="$route.path == '/chat' ? 'chat-active' : 'chat'" class="mb-2" width="28" height="28" />
+          <div :class="$route.path == '/chat' ? 'text-primary' : 'text-black'" style="margin-top: -12px">Chat</div>
+        </div>
+        <div @click="router.push('/profile')" class="text-center p-4">
+          <iconnative
+            :icon="$route.path == '/profile' ? 'profile-active' : 'profile'"
+            class="mb-2"
+            width="28"
+            height="28"
+          />
+          <div :class="$route.path == '/profile' ? 'text-primary' : 'text-black'" style="margin-top: -12px">
+            Profile
           </div>
-          <div class="text-sm pt-1 text-black" style="margin-top: -10px">Order</div>
         </div>
-      </router-link>
-      <router-link to="/chat" class="nav-item">
-        <div>
-          <div class="text-center">
-            <icon
-              icon="heroicons:chat-bubble-left-right-20-solid"
-              :color="$route.path == '/chat' ? '#7ACDD6' : '#a6a6a6'"
-              width="30"
-              height="30"
-            />
-          </div>
-          <div class="text-sm pt-1 text-black" style="margin-top: -12px">Chat</div>
-        </div>
-      </router-link>
-      <router-link to="/profile" class="nav-item">
-        <div>
-          <div class="text-center">
-            <icon icon="gg:profile" :color="$route.path == '/profile' ? '#7ACDD6' : '#a6a6a6'" width="30" height="30" />
-          </div>
-          <div class="text-sm pt-1 text-black" style="margin-top: -12px">Profile</div>
-        </div>
-      </router-link>
-    </nav>
+      </div>
+    </div>
   </div>
 </template>
+
+<script setup lang="ts">
+import iconnative from "../icon/index.vue";
+import { useRouter } from "vue-router";
+import { ElNotification } from "element-plus";
+
+const router = useRouter();
+
+const chat = async () => {
+  ElNotification({
+    title: "Coming soon",
+    type: "warning",
+    duration: 2000,
+    customClass: "errorNotif",
+    message: "Chat, Coming Soon !!!",
+  });
+};
+</script>

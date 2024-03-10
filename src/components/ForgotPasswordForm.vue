@@ -2,7 +2,10 @@
   <div class="container">
     <div class="mt-20 mx-8">
       <div @click="router.push('/')">
-        <icon icon="ion:arrow-back-outline" color="#7ACDD6" width="38" height="38" />
+        <iconnative icon="outline-arrow-left"   
+        color="#7ACDD6"
+        width="53"
+        height="53" />
       </div>
       <div class="mt-4 text-center">
         <div class="text-2xl font-bold">Forgot Password</div>
@@ -12,8 +15,8 @@
       <div>
         <div class="border border-solid border-primary p-4 rounded-xl mt-16">
           <div class="flex">
-            <div class="flex bg-primary w-8 p-2 text-center rounded-xl">
-              <icon icon="mingcute:mail-line" color="#fff" width="28" height="28" />
+            <div class="flex w-8 text-center rounded-xl items-center">
+              <iconnative icon="fill-email" width="30" height="30" />
             </div>
             <div class="ml-4">
               <div class="font-bold">Email</div>
@@ -24,7 +27,7 @@
       </div>
 
       <div class="flex flex-col items-center">
-        <Button @click="forgotAction" class="w-[80vw] bg-[#7ACDD6] mt-6 font-bold">Continue</Button>
+        <Button @click="forgotAction" class="w-[80vw] bg-[#7ACDD6] mt-6 font-bold text-white">Continue</Button>
       </div>
     </div>
   </div>
@@ -32,6 +35,7 @@
 
 <script setup lang="ts">
 import { useRouter } from "vue-router";
+import iconnative from "../icon/index.vue";
 
 const router = useRouter();
 
@@ -46,6 +50,7 @@ const forgotAction = async () => {
   background-color: white;
   display: flex;
   flex-direction: column;
+  justify-content: start;
   width: 100%;
   height: 100vh;
   color: #000000;

@@ -1,35 +1,51 @@
 {
   "name": "cocomarket_frontend",
   "private": true,
-  "version": "0.0.0",
-  "type": "module",
+  "version": "1.0.0",
   "scripts": {
     "dev": "vite",
     "build": "vue-tsc && vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "build:android": "vue-tsc && vite build && cordova build android --prod --release --buildConfig=build.json",
+    "debug:android": "vue-tsc && vite build && cordova build android --prod --debug --buildConfig=build.json"
   },
   "dependencies": {
-    "@types/googlemaps": "^3.43.3",
     "@vuepic/vue-datepicker": "^8.1.1",
     "axios": "^1.6.7",
+    "cordova-plugin-splashscreen": "^6.0.2",
+    "onesignal-cordova-plugin": "^3.3.1",
+    "pinia": "^2.1.7",
+    "vue": "^3.4.19",
+    "vue-router": "^4.3.0",
+    "vue-toast-notification": "^3.1.2",
     "element-plus": "^2.6.1",
     "firebase": "^10.8.1",
     "leaflet": "^1.9.4",
     "leaflet-routing-machine": "^3.2.12",
     "leaflet.locatecontrol": "^0.79.0",
-    "pinia": "^2.1.7",
     "vee-validate": "^4.12.5",
-    "vue": "^3.4.21",
-    "vue-router": "^4.3.0"
+    "@types/leaflet": "^1.9.8",
+    "sweetalert2": "^11.10.6",
+    "vue-sweetalert": "^0.1.18",
+    "vue-sweetalert2": "^5.0.5"
   },
   "devDependencies": {
     "@iconify/vue": "^4.1.1",
-    "@types/leaflet": "^1.9.8",
     "@vitejs/plugin-vue": "^5.0.4",
+    "cordova-android": "^12.0.1",
     "sass": "^1.71.1",
     "typescript": "^5.2.2",
     "unocss": "^0.58.5",
-    "vite": "^5.1.5",
+    "vite": "^5.1.4",
     "vue-tsc": "^1.8.27"
+  },
+  "cordova": {
+    "platforms": [
+      "android"
+    ],
+    "plugins": {
+      "onesignal-cordova-plugin": {},
+      "cordova-plugin-splashscreen": {}
+    }
   }
 }

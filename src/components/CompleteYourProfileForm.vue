@@ -2,14 +2,20 @@
   <div class="container">
     <div class="mx-8">
       <div @click="router.push('/verifycode')">
-        <icon icon="ion:arrow-back-outline" color="#7ACDD6" width="38" height="38" />
+        <iconnative
+      class="pt-20 pb-10"
+        icon="outline-arrow-left"
+        color="#7ACDD6"
+        width="53"
+        height="53"
+      />
       </div>
       <div class="mt-4 text-center">
         <div class="text-2xl font-bold">Complete Your Profile</div>
         <div>Don't Worry, only you can see your personal data. No else will too able too see it.</div>
       </div>
       <div class="text-center mt-4">
-        <icon class="circle-icon" icon="basil:user-outline" color="#000" width="38" height="38" />
+        <iconnative icon="complete-your-profile" color="#000" width="120" height="120" />
       </div>
 
       <form class="login-form">
@@ -31,6 +37,8 @@
 <script setup lang="ts">
 import { useRouter } from "vue-router";
 import { ref } from "vue";
+import iconnative from "../icon/index.vue";
+
 const router = useRouter();
 
 const username = ref("");
@@ -42,9 +50,10 @@ const phoneNumber = ref("");
   background-color: white;
   display: flex;
   flex-direction: column;
+  justify-content: start;
   width: 100%;
+  height: 100vh;
   color: #000000;
-  margin-top: 20%;
 }
 
 .input-field {

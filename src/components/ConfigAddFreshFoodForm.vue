@@ -1,18 +1,22 @@
 <template>
   <div>
     <div class="container">
-      <div class="bg-white shadow-md rounded-xl p-8">
+      <div class="bg-white shadow-xl rounded-xl p-8">
         <div class="flex">
           <div @click="router.back()">
-            <icon icon="ion:arrow-back-circle-outline" color="#000" width="28" height="28" />
+            <iconnative icon="arrow-circle-black" color="#000" width="28" height="28" />
           </div>
-          <div class="w-full justify-center flex font-bold">Shopping Cart</div>
+          <div class="w-full justify-center flex font-bold text-xl">Shopping Cart</div>
         </div>
       </div>
 
       <div class="mx-8 pt-4 h-screen overflow-y">
         <div class="scrollable-content">
-          <div v-for="(item, index) in detailCategory" :key="index" class="flex shadow-md p-4 rounded-md">
+          <div
+            v-for="(item, index) in detailCategory"
+            :key="index"
+            class="flex border border-solid border-light shadow-md mb-4 p-4 rounded-md"
+          >
             <div class="bg-gray rounded-lg">
               <img src="../assets/img/meat1.png" alt="" />
             </div>
@@ -35,8 +39,8 @@
                 <div @click="item.total++">
                   <icon icon="mage:plus-square" color="#7ACDD6" width="28" height="28" />
                 </div>
-                <div @click="removeItem(index)">
-                  <icon icon="mage:trash" color="#7ACDD6" width="28" height="28" />
+                <div @click="removeItem(item.id, index)">
+                  <icon icon="mage:trash" color="#ff0000" width="28" height="28" />
                 </div>
               </div>
             </div>
@@ -45,7 +49,7 @@
       </div>
 
       <div class="relative">
-        <div class="fixed w-full bg-white rounded-lg shadow-md" style="bottom: 4em">
+        <div class="fixed w-full bg-white rounded-lg shadow-md" style="bottom: 0">
           <div v-if="detailCategory" class="flex w-full justify-between p-4">
             <div class="my-auto">
               <div>Total Price</div>
@@ -64,12 +68,14 @@
 <script setup lang="ts">
 import { onMounted, ref } from "vue";
 import { useRoute, useRouter } from "vue-router";
-import { useCategoryStore } from "../store/modules/category";
+// import { useCategoryStore } from "../store/modules/category";
 import { useCartStore } from "../store/modules/cart";
+import { ElNotification } from "element-plus";
+import iconnative from "../icon/index.vue";
 
 const router = useRouter();
 const route = useRoute();
-const categoryStore = useCategoryStore();
+// const categoryStore = useCategoryStore();
 const cartStore = useCartStore();
 const detailCategory = ref<Item[]>([]);
 const quantity = ref<number[]>([]);
@@ -78,23 +84,28 @@ interface Item {
   name: string;
   subtitle: string;
   price: number;
-  products_name:string;
-  products_price:string;
-  products_subtitle:string;
-  total:number;
+  products_name: string;
+  products_price: string;
+  products_subtitle: string;
+  total: number;
   total_stock: string;
 }
 
 const goToCart = (data: any) => {
   var payload: any = [];
+
   data.forEach((item: any) => {
     payload.push({ products_id: item.products_id, qty: item.total });
   });
 
   try {
     cartStore.putToCart({ data: payload }, data[0].carts_id);
-    router.push(`/checkout`);
-  } catch (error) {}
+    setTimeout(() => {
+      router.push(`/checkout`);
+    }, 100);
+  } catch (error) {
+    console.error(error);
+  }
 };
 
 const calculateTotalPrice = () => {
@@ -106,15 +117,15 @@ const calculateTotalPrice = () => {
   return total.toLocaleString("en-US", { useGrouping: true }).replace(/,/g, ".");
 };
 
-const getCategorybyId = async (id: any) => {
-  try {
-    const res = await categoryStore.getProductByCategory(id);
-    quantity.value = new Array(res.data.length).fill(1);
-    detailCategory.value = res.data as Item[];
-  } catch (error) {
-    console.log(error);
-  }
-};
+// const getCategorybyId = async (id: any) => {
+//   try {
+//     const res = await categoryStore.getProductByCategory(id);
+//     quantity.value = new Array(res.data.length).fill(1);
+//     detailCategory.value = res.data as Item[];
+//   } catch (error) {
+//     console.log(error);
+//   }
+// };
 
 const getCartDetails = async (id: any) => {
   try {
@@ -135,13 +146,41 @@ const getCartDetails = async (id: any) => {
 //   }
 // };
 
-const removeItem = (index: number) => {
-  detailCategory.value.splice(index, 1);
-  quantity.value.splice(index, 1);
+const removeItem = async (id: any, index: number) => {
+  try {
+    let text;
+
+    if (confirm("Anda yakin delete product ?") == true) {
+      const res = await cartStore.removeCartDetail(id);
+
+      if (res) {
+        detailCategory.value.splice(index, 1);
+        quantity.value.splice(index, 1);
+
+        if (detailCategory.value?.length == 0) {
+          setTimeout(() => {
+            router.push("/findfreshfood");
+          }, 500);
+        }
+
+        ElNotification({
+          title: "Delete Success",
+          type: "success",
+          duration: 2000,
+          customClass: "successNotif",
+          message: "Product berhasil di update",
+        });
+      }
+    } else {
+      text = "You canceled!";
+    }
+  } catch (error) {
+    console.log(error);
+  }
 };
 
 onMounted(() => {
-  getCategorybyId(route.params.id);
+  // getCategorybyId(route.params.id);
   getCartDetails(route.params.id);
 });
 </script>
@@ -152,7 +191,7 @@ onMounted(() => {
   display: flex;
   flex-direction: column;
   width: 100%;
-  height: 100vh;
+  height: 96vh;
   color: #000000;
 }
 

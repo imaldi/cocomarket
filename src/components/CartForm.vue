@@ -4,7 +4,7 @@
       <div class="bg-white shadow-md rounded-xl p-8">
         <div class="flex">
           <div>
-            <icon icon="ion:arrow-back-circle-outline" color="#000" width="28" height="28" />
+            <iconnative icon="arrow-circle-black" color="#000" width="28" height="28" />
           </div>
           <div class="w-full justify-center flex font-bold">Cart</div>
         </div>
@@ -13,9 +13,9 @@
       <div class="mx-8">
         <div class="my-2">
           <div class="bg-white px-4 py-6 rounded-xl flex justify-between items-center">
-            <img
-              class="p-2 rounded-full bg-white border border-solid border-gray"
-              src="../assets/img/cart.png"
+            <iconnative
+              class="px-2 py-1 rounded-full bg-white border border-solid border-gray"
+              icon="delivery-b"
               alt="Driver Picture"
               width="28"
             />
@@ -26,7 +26,7 @@
               </div>
               <div class="text-xs font-normal tracking-tighter">Jl. Raya Batam Centre Blok A No. 1...</div>
             </div>
-            <div><icon icon="mingcute:right-line" color="#E68027" width="20" height="20" /></div>
+            <div><iconnative icon="next-arrow-blue" color="#E68027" width="20" height="20" /></div>
           </div>
         </div>
         <div>
@@ -45,7 +45,7 @@
             <div class="text-sm font-semibold mb-4">Order List</div>
 
             <div class="py-6 rounded-xl flex justify-start items-center">
-              <img class="p-2" src="../assets/img/cartstall.png" alt="Driver Picture" width="28" />
+              <iconnative class="p-2" icon="shop" alt="Driver Picture" width="28" />
               <div class="flex flex-col justify-center">
                 <div class="text-sm font-semibold">Bakso Solo Kang Emil</div>
                 <div class="text-[10px] font-normal">Delivery time on the same day</div>
@@ -64,21 +64,21 @@
               </div>
               <div class="flex w-full justify-end mt-4 items-center">
                 <div>
-                  <icon icon="bi:trash" color="darkgray" width="20" height="20" />
+                  <iconnative icon="trash-b" color="darkgray" width="28" height="28" />
                 </div>
                 <div class="mx-2">
-                  <button class="bg-[#E68027] text-color-white rounded-full text-xs">
-                    <icon icon="ic:round-plus" color="white" width="14" height="14" />
+                  <button class="bg-[#E68027] text-color-white rounded-full text-xs flex">
+                    <iconnative icon="plus-white" color="white" width="14" height="14" class="mr-2"/>
                     Note
                   </button>
                 </div>
                 <div class="flex items-center">
                   <button class="shadow bg-[#E68027] border-0 outline-0 py-0 px-2">
-                    <icon icon="ic:round-minus" color="white" width="14" height="14" />
+                    <iconnative icon="minus-white" color="white" width="14" height="14" />
                   </button>
                   <div class="text-sm color-gray mx-2">2</div>
                   <button class="shadow bg-[#E68027] border-0 outline-0 py-0 px-2">
-                    <icon icon="ic:round-plus" color="white" width="14" height="14" />
+                    <iconnative icon="plus-white" color="white" width="14" height="14" />
                   </button>
                 </div>
               </div>
@@ -96,21 +96,21 @@
               </div>
               <div class="flex w-full justify-end mt-4 items-center">
                 <div>
-                  <icon icon="bi:trash" color="darkgray" width="20" height="20" />
+<iconnative icon="trash-b" color="darkgray" width="28" height="28" />
                 </div>
                 <div class="mx-2">
-                  <button class="bg-[#E68027] text-color-white rounded-full text-xs">
-                    <icon icon="ic:round-plus" color="white" width="14" height="14" />
+                  <button class="bg-[#E68027] text-color-white rounded-full text-xs flex">
+                    <iconnative icon="plus-white" color="white" width="14" height="14" class="mr-2"/>
                     Note
                   </button>
                 </div>
                 <div class="flex items-center">
                   <button class="shadow bg-[#E68027] border-0 outline-0 py-0 px-2">
-                    <icon icon="ic:round-minus" color="white" width="14" height="14" />
+                     <iconnative icon="minus-white" color="white" width="14" height="14" />
                   </button>
                   <div class="text-sm color-gray mx-2">2</div>
                   <button class="shadow bg-[#E68027] border-0 outline-0 py-0 px-2">
-                    <icon icon="ic:round-plus" color="white" width="14" height="14" />
+<iconnative icon="plus-white" color="white" width="14" height="14" />
                   </button>
                 </div>
               </div>
@@ -128,21 +128,21 @@
               </div>
               <div class="flex w-full justify-end mt-4 items-center">
                 <div>
-                  <icon icon="bi:trash" color="darkgray" width="20" height="20" />
+<iconnative icon="trash-b" color="darkgray" width="28" height="28" />
                 </div>
                 <div class="mx-2">
-                  <button class="bg-[#E68027] text-color-white rounded-full text-xs">
-                    <icon icon="ic:round-plus" color="white" width="14" height="14" />
+                  <button class="bg-[#E68027] text-color-white rounded-full text-xs flex">
+                    <iconnative icon="plus-white" color="white" width="14" height="14" class="mr-2"/>
                     Note
                   </button>
                 </div>
                 <div class="flex items-center">
                   <button class="shadow bg-[#E68027] border-0 outline-0 py-0 px-2">
-                    <icon icon="ic:round-minus" color="white" width="14" height="14" />
+                     <iconnative icon="minus-white" color="white" width="14" height="14" />
                   </button>
                   <div class="text-sm color-gray mx-2">2</div>
                   <button class="shadow bg-[#E68027] border-0 outline-0 py-0 px-2">
-                    <icon icon="ic:round-plus" color="white" width="14" height="14" />
+<iconnative icon="plus-white" color="white" width="14" height="14" />
                   </button>
                 </div>
               </div>
@@ -166,9 +166,9 @@
 
         <div class="border-solid border border-gray rounded-2xl p-4 my-2 flex items-center justify-between">
           <div class="">
-            <icon
-              class="bg-[#E68027] p-2 rounded-full"
-              icon="streamline:discount-percent-coupon-solid"
+            <iconnative
+              class="bg-[#E6802760] px-2 py-1 rounded-full"
+              icon="coupon"
               color="white"
               width="20"
               height="20"
@@ -177,7 +177,7 @@
 
           <div class="text-black font-bold text-xs tracking-tight">use the promo first, right?</div>
 
-          <icon icon="ph:arrow-circle-right" color="#E68027" width="28" height="28" />
+          <iconnative icon="circle-arrow-right" color="#E68027" width="28" height="28" />
         </div>
 
         <div
@@ -206,42 +206,42 @@
         <div class="border-solid border border-gray p-4 flex flex-col justify-between rounded-2xl rounded-t-0">
           <div class="font-bold text-sm flex justify-between my-2">
             <div class="text-[#E68027]">Detail</div>
-            <div><icon icon="mingcute:right-line" color="#E68027" width="20" height="20" /></div>
+            <div><iconnative icon="next-arrow" color="#E68027" width="20" height="20" /></div>
           </div>
         </div>
       </div>
 
       <div class="relative">
         <div class="fixed w-full bg-white rounded-lg shadow-md" style="bottom: 0">
-          <div class="px-4 flex flex-row">
+          <div class="px-4 flex flex-row justify-center">
             <div class="flex items-center">
-              <icon
-                class="bg-[#E68027] p-2 rounded-full"
-                icon="ep:wallet-filled"
+              <iconnative
+                class=""
+                icon="circle-wallet"
                 color="white"
-                width="20"
-                height="20"
+                width="32"
+                height="32"
               />
               <div class="mx-4">
                 <div class="text-xs">CocoPay</div>
                 <div class="text-sm">0</div>
               </div>
             </div>
-            <div class="flex items-center mr-4"><icon icon="ic:round-plus" color="gray" width="28" height="28" /></div>
+            <div class="flex items-center mr-4">              <iconnative icon="plus" color="gray" width="20" height="20" />
+            </div>
             <div class="flex items-center">
-              <icon icon="vaadin:cash" color="green" width="28" height="28" />
+              <iconnative icon="money" color="green" width="28" height="28" />
               <div class="mx-4">
                 <div class="text-xs">Cash</div>
                 <div class="text-sm">45.000</div>
               </div>
             </div>
             <div class="flex items-center ml-8">
-              <icon
-                class="bg-black p-2 rounded-full"
-                icon="solar:menu-dots-bold"
+              <iconnative
+                icon="dotted-circle"
                 color="white"
-                width="20"
-                height="20"
+                width="28"
+                height="28"
               />
             </div>
           </div>
@@ -255,6 +255,10 @@
     </div>
   </div>
 </template>
+
+<script setup lang="ts">
+import iconnative from "../icon/index.vue";
+</script>
 
 <style scoped lang="scss">
 .container {

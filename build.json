@@ -1,0 +1,12 @@
+{
+    "android": {
+        "release": {
+            "keystore": "./local.keystore",
+            "storePassword": "111111",
+            "alias": "key0",
+            "password" : "111111",
+            "keystoreType": "",
+            "packageType": "apk"
+        }
+    }
+}

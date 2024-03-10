@@ -1,12 +1,12 @@
 <template>
   <div>
     <div class="container">
-      <div class="bg-white shadow-md rounded-xl p-8">
+      <div class="bg-white shadow-xl rounded-xl p-8">
         <div class="flex">
           <div @click="router.push('/findfreshfood')">
-            <icon icon="ion:arrow-back-circle-outline" color="#000" width="28" height="28" />
+            <iconnative icon="arrow-circle-black" color="#000" width="28" height="28" />
           </div>
-          <div class="w-full justify-center flex font-bold">Find Fresh Food</div>
+          <div class="w-full justify-center flex font-bold text-xl">Find Fresh Food</div>
         </div>
 
         <!-- <div class="flex pt-4">
@@ -22,7 +22,7 @@
         </div> -->
       </div>
 
-      <div class="mx-8">
+      <div class="mx-8 pt-4">
         <div>
           <div class="grid grid-cols-2 gap-6">
             <div
@@ -55,15 +55,15 @@
                 <div class="font-500">
                   {{ Number(item.price).toLocaleString("id-ID", { style: "currency", currency: "IDR" }) }}
                 </div>
-                <icon icon="iconoir:add-square" color="#7ACDD6" width="28" height="28" />
+                <iconnative icon="fill-plus-blue" color="#7ACDD6" width="20" height="20" />
               </div>
             </div>
           </div>
         </div>
       </div>
 
-      <div v-if="totalItem" @click="GoDetail(totalItem.carts_id)" class="relative">
-        <div class="fixed w-full bg-white rounded-lg shadow-md" style="bottom: 0.5em">
+      <div v-if="totalItem && totalItem.total !== 0" @click="GoDetailCart(totalItem.carts_id)" class="relative">
+        <div class="fixed w-full bg-white rounded-lg shadow-md" style="bottom: 0">
           <div class="flex w-full justify-between p-4">
             <div class="flex p-4 mr-8 rounded-2xl bg-primary w-full justify-center text-white">
               <div class="flex justify-between w-full">
@@ -77,7 +77,7 @@
                   <div class="text-2xl font-bold mr-2">
                     {{ totalPriceRupiah }}
                   </div>
-                  <icon icon="tabler:shopping-bag-plus" class="mr-4" color="#fff" width="28" height="28" />
+                  <iconnative icon="shopping-bag" class="mr-4" color="#fff" width="28" height="28" />
                 </div>
               </div>
             </div>
@@ -94,6 +94,7 @@ import { useRoute, useRouter } from "vue-router";
 import { useCategoryStore } from "../store/modules/category";
 import { useCartStore } from "../store/modules/cart";
 import rupiah from "../plugins/rupiah";
+import iconnative from "../icon/index.vue";
 
 const totalPriceRupiah = computed(() => {
   if (totalItem.value) {
@@ -112,7 +113,7 @@ const detailCategory = ref<Item[]>([]);
 const quantity = ref<number[]>([]);
 interface Item {
   id: number;
-  image:string;
+  image: string;
   name: string;
   subtitle: string;
   price: number;
@@ -122,7 +123,7 @@ interface Item {
 interface ItemsTotal {
   price: string;
   total: string;
-  carts_id:number;
+  carts_id: number;
   amount: string;
   products: { name: string }[];
 }
@@ -144,6 +145,10 @@ const getListCart = async () => {
 
 const GoDetail = (id: number) => {
   router.push(`/freshfooddetail/${id}`);
+};
+
+const GoDetailCart = (id: number) => {
+  router.push(`/configaddfreshfood/${id}`);
 };
 
 const getCategorybyId = async (id: any) => {

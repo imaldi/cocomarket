@@ -78,25 +78,37 @@ const login = async () => {
     email: username.value,
     password: password.value,
   };
+
   try {
     const response = await authStore.login(payload);
-    ElNotification({
-      title: "Sukses",
-      type: "success",
-      duration: 2000,
-      customClass: "successNotif",
-      message: "Berhasil Login!",
-    });
-    localStorage.setItem("token", response.access_token);
-    localStorage.setItem("user_id", response.user.id);
-    router.push(`home`);
-  } catch (error: any) {
+    if (!response.access_token) {
+      ElNotification({
+        title: "Error",
+        type: "error",
+        duration: 2000,
+        customClass: "errorNotif",
+        message: "Maaf, tidak bisa Login",
+      });
+    } else {
+      ElNotification({
+        title: "Sukses",
+        type: "success",
+        duration: 2000,
+        customClass: "successNotif",
+        message: "Berhasil Login!",
+      });
+
+      localStorage.setItem("token", response.access_token);
+      localStorage.setItem("user_id", response.user.id);
+      router.push(`/home`);
+    }
+  } catch (error) {
     ElNotification({
       title: "Error",
       type: "error",
       duration: 2000,
       customClass: "errorNotif",
-      message: error.response.data.message,
+      message: "Maaf, tidak bisa Login",
     });
   }
 };

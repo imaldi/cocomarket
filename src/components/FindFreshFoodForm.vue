@@ -1,25 +1,29 @@
 <template>
   <div>
     <div class="container">
-      <div class="bg-white shadow-md rounded-xl p-8">
+      <div class="bg-white shadow-xl rounded-xl p-8">
         <div class="flex">
           <div @click="router.push('/home')">
-            <icon icon="ion:arrow-back-circle-outline" color="#000" width="28" height="28" />
+            <iconnative icon="arrow-circle-black" color="#000" width="28" height="28" />
           </div>
-          <div class="w-full justify-center flex font-bold">Find Fresh Food</div>
+          <div class="w-full justify-center flex font-bold text-xl">Find Fresh Food</div>
         </div>
 
-        <div class="flex pt-4">
-          <div class="w-full border border-solid border-gray rounded-full p-2 pl-4 my-auto flex">
-            <icon icon="iconamoon:search-light" color="#000" width="28" height="28" />
-            <div class="ml-4 my-auto">Search Food, Drinks, etc</div>
-          </div>
-          <div class="my-auto ml-2">
-            <div class="bg-light rounded-md p-1">
-              <icon icon="fluent:toggle-multiple-16-regular" color="#7ACDD6" width="28" height="28" />
-            </div>
-          </div>
-        </div>
+        <el-select
+          v-model="selectedValues"
+          filterable
+          remote
+          size="medium"
+          reserve-keyword
+          placeholder="Search Food, Drinks, etc"
+          remote-show-suffix
+          :remote-method="remoteMethod"
+          :loading="loading"
+          class="mt-2"
+          style="width: 100%"
+        >
+          <el-option v-for="item in dataSearch" :key="item.name" :label="item.name" :value="item.value" />
+        </el-select>
       </div>
 
       <div class="mx-8">
@@ -33,7 +37,7 @@
               @click="GoDetail(list.id)"
               v-for="(list, index) in dataCategory"
               :key="index"
-              class="rounded-xl p-6 border border-solid"
+              class="rounded-xl p-6 border border-solid border-[#00000035]"
               :style="{ backgroundColor: generateBackgroundColor(index) }"
             >
               <img :src="list.image" width="80" height="80" class="w-full justify-center" alt="" />
@@ -45,16 +49,16 @@
         </div>
       </div>
 
-      <div class="mx-8">
+      <div class="mx-8 pb-0">
         <div class="flex justify-between pt-4 pb-4">
           <div class="font-bold">Fresh Vegan</div>
         </div>
-        <div>
-          <div class="grid grid-cols-2 gap-6">
+        <div class="pl-4 pb-20">
+          <div class="grid grid-cols-2 gap-4">
             <div
               v-for="(item, index) in dataProduct"
               :key="index"
-              class="rounded-xl p-0 mr-6 bg-white"
+              class="rounded-xl p-0 mr-4 bg-white"
               @click="addCart(item.id)"
             >
               <img
@@ -81,15 +85,15 @@
                 <div class="font-500">
                   {{ Number(item.price).toLocaleString("id-ID", { style: "currency", currency: "IDR" }) }}
                 </div>
-                <icon icon="iconoir:add-square" color="#7ACDD6" width="28" height="28" />
+                <iconnative icon="fill-plus" color="#7ACDD6" width="28" height="28" />
               </div>
             </div>
           </div>
         </div>
       </div>
 
-      <div v-if="totalItem" @click="GoDetailCart(totalItem.carts_id)" class="relative">
-        <div class="fixed w-full bg-white rounded-lg shadow-md" style="bottom: 0.5em">
+      <div v-if="totalItem && totalItem.total !== 0" @click="GoDetailCart(totalItem.carts_id)" class="relative">
+        <div class="fixed w-full bg-white rounded-lg shadow-md" style="bottom: 0">
           <div class="flex w-full justify-between p-4">
             <div class="flex p-4 mr-8 rounded-2xl bg-primary w-full justify-center text-white">
               <div class="flex justify-between w-full">
@@ -103,7 +107,7 @@
                   <div class="text-2xl font-bold mr-2">
                     {{ totalPriceRupiah }}
                   </div>
-                  <icon icon="tabler:shopping-bag-plus" class="mr-4" color="#fff" width="28" height="28" />
+                  <iconnative icon="shopping-bag" class="mr-4" color="#fff" width="28" height="28" />
                 </div>
               </div>
             </div>
@@ -120,6 +124,8 @@ import { useRouter } from "vue-router";
 import { useCategoryStore } from "../store/modules/category";
 import { useCartStore } from "../store/modules/cart";
 import rupiah from "../plugins/rupiah";
+import iconnative from "../icon/index.vue";
+import { useHomeStore } from "../store/modules/home";
 
 const totalPriceRupiah = computed(() => {
   if (totalItem.value) {
@@ -134,6 +140,7 @@ const categoryStore = useCategoryStore();
 const cartStore = useCartStore();
 const dataCategory = ref<Item[]>([]);
 const dataProduct = ref<Items[]>([]);
+const selectedValues = ref("");
 const displayAllCategories = ref(false);
 const seeAll = () => {
   displayAllCategories.value = !displayAllCategories.value;
@@ -157,7 +164,7 @@ interface ItemsTotal {
   price: string;
   total: string;
   amount: string;
-  carts_id:number;
+  carts_id: number;
   products: { name: string }[];
 }
 
@@ -170,7 +177,31 @@ const getListCategory = async () => {
   } finally {
   }
 };
-
+const dataSearch = ref<ItemSearch[]>([]);
+const homeStore = useHomeStore();
+interface ItemSearch {
+  image: string;
+  name: string;
+  value: string;
+  label: string;
+  price: string;
+}
+const loading = ref(false);
+const remoteMethod = async (query: string) => {
+  if (query) {
+    loading.value = true;
+    try {
+      const res = await homeStore.getAllSearch(query);
+      dataSearch.value = res.data as ItemSearch[];
+    } catch (error) {
+      console.error("Error:", error);
+    } finally {
+      loading.value = false;
+    }
+  } else {
+    dataSearch.value = [];
+  }
+};
 const namesWithoutNumbers = ref<string[]>([]);
 const totalItem = ref<ItemsTotal | null>(null);
 const getListCart = async () => {

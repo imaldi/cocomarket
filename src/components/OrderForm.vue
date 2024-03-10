@@ -1,15 +1,8 @@
 <template>
   <div>
-    <div class="container pb-220">
-      <div class="bg-white shadow-md rounded-xl px-8 pt-8 pb-0">
-        <div>
-          <div class="flex mb-8">
-            <div>
-              <icon icon="ion:arrow-back-circle-outline" color="#000" width="28" height="28" />
-            </div>
-            <div class="w-full justify-center flex font-bold">Order</div>
-          </div>
-        </div>
+    <div class="container pb-20">
+      <div class="bg-white shadow-md rounded-xl pt-10">
+        <div class="w-full justify-center flex font-bold text-xl pb-10">Order</div>
       </div>
 
       <div class="flex px-8 py-6">
@@ -55,7 +48,7 @@
               <div class="font-bold text-sm">Kangkung, 5 Ons, fresh</div>
               <div class="font-normal text-xs text-gray my-[2px]">4 Produk</div>
               <div class="flex items-center font-normal text-xs text-gray">
-                <icon class="mr-[4px]" icon="mingcute:check-circle-fill" color="#51F862" width="14" height="14" />
+                <iconnative class="mr-[4px]" icon="circle-checklist" color="#51F862" width="14" height="14" />
                 Groceries has been delivered
               </div>
             </div>
@@ -101,7 +94,7 @@
               <div class="font-bold text-sm">1 Bakso Campur Enak, 1 M....</div>
               <div class="font-normal text-xs text-gray my-[2px]">4 Produk</div>
               <div class="flex items-center font-normal text-xs text-gray">
-                <icon class="mr-[4px]" icon="mingcute:check-circle-fill" color="#51F862" width="14" height="14" />
+                <iconnative class="mr-[4px]" icon="circle-checklist" color="#51F862" width="14" height="14" />
                 Groceries has been delivered
               </div>
             </div>
@@ -153,7 +146,7 @@
               <div class="font-bold text-sm">Kangkung, 5 Ons, fresh</div>
               <div class="font-normal text-xs text-gray my-[2px]">4 Produk</div>
               <div class="flex items-center font-normal text-xs text-gray">
-                <icon class="mr-[4px]" icon="mingcute:check-circle-fill" color="#51F862" width="14" height="14" />
+                <iconnative class="mr-[4px]" icon="circle-checklist" color="#51F862" width="14" height="14" />
                 Groceries has been delivered
               </div>
             </div>
@@ -199,7 +192,7 @@
               <div class="font-bold text-sm">1 Bakso Campur Enak, 1 M....</div>
               <div class="font-normal text-xs text-gray my-[2px]">4 Produk</div>
               <div class="flex items-center font-normal text-xs text-gray">
-                <icon class="mr-[4px]" icon="mingcute:check-circle-fill" color="#51F862" width="14" height="14" />
+                <iconnative class="mr-[4px]" icon="circle-checklist" color="#51F862" width="14" height="14" />
                 Groceries has been delivered
               </div>
             </div>
@@ -251,7 +244,7 @@
               <div class="font-bold text-sm">Kangkung, 5 Ons, fresh</div>
               <div class="font-normal text-xs text-gray my-[2px]">4 Produk</div>
               <div class="flex items-center font-normal text-xs text-gray">
-                <icon class="mr-[4px]" icon="mingcute:check-circle-fill" color="#51F862" width="14" height="14" />
+                <iconnative class="mr-[4px]" icon="circle-checklist" color="#51F862" width="14" height="14" />
                 Groceries has been delivered
               </div>
             </div>
@@ -297,7 +290,7 @@
               <div class="font-bold text-sm">1 Bakso Campur Enak, 1 M....</div>
               <div class="font-normal text-xs text-gray my-[2px]">4 Produk</div>
               <div class="flex items-center font-normal text-xs text-gray">
-                <icon class="mr-[4px]" icon="mingcute:check-circle-fill" color="#51F862" width="14" height="14" />
+                <iconnative class="mr-[4px]" icon="circle-checklist" color="#51F862" width="14" height="14" />
                 Groceries has been delivered
               </div>
             </div>
@@ -318,13 +311,16 @@
   </div>
 </template>
 
+<script setup lang="ts">
+import iconnative from "../icon/index.vue";
+</script>
+
 <style scoped lang="scss">
 .container {
   background-color: white;
   display: flex;
   flex-direction: column;
   width: 100%;
-  height: 100vh;
   color: #000000;
 }
 </style>
