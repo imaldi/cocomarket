@@ -1,7 +1,7 @@
 <template>
   <div>
     <router-view></router-view>
-    <nav
+    <div
       v-if="
         $route.path !== '/' &&
         $route.path !== '/register' &&
@@ -54,62 +54,41 @@
         $route.path !== `/detailcategory/${$route.params.id}` &&
         $route.path !== `/ordersuccess/${$route.params.id}`
       "
-      class="bottom-navigation z-2"
+      class="bottom-navigation justify-between w-full z-2"
     >
-      <router-link to="/home" class="nav-item">
-        <div>
-          <div class="text-center">
-            <iconnative :icon="$route.path == '/home' ? 'home-active' : 'home'" width="28" height="28" />
-          </div>
-          <div class="text-sm pt-1 text-black" style="margin-top: -12px">Home</div>
+      <div class="flex w-full justify-between mx-4">
+        <div @click="router.push('/home')" class="text-center p-4 bg-primary">
+          <iconnative :icon="$route.path == '/home' ? 'home-active' : 'home'" width="28" height="28" />
+          <div :class="$route.path == '/home' ? 'text-primary' : 'text-black'" style="margin-top: -12px">Home</div>
         </div>
-      </router-link>
-      <router-link to="/history" class="nav-item">
-        <div>
-          <div class="text-center">
-            <iconnative
-              icon="history"
-              :color="$route.path == '/history' ? '#7ACDD6' : '#a6a6a6'"
-              width="28"
-              height="28"
-            />
+        <div @click="router.push('/history')" class="text-center p-4 bg-primary">
+          <iconnative :icon="$route.path == '/history' ? 'history-active' : 'history'" width="28" height="28" />
+          <div :class="$route.path == '/history' ? 'text-primary' : 'text-black'" style="margin-top: -12px">
+            History
           </div>
-          <div class="text-sm pt-1 text-black" style="margin-top: -12px">History</div>
         </div>
-      </router-link>
-      <router-link to="/order" class="nav-item">
-        <div>
-          <div class="text-center">
-            <iconnative icon="order" :color="$route.path == '/order' ? '#7ACDD6' : '#a6a6a6'" width="28" height="28" />
+        <div @click="router.push('/order')" class="text-center p-4 bg-primary">
+          <iconnative :icon="$route.path == '/order' ? 'order-active' : 'order'" width="28" height="28" />
+          <div :class="$route.path == '/order' ? 'text-primary' : 'text-black'" style="margin-top: -12px">Order</div>
+        </div>
+        <div @click="router.push('/chat')" class="text-center p-4 bg-primary">
+          <iconnative :icon="$route.path == '/chat' ? 'chat-active' : 'chat'" width="28" height="28" />
+          <div :class="$route.path == '/chat' ? 'text-primary' : 'text-black'" style="margin-top: -12px">Chat</div>
+        </div>
+        <div @click="router.push('/profile')" class="text-center p-4 bg-primary">
+          <iconnative :icon="$route.path == '/profile' ? 'profile-active' : 'profile'" width="28" height="28" />
+          <div :class="$route.path == '/profile' ? 'text-primary' : 'text-black'" style="margin-top: -12px">
+            Profile
           </div>
-          <div class="text-sm pt-1 text-black" style="margin-top: -12px">Order</div>
         </div>
-      </router-link>
-      <router-link to="/chat" class="nav-item">
-        <div>
-          <div class="text-center">
-            <iconnative icon="chat" :color="$route.path == '/chat' ? '#7ACDD6' : '#a6a6a6'" width="28" height="28" />
-          </div>
-          <div class="text-sm pt-1 text-black" style="margin-top: -12px">Chat</div>
-        </div>
-      </router-link>
-      <router-link to="/profile" class="nav-item mr-5">
-        <div>
-          <div class="text-center">
-            <iconnative
-              icon="profile"
-              :color="$route.path == '/profile' ? '#7ACDD6' : '#a6a6a6'"
-              width="28"
-              height="28"
-            />
-          </div>
-          <div class="text-sm pt-1 text-black" style="margin-top: -12px">Profile</div>
-        </div>
-      </router-link>
-    </nav>
+      </div>
+    </div>
   </div>
 </template>
 
 <script setup lang="ts">
 import iconnative from "../icon/index.vue";
+import { useRouter } from "vue-router";
+
+const router = useRouter();
 </script>

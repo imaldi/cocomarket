@@ -1,1 +1,0 @@
-import{A as r}from"./index-BCIiqLPX.js";import{a as e}from"./apiClient-C9X9s8qD.js";const c=r("homeStore",()=>({getAllSearch:async t=>e.get(`/api/product?search=${t}`),getBestDeal:async()=>e.get("/api/best"),getAmountWallet:async()=>e.get("/api/wallet")}));export{c as u};
