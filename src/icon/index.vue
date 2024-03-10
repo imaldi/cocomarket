@@ -375,6 +375,39 @@
     <div v-else-if="icon == 'info-b-black'">
       <img :src="infoBBlack" :width="width" :height="height" alt="infoBBlack" />
     </div>
+    <div v-else-if="icon == 'next-arrow-blue'">
+      <img :src="nextArrowBlue" :width="width" :height="height" alt="nextArrowBlue" />
+    </div>
+    <div v-else-if="icon == 'edit-black'">
+      <img :src="editBlack" :width="width" :height="height" alt="editBlack" />
+    </div>
+    <div v-else-if="icon == 'next-arrow-black'">
+      <img :src="nextArrowBlack" :width="width" :height="height" alt="nextArrowBlack" />
+    </div>
+    <div v-else-if="icon == 'edit-image-orange'">
+      <img :src="editImageOrange" :width="width" :height="height" alt="editImageOrange" />
+    </div>
+    <div v-else-if="icon == 'plus-blue'">
+      <img :src="plusBlue" :width="width" :height="height" alt="plusBlue" />
+    </div>
+    <div v-else-if="icon == 'circle-dot-orange'">
+      <img :src="circleDotOrange" :width="width" :height="height" alt="circleDotOrange" />
+    </div>
+    <div v-else-if="icon == 'add-item-active'">
+      <img :src="addItemActive" :width="width" :height="height" alt="addItemActive" />
+    </div>
+    <div v-else-if="icon == 'add-item-disable'">
+      <img :src="addItemDisable" :width="width" :height="height" alt="addItemDisable" />
+    </div>
+    <div v-else-if="icon == 'reduce-item-active'">
+      <img :src="reduceItemActive" :width="width" :height="height" alt="reduceItemActive" />
+    </div>
+    <div v-else-if="icon == 'reduce-item-disable'">
+      <img :src="reduceItemDisable" :width="width" :height="height" alt="reduceItemDisable" />
+    </div>
+    <div v-else-if="icon == 'fill-plus-blue'">
+      <img :src="fillPlusBlue" :width="width" :height="height" alt="fillPlusBlue" />
+    </div>
   </div>
 </template>
 
@@ -504,6 +537,17 @@ import withdrawWhite from "../assets/icon/withdraw-white.svg";
 import dotDarkgray from "../assets/icon/dot-darkgray.svg";
 import minusWhite from "../assets/icon/minus-white.svg";
 import infoBBlack from "../assets/icon/info-b-black.svg";
+import editBlack from "../assets/icon/edit-black.svg";
+import nextArrowBlue from "../assets/icon/next-arrow-blue.svg";
+import nextArrowBlack from "../assets/icon/next-arrow-black.svg";
+import editImageOrange from "../assets/icon/edit-image-orange.svg";
+import plusBlue from "../assets/icon/plus-blue.svg";
+import circleDotOrange from "../assets/icon/circle-dot-orange.svg";
+import addItemActive from "../assets/icon/add-item-active.svg";
+import addItemDisable from "../assets/icon/add-item-disable.svg";
+import reduceItemActive from "../assets/icon/reduce-item-active.svg";
+import reduceItemDisable from "../assets/icon/reduce-item-disable.svg";
+import fillPlusBlue from "../assets/icon/fill-plus-blue.svg";
 
 export default {
   props: {
@@ -647,6 +691,19 @@ export default {
       dotDarkgray,
       minusWhite,
       infoBBlack,
+      nextArrowBlue,
+      editBlack,
+      nextArrowBlack,
+      editImageOrange,
+      plusBlue,
+      circleDotOrange,
+      addItemActive,
+      addItemDisable,
+      reduceItemActive,
+      reduceItemDisable,
+      fillPlusBlue
+
+      
     };
   },
 };

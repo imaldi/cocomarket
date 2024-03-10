@@ -4,7 +4,7 @@
       <div class="bg-white shadow-xl rounded-xl p-8">
         <div class="flex">
           <div @click="router.push('/findfreshfood')">
-            <icon icon="ion:arrow-back-circle-outline" color="#000" width="28" height="28" />
+            <iconnative icon="arrow-circle-black" color="#000" width="28" height="28" />
           </div>
           <div class="w-full justify-center flex font-bold">Find Fresh Food</div>
         </div>
@@ -55,7 +55,7 @@
                 <div class="font-500">
                   {{ Number(item.price).toLocaleString("id-ID", { style: "currency", currency: "IDR" }) }}
                 </div>
-                <iconnative icon="fill-plus" color="#7ACDD6" width="28" height="28" />
+                <iconnative icon="fill-plus-blue" color="#7ACDD6" width="20" height="20" />
               </div>
             </div>
           </div>

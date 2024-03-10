@@ -1,10 +1,11 @@
 <template>
   <div class="bg-white">
     <div @click="router.push('/home')" class="flex justify-items-start px-6 pt-10">
-      <icon class="color-black" icon="ph:arrow-circle-left-thin" width="15vw"></icon>
+      <iconnative class="color-black" icon="arrow-cirlce-black" width="28" height="28"/>
     </div>
     <div class="flex flex-col items-center mt-[15vh]">
-      <img class="w-[60vw]" src="../assets/img/order-success.png" alt="Order Success Picture" />
+      <iconnative class="color-black" icon="maskot-chicken" width="250"/>
+      <!-- <img class="w-[60vw]" src="../assets/img/order-success.png" alt="Order Success Picture" /> -->
       <h1 class="text-2xl color-black font-bold my-1 w-[55vw] text-center">Your order successfully done</h1>
       <p class="text-sm color-black font-normal w-[55vw] my-1 text-center">
         You can track the delivery in the “in process” Section
@@ -23,6 +24,7 @@
 
 <script setup lang="ts">
 import { useRoute, useRouter } from "vue-router";
+import iconnative from "../icon/index.vue";
 
 const route = useRoute();
 const router = useRouter();
