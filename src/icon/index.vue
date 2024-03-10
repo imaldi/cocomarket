@@ -408,6 +408,18 @@
     <div v-else-if="icon == 'fill-plus-blue'">
       <img :src="fillPlusBlue" :width="width" :height="height" alt="fillPlusBlue" />
     </div>
+    <div v-else-if="icon == 'history-active'">
+      <img :src="historyActive" :width="width" :height="height" alt="historyActive" />
+    </div>
+    <div v-else-if="icon == 'order-active'">
+      <img :src="orderActive" :width="width" :height="height" alt="orderActive" />
+    </div>
+    <div v-else-if="icon == 'chat-active'">
+      <img :src="chatActive" :width="width" :height="height" alt="chatActive" />
+    </div>
+    <div v-else-if="icon == 'profile-active'">
+      <img :src="profileActive" :width="width" :height="height" alt="profileActive" />
+    </div>
   </div>
 </template>
 
@@ -548,6 +560,10 @@ import addItemDisable from "../assets/icon/add-item-disable.svg";
 import reduceItemActive from "../assets/icon/reduce-item-active.svg";
 import reduceItemDisable from "../assets/icon/reduce-item-disable.svg";
 import fillPlusBlue from "../assets/icon/fill-plus-blue.svg";
+import historyActive from "../assets/icon/history-active.svg";
+import orderActive from "../assets/icon/order-active.svg";
+import chatActive from "../assets/icon/chat-active.svg";
+import profileActive from "../assets/icon/profile-active.svg";
 
 export default {
   props: {
@@ -701,9 +717,11 @@ export default {
       addItemDisable,
       reduceItemActive,
       reduceItemDisable,
-      fillPlusBlue
-
-      
+      fillPlusBlue,
+      historyActive,
+      orderActive,
+      chatActive,
+      profileActive      
     };
   },
 };
