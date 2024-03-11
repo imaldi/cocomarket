@@ -49,7 +49,14 @@
                   /> -->
                 </div>
               </div>
-              <div class="font-bold text-2xl">Rp. {{ detailProduct.price }}</div>
+              <div class="font-bold text-2xl">
+                {{
+                  Number(detailProduct.price).toLocaleString("id-ID", {
+                    style: "currency",
+                    currency: "IDR",
+                  })
+                }}
+              </div>
             </div>
           </div>
         </div>
@@ -72,7 +79,14 @@
           <div class="flex w-full justify-between p-4">
             <div class="my-auto">
               <div>Total Price</div>
-              <div class="font-bold">Rp. {{ totalPrice }}</div>
+              <div class="font-bold">
+                {{
+                  Number(totalPrice).toLocaleString("id-ID", {
+                    style: "currency",
+                    currency: "IDR",
+                  })
+                }}
+              </div>
             </div>
             <div
               @click="goToCart(detailProduct.id, detailProduct.categories_id)"

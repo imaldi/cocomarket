@@ -54,13 +54,14 @@
         $route.path !== `/detailcategory/${$route.params.id}` &&
         $route.path !== `/ordersuccess/${$route.params.id}` &&
         $route.path !== '/notification' &&
-        $route.path !== `/receipt/${$route.params.id}` && 
+        $route.path !== `/receipt/${$route.params.id}` &&
         $route.path !== `/detailcategory/${$route.params.id}` &&
         $route.path !== '/chatinside' &&
-        $route.path !== '/driver/login'  &&  
-        $route.path !== '/driver/home'   &&   
-        $route.path !== '/driver/delivery'  &&    
-        $route.path !== '/driver/deliverydetails'      
+        $route.path !== '/driver/login' &&
+        $route.path !== '/driver/home' &&
+        $route.path !== '/driver/delivery' &&
+        $route.path !== '/driver/deliverydetails' &&
+        $route.path !== `/revieworder/${$route.params.id}`
       "
       class="bottom-navigation justify-between w-full z-2"
     >

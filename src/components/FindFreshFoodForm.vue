@@ -251,7 +251,9 @@ const addCart = (id: number) => {
 onMounted(() => {
   getListCategory();
   getListProduct();
-  getListCart();
+  setTimeout(() => {
+    getListCart();
+  }, 100);
 });
 </script>
 

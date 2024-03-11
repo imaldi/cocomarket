@@ -25,9 +25,13 @@
                 <div class="font-500">{{ item.products_name }}</div>
                 <div class="text-gray">{{ item.products_subtitle }}</div>
                 <div class="flex font-bold">
-                  <div>Rp.</div>
                   <div>
-                    {{ item.products_price.toLocaleString().replace(/,/g, ".") }}
+                    {{
+                      Number(item.products_price).toLocaleString("id-ID", {
+                        style: "currency",
+                        currency: "IDR",
+                      })
+                    }}
                   </div>
                 </div>
               </div>

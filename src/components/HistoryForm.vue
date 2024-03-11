@@ -73,7 +73,14 @@
           <div class="flex justify-between items-center">
             <div>
               <div class="font-normal text-[10px] text-gray">Total</div>
-              <div class="font-semibold text-sm">Rp. {{  item.order_details[index]?.price }}</div>
+              <div class="font-semibold text-sm">
+                {{
+                  Number(item.order_details[index]?.price * item.order_details.length).toLocaleString("id-ID", {
+                    style: "currency",
+                    currency: "IDR",
+                  })
+                }}
+              </div>
             </div>
             <div>
               <div class="px-6 py-2 bg-[#E68027] text-white rounded-xl text-xs font-bold">Rate</div>
