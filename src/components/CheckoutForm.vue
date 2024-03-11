@@ -71,7 +71,14 @@
               </div>
             </div>
             <div class="flex w-full justify-between mt-4">
-              <div class="font-bold text-sm tracking-thighter">Rp. {{ totalItem.amount }}</div>
+              <div class="font-bold text-sm tracking-thighter">
+                {{
+                  Number(totalItem.amount).toLocaleString("id-ID", {
+                    style: "currency",
+                    currency: "IDR",
+                  })
+                }}
+              </div>
               <div class="flex items-center">
                 <!-- <button class="shadow bg-white border-0 outline-0 py-0 px-2">
                   <iconnative icon="minus-orange" color="#E68027" width="14" height="14" />
@@ -119,7 +126,14 @@
           <div class="font-bold text-sm">Payment Summary</div>
           <div class="flex justify-between my-2 text-sm">
             <div>Price</div>
-            <div>RP. {{ price }}</div>
+            <div>
+              {{
+                Number(price).toLocaleString("id-ID", {
+                  style: "currency",
+                  currency: "IDR",
+                })
+              }}
+            </div>
           </div>
           <div class="flex justify-between my-2 text-sm">
             <div>Shipping Costs</div>
@@ -169,19 +183,19 @@
 
       <div class="relative">
         <div class="fixed w-full bg-white rounded-lg shadow-md" style="bottom: 0">
-          <div class="px-4 flex flex-row justify-center">
+          <div class="px-4 pt-4 flex flex-row justify-center">
             <div class="flex items-center">
-              <iconnative class="" icon="circle-wallet" color="white" width="32" height="32" />
+              <iconnative icon="circle-wallet" color="white" width="32" height="32" />
               <div class="mx-4">
                 <div class="text-xs">CocoPay</div>
                 <div class="text-sm">0</div>
               </div>
             </div>
             <div class="flex items-center mr-6">
-              <iconnative icon="plus" color="gray" width="20" height="20" />
+              <iconnative icon="plus" color="gray" width="18" height="18" />
             </div>
             <div class="flex items-center">
-              <iconnative icon="money" color="green" width="28" height="28" />
+              <iconnative icon="money-checkout" color="green" width="28" height="28" />
               <div class="mx-4">
                 <div class="text-xs">Cash</div>
                 <div class="text-sm">
@@ -198,6 +212,7 @@
               <iconnative icon="dotted-circle" color="white" width="28" height="28" />
             </div>
           </div>
+
           <div class="flex w-full justify-between p-4">
             <div @click="confirmOrder" class="flex p-2 mr-8 rounded-2xl bg-primary w-full justify-center">
               <div class="text-2xl text-white">Confirm Order</div>
