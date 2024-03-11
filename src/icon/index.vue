@@ -6,6 +6,9 @@
     <div v-else-if="icon == 'money'">
       <img :src="money" :width="width" :height="height" alt="money" />
     </div>
+    <div v-else-if="icon == 'money-checkout'">
+      <img :src="moneyCheckout" :width="width" :height="height" alt="moneyCheckout" />
+    </div>
     <div v-else-if="icon == 'withdraw'">
       <img :src="withdraw" :width="width" :height="height" alt="withdraw" />
     </div>
@@ -432,6 +435,7 @@
 <script>
 import wallet from "../assets/icon/wallet.svg";
 import money from "../assets/icon/money.svg";
+import moneyCheckout from "../assets/icon/money-checkout.svg";
 import withdraw from "../assets/icon/withdraw.svg";
 import outlinePlus from "../assets/icon/outline-plus.svg";
 import more from "../assets/icon/more.svg";
@@ -583,6 +587,7 @@ export default {
     return {
       wallet,
       money,
+      moneyCheckout,
       withdraw,
       outlinePlus,
       more,
