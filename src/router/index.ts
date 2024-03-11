@@ -12,6 +12,11 @@ const routes: RouteRecordRaw[] = [
         component: () => import("../views/Login.vue"),
       },
       {
+        path: "/google-maps",
+        name: "Google Maps",
+        component: () => import("../views/GoogleMaps.vue"),
+      },
+      {
         path: "/register",
         name: "Register",
         component: () => import("../views/Register.vue"),
