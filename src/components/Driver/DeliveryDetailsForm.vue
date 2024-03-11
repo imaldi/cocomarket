@@ -202,11 +202,41 @@
             </div>
   
             <div class="flex my-6 px-6">
-              <div
-              class="flex p-2 rounded-2xl bg-primary w-full justify-center"
-              >
-                <div class="text-base text-white">Start Delivery</div>
-              </div>
+
+                <div
+                class="flex p-2 rounded-2xl bg-primary w-full justify-center"
+                >
+                  <div class="text-base font-semibold text-white">Start Delivery</div>
+                </div>
+
+                <!-- <div
+                class="flex rounded-2xl bg-white w-full items-center justify-center border border-solid border-[#32BA7C] rounded-xl"
+                >
+                    <div class="mr-2 pt-2">
+                        <iconnative
+                            icon="circle-checklist"
+                            color="#000"
+                            width="28"
+
+                        />
+                    </div>
+                    <div class="text-base font-semibold text-#32BA7C">Delivery has been Compeleted</div>
+                </div> -->
+                
+                <!-- <div
+                class="flex rounded-2xl bg-white w-full items-center justify-center border border-solid border-[#F44336] rounded-xl"
+                >
+                    <div class="mr-2 pt-2">
+                        <iconnative
+                            icon="circle-close"
+                            color="#000"
+                            width="28"
+
+                        />
+                    </div>
+                    <div class="text-base font-semibold text-#F44336">You did not complete this delivery</div>
+                </div> -->
+
             </div>
           </div>
         </div>

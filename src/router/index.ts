@@ -322,6 +322,26 @@ const routes: RouteRecordRaw[] = [
         name: "DeliveryDetails Driver",
         component: () => import("../views/Driver/DeliveryDetails.vue"),
       },
+      {
+        path: "/driver/history",
+        name: "History Driver",
+        component: () => import("../views/Driver/History.vue"),
+      },
+      {
+        path: "/driver/profile",
+        name: "Profile Driver",
+        component: () => import("../views/Driver/Profile.vue"),
+      },
+      {
+        path: "/driver/changepassword",
+        name: "ChangePassword Driver",
+        component: () => import("../views/Driver/ChangePassword.vue"),
+      },
+      {
+        path: "/driver/changeprofile",
+        name: "ChangeProfile Driver",
+        component: () => import("../views/Driver/ChangeProfile.vue"),
+      },
     ],
   },
 ];
