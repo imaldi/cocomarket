@@ -11,6 +11,7 @@ import L, { LatLngExpression } from "leaflet";
 import { dayjs } from 'element-plus';
 import { decode } from '@mapbox/polyline';
 import "leaflet/dist/leaflet.css";
+import apiClient from '../store/apiClient';
 
 interface RoutesMeta {
   distanceMeters: number,
@@ -104,6 +105,11 @@ const fetchData = async () => {
     })
     displayRoute.value = routes[0]
     console.log(routes[0])
+    const totalSecond = Number.parseInt(routes[0].duration.split('s')[0])
+    const second = totalSecond % 60
+    const minute = Number.parseInt(`${totalSecond / 60}`)
+    const hour = Number.parseInt(`${totalSecond / 3600}`)
+    console.log({ second, minute, hour })
 
     // Decoding Polyline ataupun garis yang menunjukkan arah perjalanan kurir menjadi kompatibel untuk tampilan di Google Map
     polyline.value = decode(routes[0].polyline.encodedPolyline)
