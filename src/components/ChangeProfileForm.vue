@@ -4,27 +4,15 @@
       <div class="bg-white shadow-md rounded-xl p-8">
         <div @click="router.push('profile')" class="flex">
           <div>
-            <iconnative
-              icon="arrow-circle-black"
-              color="#000"
-              width="28"
-              height="28"
-            />
+            <iconnative icon="arrow-circle-black" color="#000" width="28" height="28" />
           </div>
           <div class="w-full justify-center flex font-bold">Change Profile</div>
         </div>
       </div>
 
       <div class="mx-8 my-6">
-        <Form
-          v-slot="{ errors }"
-          @submit="onSubmit"
-          class="flex flex-col px-2 pt-6"
-          autocomplete="off"
-        >
-          <label for="name" class="my-2 text-sm font-bold text-black text-left"
-            >Name</label
-          >
+        <Form v-slot="{ errors }" @submit="onSubmit" class="flex flex-col px-2 pt-6" autocomplete="off">
+          <label for="name" class="my-2 text-sm font-bold text-black text-left">Name</label>
           <Field
             name="names"
             class="shadow appearance-none border border-black border-solid rounded py-2 px-3 text-gray-700 mb-3 leading-tight rounded-md focus:outline-none focus:shadow-outline bg-white"
@@ -34,12 +22,10 @@
             placeholder="John Doe"
             rules="required"
           />
-          <p class="text-danger text-left text-sm mt-0">
+          <p v-if="errors.names" class="text-danger text-left text-sm mt-0">
             {{ errors.names }}
           </p>
-          <label for="email" class="my-2 text-sm font-bold text-black text-left"
-            >Email</label
-          >
+          <label for="email" class="my-2 text-sm font-bold text-black text-left">Email</label>
           <Field
             name="email"
             class="shadow rounded-md appearance-none border border-black border-solid rounded py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline bg-white"
@@ -49,12 +35,10 @@
             rules="required"
             placeholder="johndoe@mail.com"
           />
-          <p class="text-danger text-left text-sm mt-0">
+          <p v-if="errors.email" class="text-danger text-left text-sm mt-0">
             {{ errors.email }}
           </p>
-          <label for="phone" class="my-2 text-sm font-bold text-black text-left"
-            >Phone Number</label
-          >
+          <label for="phone" class="my-2 text-sm font-bold text-black text-left">Phone Number</label>
           <Field
             name="phone"
             class="shadow rounded-md appearance-none border border-black border-solid rounded py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline bg-white"
@@ -63,12 +47,10 @@
             type="number"
             placeholder="02938"
           />
-          <p class="text-danger text-left text-sm mt-0">
+          <p v-if="errors.phone" class="text-danger text-left text-sm mt-0">
             {{ errors.phone }}
           </p>
-          <label class="my-2 text-sm font-bold text-black text-left" for="dob"
-            >Date Of Birth</label
-          >
+          <label class="my-2 text-sm font-bold text-black text-left" for="dob">Date Of Birth</label>
           <Field
             name="dob"
             class="shadow rounded-md appearance-none border border-black border-solid rounded py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline bg-white"
@@ -77,15 +59,11 @@
             type="date"
             placeholder="*********"
           />
-          <p class="text-danger text-left text-sm mt-0">
+          <p v-if="errors.dob" class="text-danger text-left text-sm mt-0">
             {{ errors.dob }}
           </p>
           <div class="flex flex-col items-center">
-            <Button
-              type="submit"
-              class="w-[80vw] bg-[#7ACDD6] text-white mt-6 font-bold"
-              >Submit</Button
-            >
+            <Button type="submit" class="w-[80vw] bg-[#7ACDD6] text-white mt-6 font-bold">Submit</Button>
           </div>
         </Form>
       </div>
@@ -146,8 +124,7 @@ const getProfiles = async () => {
       (email.value = dataProfile.value.email),
       (dateOfBirth.value = dataProfile.value.date_of_birth),
       (phone.value = dataProfile.value.phone);
-      console.log(dateOfBirth.value);
-      
+    console.log(dateOfBirth.value);
   } catch (error) {
     console.log(error);
   } finally {
