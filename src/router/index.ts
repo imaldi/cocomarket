@@ -367,6 +367,16 @@ const routes: RouteRecordRaw[] = [
         name: "CompleteStoreData Mitra",
         component: () => import("../views/Mitra/CompleteStoreData.vue"),
       },
+      {
+        path: "/mitra/storeprofile",
+        name: "StoreProfile Mitra",
+        component: () => import("../views/Mitra/StoreProfile.vue"),
+      },
+      {
+        path: "/mitra/openinghours",
+        name: "OpeningHours Mitra",
+        component: () => import("../views/Mitra/OpeningHours.vue"),
+      },
     ],
   },
 ];
