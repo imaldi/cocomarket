@@ -302,6 +302,26 @@ const routes: RouteRecordRaw[] = [
         name: "chatInside",
         component: () => import("../views/ChatInside.vue"),
       },
+      {
+        path: "/driver/login",
+        name: "Login Driver",
+        component: () => import("../views/Driver/Login.vue"),
+      },
+      {
+        path: "/driver/home",
+        name: "Home Driver",
+        component: () => import("../views/Driver/Home.vue"),
+      },
+      {
+        path: "/driver/delivery",
+        name: "Delivery Driver",
+        component: () => import("../views/Driver/Delivery.vue"),
+      },
+      {
+        path: "/driver/deliverydetails",
+        name: "DeliveryDetails Driver",
+        component: () => import("../views/Driver/DeliveryDetails.vue"),
+      },
     ],
   },
 ];
