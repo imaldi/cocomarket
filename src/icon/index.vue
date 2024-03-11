@@ -426,6 +426,12 @@
     <div v-else-if="icon == 'profile-active'">
       <img :src="profileActive" :width="width" :height="height" alt="profileActive" />
     </div>
+    <div v-else-if="icon == 'logo-driver'">
+      <img :src="logoDriver" :width="width" :height="height" alt="logoDriver" />
+    </div>
+    <div v-else-if="icon == 'circle-close'">
+      <img :src="circleClose" :width="width" :height="height" alt="circleClose" />
+    </div>
   </div>
 </template>
 
@@ -572,6 +578,8 @@ import historyActive from "../assets/icon/history-active.svg";
 import orderActive from "../assets/icon/order-active.svg";
 import chatActive from "../assets/icon/chat-active.svg";
 import profileActive from "../assets/icon/profile-active.svg";
+import logoDriver from "../assets/icon/logo-driver.svg";
+import circleClose from "../assets/icon/circle-close.svg";
 
 export default {
   props: {
