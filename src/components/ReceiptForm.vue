@@ -2,7 +2,7 @@
   <div>
     <div class="container">
       <div class="bg-white shadow-md rounded-xl p-8">
-        <div @click="router.push('/home')" class="flex">
+        <div @click="router.back()" class="flex">
           <div>
             <iconnative icon="arrow-circle-black" color="#000" width="28" height="28" />
           </div>
@@ -27,7 +27,7 @@
               <div v-if="allDataDetail" class="w-1/1">
                 <div class="flex flex-col justify-center mr-2">
                   <div class="font-bold text-md tracking-tighter">
-                    {{ allDataDetail.description }}
+                    {{ allDataDetail.vendors.name }}
                   </div>
                   <div class="font-normal text-gray text-sm">
                     {{ allDataDetail.date }}
@@ -43,7 +43,7 @@
                   {{ item.products.name }}
                 </div>
                 <div class="font-300 text-sm w-1/10">{{ item.quantity }}</div>
-                <div class="font-semibold text-sm w-1/3 text-end">Rp.{{ item.price }}</div>
+                <div class="font-semibold text-sm w-1/3 text-end">{{ Number(item.price).toLocaleString("id-ID") }}</div>
               </div>
             </div>
 
@@ -52,7 +52,7 @@
                 <div class="font-300 text-md w-2/3">Sub Total</div>
                 <div class="font-300 text-md w-1/10">{{ item.quantity }}</div>
                 <div class="font-semibold text-md w-1/3 text-end">
-                  {{ item.price }}
+                  {{ Number(item.price).toLocaleString("id-ID") }}
                 </div>
               </div>
 
@@ -60,7 +60,7 @@
                 <div class="font-300 text-sm w-2/3">Delivery Cost</div>
                 <div class="font-300 text-sm w-1/10"></div>
                 <div class="font-semibold text-sm w-1/3 text-end">
-                  {{ allDataDetail.delivery_cost }}
+                  {{ Number(allDataDetail.delivery_cost).toLocaleString("id-ID") }}
                 </div>
               </div>
 
@@ -76,7 +76,7 @@
                 <div class="font-300 text-sm w-2/3">Discount</div>
                 <div class="font-300 text-sm w-1/10"></div>
                 <div class="font-semibold text-sm w-1/3 text-end">
-                  {{ allDataDetail.discount_amount }}
+                  {{ Number(allDataDetail.discount_amount).toLocaleString("id-ID") }}
                 </div>
               </div>
             </div>
@@ -86,7 +86,7 @@
               <div class="font-bold text-md w-2/3">Total Payment</div>
               <div class="font-300 text-md w-1/10"></div>
               <div class="font-bold text-md w-1/3 text-end text-[#E68027]">
-                {{ totalPrice }}
+                {{ Number(totalPrice).toLocaleString("id-ID", { style: "currency", currency: "IDR" }) }}
               </div>
             </div>
           </div>
@@ -103,12 +103,12 @@
 <script setup lang="ts">
 import { ref, onMounted, computed } from "vue";
 import { useProdukStore } from "../store/modules/product";
-import { useRoute } from "vue-router";
-import router from "../router";
+import { useRoute, useRouter } from "vue-router";
 import iconnative from "../icon/index.vue";
 
 const receiptStore = useProdukStore();
 const route = useRoute();
+const router = useRouter();
 const allDataDetail = ref<Items | null>(null);
 const dataDetail = ref<Item[]>([]);
 interface Item {
@@ -161,8 +161,7 @@ onMounted(() => {
   background-color: #7acdd6;
   display: flex;
   flex-direction: column;
-  width: 100%;
-  height: 100vh;
+  // width: 100%;
   color: #000000;
 }
 </style>

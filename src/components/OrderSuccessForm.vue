@@ -5,11 +5,12 @@
     </div>
 
     <div class="flex flex-col items-center mt-[15vh]">
-      <iconnative class="color-black" icon="maskot-chicken" width="250" />
+      <iconnative class="color-black" icon="maskot-chicken" width="320" />
       <!-- <img class="w-[60vw]" src="../assets/img/order-success.png" alt="Order Success Picture" /> -->
       <h1 class="text-2xl color-black font-bold my-1 w-[55vw] text-center">Your order successfully done</h1>
       <p class="text-sm color-black font-normal w-[55vw] my-1 text-center">
-        You can track the delivery in the “in process” Section
+        You can track the delivery in the <br />
+        “Order” Section
       </p>
     </div>
 
