@@ -150,7 +150,7 @@ const removeItem = async (id: any, index: number) => {
   try {
     let text;
 
-    if (confirm("Anda yakin delete product ?") == true) {
+    if (confirm("Are you sure delete product ?") == true) {
       const res = await cartStore.removeCartDetail(id);
 
       if (res) {

@@ -123,6 +123,7 @@ const logout = async () => {
 
     router.push(`/`);
   } catch (error: any) {
+    router.push(`/`);
     ElNotification({
       title: "Error",
       type: "error",

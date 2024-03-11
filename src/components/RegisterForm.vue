@@ -7,13 +7,27 @@
 
     <Form v-slot="{ errors }" @submit="register" class="register-form">
       <p class="input-title">Name</p>
-      <Field name="name" type="text" v-model="name" placeholder="name" class="input-field" rules="required" />
-      <p class="text-danger text-left text-sm mt-0">
+      <Field
+        name="name"
+        type="text"
+        v-model="name"
+        placeholder="Please type your name"
+        class="input-field"
+        rules="required"
+      />
+      <p v-if="errors.name" class="text-danger text-left text-sm mt-0">
         {{ errors.name }}
       </p>
       <p class="input-title">Email</p>
-      <Field name="email" type="text" v-model="username" placeholder="Username" class="input-field" rules="required" />
-      <p class="text-danger text-left text-sm mt-0">
+      <Field
+        name="email"
+        type="text"
+        v-model="email"
+        placeholder="Please type your email"
+        class="input-field"
+        rules="required"
+      />
+      <p v-if="errors.email" class="text-danger text-left text-sm mt-0">
         {{ errors.email }}
       </p>
       <p class="input-title">Password</p>
@@ -21,17 +35,19 @@
         name="password"
         type="password"
         v-model="password"
-        placeholder="Password"
+        placeholder="Please type your password"
         class="input-field"
         rules="required|minLength:8|maxLength:12"
       />
-      <p class="text-danger text-left text-sm mt-0">
+      <p v-if="errors.password" class="text-danger text-left text-sm mt-0">
         {{ errors.password }}
       </p>
       <div class="term-checkbox">
-        <input name="agree" type="checkbox" /><label class="term-label"
-          >Agree with <a href="#" class="term-condition">Term & Condition</a></label
-        >
+        <Field v-model="term" name="term" rules="checked" type="checkbox" />
+        <label class="term-label my-auto">Agree with <a href="#" class="term-condition">Term & Condition</a></label>
+        <p v-if="errors.term" class="text-danger text-left text-sm mt-0 my-auto ml-2">
+          {{ errors.term }}
+        </p>
       </div>
       <button type="submit" class="submit-button">Sign Up</button>
     </Form>
@@ -79,23 +95,20 @@ import { ElNotification } from "element-plus";
 
 const router = useRouter();
 const authStore = useAuthStore();
-const username = ref("");
+const email = ref("");
 const password = ref("");
 const name = ref("");
+const term = ref(false);
 
 const register = async () => {
   const payload = {
-    email: username.value,
+    email: email.value,
     password: password.value,
     name: name.value,
   };
 
   try {
-    const response = await authStore.register(payload);
-    if (response && response.data && response.data.email) {
-
-    }
-    console.log(response);
+    await authStore.register(payload);
 
     ElNotification({
       title: "Sukses",
@@ -104,7 +117,7 @@ const register = async () => {
       customClass: "successNotif",
       message: "berhasil!",
     });
-    router.push(`/verifycode`);
+    router.push(`/verifycode?email=${email.value}`);
   } catch (error: any) {
     ElNotification({
       title: "Error",

@@ -198,8 +198,8 @@
               <iconnative icon="dotted-circle" color="white" width="28" height="28" />
             </div>
           </div>
-          <div @click="confirmOrder" class="flex w-full justify-between p-4">
-            <div class="flex p-2 mr-8 rounded-2xl bg-primary w-full justify-center">
+          <div class="flex w-full justify-between p-4">
+            <div @click="confirmOrder" class="flex p-2 mr-8 rounded-2xl bg-primary w-full justify-center">
               <div class="text-2xl text-white">Confirm Order</div>
             </div>
           </div>

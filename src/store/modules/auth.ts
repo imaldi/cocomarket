@@ -6,6 +6,7 @@ interface AuthState {
   logout(): Promise<any>;
   register(payload: any): Promise<any>;
   verifyCode(payload: any): Promise<any>;
+  resendCode(payload: any): Promise<any>;
 }
 
 export const useAuthStore = defineStore("auth", () => {
@@ -18,10 +19,14 @@ export const useAuthStore = defineStore("auth", () => {
   const verifyCode: AuthState["verifyCode"] = async (payload: any) => {
     return axiosClient.post(`/api/auth/verify`, payload);
   };
+  const resendCode: AuthState["resendCode"] = async (payload: any) => {
+    return axiosClient.post(`/api/auth/regenerateOTP`, payload);
+  };
   const logout: AuthState["logout"] = async () => {
     return axiosClient.post(`/api/auth/logout`);
   };
   return {
+    resendCode,
     login,
     logout,
     verifyCode,
