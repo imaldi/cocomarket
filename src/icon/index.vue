@@ -420,6 +420,9 @@
     <div v-else-if="icon == 'outline-line'">
       <img :src="outlineLine" :width="width" :height="height" alt="outlineLine" />
     </div>
+    <div v-else-if="icon == 'info-b-white'">
+      <img :src="infoBWhite" :width="width" :height="height" alt="infoBWhite" />
+    </div>
   </div>
 </template>
 
@@ -564,6 +567,7 @@ import fillChecklist from "../assets/icon/fill-checklist.svg";
 import lineBlue from "../assets/icon/line-blue.svg";
 import circleDotBlue from "../assets/icon/circle-dot-blue.svg";
 import outlineLine from "../assets/icon/outline-line.svg";
+import infoBWhite from "../assets/icon/info-b-white.svg";
 
 export default {
   props: {
@@ -721,7 +725,8 @@ export default {
       fillChecklist,
       lineBlue,
       circleDotBlue,
-      outlineLine
+      outlineLine,
+      infoBWhite
 
       
     };

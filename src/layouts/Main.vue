@@ -59,7 +59,9 @@
         $route.path !== '/mitra/completeyourstoreprofile'  &&
         $route.path !== '/mitra/businessdataverified'  &&
         $route.path !== '/mitra/successfulverification' &&
-        $route.path !== '/mitra/completestoredata'
+        $route.path !== '/mitra/completestoredata' &&
+        $route.path !== '/mitra/storeprofile' &&
+        $route.path !== '/mitra/openinghours'
       "
       class="bottom-navigation z-2"
     >
