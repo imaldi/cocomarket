@@ -208,7 +208,7 @@ const routes: RouteRecordRaw[] = [
         component: () => import("../views/OrderCocostore.vue"),
       },
       {
-        path: "/trackOrder",
+        path: "/trackOrder/:id",
         name: "TrackOrder",
         component: () => import("../views/TrackOrder.vue"),
       },
@@ -313,7 +313,7 @@ const routes: RouteRecordRaw[] = [
         component: () => import("../views/Driver/Delivery.vue"),
       },
       {
-        path: "/driver/deliverydetails",
+        path: "/driver/deliverydetails/:id",
         name: "DeliveryDetails Driver",
         component: () => import("../views/Driver/DeliveryDetails.vue"),
       },
