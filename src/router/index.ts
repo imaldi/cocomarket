@@ -145,7 +145,7 @@ const routes: RouteRecordRaw[] = [
         path: "/splashScreen3",
         name: "SplashScreen3",
         component: () => import("../views/SplashScreen/SplashScreen3.vue"),
-      },
+      }, 
       {
         path: "/splashScreen4",
         name: "SplashScreen4",
