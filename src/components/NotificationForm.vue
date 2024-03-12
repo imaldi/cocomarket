@@ -97,7 +97,7 @@ onMounted(() => {
   display: flex;
   flex-direction: column;
   width: 100%;
-  height: 100vh;
+  // height: 100vh;
   color: #000000;
 }
 .circle-bg {

@@ -168,7 +168,7 @@
                 </template>
               </div>
               <div>
-                <div class="font-500">{{ item.products.name }}</div>
+                <div class="font-500 mt-2">{{ item.products.name }}</div>
                 <div class="text-gray">{{ item.products.subtitle }}</div>
               </div>
               <div class="flex justify-between">

@@ -5,9 +5,9 @@
         <div class="absolute w-full">
           <div class="justify-between flex w-full">
             <div @click="router.back()">
-              <iconnative class="p-8" icon="back-arrow" color="#000" width="28" height="28" />
+              <iconnative class="p-8" icon="back-arrow" color="#000" width="20" height="20" />
             </div>
-            <iconnative class="relative p-8" icon="upload" color="#000" width="28" height="28" />
+            <iconnative @click="directLink" class="relative p-8" icon="upload" color="#000" width="20" height="20" />
           </div>
         </div>
       </div>
@@ -16,7 +16,7 @@
           <img
             :src="detailProduct.image"
             style="background: rgba(255, 255, 255, 0.5); width: 100%; height: 100%"
-            alt=""
+            alt="image"
           />
         </div>
       </div>
@@ -24,32 +24,31 @@
       <div class="mx-8">
         <div>
           <div class="pt-4 pb-4">
-            <div class="font-bold">{{ detailProduct.name }}</div>
+            <div class="font-semibold text-xl">{{ detailProduct.name }}</div>
+            <div class="text-gray">{{ detailProduct.subtitle }}</div>
           </div>
           <div>
             <div class="flex justify-between">
               <div class="flex items-center">
                 <div @click="decreaseQuantity">
-                  <iconnative icon="reduce-item-active" color="#555" width="50" height="50" />
-                  <!-- <iconnative
-                    icon="reduce-item-disable"
+                  <iconnative
+                    :icon="switchCond == true ? 'reduce-item-disable' : 'reduce-item-active'"
                     color="#555"
-                    width="50"
-                    height="50"
-                  /> -->
+                    width="40"
+                    height="40"
+                  />
                 </div>
                 <div class="p-3">{{ quantity }}</div>
                 <div @click="increaseQuantity">
-                  <iconnative icon="add-item-active" color="#555" width="50" height="50" />
-                  <!-- <iconnative
-                    icon="add-item-disable"
+                  <iconnative
+                    :icon="switchCond == false ? 'add-item-disable' : 'add-item-active'"
                     color="#555"
-                    width="50"
-                    height="50"
-                  /> -->
+                    width="40"
+                    height="40"
+                  />
                 </div>
               </div>
-              <div class="font-bold text-2xl">
+              <div class="font-bold text-xl">
                 {{
                   Number(detailProduct.price).toLocaleString("id-ID", {
                     style: "currency",
@@ -92,8 +91,8 @@
               @click="goToCart(detailProduct.id, detailProduct.categories_id)"
               class="flex p-4 mr-8 rounded-2xl bg-primary w-1/2 justify-center"
             >
-              <iconnative icon="shopping-bag" class="mr-4" color="#fff" width="28" height="28" />
-              <div type="button" class="text-lg font-500 text-white">Add to Cart</div>
+              <iconnative icon="shopping-bag" class="mr-4 my-auto" color="#fff" width="28" height="28" />
+              <div type="button" class="text-lg font-500 text-white my-auto">Add to Cart</div>
             </div>
           </div>
         </div>
@@ -115,13 +114,23 @@ const detailProduct = ref<Item | null>(null);
 
 const quantity = ref(1);
 
+const switchCond = ref(true);
+
+const directLink = () => {
+  window.open(
+    "https://api.whatsapp.com/send/?phone=6281275868999&text=Selamat+Datang+di+cocomaret&type=phone_number&app_absent=0"
+  );
+};
+
 const increaseQuantity = () => {
   quantity.value += 1;
+  switchCond.value = true;
 };
 
 const decreaseQuantity = () => {
   if (quantity.value > 1) {
     quantity.value -= 1;
+    switchCond.value = false;
   }
 };
 
@@ -142,8 +151,7 @@ const goToCart = (id: any, catId: any) => {
     };
 
     try {
-      const response = cartStore.addToCart(payload);
-      console.log(response);
+      cartStore.addToCart(payload);
       router.push("/findfreshfood");
     } catch (error) {}
   }
@@ -159,7 +167,6 @@ const totalPrice = computed(() => {
 const getDetail = async (id: any) => {
   try {
     const res = await produkStore.getProductById(id);
-    console.log("res", res);
     detailProduct.value = res.data.product as Item;
   } catch (error) {
     console.log(error);
@@ -178,7 +185,7 @@ const router = useRouter();
   display: flex;
   flex-direction: column;
   width: 100%;
-  height: 100vh;
+  // height: 100vh;
   color: #000000;
 }
 </style>

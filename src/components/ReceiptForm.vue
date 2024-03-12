@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="h-screen bg-primary">
     <div class="container">
       <div class="bg-white shadow-md rounded-xl p-8">
         <div @click="router.back()" class="flex">

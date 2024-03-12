@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="container">
+    <div class="container pb-10">
       <div class="bg-white shadow-xl rounded-xl p-8">
         <div class="flex">
           <div @click="router.push('/home')">
@@ -49,41 +49,44 @@
         </div>
       </div>
 
-      <div class="mx-8 pb-0">
+      <div class="mx-8">
         <div class="flex justify-between pt-4 pb-4">
           <div class="font-bold">Fresh Vegan</div>
         </div>
-        <div class="pl-4 pb-20">
+        <div class="pb-20">
           <div class="grid grid-cols-2 gap-4">
-            <div
-              v-for="(item, index) in dataProduct"
-              :key="index"
-              class="rounded-xl p-0 mr-4 bg-white"
-              @click="addCart(item.id)"
-            >
-              <img
-                v-if="item.image !== null"
-                :src="item.image"
-                width="80"
-                height="80"
-                class="w-full justify-center"
-                alt=""
-              />
-              <template v-else>
+            <div v-for="(item, index) in dataProduct" :key="index" class="rounded-xl" @click="addCart(item.id)">
+              <div class="p-4 bg-[#F8F8F8] rounded-lg">
                 <img
-                  src="../assets/img/template-food.jpg"
+                  v-if="item.image !== null"
+                  :src="item.image"
                   width="80"
                   height="80"
                   class="w-full justify-center"
                   alt=""
                 />
-              </template>
+                <template v-else>
+                  <img
+                    src="../assets/img/template-food.jpg"
+                    width="80"
+                    height="80"
+                    class="w-full justify-center"
+                    alt=""
+                  />
+                </template>
+              </div>
               <div>
-                <div>{{ item.name }}</div>
+                <div class="font-500 mt-2">{{ item.name }}</div>
+                <div class="text-gray">{{ item.subtitle }}</div>
               </div>
               <div class="flex justify-between">
                 <div class="font-500">
-                  {{ Number(item.price).toLocaleString("id-ID", { style: "currency", currency: "IDR" }) }}
+                  {{
+                    Number(item.price).toLocaleString("id-ID", {
+                      style: "currency",
+                      currency: "IDR",
+                    })
+                  }}
                 </div>
                 <iconnative icon="fill-plus" color="#7ACDD6" width="28" height="28" />
               </div>
@@ -253,7 +256,7 @@ onMounted(() => {
   getListProduct();
   setTimeout(() => {
     getListCart();
-  }, 100);
+  }, 200);
 });
 </script>
 
@@ -263,7 +266,7 @@ onMounted(() => {
   display: flex;
   flex-direction: column;
   width: 100%;
-  height: 100vh;
+  // height: 100vh;
   color: #000000;
 }
 </style>
