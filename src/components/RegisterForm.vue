@@ -37,7 +37,7 @@
         v-model="password"
         placeholder="Please type your password"
         class="input-field"
-        rules="required|minLength:8|maxLength:12"
+        rules="required|minLength:6|maxLength:12"
       />
       <p v-if="errors.password" class="text-danger text-left text-sm mt-0">
         {{ errors.password }}

@@ -66,40 +66,43 @@
       <div class="mx-8">
         <div class="text-sm font-500 mb-4">Order List</div>
         <div>
-          <div
-            v-for="(item, n) in totalItem?.products"
-            :key="n"
-            class="border-solid border border-gray rounded-2xl p-4 my-2"
-          >
-            <div class="flex flex-row">
-              <img class="bg-[#F2F3F2] px-4 rounded-2xl" src="../assets/img/meat1.png" alt="Order Picture" width="70" />
-              <div class="mx-4 flex flex-col justify-center">
-                <div class="color-black text-sm font-400">
-                  {{ item.name }}
+          <template v-for="(item, n) in totalItem?.products">
+            <div v-if="item.quantity !== 0" :key="n" class="border-solid border border-gray rounded-2xl p-4 my-2">
+              <div class="flex flex-row">
+                <img
+                  class="bg-[#F2F3F2] px-4 rounded-2xl"
+                  :src="(item && item.image) || '../assets/img/meat1.png'"
+                  alt="Order Picture"
+                  width="70"
+                />
+                <div class="mx-4 flex flex-col justify-center">
+                  <div class="color-black text-sm font-400">
+                    {{ item.name }}
+                  </div>
+                  <div class="color-gray text-sm">{{ item.subtitle }}</div>
                 </div>
-                <div class="color-gray text-sm">{{ item.subtitle }}</div>
               </div>
-            </div>
-            <div class="flex w-full justify-between mt-4">
-              <div class="font-bold text-sm tracking-thighter">
-                {{
-                  Number(item.price).toLocaleString("id-ID", {
-                    style: "currency",
-                    currency: "IDR",
-                  })
-                }}
-              </div>
-              <div class="flex items-center">
-                <!-- <button class="shadow bg-white border-0 outline-0 py-0 px-2">
+              <div class="flex w-full justify-between mt-4">
+                <div class="font-bold text-sm tracking-thighter">
+                  {{
+                    Number(item.price).toLocaleString("id-ID", {
+                      style: "currency",
+                      currency: "IDR",
+                    })
+                  }}
+                </div>
+                <div class="flex items-center">
+                  <!-- <button class="shadow bg-white border-0 outline-0 py-0 px-2">
                   <iconnative icon="minus-orange" color="#E68027" width="12" height="12" />
                 </button> -->
-                <div class="text-xs font-bold color-gray mx-2">Total: {{ item.quantity }}</div>
-                <!-- <button class="shadow bg-[#E68027] border-0 outline-0 py-0 px-2">
+                  <div class="text-xs font-bold color-gray mx-2">Total: {{ item.quantity }}</div>
+                  <!-- <button class="shadow bg-[#E68027] border-0 outline-0 py-0 px-2">
                   <iconnative icon="plus-white" color="white" width="12" height="12" />
                 </button> -->
+                </div>
               </div>
             </div>
-          </div>
+          </template>
 
           <div class="border-solid border border-gray rounded-2xl p-4 my-2 flex">
             <div>

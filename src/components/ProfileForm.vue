@@ -16,7 +16,14 @@
             :src="dataProfile.profile_picture"
             style="width: 106px; height: 106px; border-radius: 50%; cursor: pointer"
             class="w-full justify-center rounded-full"
-            alt=""
+            alt="image"
+          />
+          <iconnative
+            v-else
+            icon="profile-picture"
+            style="width: 106px; height: 106px; border-radius: 50%; cursor: pointer"
+            class="w-full justify-center rounded-full"
+            alt="image"
           />
         </div>
 

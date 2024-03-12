@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="container pb-10">
+    <div :class="totalItem && totalItem.total !== 0 ? 'pb-30' : 'pb-10'" class="container">
       <div class="bg-white shadow-xl rounded-xl p-8">
         <div class="flex">
           <div @click="router.push('/home')">
@@ -53,7 +53,7 @@
         <div class="flex justify-between pt-4 pb-4">
           <div class="font-bold">Fresh Vegan</div>
         </div>
-        <div class="pb-20">
+        <div>
           <div class="grid grid-cols-2 gap-4">
             <div v-for="(item, index) in dataProduct" :key="index" class="rounded-xl" @click="addCart(item.id)">
               <div class="p-4 bg-[#F8F8F8] rounded-lg">

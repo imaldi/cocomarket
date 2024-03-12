@@ -2,10 +2,7 @@
   <div class="container">
     <div class="mt-20 mx-8">
       <div @click="router.push('/')">
-        <iconnative icon="outline-arrow-left"   
-        color="#7ACDD6"
-        width="53"
-        height="53" />
+        <iconnative icon="outline-arrow-left" color="#7ACDD6" width="53" height="53" />
       </div>
       <div class="mt-4 text-center">
         <div class="text-2xl font-bold">Forgot Password</div>
@@ -20,7 +17,13 @@
             </div>
             <div class="ml-4">
               <div class="font-bold">Email</div>
-              <div class="text-gray">*****@mail.com</div>
+              <input
+                v-model="forgot"
+                type="text"
+                class="bg-transparent outline-none focus:outline-none border-none text-gray placeholder-gray-400"
+                style="width: 140%"
+                placeholder="*****@mail.com"
+              />
             </div>
           </div>
         </div>
@@ -34,15 +37,50 @@
 </template>
 
 <script setup lang="ts">
+import { ref } from "vue";
 import { useRouter } from "vue-router";
+import { useAuthStore } from "../store/modules/auth";
+import { ElNotification } from "element-plus";
 import iconnative from "../icon/index.vue";
 
 const router = useRouter();
+const authStore = useAuthStore();
+
+const forgot = ref("");
 
 const forgotAction = async () => {
-  router.push("/resetPassword");
+  if (forgot.value.length == 0) {
+    return ElNotification({
+      title: "Please type email first !",
+      type: "warning",
+      duration: 2000,
+      customClass: "warningNotif",
+      message: "Type first !",
+    });
+  }
+  const payload = {
+    email: forgot.value,
+  };
+  try {
+    await authStore.forgotEmail(payload);
+    router.push("/");
+    ElNotification({
+      title: "Successfully send email",
+      type: "success",
+      duration: 2000,
+      customClass: "successNotif",
+      message: "Resend email",
+    });
+  } catch (error) {
+    ElNotification({
+      title: "Forgot password failed",
+      type: "error",
+      duration: 2000,
+      customClass: "successNotif",
+      message: "Forgot password",
+    });
+  }
 };
-
 </script>
 
 <style scoped lang="scss">

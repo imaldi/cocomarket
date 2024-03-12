@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="container">
+    <div class="container pb-10">
       <div class="bg-white shadow-xl rounded-xl p-8">
         <div class="flex relative">
           <iconnative icon="search" class="my-auto mr-2" color="#E68027" width="28" height="28" />
@@ -48,7 +48,7 @@
                         style: "currency",
                         currency: "IDR",
                       })
-                    : "-"
+                    : "Rp. 0"
                 }}
               </div>
               <div class="flex">

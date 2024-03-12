@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-    <div @click="router.back()" class="w-full flex justify-start">
+    <div @click="router.push('register')" class="w-full flex justify-start">
       <iconnative class="px-8 pt-20 pb-10" icon="outline-arrow-left" color="#7ACDD6" width="53" height="53" />
     </div>
 
@@ -18,7 +18,7 @@
 
     <div class="text-center pt-4">
       <div>Didn't receive OTP?</div>
-      <div @click="resendCode()" class="underline font-bold color-black">Resend Code</div>
+      <div @click="resendCode" class="underline font-bold color-black">Resend Code</div>
       <Button @click="verifyCode" class="w-[80vw] bg-[#7ACDD6] mt-8 text-white font-bold">Verify</Button>
     </div>
   </div>
@@ -59,7 +59,7 @@ const verifyCode = async () => {
   try {
     const res = await authStore.verifyCode(payload);
     if (res.status == true) {
-      router.push(`/`);
+      router.push("/");
       ElNotification({
         title: "Successfully email verification",
         type: "success",

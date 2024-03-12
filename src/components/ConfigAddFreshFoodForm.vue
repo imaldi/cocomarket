@@ -12,46 +12,48 @@
 
       <div class="mx-8 pt-4 h-screen overflow-y">
         <div class="scrollable-content">
-          <div
-            v-for="(item, index) in detailCategory"
-            :key="index"
-            class="flex border border-solid border-light shadow-md mb-4 p-4 rounded-md"
-          >
-            <div class="p-4 bg-[#F8F8F8] rounded-lg">
-              <img v-if="item.image !== null" :src="item.image" width="100%" class="w-full justify-center" alt="" />
-              <template v-else>
-                <img src="../assets/img/meat1.png" class="w-full justify-center" alt="image" />
-              </template>
-            </div>
-            <div class="flex justify-between w-full">
-              <div class="ml-4 my-auto">
-                <div class="font-500">{{ item.products_name }}</div>
-                <div class="text-gray">{{ item.products_subtitle }}</div>
-                <div class="flex font-bold">
-                  <div>
-                    {{
-                      Number(item.products_price).toLocaleString("id-ID", {
-                        style: "currency",
-                        currency: "IDR",
-                      })
-                    }}
+          <template v-for="(item, index) in detailCategory">
+            <div
+              v-if="item.total !== 0"
+              :key="index"
+              class="flex border border-solid border-light shadow-md mb-4 p-4 rounded-md"
+            >
+              <div class="p-4 bg-[#F8F8F8] rounded-lg">
+                <img v-if="item.image !== null" :src="item.image" width="100%" class="w-full justify-center" alt="" />
+                <template v-else>
+                  <img src="../assets/img/meat1.png" class="w-full justify-center" alt="image" />
+                </template>
+              </div>
+              <div class="flex justify-between w-full">
+                <div class="ml-4 my-auto">
+                  <div class="font-500">{{ item.products_name }}</div>
+                  <div class="text-gray">{{ item.products_subtitle }}</div>
+                  <div class="flex font-bold">
+                    <div>
+                      {{
+                        Number(item.products_price).toLocaleString("id-ID", {
+                          style: "currency",
+                          currency: "IDR",
+                        })
+                      }}
+                    </div>
+                  </div>
+                </div>
+                <div class="ml-4 my-auto">
+                  <div @click="decreaseQuantity(item)">
+                    <icon icon="mage:minus-square" color="#7ACDD6" width="28" height="28" />
+                  </div>
+                  <div class="p-2 text-gray w-4">{{ item.total }}</div>
+                  <div @click="increaseQuantity(item)">
+                    <icon icon="mage:plus-square" color="#7ACDD6" width="28" height="28" />
+                  </div>
+                  <div @click="removeItem(item.id, index)">
+                    <icon icon="mage:trash" color="#ff0000" width="28" height="28" />
                   </div>
                 </div>
               </div>
-              <div class="ml-4 my-auto">
-                <div @click="decreaseQuantity(item)">
-                  <icon icon="mage:minus-square" color="#7ACDD6" width="28" height="28" />
-                </div>
-                <div class="p-2 text-gray w-4">{{ item.total }}</div>
-                <div @click="increaseQuantity(item)">
-                  <icon icon="mage:plus-square" color="#7ACDD6" width="28" height="28" />
-                </div>
-                <div @click="removeItem(item.id, index)">
-                  <icon icon="mage:trash" color="#ff0000" width="28" height="28" />
-                </div>
-              </div>
             </div>
-          </div>
+          </template>
         </div>
       </div>
 
