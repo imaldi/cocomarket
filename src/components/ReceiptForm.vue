@@ -65,7 +65,7 @@
                 <div class="font-300 text-sm w-2/3">Delivery Cost</div>
                 <div class="font-300 text-sm w-1/10"></div>
                 <div class="font-semibold text-sm w-1/3 text-end">
-                  {{ Number(allDataDetail.delivery_cost).toLocaleString("id-ID") }}
+                  {{ Number(allDataDetail?.delivery_cost).toLocaleString("id-ID") }}
                 </div>
               </div>
 
@@ -73,7 +73,7 @@
                 <div class="font-300 text-sm w-2/3">Other Costs</div>
                 <div class="font-300 text-sm w-1/10"></div>
                 <div class="font-semibold text-sm w-1/3 text-end">
-                  {{ Number(allDataDetail.other_cost).toLocaleString("id-ID") }}
+                  {{ Number(allDataDetail?.other_cost).toLocaleString("id-ID") }}
                 </div>
               </div>
 
@@ -81,7 +81,7 @@
                 <div class="font-300 text-sm w-2/3">Discount</div>
                 <div class="font-300 text-sm w-1/10"></div>
                 <div class="font-semibold text-sm w-1/3 text-end">
-                  {{ Number(allDataDetail.discount_amount).toLocaleString("id-ID") }}
+                  {{ Number(allDataDetail?.discount_amount).toLocaleString("id-ID") }}
                 </div>
               </div>
             </div>
@@ -120,19 +120,20 @@ const router = useRouter();
 const allDataDetail = ref<Items | null>(null);
 const dataDetail = ref<Item[]>([]);
 interface Item {
-  price: string;
+  price: any;
   total: string;
   amount: number;
-  quantity: string;
+  quantity: any;
+  discount_amount?: any
   products: {
     name: string;
   };
 }
 interface Items {
   tax_amount: string;
-  delivery_cost: string;
-  discount_amount: string;
-  other_cost: string;
+  delivery_cost?: any;
+  discount_amount?: any;
+  other_cost?: any;
   vendors: any;
   date: string;
   description: string;

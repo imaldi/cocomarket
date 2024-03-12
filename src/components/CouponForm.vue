@@ -68,6 +68,7 @@ const getListCoupon = async () => {
 
 onMounted(() => {
   getListCoupon();
+  window.location.reload();
 });
 </script>
 

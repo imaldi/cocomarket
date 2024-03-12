@@ -29,6 +29,8 @@ apiClient.interceptors.response.use(
     return response.data ? response.data : response;
   },
   (error) => {
+    const isAuthenticated = localStorage.getItem("user_id");
+    if (isAuthenticated == null) return window.open("/", "_self");
     if (error.response && error.response.status === 401) {
       localStorage.clear();
       router.push("/");

@@ -128,6 +128,7 @@ interface ItemsTotal {
   total: string | number;
   carts_id: number;
   amount: string;
+  length: any;
   products: { name: string }[];
 }
 

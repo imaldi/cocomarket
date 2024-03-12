@@ -18,6 +18,7 @@ interface window {
   routes: any;
   routeMaker: any;
   store: any;
+  plugins: any[];
   searchKey: string;
   resolveLocalFileSystemURL: any;
   OneSignal: any;

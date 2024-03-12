@@ -62,7 +62,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from "vue";
+import { ref, onMounted } from "vue";
 import { useRouter } from "vue-router";
 import { Form, Field } from "vee-validate";
 import { useAuthStore } from "../store/modules/auth";
@@ -112,6 +112,11 @@ const login = async () => {
     });
   }
 };
+
+onMounted(() => {
+  const isAuthenticated = localStorage.getItem("user_id");
+  if (isAuthenticated) router.push("/home");
+});
 </script>
 
 <style scoped lang="scss">

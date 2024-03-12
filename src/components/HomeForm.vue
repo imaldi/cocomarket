@@ -292,7 +292,39 @@ const remoteMethod = async (query: string) => {
   }
 };
 
+declare const window: any;
+
+const init = async () => {
+  var OneSignal = window.plugins?.OneSignal;
+  const localStorageUserId = localStorage.getItem("user_id") || "123";
+
+  if (!OneSignal) return;
+  if (OneSignal.default) OneSignal = OneSignal.default;
+
+  const setUserOid = () => {
+    OneSignal.setExternalUserId(localStorageUserId);
+    OneSignal.sendTags({
+      id: localStorageUserId,
+    });
+  };
+
+  OneSignal.setLogLevel(6, 0);
+
+  var notificationOpenedCallback = function (jsonData: any) {
+    console.log("notificationOpenedCallback:" + JSON.stringify(jsonData));
+  };
+
+  OneSignal.setAppId("48fbf46f-d634-45a3-9eec-2b23a65e97f5");
+  OneSignal.setNotificationOpenedHandler(notificationOpenedCallback);
+  OneSignal.promptForPushNotificationsWithUserResponse(function (accepted: any) {
+    console.log("User accepted notifications: " + accepted);
+  });
+
+  setUserOid();
+};
+
 onMounted(() => {
+  init();
   getAllProduct(inputValue.value);
   getAmountWallet();
   getBestDeals();
