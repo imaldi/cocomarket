@@ -25,37 +25,40 @@
       <div class="mx-8 pt-4">
         <div>
           <div class="grid grid-cols-2 gap-6">
-            <div
-              v-for="(item, index) in detailCategory"
-              :key="index"
-              class="rounded-xl p-0 mr-6 bg-white"
-              @click="GoDetail(item.id)"
-            >
-              <img
-                v-if="item.image !== null"
-                :src="item.image"
-                width="80"
-                height="80"
-                class="w-full justify-center"
-                alt=""
-              />
-              <template v-else>
+            <div v-for="(item, index) in detailCategory" :key="index" class="rounded-xl" @click="GoDetail(item.id)">
+              <div class="p-4 bg-[#F8F8F8] rounded-lg">
                 <img
-                  src="../assets/img/template-food.jpg"
+                  v-if="item.image !== null"
+                  :src="item.image"
                   width="80"
                   height="80"
                   class="w-full justify-center"
                   alt=""
                 />
-              </template>
+                <template v-else>
+                  <img
+                    src="../assets/img/template-food.jpg"
+                    width="80"
+                    height="80"
+                    class="w-full justify-center"
+                    alt=""
+                  />
+                </template>
+              </div>
               <div>
-                <div>{{ item.name }}</div>
+                <div class="font-500 mt-2">{{ item.name }}</div>
+                <div class="text-gray">{{ item.subtitle }}</div>
               </div>
               <div class="flex justify-between">
                 <div class="font-500">
-                  {{ Number(item.price).toLocaleString("id-ID", { style: "currency", currency: "IDR" }) }}
+                  {{
+                    Number(item.price).toLocaleString("id-ID", {
+                      style: "currency",
+                      currency: "IDR",
+                    })
+                  }}
                 </div>
-                <iconnative icon="fill-plus-blue" color="#7ACDD6" width="20" height="20" />
+                <iconnative icon="fill-plus" color="#7ACDD6" width="28" height="28" />
               </div>
             </div>
           </div>
@@ -182,7 +185,6 @@ onMounted(() => {
   display: flex;
   flex-direction: column;
   width: 100%;
-  height: 100vh;
   color: #000000;
 }
 

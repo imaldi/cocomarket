@@ -3,7 +3,7 @@
     <div class="container">
       <div class="bg-white shadow-xl rounded-xl p-8">
         <div class="flex">
-          <div @click="router.back()">
+          <div @click="backData(detailCategory)">
             <iconnative icon="arrow-circle-black" color="#000" width="28" height="28" />
           </div>
           <div class="w-full justify-center flex font-bold text-xl">Shopping Cart</div>
@@ -17,8 +17,11 @@
             :key="index"
             class="flex border border-solid border-light shadow-md mb-4 p-4 rounded-md"
           >
-            <div class="bg-gray rounded-lg">
-              <img src="../assets/img/meat1.png" alt="" />
+            <div class="p-4 bg-[#F8F8F8] rounded-lg">
+              <img v-if="item.image !== null" :src="item.image" width="100%" class="w-full justify-center" alt="" />
+              <template v-else>
+                <img src="../assets/img/meat1.png" class="w-full justify-center" alt="image" />
+              </template>
             </div>
             <div class="flex justify-between w-full">
               <div class="ml-4 my-auto">
@@ -36,11 +39,11 @@
                 </div>
               </div>
               <div class="ml-4 my-auto">
-                <div @click="item.total--">
+                <div @click="decreaseQuantity(item)">
                   <icon icon="mage:minus-square" color="#7ACDD6" width="28" height="28" />
                 </div>
-                <div class="p-2 text-gray">{{ item.total }}</div>
-                <div @click="item.total++">
+                <div class="p-2 text-gray w-4">{{ item.total }}</div>
+                <div @click="increaseQuantity(item)">
                   <icon icon="mage:plus-square" color="#7ACDD6" width="28" height="28" />
                 </div>
                 <div @click="removeItem(item.id, index)">
@@ -57,7 +60,7 @@
           <div v-if="detailCategory" class="flex w-full justify-between p-4">
             <div class="my-auto">
               <div>Total Price</div>
-              <div class="font-500">Rp. {{ calculateTotalPrice() }}</div>
+              <div class="font-500">{{ calculateTotalPrice() }}</div>
             </div>
             <div @click="goToCart(detailCategory)" class="flex p-4 mr-8 rounded-2xl bg-primary w-1/2 justify-center">
               <div class="text-2xl text-white">Continue</div>
@@ -95,6 +98,23 @@ interface Item {
   total_stock: string;
 }
 
+const backData = (data: any) => {
+  var payload: any = [];
+
+  data.forEach((item: any) => {
+    payload.push({ products_id: item.products_id, qty: item.total });
+  });
+
+  try {
+    cartStore.putToCart({ data: payload }, data[0].carts_id);
+    setTimeout(() => {
+      router.back();
+    }, 100);
+  } catch (error) {
+    console.error(error);
+  }
+};
+
 const goToCart = (data: any) => {
   var payload: any = [];
 
@@ -118,7 +138,7 @@ const calculateTotalPrice = () => {
     total += item.products_price * item.total;
   });
 
-  return total.toLocaleString("en-US", { useGrouping: true }).replace(/,/g, ".");
+  return Number(total).toLocaleString("id-ID", { style: "currency", currency: "IDR" });
 };
 
 // const getCategorybyId = async (id: any) => {
@@ -140,15 +160,17 @@ const getCartDetails = async (id: any) => {
   }
 };
 
-// const increaseQuantity = (index: number) => {
-//   quantity.value[index] += 1;
-// };
+const increaseQuantity = (item: any) => {
+  if (item.total < 20) {
+    return item.total++;
+  }
+};
 
-// const decreaseQuantity = (index: number) => {
-//   if (quantity.value[index] > 0) {
-//     quantity.value[index] -= 1;
-//   }
-// };
+const decreaseQuantity = (item: any) => {
+  if (item.total > 0) {
+    item.total -= 1;
+  }
+};
 
 const removeItem = async (id: any, index: number) => {
   try {

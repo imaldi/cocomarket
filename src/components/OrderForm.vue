@@ -94,8 +94,8 @@
               <div class="font-bold text-sm">{{ item.code }}</div>
               <div class="font-normal text-xs text-gray my-[2px]">{{ item.order_details.length }} Produk</div>
               <div class="flex items-center font-normal text-xs text-gray">
-                <iconnative class="mr-[4px]" icon="circle-checklist" color="#51F862" width="14" height="14" />
-                Groceries has been delivered
+                <iconnative class="mr-[4px] mt-1" icon="circle-checklist" color="#51F862" width="14" height="14" />
+                Groceries are being delivered
               </div>
             </div>
           </div>
@@ -104,12 +104,7 @@
             <div>
               <div class="font-normal text-[10px] text-gray">Total</div>
               <div class="font-semibold text-sm">
-                {{
-                  Number(item.order_details[index]?.price * item.order_details.length).toLocaleString("id-ID", {
-                    style: "currency",
-                    currency: "IDR",
-                  })
-                }}
+                {{ calculateTotalPrice(item.order_details) }}
               </div>
             </div>
             <div>
@@ -140,6 +135,15 @@ interface Item {
   description: string;
   status: string;
 }
+
+const calculateTotalPrice = (item: any) => {
+  let tmp = 0;
+  item.forEach((itm: any) => {
+    tmp += parseFloat(itm.price) * item.length;
+  });
+
+  return Number(tmp).toLocaleString("id-ID", { style: "currency", currency: "IDR" });
+};
 
 const getListHistoryComplete = async () => {
   try {

@@ -74,7 +74,7 @@
             <div class="flex flex-row">
               <img class="bg-[#F2F3F2] px-4 rounded-2xl" src="../assets/img/meat1.png" alt="Order Picture" width="70" />
               <div class="mx-4 flex flex-col justify-center">
-                <div class="color-black text-sm">
+                <div class="color-black text-sm font-400">
                   {{ item.name }}
                 </div>
                 <div class="color-gray text-sm">{{ item.subtitle }}</div>
