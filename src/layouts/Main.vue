@@ -116,11 +116,11 @@ const router = useRouter();
 
 const chat = async () => {
   ElNotification({
-    title: "Coming soon",
+    title: "Not Available",
     type: "warning",
     duration: 2000,
     customClass: "errorNotif",
-    message: "Chat, Coming Soon !!!",
+    message: "Chat, Not Available !!!",
   });
 };
 </script>

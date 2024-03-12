@@ -37,7 +37,7 @@
               <div class="flex">
                 <img
                   class="bg-white z-1 p-2 border-solid rounded-2xl border border-gray"
-                  src="../assets/img/bakso2.png"
+                  :src="item.order_details[0]?.products.image || '../assets/img/bakso2.png'"
                   alt="Product Picture"
                   width="64"
                 />
@@ -59,7 +59,7 @@
                   {{ calculateTotalPrice(item.order_details, item) }}
                 </div>
               </div>
-              <div>
+              <div @click="tracking">
                 <div class="px-6 py-2 bg-[#E68027] text-white rounded-xl text-xs font-bold">Track</div>
               </div>
             </div>
@@ -129,6 +129,7 @@
 import { useProdukStore } from "../store/modules/product";
 import { ref, onMounted } from "vue";
 import iconnative from "../icon/index.vue";
+import { ElNotification } from "element-plus";
 
 const useProduct = useProdukStore();
 
@@ -143,6 +144,16 @@ interface Item {
   description: string;
   status: string;
 }
+
+const storling = async () => {
+  ElNotification({
+    title: "Coming soon",
+    type: "warning",
+    duration: 2000,
+    customClass: "errorNotif",
+    message: "Track, Coming Soon !!!",
+  });
+};
 
 const calculateTotalPrice = (item: any, data: any) => {
   let tmp = 0;

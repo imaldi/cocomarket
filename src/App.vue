@@ -12,13 +12,14 @@ document.addEventListener(
   "deviceready",
   function () {
     var OneSignal = window.plugins?.OneSignal;
+    const localStorageUserId = localStorage.getItem("user_id") || "123";
+    console.log("11", OneSignal, window.plugins, localStorageUserId);
 
     if (!OneSignal) return;
     if (OneSignal.default) OneSignal = OneSignal.default;
 
     const setUserOid = () => {
-      var user = "123";
-      OneSignal.setExternalUserId(user);
+      OneSignal.setExternalUserId(localStorageUserId);
       OneSignal.sendTags({
         id: user,
       });

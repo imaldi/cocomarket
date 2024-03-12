@@ -40,8 +40,11 @@
               </div>
 
               <div>
-                <div class="px-4 py-2 bg-[#51F862] text-white rounded-xl text-[8px] font-bold">
-                  {{ item.status === "0" ? "Canceled" : item.status === "1" ? "Completed" : "Unknown" }}
+                <div
+                  :class="item.status === '2' ? 'bg-[#51F862]' : 'bg-yellow'"
+                  class="px-4 py-2 text-white rounded-xl text-[8px] font-bold"
+                >
+                  {{ item.status === "2" ? "Completed" : item.status === "3" ? "Canceled" : "Unknown" }}
                 </div>
               </div>
             </div>
@@ -50,7 +53,7 @@
               <div class="flex">
                 <img
                   class="bg-white z-1 p-2 border-solid rounded-2xl border border-gray"
-                  src="../assets/img/bakso2.png"
+                  :src="item.order_details[0]?.products.image || '../assets/img/bakso2.png'"
                   alt="Product Picture"
                   width="64"
                 />
@@ -60,12 +63,12 @@
                   {{ item.code }}
                 </div>
                 <div class="font-normal text-xs text-gray my-[2px]">{{ item.order_details.length }} Produk</div>
-                <div v-if="item.vendors.status == 1" class="flex items-center font-normal text-xs text-gray">
+                <div v-if="item.status == 2" class="flex items-center font-normal text-xs text-gray">
                   <iconnative class="mr-[4px]" icon="circle-checklist" color="#51F862" width="14" height="14" />
                   Groceries has been delivered
                 </div>
-                <div v-else-if="item.vendors.status == 0" class="flex items-center font-normal text-xs text-gray">
-                  <iconnative class="mr-[4px]" icon="circle-wrong" color="#51F862" width="14" height="14" />
+                <div v-else-if="item.status == 3" class="flex items-center font-normal text-xs text-gray">
+                  <iconnative class="mr-[4px]" icon="circle-checklist" color="#51F862" width="14" height="14" />
                   Groceries not been delivered
                 </div>
               </div>
