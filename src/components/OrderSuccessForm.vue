@@ -30,6 +30,7 @@
 <script setup lang="ts">
 import { useRoute, useRouter } from "vue-router";
 import iconnative from "../icon/index.vue";
+import { ElNotification } from "element-plus";
 
 const route = useRoute();
 const router = useRouter();
@@ -38,6 +39,13 @@ const cekReceipt = () => {
   router.push(`/receipt/${route.params.id}`);
 };
 const reviewOrder = () => {
-  router.push(`/revieworder2`);
+  // router.push(`/revieworder2`);
+  ElNotification({
+    title: "Coming soon",
+    type: "warning",
+    duration: 2000,
+    customClass: "errorNotif",
+    message: "Review Order, Coming Soon !!!",
+  });
 };
 </script>

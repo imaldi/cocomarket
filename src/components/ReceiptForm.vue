@@ -124,7 +124,7 @@ interface Item {
   total: string;
   amount: number;
   quantity: any;
-  discount_amount?: any
+  discount_amount?: any;
   products: {
     name: string;
   };

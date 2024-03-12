@@ -79,7 +79,6 @@ interface Item {
 const getListNotif = async () => {
   try {
     const res = await notifStore.getListNotification();
-    console.log(res);
     listNotifData.value = res.data as Item[];
   } catch (error) {
     console.log(error);
