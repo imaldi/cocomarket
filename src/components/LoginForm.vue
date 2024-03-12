@@ -8,7 +8,7 @@
     <Form v-slot="{ errors }" autocomplete="off" @submit="login" class="login-form">
       <p class="input-title">Email</p>
       <Field v-model="username" name="Username" type="text" class="input-field" placeholder="Email" rules="required" />
-      <p class="text-danger text-left text-sm mt-0">
+      <p v-if="errors.Username" class="text-danger text-left text-sm mt-0">
         {{ errors.Username }}
       </p>
       <p class="input-title">Password</p>
@@ -18,9 +18,9 @@
         v-model="password"
         placeholder="Password"
         class="input-field"
-        rules="required|minLength:8|maxLength:12"
+        rules="required|minLength:6|maxLength:20"
       />
-      <p class="text-danger text-left text-sm mt-0">
+      <p v-if="errors.password" class="text-danger text-left text-sm mt-0">
         {{ errors.password }}
       </p>
       <a href="#/forgotpassword" class="forgot-password">Forgot Password?</a>
@@ -102,13 +102,13 @@ const login = async () => {
       localStorage.setItem("user_id", response.user.id);
       router.push(`/home`);
     }
-  } catch (error) {
+  } catch (error: any) {
     ElNotification({
       title: "Error",
       type: "error",
       duration: 2000,
       customClass: "errorNotif",
-      message: "Maaf, tidak bisa Login",
+      message: "Incorrect email or password!",
     });
   }
 };

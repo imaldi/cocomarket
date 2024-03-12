@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="container">
+    <div :class="totalItem && totalItem.total !== 0 ? 'pb-30' : 'pb-10'" class="container">
       <div class="bg-white shadow-xl rounded-xl p-8">
         <div class="flex">
           <div @click="router.push('/findfreshfood')">

@@ -4,47 +4,37 @@
       <div class="bg-white shadow-md rounded-xl p-8">
         <div class="flex">
           <div @click="router.push('profile')">
-            <iconnative
-              icon="arrow-circle-black"
-              color="#000"
-              width="28"
-              height="28"
-            />
+            <iconnative icon="arrow-circle-black" color="#000" width="28" height="28" />
           </div>
-          <div class="w-full justify-center flex font-bold">My Address</div>
+          <div class="w-full justify-center flex font-bold text-xl">My Address</div>
         </div>
       </div>
 
       <div class="mx-8 my-14">
-        <div>
+        <div v-if="dataAddress?.length > 0">
           <div
             v-for="(item, index) in dataAddress"
             :key="index"
             class="flex w-full border border-dotted border-gray border-x-0 border-t-0 pb-4 mb-4"
           >
             <div class="w-1/6 flex justify-center">
-              <iconnative
-                class="rounded-full"
-                icon="outline-location-b"
-                width="24"
-                color="black"
-              />
+              <iconnative class="rounded-full" icon="outline-location-b" width="24" color="black" />
             </div>
             <div class="w-1/1 text-sm">
               <div class="font-bold">{{ item.name }}</div>
-              <div class="font-300">
-               {{item.city}}, {{ item.address }},{{ item.district }}
-              </div>
+              <div class="font-300">{{ item.city }}, {{ item.address }},{{ item.district }}</div>
             </div>
             <div class="w-1/6 flex items-center justify-center">
-              <iconnative
-                class="rounded-full"
-                icon="next-arrow-black"
-                width="8"
-                color="black"
-              />
+              <iconnative class="rounded-full" icon="next-arrow-black" width="8" color="black" />
             </div>
           </div>
+        </div>
+
+        <div
+          v-else
+          class="text-center text-xl border border-solid border-primary rounded-xl p-2 font-bold text-primary"
+        >
+          Please add your address !
         </div>
 
         <div
@@ -53,12 +43,7 @@
           <div>
             <iconnative icon="plus-blue" color="#7ACDD6" width="28" height="28" />
           </div>
-          <div
-            @click="router.push('addaddress')"
-            class="font-bold text-xl text-[#7ACDD6]"
-          >
-            Add New Address
-          </div>
+          <div @click="router.push('addaddress')" class="font-bold text-xl text-[#7ACDD6]">Add New Address</div>
         </div>
       </div>
     </div>

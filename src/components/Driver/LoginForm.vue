@@ -16,7 +16,7 @@
           name="password"
           placeholder="Password"
           class="input-field"
-          rules="required|minLength:8|maxLength:12"
+          rules="required|minLength:6|maxLength:12"
         />
         <p class="text-danger text-left text-sm mt-0"></p>
         <a href="#/forgotpassword" class="forgot-password">Forgot Password?</a>

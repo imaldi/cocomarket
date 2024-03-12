@@ -7,6 +7,7 @@ interface AuthState {
   register(payload: any): Promise<any>;
   verifyCode(payload: any): Promise<any>;
   resendCode(payload: any): Promise<any>;
+  forgotEmail(payload: any): Promise<any>;
 }
 
 export const useAuthStore = defineStore("auth", () => {
@@ -25,7 +26,11 @@ export const useAuthStore = defineStore("auth", () => {
   const logout: AuthState["logout"] = async () => {
     return axiosClient.post(`/api/auth/logout`);
   };
+  const forgotEmail: AuthState["forgotEmail"] = async (payload: any) => {
+    return axiosClient.post(`/api/auth/reset`, payload);
+  };
   return {
+    forgotEmail,
     resendCode,
     login,
     logout,

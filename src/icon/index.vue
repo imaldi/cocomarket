@@ -1,5 +1,8 @@
 <template>
   <div>
+    <div v-if="icon == 'profile-picture'">
+      <img :src="profilePicture" :width="width" :height="height" alt="profilePicture" />
+    </div>
     <div v-if="icon == 'wallet'">
       <img :src="wallet" :width="width" :height="height" alt="wallet" />
     </div>
@@ -427,6 +430,7 @@
 </template>
 
 <script>
+import profilePicture from "../assets/icon/profile-picture.svg";
 import wallet from "../assets/icon/wallet.svg";
 import money from "../assets/icon/money.svg";
 import moneyCheckout from "../assets/icon/money-checkout.svg";
@@ -577,6 +581,7 @@ export default {
   },
   data() {
     return {
+      profilePicture,
       wallet,
       money,
       moneyCheckout,
@@ -726,7 +731,7 @@ export default {
       historyActive,
       orderActive,
       chatActive,
-      profileActive      
+      profileActive,
     };
   },
 };
