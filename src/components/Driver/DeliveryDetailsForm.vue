@@ -172,7 +172,7 @@
   </div>
 </template>
 <script setup lang="ts">
-import { onMounted, ref, watch } from "vue";
+import { onMounted, ref, watch, onBeforeUnmount } from "vue";
 import iconnative from "../../icon/index.vue";
 import apiClient from "../../store/apiClient";
 import { useRoute } from "vue-router"
@@ -199,13 +199,13 @@ interface GetTrackResponse {
   time: number
   distance: number
 }
-let intervalFunction = null
+let intervalFunction: any = null
+let maps: L.Map | null = null
 
 const apiKey = import.meta.env.VITE_GOOGLE_MAPS_API_KEY;
 const router = useRoute()
 
 const { id: orderId } = router.params
-const map = ref<L.Map | null>(null);
 const haveTrack = ref<boolean | null>(null)
 const currLocation = ref<LatLngExpression>([0, 0])
 const estimationTime = ref({ second: 0, minute: 0, hour: 0 })
@@ -219,25 +219,12 @@ const orderDetails = ref<OrderModel>({
 })
 
 watch(currLocation, () => {
-  updateTrack()
+  if (intervalFunction !== null) updateTrack()
 })
 
 onMounted(async () => {
   try {
-    intervalFunction = setInterval(() => {
-      navigator.geolocation.getCurrentPosition(
-        position => {
-          const current = currLocation.value as Array<number>
-          console.log("Checking to Update!", current[0] !== position.coords.latitude && current[1] !== position.coords.longitude)
-          if (current[0] !== position.coords.latitude && current[1] !== position.coords.longitude)
-            currLocation.value = [position.coords.latitude, position.coords.longitude]
-        },
-        error => {
-          console.error('Error getting location:', error.message);
-        }
-      )
-    }, 15000)
-
+    getPosition()
     const responseApi: GetTrackResponse | Array<any> = await apiClient.get(`api/orders/tracking/${orderId}`) as GetTrackResponse
 
     if (Array.isArray(responseApi) && responseApi.length === 0) {
@@ -249,13 +236,30 @@ onMounted(async () => {
   } catch (err) {
     alert(err)
   } finally {
-    map.value = initializeMap()
+    maps = initializeMap()
+    intervalFunction = setInterval(getPosition, 15000)
   }
 })
 
+onBeforeUnmount(() => {
+  clearInterval(intervalFunction)
+})
+
+const getPosition = () => {
+  navigator.geolocation.getCurrentPosition(
+    position => {
+      const current = currLocation.value as Array<number>
+      if (current[0] !== position.coords.latitude && current[1] !== position.coords.longitude)
+        currLocation.value = [position.coords.latitude, position.coords.longitude]
+    },
+    error => {
+      console.error('Error getting location:', error.message);
+    }
+  )
+}
 
 const initializeMap = () => {
-  const maps = L.map("map").setView(currLocation.value, 15);
+  const map = L.map("map").setView(currLocation.value, 15);
   let polylines = null
   const orderDetail = { ...orderDetails.value }
 
@@ -265,20 +269,45 @@ const initializeMap = () => {
       attribution: "&copy; Google",
       subdomains: ["mt0", "mt1", "mt2", "mt3"],
     }
-  ).addTo(maps);
+  ).addTo(map);
 
-
-  L.marker(currLocation.value).addTo(maps).bindPopup("Kurir");
+  L.marker(currLocation.value).addTo(map).bindPopup("Kurir");
   if (orderDetail.polyline !== undefined) {
-    polylines = L.polyline(orderDetail.polyline, { color: "blue" }).addTo(maps);
-    maps.fitBounds(polylines.getBounds());
+    polylines = L.polyline(orderDetail.polyline, { color: "blue" }).addTo(map);
+    map.fitBounds(polylines.getBounds());
     // Ubah isi Marker menjadi Latitude dan Longitude tujuan yang didapatkan dari API Server
     // Gunakan setIcon() untuk mengubah Icon dari Marker
-    L.marker([1.1354661680715685, 104.0073575377535]).addTo(maps).bindPopup("Tujuan");
+    L.marker([1.1354661680715685, 104.0073575377535]).addTo(map).bindPopup("Tujuan");
+  }
+
+  return map;
+};
+
+const updateMap = () => {
+  if (maps) {
+    // Clear previous layers
+    maps.eachLayer(layer => {
+      if (layer instanceof L.Marker || layer instanceof L.Polyline) {
+        maps?.removeLayer(layer);
+      }
+    });
+
+    let polylines = null
+    const orderDetail = { ...orderDetails.value }
+
+    L.marker(currLocation.value).addTo(maps).bindPopup("Kurir");
+
+    if (orderDetail.polyline !== undefined) {
+      polylines = L.polyline(orderDetail.polyline, { color: "blue" }).addTo(maps);
+      maps.fitBounds(polylines.getBounds());
+      // Ubah isi Marker menjadi Latitude dan Longitude tujuan yang didapatkan dari API Server
+      // Gunakan setIcon() untuk mengubah Icon dari Marker
+      L.marker([1.1354661680715685, 104.0073575377535]).addTo(maps).bindPopup("Tujuan");
+    }
   }
 
   return maps;
-};
+}
 
 const createTrack = async () => {
   // https://dev.vin.web.id/api/orders/tracking
@@ -343,8 +372,7 @@ const createTrack = async () => {
       ...body,
       orderId: orderId as string,
     }
-    map.value?.remove()
-    map.value = initializeMap()
+    maps = updateMap()
   } catch (err) {
     alert(err)
   }
@@ -363,8 +391,7 @@ const updateTrack = async () => {
   } catch (err) {
     alert(err)
   } finally {
-    map.value?.remove()
-    map.value = initializeMap()
+    maps = updateMap()
   }
 }
 </script>
