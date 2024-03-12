@@ -10,10 +10,10 @@
     </div>
 
     <form class="w-full flex justify-center pt-4" @submit.prevent="verifyCode">
-      <input v-model="code[0]" class="w-[16vw] border-[#00000035] rounded-xl h-8 mr-2" type="number" />
-      <input v-model="code[1]" class="w-[16vw] border-[#00000035] rounded-xl h-8 mr-2" type="number" />
-      <input v-model="code[2]" class="w-[16vw] border-[#00000035] rounded-xl h-8 mr-2" type="number" />
-      <input v-model="code[3]" class="w-[16vw] border-[#00000035] rounded-xl h-8" type="number" />
+      <input v-model="code[0]" maxlength="1" minlength="1" oninput="this.value=this.value.slice(0,this.maxLength);" class="w-[16vw] border-[#00000035] rounded-xl h-8 mr-2 text-2xl font-bold text-center" type="number" />
+      <input v-model="code[1]" maxlength="1" oninput="if(this.value.length >= 1) { this.value = this.value.charAt(0); }" class="w-[16vw] border-[#00000035] rounded-xl h-8 mr-2 text-2xl font-bold text-center" type="number" />
+      <input v-model="code[2]" maxlength="1" oninput="if(this.value.length >= 1) { this.value = this.value.charAt(0); }" class="w-[16vw] border-[#00000035] rounded-xl h-8 mr-2 text-2xl font-bold text-center" type="number" />
+      <input v-model="code[3]" maxlength="1" oninput="if(this.value.length >= 1) { this.value = this.value.charAt(0); }" class="w-[16vw] border-[#00000035] rounded-xl h-8 text-2xl font-bold text-center" type="number" />
     </form>
 
     <div class="text-center pt-4">
