@@ -126,11 +126,13 @@
           @click="router.push('/coupon')"
           class="border-solid border border-gray rounded-2xl p-4 my-2 flex items-center justify-between"
         >
-          <div class="my-auto">
-            <iconnative class="bg-[#E6802760] px-2 py-1 rounded-full" icon="coupon" color="white" width="28" />
-          </div>
+          <div class="flex">
+            <div class="my-auto">
+              <iconnative class="bg-[#E6802760] px-2 py-1 rounded-full" icon="coupon" color="white" width="28" />
+            </div>
 
-          <div class="text-black font-bold text-xs tracking-tight">use the promo first, right?</div>
+            <div class="text-black my-auto font-bold text-xs ml-2 tracking-tight">use the promo first, right?</div>
+          </div>
 
           <iconnative class="mt-auto" icon="circle-arrow-right" color="#E68027" width="28" height="28" />
         </div>
@@ -279,7 +281,7 @@ interface ItemsTotal {
   image: any;
   quantity: string;
   products_subtitle: string;
-  products: { name: string; quantity: number; image: any; subtitle: string, price: string }[];
+  products: { name: string; quantity: number; image: any; subtitle: string; price: string }[];
 }
 
 const total = ref(1);

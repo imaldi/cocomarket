@@ -14,7 +14,7 @@
           <img
             v-if="dataProfile && dataProfile.profile_picture"
             :src="dataProfile.profile_picture"
-            style="width: 106px; height: 106px; border-radius: 50%; cursor: pointer"
+            style="width: 106px; height: 106px; border-radius: 50%; cursor: pointer; object-fit: cover"
             class="w-full justify-center rounded-full"
             alt="image"
           />

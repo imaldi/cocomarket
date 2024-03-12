@@ -43,7 +43,7 @@
       <popup-notif
         v-model="notifConfirm"
         :message="`Password Update Successfully`"
-        :title="`Back To Login`"
+        :title="`Okay`"
         @confirm="goToLogin"
       >
       </popup-notif>
@@ -70,7 +70,7 @@ const goToProfile = () => {
   router.push("/profile");
 };
 const goToLogin = () => {
-  router.push("/");
+  router.push("/profile");
 };
 
 const onSubmit = async () => {

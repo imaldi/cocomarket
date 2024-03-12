@@ -41,7 +41,7 @@
               <div class="my-auto ml-1 text-xs font-bold">CocoPay</div>
             </div>
             <div class="flex justify-between text-center">
-              <div class="font-bold" style="font-size: 28px">
+              <div class="font-bold" style="font-size: 22px">
                 {{
                   matchedData?.balance
                     ? Number(matchedData.balance).toLocaleString("id-ID", {
@@ -52,16 +52,16 @@
                 }}
               </div>
               <div class="flex">
-                <div class="mr-1.4">
-                  <iconnative icon="withdraw" color="#E68027" width="28" height="28" />
+                <div class="mr-2">
+                  <iconnative icon="withdraw" color="#E68027" width="20" height="20" />
                   <div class="text-xs font-500">Pay</div>
                 </div>
-                <div class="mr-1.4">
-                  <iconnative icon="outline-plus" color="#E68027" width="28" height="28" />
+                <div class="mr-2">
+                  <iconnative icon="outline-plus" color="#E68027" width="20" height="20" />
                   <div class="text-xs font-500">TopUp</div>
                 </div>
-                <div class="mr-1.4">
-                  <iconnative icon="more" color="#E68027" width="28" height="28" />
+                <div class="mr-2">
+                  <iconnative icon="more" color="#E68027" width="20" height="20" />
                   <div class="text-xs font-500">More</div>
                 </div>
               </div>

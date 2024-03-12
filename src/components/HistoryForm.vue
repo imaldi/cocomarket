@@ -130,12 +130,9 @@ interface Item {
 const calculateTotalPrice = (item: any, data: any) => {
   let tmp = 0;
   item.forEach((itm: any) => {
-    tmp +=
-      parseFloat(itm.price) * item.length +
-      parseFloat(data.delivery_cost) +
-      parseFloat(data.other_cost) -
-      parseFloat(data.discount_amount);
+    tmp += parseFloat(itm.price) * itm.quantity;
   });
+  tmp = tmp + parseFloat(data.delivery_cost) + parseFloat(data.other_cost) - parseFloat(data.discount_amount);
 
   return Number(tmp).toLocaleString("id-ID", { style: "currency", currency: "IDR" });
 };

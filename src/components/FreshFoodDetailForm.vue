@@ -120,8 +120,10 @@ const directLink = () => {
 };
 
 const increaseQuantity = () => {
-  quantity.value += 1;
-  switchCond.value = true;
+  if (quantity.value < 20) {
+    quantity.value += 1;
+    switchCond.value = true;
+  }
 };
 
 const decreaseQuantity = () => {

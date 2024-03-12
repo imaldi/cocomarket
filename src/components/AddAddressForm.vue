@@ -4,25 +4,20 @@
       <div class="bg-white shadow-md rounded-xl p-8">
         <div class="flex" @click="router.push('profile')">
           <div>
-            <iconnative
-              icon="arrow-circle-black"
-              color="#000"
-              width="28"
-              height="28"
-            />
+            <iconnative icon="arrow-circle-black" color="#000" width="28" height="28" />
           </div>
           <div class="w-full justify-center flex font-bold">Add Address</div>
         </div>
       </div>
 
       <div>
-        <div class="w-full">
+        <div class="w-full z-2">
           <div id="google-map" style="height: 300px"></div>
         </div>
       </div>
 
-      <div class="relative">
-        <div class="fixed w-full h-[54vh] bg-white rounded-lg shadow-md" style="bottom: 0">
+      <div class="relative pb-10">
+        <div class="w-full rounded-lg" style="bottom: 0">
           <div class="flex justify-center">
             <div class="bg-gray rounded-full w-20 h-1 m-2"></div>
           </div>
@@ -37,8 +32,8 @@
 
             <div class="flex my-4">
               <div class="px-4 py-2 bg-[#7ACDD6] rounded-2xl font-semibold text-white text-sm">Home</div>
-              <div class="px-4 py-2 bg-[#D9D9D9] rounded-2xl font-semibold text-black text-sm mx-2">Work</div>
-              <div class="px-4 py-2 bg-[#D9D9D9] rounded-2xl font-semibold text-black text-sm">Other</div>
+              <!-- <div class="px-4 py-2 bg-[#D9D9D9] rounded-2xl font-semibold text-black text-sm mx-2">Work</div>
+              <div class="px-4 py-2 bg-[#D9D9D9] rounded-2xl font-semibold text-black text-sm">Other</div> -->
             </div>
 
             <div>
@@ -72,13 +67,13 @@
                 <p class="text-danger text-left text-sm mt-0">
                   {{ errors.namaJalan }}
                 </p>
-                <input
+                <!-- <input
                   class="w-5/6l border-0 rounded-xl bg-[#F2F2F2] px-6 py-4"
                   type="text"
                   name=""
                   id=""
                   placeholder="Other"
-                />
+                /> -->
 
                 <button
                   type="submit"
@@ -117,6 +112,7 @@ const addressStore = useAddressStore();
 const namaJalan = ref("");
 const latitude = ref(0);
 const longitude = ref(0);
+
 const addAddress = async () => {
   if (!latitude || !longitude) {
     console.error("Latitude and longitude are required.");
@@ -133,13 +129,13 @@ const addAddress = async () => {
   };
 
   try {
-    const res = await addressStore.addAddress(payload);
-    console.log(res);
+    await addressStore.addAddress(payload);
     notifConfirm.value = true;
   } catch (error) {
     console.error("Error adding address:", error);
   }
 };
+
 const goToProfile = () => {
   router.push("/profile");
 };
@@ -194,7 +190,7 @@ onMounted(() => {
   display: flex;
   flex-direction: column;
   width: 100%;
-  height: 100vh;
+  // height: 100vh;
   color: #000000;
 }
 </style>

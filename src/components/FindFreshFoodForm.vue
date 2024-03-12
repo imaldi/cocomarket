@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div :class="totalItem && totalItem.total !== 0 ? 'pb-30' : 'pb-10'" class="container">
+    <div :class="totalItem && totalItem.length !== 0 ? 'pb-30' : 'pb-10'" class="container">
       <div class="bg-white shadow-xl rounded-xl p-8">
         <div class="flex">
           <div @click="router.push('/home')">
@@ -95,7 +95,7 @@
         </div>
       </div>
 
-      <div v-if="totalItem && totalItem.total !== 0" @click="GoDetailCart(totalItem.carts_id)" class="relative">
+      <div v-if="totalItem && totalItem.length !== 0" @click="GoDetailCart(totalItem.carts_id)" class="relative">
         <div class="fixed w-full bg-white rounded-lg shadow-md" style="bottom: 0">
           <div class="flex w-full justify-between p-4">
             <div class="flex p-4 mr-8 rounded-2xl bg-primary w-full justify-center text-white">
@@ -103,7 +103,7 @@
                 <div class="my-auto">
                   <div class="font-bold text-xl">{{ totalItem.total }} Item</div>
                   <div class="text-xs">
-                    {{ namesWithoutNumbers.join(", ") }}
+                    {{ namesWithoutNumbers.join(", ").substring(0, 16) + "..." }}
                   </div>
                 </div>
                 <div class="flex my-auto">
@@ -211,6 +211,7 @@ const getListCart = async () => {
   try {
     const res = await cartStore.getCartTotal();
     totalItem.value = res.data as ItemsTotal;
+
     namesWithoutNumbers.value = totalItem.value.products.map((item) => item.name.replace(/\d+/g, ""));
     const namesWithoutNumbersCleaned = namesWithoutNumbers.value.map((name: string) => name.replace(/\d+/g, ""));
     console.log(namesWithoutNumbersCleaned);
@@ -256,7 +257,7 @@ onMounted(() => {
   getListProduct();
   setTimeout(() => {
     getListCart();
-  }, 200);
+  }, 500);
 });
 </script>
 

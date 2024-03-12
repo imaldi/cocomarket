@@ -23,7 +23,7 @@
                 height="28"
               />
 
-              <div class="flex flex-col justify-center mr-14">
+              <div class="flex flex-col justify-center mr-16">
                 <div class="font-bold text-sm tracking-tighter">{{ item.vendors.name }}</div>
                 <div class="font-normal text-xs">{{ item.date }}</div>
               </div>
@@ -42,7 +42,7 @@
                   width="64"
                 />
               </div>
-              <div class="flex flex-col justify-center mr-8">
+              <div class="flex flex-col justify-center mr-10">
                 <div class="font-bold text-sm">{{ item.code }}</div>
                 <div class="font-normal text-xs text-gray my-[2px]">{{ item.order_details.length }} Produk</div>
                 <div class="flex items-center font-normal text-xs text-gray">
@@ -161,12 +161,9 @@ const tracking = async () => {
 const calculateTotalPrice = (item: any, data: any) => {
   let tmp = 0;
   item.forEach((itm: any) => {
-    tmp +=
-      parseFloat(itm.price) * item.length +
-      parseFloat(data.delivery_cost) +
-      parseFloat(data.other_cost) -
-      parseFloat(data.discount_amount);
+    tmp += parseFloat(itm.price) * itm.quantity;
   });
+  tmp = tmp + parseFloat(data.delivery_cost) + parseFloat(data.other_cost) - parseFloat(data.discount_amount);
 
   return Number(tmp).toLocaleString("id-ID", { style: "currency", currency: "IDR" });
 };
