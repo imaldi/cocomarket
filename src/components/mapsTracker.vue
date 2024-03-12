@@ -5,31 +5,72 @@
 </template>
 
 <script setup lang="ts">
-import axios from 'axios';
-import { ref, onMounted } from "vue";
+import { ref, onMounted, onBeforeUnmount } from "vue";
 import L, { LatLngExpression } from "leaflet";
-import { dayjs } from 'element-plus';
 import { decode } from '@mapbox/polyline';
 import "leaflet/dist/leaflet.css";
 import apiClient from '../store/apiClient';
+import { useRoute } from "vue-router"
 
-interface RoutesMeta {
-  distanceMeters: number,
-  duration: number
+interface OrderModel {
+  orderId: string | undefined
+  lat: number | undefined
+  long: number | undefined
+  time: number | undefined
+  distance: number | undefined
+  polyline: LatLngExpression[] | undefined
 }
 
+interface GetTrackResponse {
+  order_id?: string | undefined
+  orderId: string
+  lat: number
+  long: number
+  polyline: string
+  time: number
+  distance: number
+}
+
+let map: L.Map | null = null;
+let interval: any = null;
+
+const router = useRoute()
+const { id: orderId } = router.params
 const apiKey = import.meta.env.VITE_GOOGLE_MAPS_API_KEY;
-const currLocation = ref({ latitude: 0, longitude: 0 })
-const map = ref<L.Map | null>(null);
-// Membuat center atau menentukan titik tengah si tampilan Google Maps-nya
-const center: LatLngExpression = [1.1149361954501316, 104.04005742568758];
-// Menentukan seberapa zoom in tampilan Google Maps nya
-const polyline = ref<LatLngExpression[]>();
-const displayRoute = ref<RoutesMeta | null>({ distanceMeters: 0, duration: 0 });
+const currLocation = ref<LatLngExpression>([0, 0])
+const orderDetails = ref<OrderModel>({
+  orderId: undefined,
+  distance: undefined,
+  lat: undefined,
+  long: undefined,
+  polyline: undefined,
+  time: undefined
+})
+
+onMounted(async () => {
+  try {
+    await fetchData();
+    map = initializeMap();
+  } catch (err) {
+    alert(err)
+  } finally {
+    interval = setInterval(async () => {
+      try {
+        await fetchData()
+        map = updateMap()
+      } catch (err) {
+        alert("Auto Fetcher API Failed! ")
+      }
+    }, 15000)
+  }
+});
+
+onBeforeUnmount(() => { clearInterval(interval) })
 
 const initializeMap = () => {
-  const map = L.map("map").setView(center, 10);
+  const map = L.map("map").setView(currLocation.value, 15);
   let polylines = null
+  const orderDetail = { ...orderDetails.value }
 
   L.tileLayer(
     `https://{s}.google.com/vt/lyrs=m@189&hl=en&x={x}&y={y}&z={z}&apistyle=s.t%3A131%7Cs.e%3Alight%7Cs.g%3A%23EAEAEA%7Cs.l%3A%23EAEAEA%7Cs.c%3A%23EAEAEA%7Cs.f%3A%23EAEAEA%7Cs.l%3A%23EAEAEA%7Cs.t%3A60%7Cs.e%3Ag.s%7Cs.g%3A%23E5E5E5%7Cs.l%3A%23E5E5E5%7Cs.f%3A%23E5E5E5%7Cs.f%3Ag.s&scale=2&style=47%2C37%7Csmartmaps&apiKey=${apiKey}`,
@@ -39,81 +80,56 @@ const initializeMap = () => {
     }
   ).addTo(map);
 
-  L.marker(center).addTo(map).bindPopup("Kurir");
-  if (polyline.value !== undefined) {
-    polylines = L.polyline(polyline.value, { color: "blue" }).addTo(map);
+  L.marker(currLocation.value).addTo(map).bindPopup("Kurir");
+  if (orderDetail.polyline !== undefined) {
+    polylines = L.polyline(orderDetail.polyline, { color: "blue" }).addTo(map);
     map.fitBounds(polylines.getBounds());
+    // Ubah isi Marker menjadi Latitude dan Longitude tujuan yang didapatkan dari API Server
+    // Gunakan setIcon() untuk mengubah Icon dari Marker
+    L.marker([1.1354661680715685, 104.0073575377535]).addTo(map).bindPopup("Tujuan");
   }
 
   return map;
 };
 
-onMounted(() => {
-  navigator.geolocation.getCurrentPosition(
-    position => {
-      currLocation.value = { latitude: position.coords.latitude, longitude: position.coords.longitude }
-      fetchData()
-    },
-    error => {
-      console.error('Error getting location:', error.message);
+const updateMap = () => {
+  if (map) {
+    // Clear previous layers
+    map.eachLayer(layer => {
+      if (layer instanceof L.Marker || layer instanceof L.Polyline) {
+        map?.removeLayer(layer);
+      }
+    });
+
+    let polylines = null
+    const orderDetail = { ...orderDetails.value }
+
+    L.marker(currLocation.value).addTo(map).bindPopup("Kurir");
+
+    if (orderDetail.polyline !== undefined) {
+      polylines = L.polyline(orderDetail.polyline, { color: "blue" }).addTo(map);
+      map.fitBounds(polylines.getBounds());
+      // Ubah isi Marker menjadi Latitude dan Longitude tujuan yang didapatkan dari API Server
+      // Gunakan setIcon() untuk mengubah Icon dari Marker
+      L.marker([1.1354661680715685, 104.0073575377535]).addTo(map).bindPopup("Tujuan");
     }
-  );
-});
+  }
+
+  return map;
+}
 
 const fetchData = async () => {
   try {
-    // Mendapatkan rute yang harus dilewati oleh Kurir menggunakan moda transportasi tertentu
-    // Dokumentasi : https://developers.google.com/maps/documentation/routes/reference/rest/v2/TopLevel/computeRoutes#request-body
-
-    const { data: { routes } } = await axios.post('https://routes.googleapis.com/directions/v2:computeRoutes', {
-      // Ketika integrasi, Origin yang akan selalu berubah-ubah sesuai dengan titik lokasi kurir
-      "origin": {
-        "location": {
-          "latLng": {
-            "latitude": 1.1149361954501316,
-            "longitude": 104.04005742568758
-          }
-        }
-      },
-      // Destinasi tidak perlu berubah karena tujuan akan selalu sama selama orderan berjalan
-      "destination": {
-        "location": {
-          "latLng": {
-            "latitude": 1.1355836265175647,
-            "longitude": 104.00739431132627
-          }
-        }
-      },
-      "travelMode": "DRIVE",
-      "routingPreference": "TRAFFIC_AWARE_OPTIMAL",
-      "departureTime": dayjs().add(1, 'minute'),
-      "computeAlternativeRoutes": false,
-      "routeModifiers": {
-        "avoidTolls": true,
-        "avoidHighways": true,
-        "avoidFerries": true
-      },
-      "languageCode": "en-US",
-      "units": "METRIC",
-      // "polylineQuality": "HIGH_QUALITY",
-    }, {
-      'headers': {
-        'Content-Type': 'application/json',
-        'X-Goog-Api-Key': 'AIzaSyDPsaaxcm_RCNSF40DR0jOgV-vCeHAAACo',
-        'X-Goog-FieldMask': 'routes.duration,routes.distanceMeters,routes.polyline.encodedPolyline'
-      }
-    })
-    displayRoute.value = routes[0]
-    console.log(routes[0])
-    const totalSecond = Number.parseInt(routes[0].duration.split('s')[0])
-    const second = totalSecond % 60
-    const minute = Number.parseInt(`${totalSecond / 60}`)
-    const hour = Number.parseInt(`${totalSecond / 3600}`)
-    console.log({ second, minute, hour })
-
-    // Decoding Polyline ataupun garis yang menunjukkan arah perjalanan kurir menjadi kompatibel untuk tampilan di Google Map
-    polyline.value = decode(routes[0].polyline.encodedPolyline)
-    map.value = initializeMap();
+    const responseApi: GetTrackResponse | Array<any> = await apiClient.get(`api/orders/tracking/${orderId}`) as GetTrackResponse
+    currLocation.value = [responseApi.lat, responseApi.long]
+    orderDetails.value = {
+      distance: responseApi.distance,
+      lat: responseApi.lat,
+      long: responseApi.long,
+      orderId: orderId as string,
+      polyline: decode(responseApi.polyline),
+      time: responseApi.time
+    }
   } catch (err) {
     alert(`Error Loading Maps with Code : ${err}`)
   }
