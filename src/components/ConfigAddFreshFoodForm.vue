@@ -98,6 +98,7 @@ interface Item {
   products_subtitle: string;
   total: number;
   total_stock: string;
+  image: any;
 }
 
 const backData = (data: any) => {
@@ -176,8 +177,6 @@ const decreaseQuantity = (item: any) => {
 
 const removeItem = async (id: any, index: number) => {
   try {
-    let text;
-
     if (confirm("Are you sure delete product ?") == true) {
       const res = await cartStore.removeCartDetail(id);
 
@@ -199,8 +198,6 @@ const removeItem = async (id: any, index: number) => {
           message: "Product berhasil di update",
         });
       }
-    } else {
-      text = "You canceled!";
     }
   } catch (error) {
     console.log(error);

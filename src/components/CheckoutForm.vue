@@ -269,11 +269,17 @@ const cartStore = useCartStore();
 const namesWithoutNumbers = ref<string[]>([]);
 const totalItem = ref<ItemsTotal | null>(null);
 interface ItemsTotal {
-  price: string;
+  price: number;
+  shipping_cost: number;
+  others_cost: number;
   total: string;
   amount: number;
+  address: any;
+  duration: any;
+  image: any;
+  quantity: string;
   products_subtitle: string;
-  products: { name: string }[];
+  products: { name: string; quantity: number; image: any; subtitle: string, price: string }[];
 }
 
 const total = ref(1);

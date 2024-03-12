@@ -87,10 +87,7 @@
                 }}
               </div>
             </div>
-            <div
-              @click="goToCart(detailProduct.id, detailProduct.categories_id)"
-              class="flex p-4 mr-8 rounded-2xl bg-primary w-1/2 justify-center"
-            >
+            <div @click="goToCart(detailProduct.id)" class="flex p-4 mr-8 rounded-2xl bg-primary w-1/2 justify-center">
               <iconnative icon="shopping-bag" class="mr-4 my-auto" color="#fff" width="28" height="28" />
               <div type="button" class="text-lg font-500 text-white my-auto">Add to Cart</div>
             </div>
@@ -141,9 +138,10 @@ interface Item {
   price: number;
   categories_id: number;
   description: string;
+  subtitle: string;
 }
 
-const goToCart = (id: any, catId: any) => {
+const goToCart = (id: any) => {
   if (detailProduct.value) {
     const payload = {
       products_id: id,

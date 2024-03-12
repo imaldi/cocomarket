@@ -25,7 +25,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted } from "vue";
+import { ref } from "vue";
 import { useRouter, useRoute } from "vue-router";
 import { useAuthStore } from "../store/modules/auth";
 import iconnative from "../icon/index.vue";
@@ -36,7 +36,7 @@ const router = useRouter();
 const route = useRoute();
 const code = ref(["", "", "", ""]);
 
-const emailConfirmation = ref("");
+// const emailConfirmation = ref("");
 
 const verifyCode = async () => {
   const enteredCode = code.value.join("");

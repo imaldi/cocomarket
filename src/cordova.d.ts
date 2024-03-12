@@ -1,3 +1,5 @@
+declare module "@mapbox/polyline";
+
 declare var cordova: Cordova;
 declare var global: window;
 declare var google: google;

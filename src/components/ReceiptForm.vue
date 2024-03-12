@@ -124,6 +124,8 @@ interface Items {
   tax_amount: string;
   delivery_cost: string;
   discount_amount: string;
+  other_cost: string;
+  vendors: any
   date: string;
   description: string;
 }

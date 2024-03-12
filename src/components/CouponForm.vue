@@ -47,10 +47,13 @@ const dataCoupon = ref<Items[]>([]);
 
 interface Items {
   id: number;
+  code: string;
   image: string;
   name: string;
   subtitle: string;
   price: string;
+  discount_percent: string;
+  valid_end: string;
 }
 
 const getListCoupon = async () => {

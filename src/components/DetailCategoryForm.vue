@@ -125,7 +125,7 @@ interface Item {
 
 interface ItemsTotal {
   price: string;
-  total: string;
+  total: string | number;
   carts_id: number;
   amount: string;
   products: { name: string }[];

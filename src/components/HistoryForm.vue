@@ -63,11 +63,11 @@
                   {{ item.code }}
                 </div>
                 <div class="font-normal text-xs text-gray my-[2px]">{{ item.order_details.length }} Produk</div>
-                <div v-if="item.status == 2" class="flex items-center font-normal text-xs text-gray">
+                <div v-if="item.status == '2'" class="flex items-center font-normal text-xs text-gray">
                   <iconnative class="mr-[4px]" icon="circle-checklist" color="#51F862" width="14" height="14" />
                   Groceries has been delivered
                 </div>
-                <div v-else-if="item.status == 3" class="flex items-center font-normal text-xs text-gray">
+                <div v-else-if="item.status == '3'" class="flex items-center font-normal text-xs text-gray">
                   <iconnative class="mr-[4px]" icon="circle-checklist" color="#51F862" width="14" height="14" />
                   Groceries not been delivered
                 </div>
@@ -109,12 +109,15 @@ const activeSelect = ref(0);
 // const ordersDetail = ref<Item[]>([]);
 interface Item {
   id: string;
+  code: string;
   name: string;
   date: string;
   image: string;
   price: number;
+  order_details: any;
   description: string;
   status: string;
+  vendors: any;
 }
 // interface ItemOrders {
 //   id: string;
@@ -137,15 +140,15 @@ const calculateTotalPrice = (item: any, data: any) => {
   return Number(tmp).toLocaleString("id-ID", { style: "currency", currency: "IDR" });
 };
 
-const getListHistory = async () => {
-  try {
-    const res = await useProduct.getHistory();
-    dataHistory.value = res.data as Item[];
-  } catch (error) {
-    console.log(error);
-  } finally {
-  }
-};
+// const getListHistory = async () => {
+//   try {
+//     const res = await useProduct.getHistory();
+//     dataHistory.value = res.data as Item[];
+//   } catch (error) {
+//     console.log(error);
+//   } finally {
+//   }
+// };
 
 const getListHistoryComplete = async () => {
   try {
