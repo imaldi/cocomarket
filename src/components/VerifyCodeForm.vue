@@ -10,10 +10,10 @@
     </div>
 
     <form class="w-full flex justify-center pt-4" @submit.prevent="verifyCode">
-      <input v-model="code[0]" class="w-[16vw] border-[#00000035] rounded-xl h-8 mr-2" type="number" />
-      <input v-model="code[1]" class="w-[16vw] border-[#00000035] rounded-xl h-8 mr-2" type="number" />
-      <input v-model="code[2]" class="w-[16vw] border-[#00000035] rounded-xl h-8 mr-2" type="number" />
-      <input v-model="code[3]" class="w-[16vw] border-[#00000035] rounded-xl h-8" type="number" />
+      <el-input v-model="code1" maxlength="1" class="w-[8vw] border-[#00000035] rounded-xl h-8 mr-4" type="number" />
+      <el-input v-model="code2" maxlength="1" class="w-[8vw] border-[#00000035] rounded-xl h-8 mr-4" type="number" />
+      <el-input v-model="code3" maxlength="1" class="w-[8vw] border-[#00000035] rounded-xl h-8 mr-4" type="number" />
+      <el-input v-model="code4" maxlength="1" class="w-[8vw] border-[#00000035] rounded-xl h-8 mr-4" type="number" />
     </form>
 
     <div class="text-center pt-4">
@@ -25,21 +25,47 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from "vue";
+import { ref, watch } from "vue";
 import { useRouter, useRoute } from "vue-router";
 import { useAuthStore } from "../store/modules/auth";
 import iconnative from "../icon/index.vue";
-import { ElNotification } from "element-plus";
+import { ElNotification, ElInput } from "element-plus";
 
 const authStore = useAuthStore();
 const router = useRouter();
 const route = useRoute();
-const code = ref(["", "", "", ""]);
 
-// const emailConfirmation = ref("");
+const code1 = ref("");
+const code2 = ref("");
+const code3 = ref("");
+const code4 = ref("");
+
+watch(code1, (newValue: string) => {
+  if (newValue && newValue.length > 1) {
+    code1.value = newValue.slice(0, 1);
+  }
+});
+
+watch(code2, (newValue: string) => {
+  if (newValue && newValue.length > 1) {
+    code2.value = newValue.slice(0, 1);
+  }
+});
+
+watch(code3, (newValue: string) => {
+  if (newValue && newValue.length > 1) {
+    code3.value = newValue.slice(0, 1);
+  }
+});
+
+watch(code4, (newValue: string) => {
+  if (newValue && newValue.length > 1) {
+    code4.value = newValue.slice(0, 1);
+  }
+});
 
 const verifyCode = async () => {
-  const enteredCode = code.value.join("");
+  const enteredCode = code1.value + code2.value + code3.value + code4.value;
 
   if (enteredCode.length < 4) {
     return ElNotification({
@@ -104,6 +130,6 @@ const resendCode = async () => {
   justify-content: start;
   width: 100%;
   color: #000000;
-  height: 100vh;
+  // height: 100vh;
 }
 </style>

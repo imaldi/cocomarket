@@ -58,6 +58,12 @@
     </div> -->
 
     <p class="sign-up-title">Don't Have an account? <a href="#/register" class="sign-up">Sign Up</a></p>
+
+    <transition name="fade">
+      <div v-if="showLoad" class="popupLoad">
+        <div class="loader absolute"></div>
+      </div>
+    </transition>
   </div>
 </template>
 
@@ -72,6 +78,7 @@ const router = useRouter();
 const authStore = useAuthStore();
 const username = ref("");
 const password = ref("");
+const showLoad = ref(false);
 
 const login = async () => {
   const payload = {
@@ -115,7 +122,16 @@ const login = async () => {
 
 onMounted(() => {
   const isAuthenticated = localStorage.getItem("user_id");
-  if (isAuthenticated) router.push("/home");
+
+  if (isAuthenticated) {
+    showLoad.value = true;
+
+    router.push("/home");
+
+    setTimeout(() => {
+      showLoad.value = false;
+    }, 200);
+  }
 });
 </script>
 
