@@ -10,7 +10,7 @@
         </div>
       </div>
 
-      <div class="my-auto mx-8 py-8">
+      <div class="my-auto mx-8 pt-8">
         <div class="bg-white border-solid border border-gray rounded-2xl px-4 py-2 mb-4 flex flex-col justify-between">
           <div>
             <div class="flex items-center justify-center my-4">
@@ -64,13 +64,13 @@
                 </div>
               </div>
 
-              <!-- <div v-if="allDataDetail" class="px-4 flex items-center mb-2">
-                <div class="font-300 text-sm w-2/3">Tax</div>
+              <div v-if="allDataDetail" class="px-4 flex items-center mb-2">
+                <div class="font-300 text-sm w-2/3">Other Costs</div>
                 <div class="font-300 text-sm w-1/10"></div>
                 <div class="font-semibold text-sm w-1/3 text-end">
-                  {{ allDataDetail.tax_amount }}
+                  {{ Number(allDataDetail.other_cost).toLocaleString("id-ID") }}
                 </div>
-              </div> -->
+              </div>
 
               <div v-if="allDataDetail" class="px-4 flex items-center mb-2">
                 <div class="font-300 text-sm w-2/3">Discount</div>
@@ -136,10 +136,13 @@ const totalPrice = computed(() => {
     }, 0);
 
     totalPriceValue =
-      totalPrices + parseFloat(allDataDetail.value.delivery_cost) - parseFloat(allDataDetail.value.discount_amount);
+      totalPrices +
+      parseFloat(allDataDetail.value.other_cost) +
+      parseFloat(allDataDetail.value.delivery_cost) -
+      parseFloat(allDataDetail.value.discount_amount);
   }
 
-  return totalPriceValue.toFixed(2);
+  return totalPriceValue;
 });
 const getReceipt = async (id: any) => {
   try {

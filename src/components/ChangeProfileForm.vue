@@ -45,7 +45,7 @@
             id="phone"
             v-model="phone"
             type="number"
-            placeholder="02938"
+            placeholder="08**"
           />
           <p v-if="errors.phone" class="text-danger text-left text-sm mt-0">
             {{ errors.phone }}
@@ -124,7 +124,6 @@ const getProfiles = async () => {
       (email.value = dataProfile.value.email),
       (dateOfBirth.value = dataProfile.value.date_of_birth),
       (phone.value = dataProfile.value.phone);
-    console.log(dateOfBirth.value);
   } catch (error) {
     console.log(error);
   } finally {
