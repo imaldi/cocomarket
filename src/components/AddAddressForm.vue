@@ -23,18 +23,18 @@
           </div>
 
           <div class="mt-4 px-10">
-            <div>
+            <!-- <div>
               <div class="flex font-semibold text-gray">
                 Save an address as
                 <div class="text-red">*</div>
               </div>
-            </div>
+            </div> -->
 
-            <div class="flex my-4">
+            <!-- <div class="flex my-4">
               <div class="px-4 py-2 bg-[#7ACDD6] rounded-2xl font-semibold text-white text-sm">Home</div>
-              <!-- <div class="px-4 py-2 bg-[#D9D9D9] rounded-2xl font-semibold text-black text-sm mx-2">Work</div>
-              <div class="px-4 py-2 bg-[#D9D9D9] rounded-2xl font-semibold text-black text-sm">Other</div> -->
-            </div>
+              <div class="px-4 py-2 bg-[#D9D9D9] rounded-2xl font-semibold text-black text-sm mx-2">Work</div>
+              <div class="px-4 py-2 bg-[#D9D9D9] rounded-2xl font-semibold text-black text-sm">Other</div>
+            </div> -->
 
             <div>
               <div class="flex font-semibold text-black mb-3">Address Detail</div>

@@ -25,18 +25,22 @@
 
         <div class="flex flex-col px-4" v-for="(item, index) in dataHistory" :key="index">
           <div class="border border-solid border-gray p-4 rounded-2xl flex flex-col mb-2">
-            <div class="flex items-center justify-between border border-gray border-x-0 border-t-0 border-dashed pb-4">
-              <img
-                class="border border-solid border-gray rounded-full bg-white p-2"
-                src="../assets/img/gerobak.png"
-                alt="Cocomaret Logo"
-                width="28"
-                height="28"
-              />
+            <div
+              class="w-full flex items-center justify-between border border-gray border-x-0 border-t-0 border-dashed pb-4"
+            >
+              <div class="flex w-full">
+                <img
+                  class="border border-solid border-gray rounded-full bg-white p-2"
+                  src="../assets/img/gerobak.png"
+                  alt="Cocomaret Logo"
+                  width="28"
+                  height="28"
+                />
 
-              <div class="flex flex-col justify-center mr-14">
-                <div class="font-bold text-sm tracking-tighter">{{ item.vendors.name }}</div>
-                <div class="font-normal text-xs">{{ item.date }} WIB</div>
+                <div class="flex flex-col justify-center ml-4">
+                  <div class="font-bold text-sm tracking-tighter">{{ item.vendors.name }}</div>
+                  <div class="font-normal text-xs">{{ item.date }} WIB</div>
+                </div>
               </div>
 
               <div>
@@ -49,7 +53,7 @@
               </div>
             </div>
 
-            <div class="flex items-center justify-between my-3">
+            <div class="flex items-center my-3">
               <div class="flex">
                 <img
                   class="bg-white z-1 p-2 border-solid rounded-2xl border border-gray"
@@ -58,7 +62,7 @@
                   width="64"
                 />
               </div>
-              <div class="flex flex-col justify-center mr-8">
+              <div class="flex flex-col justify-center ml-4">
                 <div class="font-bold text-sm">
                   {{ item.code }}
                 </div>

@@ -105,16 +105,18 @@
           </template>
 
           <div class="border-solid border border-gray rounded-2xl p-4 my-2 flex">
-            <div>
-              <div class="text-black text-xs tracking-tight">Want To Add More Item?</div>
-              <div class="text-gray text-xs tracking-tight">You can still add other items.</div>
+            <div class="w-full flex justify-between">
+              <div>
+                <div class="text-black text-xs tracking-tight">Want To Add More Item?</div>
+                <div class="text-gray text-xs tracking-tight">You can still add other items.</div>
+              </div>
+              <button
+                @click="router.push('/findfreshfood')"
+                class="ml-14 bg-white border-[#E68027] text-color-[#E68027] rounded-full border-2 text-xs py-2 px-4"
+              >
+                Add More
+              </button>
             </div>
-            <button
-              @click="router.push('/findfreshfood')"
-              class="ml-14 bg-white border-[#E68027] text-color-[#E68027] rounded-full border-2 text-xs py-2 px-4"
-            >
-              Add More
-            </button>
           </div>
         </div>
       </div>

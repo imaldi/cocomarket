@@ -7,9 +7,9 @@
             <iconnative icon="arrow-circle-black" color="#000" width="28" height="28" />
           </div>
           <div class="w-full justify-center flex font-bold">Notification</div>
-          <div>
+          <!-- <div>
             <iconnative icon="dot-vertical" color="#000" width="28" height="28" />
-          </div>
+          </div> -->
         </div>
       </div>
 

@@ -14,26 +14,28 @@
       <div v-if="dataOrder?.length > 0">
         <div v-for="(item, index) in dataOrder" :key="index" class="flex flex-col px-4">
           <div class="border border-solid border-gray p-4 rounded-2xl flex flex-col mb-2">
-            <div class="flex items-center justify-between border border-gray border-x-0 border-t-0 border-dashed pb-4">
-              <img
-                class="border border-solid border-gray rounded-full bg-white p-2"
-                src="../assets/img/gerobak.png"
-                alt="Cocomaret Logo"
-                width="28"
-                height="28"
-              />
+            <div class="w-full flex items-center border border-gray border-x-0 border-t-0 border-dashed pb-4">
+              <div class="flex w-full">
+                <img
+                  class="border border-solid border-gray rounded-full bg-white p-2"
+                  src="../assets/img/gerobak.png"
+                  alt="Cocomaret Logo"
+                  width="28"
+                  height="28"
+                />
 
-              <div class="flex flex-col justify-center mr-16">
-                <div class="font-bold text-sm tracking-tighter">{{ item.vendors.name }}</div>
-                <div class="font-normal text-xs">{{ item.date }}</div>
+                <div class="flex flex-col justify-center ml-4">
+                  <div class="font-bold text-sm tracking-tighter">{{ item.vendors.name }}</div>
+                  <div class="font-normal text-xs">{{ item.date }}</div>
+                </div>
               </div>
 
-              <div>
+              <div class="justify-end w-full flex">
                 <div class="px-4 py-2 bg-[#EADFB4] text-B49000 rounded-xl text-[8px] font-bold">In Process</div>
               </div>
             </div>
 
-            <div class="flex items-center justify-between my-3">
+            <div class="flex items-center w-full my-3">
               <div class="flex">
                 <img
                   class="bg-white z-1 p-2 border-solid rounded-2xl border border-gray"
@@ -42,7 +44,7 @@
                   width="64"
                 />
               </div>
-              <div class="flex flex-col justify-center mr-10">
+              <div class="flex flex-col justify-center ml-4">
                 <div class="font-bold text-sm">{{ item.code }}</div>
                 <div class="font-normal text-xs text-gray my-[2px]">{{ item.order_details.length }} Produk</div>
                 <div class="flex items-center font-normal text-xs text-gray">
