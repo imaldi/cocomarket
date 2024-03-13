@@ -68,11 +68,11 @@
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted } from "vue";
 import { useRouter } from "vue-router";
+import { ref, onMounted } from "vue";
 import { Form, Field } from "vee-validate";
-import { useAuthStore } from "../store/modules/auth";
 import { ElNotification } from "element-plus";
+import { useAuthStore } from "../store/modules/auth";
 
 const router = useRouter();
 const authStore = useAuthStore();

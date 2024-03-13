@@ -114,7 +114,7 @@ import { useProdukStore } from "../store/modules/product";
 import { useRoute, useRouter } from "vue-router";
 import iconnative from "../icon/index.vue";
 
-const receiptStore = useProdukStore();
+const produkStore = useProdukStore();
 const route = useRoute();
 const router = useRouter();
 const allDataDetail = ref<Items | null>(null);
@@ -177,7 +177,7 @@ const totalSubPrice = computed(() => {
 });
 const getReceipt = async (id: any) => {
   try {
-    const res = await receiptStore.getHistoryByid(id);
+    const res = await produkStore.getHistoryByid(id);
 
     dataDetail.value = res.data.order_details as Item[];
     allDataDetail.value = res.data as Items;

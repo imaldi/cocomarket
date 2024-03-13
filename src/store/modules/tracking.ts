@@ -8,7 +8,7 @@ interface trackingStore {
   trackingByProduct(id:any): Promise<any>;
 }
 
-export const useTrackingStore = defineStore("tracking", () => {
+export const useTrackingStore = defineStore("trackingStore", () => {
   const addAddress: trackingStore["addAddress"] = async (payload) => {
     return axiosClient.post("/api/addresses", payload);
   };

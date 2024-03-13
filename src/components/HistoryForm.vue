@@ -107,7 +107,7 @@ import { useProdukStore } from "../store/modules/product";
 import { ref, onMounted } from "vue";
 import iconnative from "../icon/index.vue";
 
-const useProduct = useProdukStore();
+const produkStore = useProdukStore();
 const dataHistory = ref<Item[]>([]);
 const activeSelect = ref(0);
 // const ordersDetail = ref<Item[]>([]);
@@ -143,7 +143,7 @@ const calculateTotalPrice = (item: any, data: any) => {
 
 // const getListHistory = async () => {
 //   try {
-//     const res = await useProduct.getHistory();
+//     const res = await produkStore.getHistory();
 //     dataHistory.value = res.data as Item[];
 //   } catch (error) {
 //     console.log(error);
@@ -153,7 +153,7 @@ const calculateTotalPrice = (item: any, data: any) => {
 
 const getListHistoryComplete = async () => {
   try {
-    const res = await useProduct.getHistoryComplete();
+    const res = await produkStore.getHistoryComplete();
     dataHistory.value = res.data as Item[];
     activeSelect.value = 0;
   } catch (error) {
@@ -164,7 +164,7 @@ const getListHistoryComplete = async () => {
 
 const getListHistoryCanceled = async () => {
   try {
-    const res = await useProduct.getHistoryCanceled();
+    const res = await produkStore.getHistoryCanceled();
     dataHistory.value = res.data as Item[];
     activeSelect.value = 1;
   } catch (error) {

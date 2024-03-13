@@ -13,7 +13,7 @@
       <div class="mx-8 my-6">
         <div class="text-base font-semibold mb-4">Best offers for you</div>
 
-        <div v-for="(item, n) in dataCoupon" :key="n">
+        <div v-for="(item, n) in dataCoupon" :key="n" @click="coupon">
           <div class="mb-4">
             <div class="flex border border-solid py-4 border-[#7ACDD6] rounded-xl bg-white z-2 -mb-2">
               <div class="flex items-center px-4 border border-dashed border-t-0 border-b-0 border-l-0">
@@ -38,6 +38,7 @@ import { onMounted, ref } from "vue";
 import { useRouter } from "vue-router";
 import iconnative from "../icon/index.vue";
 import { useCouponStore } from "../store/modules/coupon";
+import { ElNotification } from "element-plus";
 
 const router = useRouter();
 
@@ -56,6 +57,16 @@ interface Items {
   valid_end: string;
 }
 
+const coupon = async () => {
+  ElNotification({
+    title: "Coming soon",
+    type: "warning",
+    duration: 2000,
+    customClass: "errorNotif",
+    message: "Coupon, Coming Soon !!!",
+  });
+};
+
 const getListCoupon = async () => {
   try {
     const res = await couponStore.getAllCoupon();
@@ -68,7 +79,6 @@ const getListCoupon = async () => {
 
 onMounted(() => {
   getListCoupon();
-  window.location.reload();
 });
 </script>
 

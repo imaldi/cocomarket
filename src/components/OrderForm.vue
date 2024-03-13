@@ -133,7 +133,7 @@ import { ref, onMounted } from "vue";
 import iconnative from "../icon/index.vue";
 import { ElNotification } from "element-plus";
 
-const useProduct = useProdukStore();
+const produkStore = useProdukStore();
 
 const dataOrder = ref<Item[]>([]);
 
@@ -172,7 +172,7 @@ const calculateTotalPrice = (item: any, data: any) => {
 
 const getListHistoryComplete = async () => {
   try {
-    const res = await useProduct.getOrder();
+    const res = await produkStore.getOrder();
     dataOrder.value = res.data as Item[];
   } catch (error) {
     console.log(error);

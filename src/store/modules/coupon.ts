@@ -5,7 +5,7 @@ interface CouponStore {
   getAllCoupon(): Promise<any>;
 }
 
-export const useCouponStore = defineStore("category", () => {
+export const useCouponStore = defineStore("couponStore", () => {
   const getAllCoupon: CouponStore["getAllCoupon"] = async () => {
     return axiosClient.get("/api/coupons");
   };

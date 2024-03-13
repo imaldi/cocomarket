@@ -10,7 +10,7 @@ interface ProdukStore {
   getOrder(): Promise<any>;
 }
 
-export const useProdukStore = defineStore("product", () => {
+export const useProdukStore = defineStore("produkStore", () => {
   const getProductById: ProdukStore["getProductById"] = async (id: any) => {
     return axiosClient.get(`/api/product/${id}`);
   };

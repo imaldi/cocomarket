@@ -76,6 +76,7 @@ interface Item {
   subtitle: string;
   type: string;
 }
+
 const getListNotif = async () => {
   try {
     const res = await notifStore.getListNotification();
