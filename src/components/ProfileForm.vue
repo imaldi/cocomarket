@@ -106,7 +106,6 @@ import { ElNotification } from "element-plus";
 import "../plugins/sweet-alert.css";
 import DialogConfirm from "../components/dialog/ConfirmDialog.vue";
 import iconnative from "../icon/index.vue";
-import { ElNotification } from "element-plus";
 
 const selectItem = () => {
   deleteDialog.value = true;
