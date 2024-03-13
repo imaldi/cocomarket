@@ -106,6 +106,7 @@ import { ElNotification } from "element-plus";
 import "../plugins/sweet-alert.css";
 import DialogConfirm from "../components/dialog/ConfirmDialog.vue";
 import iconnative from "../icon/index.vue";
+import { ElNotification } from "element-plus";
 
 const selectItem = () => {
   deleteDialog.value = true;
@@ -166,6 +167,13 @@ const updatePhotoProfiles = async (formData: FormData) => {
     dataProfile.value = res.data as Item;
   } catch (error) {
     console.error(error);
+    ElNotification({
+      title: "Error",
+      type: "error",
+      duration: 2000,
+      customClass: "errorNotif",
+      message: "Sorry, there was a problem uploading",
+    });
   }
 };
 

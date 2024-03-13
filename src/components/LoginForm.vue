@@ -94,7 +94,7 @@ const login = async () => {
         type: "error",
         duration: 2000,
         customClass: "errorNotif",
-        message: "Maaf, tidak bisa Login",
+        message: "Sorry, can't login",
       });
     } else {
       ElNotification({
@@ -102,7 +102,7 @@ const login = async () => {
         type: "success",
         duration: 2000,
         customClass: "successNotif",
-        message: "Berhasil Login!",
+        message: "Login Successfully!",
       });
 
       localStorage.setItem("token", response.access_token);
