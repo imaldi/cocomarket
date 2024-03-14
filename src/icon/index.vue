@@ -452,7 +452,7 @@ import camera from "../assets/icon/camera.svg";
 import cardChecklist from "../assets/icon/card-checklist.svg";
 import cart from "../assets/icon/cart.svg";
 import cash from "../assets/icon/cash.svg";
-import catergory from "../assets/icon/category.svg";
+import category from "../assets/icon/category.svg";
 import changeImageProfile from "../assets/icon/change-image-profile.svg";
 import chatSingle from "../assets/icon/chat-single.svg";
 import chat from "../assets/icon/chat.svg";
@@ -610,7 +610,7 @@ export default {
       cardChecklist,
       cart,
       cash,
-      catergory,
+      category,
       changeImageProfile,
       chatSingle,
       chat,

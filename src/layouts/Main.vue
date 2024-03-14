@@ -61,7 +61,10 @@
         $route.path !== '/mitra/successfulverification' &&
         $route.path !== '/mitra/completestoredata' &&
         $route.path !== '/mitra/storeprofile' &&
-        $route.path !== '/mitra/openinghours'
+        $route.path !== '/mitra/openinghours' &&
+        $route.path !== '/mitra/changeschedule' &&
+        $route.path !== '/mitra/storemenu' &&
+        $route.path !== '/mitra/category' 
       "
       class="bottom-navigation z-2"
     >

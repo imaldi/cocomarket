@@ -188,15 +188,15 @@
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="relative">
-                <div class="fixed flex justify-center items-center w-full h-[10vh] bg-white rounded-lg rounded-b-0 shadow-md" style="bottom: 0">
-                    <div class="flex h-8 py-2 rounded-2xl bg-primary  justify-center se w-80">
-                        <div class="text-xl text-white">Save</div>
-                    </div>
-                </div>
+        </div>  
+        <div class="flex justify-evenly w-full py-6">
+            <div class="flex py-2 rounded-2xl border border-dashed border-[#FF0000] w-42 justify-center">
+              <div class="text-xl text-[#FF0000]">Cancel</div>
             </div>
-
+            <div class="flex py-2 rounded-2xl bg-primary w-42 justify-center">
+              <div class="text-xl text-white">Save</div>
+            </div>
+        </div>
       </div>
     </div>
   </template>

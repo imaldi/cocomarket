@@ -86,7 +86,7 @@
 
         <div class="relative">
         <div class="fixed w-full bg-white rounded-lg shadow-md" style="bottom: 0">
-          <div class="flex justify-evenly p-4">
+          <div class="flex w-full justify-evenly py-4">
             <div class="flex py-2 rounded-2xl border border-dashed border-[#FF0000] w-42 justify-center">
               <div class="text-xl text-[#FF0000]">Cancel</div>
             </div>
