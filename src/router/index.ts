@@ -377,6 +377,21 @@ const routes: RouteRecordRaw[] = [
         name: "OpeningHours Mitra",
         component: () => import("../views/Mitra/OpeningHours.vue"),
       },
+      {
+        path: "/mitra/changeschedule",
+        name: "ChangeSchedule Mitra",
+        component: () => import("../views/Mitra/ChangeSchedule.vue"),
+      },
+      {
+        path: "/mitra/storemenu",
+        name: "StoreMenu Mitra",
+        component: () => import("../views/Mitra/StoreMenu.vue"),
+      },
+      {
+        path: "/mitra/category",
+        name: "Category Mitra",
+        component: () => import("../views/Mitra/Category.vue"),
+      },
     ],
   },
 ];
