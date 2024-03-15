@@ -1,1 +1,0 @@
-import{A as d}from"./index-BCIiqLPX.js";import{a as e}from"./apiClient-C9X9s8qD.js";const o=d("address",()=>({getListAddress:async()=>e.get("/api/addresses"),getAddressDetail:async s=>e.get(`/api/addresses/${s}`),addAddress:async s=>e.post("/api/addresses",s)}));export{o as u};
