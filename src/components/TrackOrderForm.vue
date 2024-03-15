@@ -208,8 +208,7 @@ const orderDetails = ref<OrderModel>({
 
 const getListAddress = async () => {
   try {
-    // const res = await trackingStore.allTrackingByOrderId();
-    // console.log(res);
+    // await trackingStore.allTrackingByOrderId();
   } catch (error) {
     console.log(error);
   } finally {
