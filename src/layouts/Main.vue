@@ -60,7 +60,7 @@
         $route.path !== '/driver/login' &&
         $route.path !== '/driver/home' &&
         $route.path !== '/driver/delivery' &&
-        $route.path !== '/driver/deliverydetails' &&
+        $route.path !== `/driver/deliverydetails/${$route.params.id}` &&
         $route.path !== '/driver/changepassword' &&
         $route.path !== '/driver/changeprofile' &&
         $route.path !== '/mitra/login' &&

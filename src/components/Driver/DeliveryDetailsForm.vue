@@ -2,7 +2,7 @@
   <div>
     <div class="container">
       <div class="bg-white shadow-md rounded-xl p-8">
-        <div @click="router.back()" class="flex">
+        <div @click="routerUse.back()" class="flex">
           <div>
             <iconnative icon="arrow-circle-black" color="#000" width="28" height="28" />
           </div>
@@ -12,12 +12,12 @@
 
       <div>
         <div class="w-full">
-          <div id="map" ref="map" style="height: 80px"></div>
+          <div id="map" ref="map" style="height: 230px"></div>
         </div>
       </div>
 
       <div class="relative">
-        <div class="fixed w-full h-[78vh] bg-white rounded-lg shadow-md" style="bottom: 0">
+        <div class="fixed w-full h-[64vh] bg-white rounded-lg shadow-md overflow-scroll" style="bottom: 0">
           <div class="flex justify-center">
             <div class="bg-gray rounded-full w-20 h-1 m-2"></div>
           </div>
@@ -25,8 +25,13 @@
           <div class="mt-2 px-10">
             <div>
               <div class="flex items-center justify-between pb-4 my-4">
-                <img class="border border-solid border-gray rounded-full bg-white" src="../../assets/img/profile.svg"
-                  alt="Cocomaret Logo" width="38" height="38" />
+                <img
+                  class="border border-solid border-gray rounded-full bg-white"
+                  src="../../assets/img/profile.svg"
+                  alt="Cocomaret Logo"
+                  width="38"
+                  height="38"
+                />
 
                 <div class="flex flex-col justify-start mr-20">
                   <div class="font-bold text-md tracking-tighter">Mike Kasari</div>
@@ -34,9 +39,11 @@
                 </div>
 
                 <div class="flex">
-                  <div v-if="!haveTrack"
+                  <div
+                    v-if="!haveTrack"
                     class="p2 bg-white rounded-full text-[8px] font-bold border border-solid border-#E68027 mr-2"
-                    @click="createTrack">
+                    @click="createTrack"
+                  >
                     <p>Create Track</p>
                   </div>
                   <div class="p2 bg-white rounded-full text-[8px] font-bold border border-solid border-#E68027 mr-2">
@@ -134,7 +141,7 @@
           </div>
 
           <div class="flex my-6 px-6">
-            <div class="flex p-2 rounded-2xl bg-primary w-full justify-center">
+            <div @click="selectItem" class="flex p-2 rounded-2xl bg-primary w-full justify-center">
               <div class="text-base font-semibold text-white">Start Delivery</div>
             </div>
 
@@ -169,99 +176,111 @@
         </div>
       </div>
     </div>
+    <dialog-confirm
+      v-model="deleteDialog"
+      :message="`Are you sure you want to start Delivery?`"
+      @cancel="deleteDialog = false"
+      @confirm="logout"
+    >
+    </dialog-confirm>
   </div>
 </template>
 <script setup lang="ts">
 import { onMounted, ref, watch, onBeforeUnmount } from "vue";
 import iconnative from "../../icon/index.vue";
 import apiClient from "../../store/apiClient";
-import { useRoute } from "vue-router"
+import { useRoute, useRouter } from "vue-router";
 import axios from "axios";
 import L, { LatLngExpression } from "leaflet";
-import { dayjs } from 'element-plus';
-import { decode } from '@mapbox/polyline';
+import { dayjs } from "element-plus";
+import { decode } from "@mapbox/polyline";
+import DialogConfirm from "../../components/dialog/ConfirmDialog.vue";
+
 
 interface OrderModel {
-  orderId: string | undefined
-  lat: number | undefined
-  long: number | undefined
-  time: number | undefined
-  distance: number | undefined
-  polyline: LatLngExpression[] | undefined
+  orderId: string | undefined;
+  lat: number | undefined;
+  long: number | undefined;
+  time: number | undefined;
+  distance: number | undefined;
+  polyline: LatLngExpression[] | undefined;
 }
 
 interface GetTrackResponse {
-  order_id?: string | undefined
-  orderId: string
-  lat: number
-  long: number
-  polyline: string
-  time: number
-  distance: number
+  order_id?: string | undefined;
+  orderId: string;
+  lat: number;
+  long: number;
+  polyline: string;
+  time: number;
+  distance: number;
 }
-let intervalFunction: any = null
-let maps: L.Map | null = null
+let intervalFunction: any = null;
+let maps: L.Map | null = null;
 
 const apiKey = import.meta.env.VITE_GOOGLE_MAPS_API_KEY;
-const router = useRoute()
+const router = useRoute();
+const routerUse = useRouter();
 
-const { id: orderId } = router.params
-const haveTrack = ref<boolean | null>(null)
-const currLocation = ref<LatLngExpression>([0, 0])
-const estimationTime = ref({ second: 0, minute: 0, hour: 0 })
+const { id: orderId } = router.params;
+const haveTrack = ref<boolean | null>(null);
+const currLocation = ref<LatLngExpression>([0, 0]);
+const estimationTime = ref({ second: 0, minute: 0, hour: 0 });
 const orderDetails = ref<OrderModel>({
   orderId: undefined,
   distance: undefined,
   lat: undefined,
   long: undefined,
   polyline: undefined,
-  time: undefined
-})
+  time: undefined,
+});
 
 watch(currLocation, () => {
-  if (intervalFunction !== null) updateTrack()
-})
+  if (intervalFunction !== null) updateTrack();
+});
 
 onMounted(async () => {
   try {
-    getPosition()
-    const responseApi: GetTrackResponse | Array<any> = await apiClient.get(`api/orders/tracking/${orderId}`) as GetTrackResponse
+    getPosition();
+    const responseApi: GetTrackResponse | Array<any> = (await apiClient.get(
+      `api/orders/tracking/${orderId}`
+    )) as GetTrackResponse;
 
     if (Array.isArray(responseApi) && responseApi.length === 0) {
-      haveTrack.value = false
+      haveTrack.value = false;
     } else {
-      haveTrack.value = true
-      orderDetails.value = { ...responseApi, polyline: decode(responseApi.polyline) }
+      haveTrack.value = true;
+      orderDetails.value = { ...responseApi, polyline: decode(responseApi.polyline) };
     }
   } catch (err) {
-    alert(err)
+    alert(err);
   } finally {
-    maps = initializeMap()
-    intervalFunction = setInterval(getPosition, 15000)
+    maps = initializeMap();
+    intervalFunction = setInterval(getPosition, 15000);
   }
-})
+});
 
 onBeforeUnmount(() => {
-  clearInterval(intervalFunction)
-})
+  clearInterval(intervalFunction);
+});
 
 const getPosition = () => {
   navigator.geolocation.getCurrentPosition(
-    position => {
-      const current = currLocation.value as Array<number>
+    (position) => {
+      const current = currLocation.value as Array<number>;
       if (current[0] !== position.coords.latitude && current[1] !== position.coords.longitude)
-        currLocation.value = [position.coords.latitude, position.coords.longitude]
+        currLocation.value = [position.coords.latitude, position.coords.longitude];
     },
-    error => {
-      console.error('Error getting location:', error.message);
+    (error) => {
+      console.error("Error getting location:", error.message);
     }
-  )
-}
+  );
+};
 
 const initializeMap = () => {
   const map = L.map("map").setView(currLocation.value, 15);
-  let polylines = null
-  const orderDetail = { ...orderDetails.value }
+  let polylines = null;
+  const orderDetail = { ...orderDetails.value };
 
   L.tileLayer(
     `https://{s}.google.com/vt/lyrs=m@189&hl=en&x={x}&y={y}&z={z}&apistyle=s.t%3A131%7Cs.e%3Alight%7Cs.g%3A%23EAEAEA%7Cs.l%3A%23EAEAEA%7Cs.c%3A%23EAEAEA%7Cs.f%3A%23EAEAEA%7Cs.l%3A%23EAEAEA%7Cs.t%3A60%7Cs.e%3Ag.s%7Cs.g%3A%23E5E5E5%7Cs.l%3A%23E5E5E5%7Cs.f%3A%23E5E5E5%7Cs.f%3Ag.s&scale=2&style=47%2C37%7Csmartmaps&apiKey=${apiKey}`,
@@ -286,14 +305,14 @@ const initializeMap = () => {
 const updateMap = () => {
   if (maps) {
     // Clear previous layers
-    maps.eachLayer(layer => {
+    maps.eachLayer((layer) => {
       if (layer instanceof L.Marker || layer instanceof L.Polyline) {
         maps?.removeLayer(layer);
       }
     });
 
-    let polylines = null
-    const orderDetail = { ...orderDetails.value }
+    let polylines = null;
+    const orderDetail = { ...orderDetails.value };
 
     L.marker(currLocation.value).addTo(maps).bindPopup("Kurir");
 
@@ -307,56 +326,62 @@ const updateMap = () => {
   }
 
   return maps;
-}
+};
 
 const createTrack = async () => {
   // https://dev.vin.web.id/api/orders/tracking
   try {
-    const currentLocation = currLocation.value as Array<number>
+    const currentLocation = currLocation.value as Array<number>;
 
-    const { data: { routes } } = await axios.post('https://routes.googleapis.com/directions/v2:computeRoutes', {
-      // Ketika integrasi, Origin yang akan selalu berubah-ubah sesuai dengan titik lokasi kurir
-      "origin": {
-        "location": {
-          "latLng": {
-            "latitude": currentLocation[0],
-            "longitude": currentLocation[1]
-          }
-        }
+    const {
+      data: { routes },
+    } = await axios.post(
+      "https://routes.googleapis.com/directions/v2:computeRoutes",
+      {
+        // Ketika integrasi, Origin yang akan selalu berubah-ubah sesuai dengan titik lokasi kurir
+        origin: {
+          location: {
+            latLng: {
+              latitude: currentLocation[0],
+              longitude: currentLocation[1],
+            },
+          },
+        },
+        // Destinasi tidak perlu berubah karena tujuan akan selalu sama selama orderan berjalan
+        destination: {
+          location: {
+            latLng: {
+              latitude: 1.1354661680715685,
+              longitude: 104.0073575377535,
+            },
+          },
+        },
+        travelMode: "DRIVE",
+        routingPreference: "TRAFFIC_AWARE_OPTIMAL",
+        departureTime: dayjs().add(1, "minute"),
+        computeAlternativeRoutes: false,
+        routeModifiers: {
+          avoidTolls: true,
+          avoidHighways: true,
+          avoidFerries: true,
+        },
+        languageCode: "en-US",
+        units: "METRIC",
+        // "polylineQuality": "HIGH_QUALITY",
       },
-      // Destinasi tidak perlu berubah karena tujuan akan selalu sama selama orderan berjalan
-      "destination": {
-        "location": {
-          "latLng": {
-            "latitude": 1.1354661680715685,
-            "longitude": 104.0073575377535
-          }
-        }
-      },
-      "travelMode": "DRIVE",
-      "routingPreference": "TRAFFIC_AWARE_OPTIMAL",
-      "departureTime": dayjs().add(1, 'minute'),
-      "computeAlternativeRoutes": false,
-      "routeModifiers": {
-        "avoidTolls": true,
-        "avoidHighways": true,
-        "avoidFerries": true
-      },
-      "languageCode": "en-US",
-      "units": "METRIC",
-      // "polylineQuality": "HIGH_QUALITY",
-    }, {
-      'headers': {
-        'Content-Type': 'application/json',
-        'X-Goog-Api-Key': 'AIzaSyDPsaaxcm_RCNSF40DR0jOgV-vCeHAAACo',
-        'X-Goog-FieldMask': 'routes.duration,routes.distanceMeters,routes.polyline.encodedPolyline'
+      {
+        headers: {
+          "Content-Type": "application/json",
+          "X-Goog-Api-Key": "AIzaSyDPsaaxcm_RCNSF40DR0jOgV-vCeHAAACo",
+          "X-Goog-FieldMask": "routes.duration,routes.distanceMeters,routes.polyline.encodedPolyline",
+        },
       }
-    })
-    const totalEstimation = Number.parseInt(routes[0].duration.split('s')[0])
-    const second = totalEstimation % 60
-    const minute = Number.parseInt(`${totalEstimation / 60}`)
-    const hour = Number.parseInt(`${totalEstimation / 3600}`)
-    estimationTime.value = { second, minute, hour }
+    );
+    const totalEstimation = Number.parseInt(routes[0].duration.split("s")[0]);
+    const second = totalEstimation % 60;
+    const minute = Number.parseInt(`${totalEstimation / 60}`);
+    const hour = Number.parseInt(`${totalEstimation / 3600}`);
+    estimationTime.value = { second, minute, hour };
     const body = {
       polyline: routes[0].polyline.encodedPolyline,
       lat: currentLocation[0],
@@ -364,36 +389,42 @@ const createTrack = async () => {
       time: totalEstimation, // Satuan detik
       distance: routes[0].distanceMeters, // Satuan Meter
       order_id: orderId,
-    }
+    };
 
-    await apiClient.post('api/orders/tracking', body)
+    await apiClient.post("api/orders/tracking", body);
 
     orderDetails.value = {
       ...body,
       orderId: orderId as string,
-    }
-    maps = updateMap()
+    };
+    maps = updateMap();
   } catch (err) {
-    alert("Error When Creating Track" + err)
+    alert("Error When Creating Track" + err);
   }
-}
+};
 
 const updateTrack = async () => {
   try {
-    const currentLocation = currLocation.value as Array<number>
+    const currentLocation = currLocation.value as Array<number>;
     const body = {
       lat: currentLocation[0],
       long: currentLocation[1],
       order_id: orderId,
-    }
+    };
 
-    await apiClient.put('api/orders/tracking', body)
+    await apiClient.put("api/orders/tracking", body);
   } catch (err) {
-    alert(err)
+    alert(err);
   } finally {
-    maps = updateMap()
+    maps = updateMap();
   }
-}
+};
+
+const deleteDialog = ref(false);
+
+const selectItem = () => {
+  deleteDialog.value = true;
+};
 </script>
 
 <style scoped lang="scss">
