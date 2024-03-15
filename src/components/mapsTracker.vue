@@ -34,8 +34,8 @@ interface GetTrackResponse {
 let map: L.Map | null = null;
 let interval: any = null;
 
-const router = useRoute()
-const { id: orderId } = router.params
+const route = useRoute()
+const { id: orderId } = route.params
 const apiKey = import.meta.env.VITE_GOOGLE_MAPS_API_KEY;
 const currLocation = ref<LatLngExpression>([0, 0])
 const orderDetails = ref<OrderModel>({
@@ -66,6 +66,22 @@ onMounted(async () => {
 });
 
 onBeforeUnmount(() => { clearInterval(interval) })
+
+const currentLocation = () => {
+  navigator.geolocation.getCurrentPosition(
+    position => {
+      const current = currLocation.value as Array<number>
+      if (current[0] !== position.coords.latitude && current[1] !== position.coords.longitude)
+        currLocation.value = [position.coords.latitude, position.coords.longitude]
+
+      console.log("Checking Position Lat Long", [position.coords.latitude, position.coords.longitude])
+
+    },
+    error => {
+      console.error('Error getting location:', error.message);
+    }
+  )
+}
 
 const initializeMap = () => {
   const map = L.map("map").setView(currLocation.value, 15);
@@ -121,17 +137,21 @@ const updateMap = () => {
 const fetchData = async () => {
   try {
     const responseApi: GetTrackResponse | Array<any> = await apiClient.get(`api/orders/tracking/${orderId}`) as GetTrackResponse
-    currLocation.value = [responseApi.lat, responseApi.long]
-    orderDetails.value = {
-      distance: responseApi.distance,
-      lat: responseApi.lat,
-      long: responseApi.long,
-      orderId: orderId as string,
-      polyline: decode(responseApi.polyline),
-      time: responseApi.time
+    if (Array.isArray(responseApi)) {
+      currentLocation()
+    } else {
+      currLocation.value = [responseApi.lat, responseApi.long]
+      orderDetails.value = {
+        distance: responseApi.distance,
+        lat: responseApi.lat,
+        long: responseApi.long,
+        orderId: orderId as string,
+        polyline: decode(responseApi.polyline),
+        time: responseApi.time
+      }
     }
   } catch (err) {
-    alert(`Error Loading Maps with Code : ${err}`)
+    alert(`Error Loading Maps Module with Code : ${err}`)
   }
 }
 </script>

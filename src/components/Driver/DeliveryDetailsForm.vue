@@ -374,7 +374,7 @@ const createTrack = async () => {
     }
     maps = updateMap()
   } catch (err) {
-    alert(err)
+    alert("Error When Creating Track" + err)
   }
 }
 

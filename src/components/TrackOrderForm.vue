@@ -208,8 +208,8 @@ const orderDetails = ref<OrderModel>({
 
 const getListAddress = async () => {
   try {
-    const res = await trackingStore.allTrackingByOrderId();
-    console.log(res);
+    // const res = await trackingStore.allTrackingByOrderId();
+    // console.log(res);
   } catch (error) {
     console.log(error);
   } finally {
@@ -219,17 +219,28 @@ const getListAddress = async () => {
 const fetchData = async () => {
   try {
     const responseApi: GetTrackResponse | Array<any> = await apiClient.get(`api/orders/tracking/${orderId}`) as GetTrackResponse
-    currLocation.value = [responseApi.lat, responseApi.long]
-    orderDetails.value = {
-      distance: responseApi.distance,
-      lat: responseApi.lat,
-      long: responseApi.long,
-      orderId: orderId as string,
-      polyline: decode(responseApi.polyline),
-      time: responseApi.time
+    if (!Array.isArray(responseApi)) {
+      currLocation.value = [responseApi.lat, responseApi.long]
+      orderDetails.value = {
+        distance: responseApi.distance,
+        lat: responseApi.lat,
+        long: responseApi.long,
+        orderId: orderId as string,
+        polyline: decode(responseApi.polyline),
+        time: responseApi.time
+      }
+    } else {
+      orderDetails.value = {
+        distance: 0,
+        lat: 0,
+        long: 0,
+        orderId: orderId as string,
+        polyline: undefined,
+        time: 3600
+      }
     }
   } catch (err) {
-    alert(`Error Loading Maps with Code : ${err}`)
+    alert(`Error Loading Track Order Form with Code : ${err}`)
   }
 }
 </script>
