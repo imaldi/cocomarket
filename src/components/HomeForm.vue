@@ -293,7 +293,7 @@ const remoteMethod = async (query: string) => {
 };
 
 onMounted(() => {
-  getAllProduct(inputValue.value);
+  getAllProduct(inputValue.value); 
   getAmountWallet();
   getBestDeals();
 });
