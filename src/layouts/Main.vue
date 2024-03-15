@@ -62,7 +62,19 @@
         $route.path !== '/driver/delivery' &&
         $route.path !== '/driver/deliverydetails' &&
         $route.path !== '/driver/changepassword' &&
-        $route.path !== '/driver/changeprofile'
+        $route.path !== '/driver/changeprofile' &&
+        $route.path !== '/mitra/login' &&
+        $route.path !== '/mitra/splashscreen' &&
+        $route.path !== '/mitra/verifycode' &&
+        $route.path !== '/mitra/completeyourstoreprofile' &&
+        $route.path !== '/mitra/businessdataverified' &&
+        $route.path !== '/mitra/successfulverification' &&
+        $route.path !== '/mitra/completestoredata' &&
+        $route.path !== '/mitra/storeprofile' &&
+        $route.path !== '/mitra/openinghours' &&
+        $route.path !== '/mitra/changeschedule' &&
+        $route.path !== '/mitra/storemenu' &&
+        $route.path !== '/mitra/category'
       "
       class="bottom-navigation justify-between w-full z-2"
     >

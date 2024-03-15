@@ -429,6 +429,21 @@
     <div v-else-if="icon == 'circle-close'">
       <img :src="circleClose" :width="width" :height="height" alt="circleClose" />
     </div>
+    <div v-else-if="icon == 'fill-checklist'">
+      <img :src="fillChecklist" :width="width" :height="height" alt="fillChecklist" />
+    </div>
+    <div v-else-if="icon == 'line-blue'">
+      <img :src="lineBlue" :width="width" :height="height" alt="lineBlue" />
+    </div>
+    <div v-else-if="icon == 'circle-dot-blue'">
+      <img :src="circleDotBlue" :width="width" :height="height" alt="circleDotBlue" />
+    </div>
+    <div v-else-if="icon == 'outline-line'">
+      <img :src="outlineLine" :width="width" :height="height" alt="outlineLine" />
+    </div>
+    <div v-else-if="icon == 'info-b-white'">
+      <img :src="infoBWhite" :width="width" :height="height" alt="infoBWhite" />
+    </div>
   </div>
 </template>
 
@@ -576,6 +591,11 @@ import chatActive from "../assets/icon/chat-active.svg";
 import profileActive from "../assets/icon/profile-active.svg";
 import logoDriver from "../assets/icon/logo-driver.svg";
 import circleClose from "../assets/icon/circle-close.svg";
+import fillChecklist from "../assets/icon/fill-checklist.svg";
+import lineBlue from "../assets/icon/line-blue.svg";
+import circleDotBlue from "../assets/icon/circle-dot-blue.svg";
+import outlineLine from "../assets/icon/outline-line.svg";
+import infoBWhite from "../assets/icon/info-b-white.svg";
 
 export default {
   props: {
@@ -736,7 +756,12 @@ export default {
       chatActive,
       profileActive,
       logoDriver,
-      circleClose
+      circleClose,
+      fillChecklist,
+      lineBlue,
+      circleDotBlue,
+      outlineLine,
+      infoBWhite,
     };
   },
 };

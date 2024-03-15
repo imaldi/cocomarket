@@ -140,7 +140,7 @@ const routes: RouteRecordRaw[] = [
         path: "/splashScreen3",
         name: "SplashScreen3",
         component: () => import("../views/SplashScreen/SplashScreen3.vue"),
-      }, 
+      },
       {
         path: "/splashScreen4",
         name: "SplashScreen4",
@@ -336,6 +336,66 @@ const routes: RouteRecordRaw[] = [
         path: "/driver/changeprofile",
         name: "ChangeProfile Driver",
         component: () => import("../views/Driver/ChangeProfile.vue"),
+      },
+      {
+        path: "/mitra/login",
+        name: "Login Mitra",
+        component: () => import("../views/Mitra/Login.vue"),
+      },
+      {
+        path: "/mitra/splashscreen",
+        name: "SplashScreen Mitra",
+        component: () => import("../views/Mitra/SplashScreen.vue"),
+      },
+      {
+        path: "/mitra/verifycode",
+        name: "VerifyCode Mitra",
+        component: () => import("../views/Mitra/VerifyCode.vue"),
+      },
+      {
+        path: "/mitra/completeyourstoreprofile",
+        name: "CompleteYourStoreProfile Mitra",
+        component: () => import("../views/Mitra/CompleteYourStoreProfile.vue"),
+      },
+      {
+        path: "/mitra/businessdataverified",
+        name: "BusinessDataVerified Mitra",
+        component: () => import("../views/Mitra/BusinessDataVerified.vue"),
+      },
+      {
+        path: "/mitra/successfulverification",
+        name: "SuccessfulVerification Mitra",
+        component: () => import("../views/Mitra/SuccessfulVerification.vue"),
+      },
+      {
+        path: "/mitra/completestoredata",
+        name: "CompleteStoreData Mitra",
+        component: () => import("../views/Mitra/CompleteStoreData.vue"),
+      },
+      {
+        path: "/mitra/storeprofile",
+        name: "StoreProfile Mitra",
+        component: () => import("../views/Mitra/StoreProfile.vue"),
+      },
+      {
+        path: "/mitra/openinghours",
+        name: "OpeningHours Mitra",
+        component: () => import("../views/Mitra/OpeningHours.vue"),
+      },
+      {
+        path: "/mitra/changeschedule",
+        name: "ChangeSchedule Mitra",
+        component: () => import("../views/Mitra/ChangeSchedule.vue"),
+      },
+      {
+        path: "/mitra/storemenu",
+        name: "StoreMenu Mitra",
+        component: () => import("../views/Mitra/StoreMenu.vue"),
+      },
+      {
+        path: "/mitra/category",
+        name: "Category Mitra",
+        component: () => import("../views/Mitra/Category.vue"),
       },
     ],
   },
