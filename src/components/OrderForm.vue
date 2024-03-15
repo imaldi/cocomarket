@@ -137,6 +137,7 @@ import { ElNotification } from "element-plus";
 const produkStore = useProdukStore();
 
 const dataOrder = ref<Item[]>([]);
+const router = useRouter();
 
 interface Item {
   id: string;
@@ -151,14 +152,9 @@ interface Item {
   vendors: any;
 }
 
-const tracking = async () => {
-  ElNotification({
-    title: "Coming soon",
-    type: "warning",
-    duration: 2000,
-    customClass: "errorNotif",
-    message: "Track, Coming Soon !!!",
-  });
+
+const tracking = async (id: any) => {
+  router.push(`driver/deliverydetails/${id.id}`);
 };
 
 const calculateTotalPrice = (item: any, data: any) => {
