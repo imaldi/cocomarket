@@ -2,7 +2,7 @@
   <div>
     <div class="container pb-20">
       <div class="bg-white shadow-md rounded-xl pt-6">
-        <div class="w-full justify-center flex font-bold text-xl pb-4">History</div>
+        <div class="w-full justify-center flex font-bold text-xl pb-4">Delivery</div>
 
         <div class="flex justify-evenly px-14">
           <div class="flex flex-col">
@@ -17,22 +17,24 @@
       </div>
 
       <div class="mx-6 mt-6">
-        <div>
+        <div v-for="n in 2" :key="n">
           <div class="border-solid border border-gray rounded-2xl px-4 py-2 mb-4 flex flex-col justify-between">
-            <div class="w-full flex justify-between items-center">
+            <div
+              class="w-full flex justify-between items-center border border-solid border-t-0 border-x-0 border-[#C3C3C3] pb-2 mb-2"
+            >
               <div>
-                <div class="text-xs">No.pengiriman</div>
-                <div class="text-md font-semibold">#S-523-252-2555</div>
+                <div class="text-xs text-[#525964] mb-2">No.pengiriman</div>
+                <div class="text-md font-bold">#S-523-252-2555</div>
               </div>
-              <div class="p-2 text-xs rounded-xl bg-[#EADFB4] font-bold">In Proccess</div>
+              <div class="px-2 py-1 text-xs rounded-xl bg-[#EADFB4] font-bold text-[#B49000]">In Progress</div>
             </div>
             <div class="flex items-center">
-              <div class="mr-2">
+              <div class="mr-2 w-1/12">
                 <iconnative icon="circle-dot" color="#E68027" width="24" height="20" />
               </div>
-              <div class="flex justify-between w-56">
-                <div class="text-xs font-semibold">Jl. Raja Isa No.21, Bat..</div>
-                <div class="text-[10px] text-gray">24 Jun, 11:09 PM</div>
+              <div class="w-1/1 flex justify-between">
+                <div class="w-2/3 text-xs font-semibold">Jl. Raja Isa No.21, Bat..</div>
+                <div class="w-1/3 text-[10px] text-gray flex justify-end pr-4">24 Jun, 11:09 PM</div>
               </div>
             </div>
 
@@ -40,35 +42,39 @@
               <div>
                 <iconnative icon="line-dashed" color="#E68027" width="24" height="20" />
               </div>
-              <div class="w-60 h-0.5px bg-gray"></div>
+              <div class="w-68 h-0.5px bg-gray"></div>
             </div>
 
             <div class="flex items-center">
-              <div>
+              <div class="mr-2 w-1/12">
                 <iconnative icon="location-orange" color="#E68027" width="24" height="20" />
               </div>
-              <div class="flex justify-between w-56">
-                <div class="text-xs font-semibold">Echa Hause - Jl. R......</div>
+              <div class="w-1/1 flex justify-between">
+                <div class="w-2/3 text-xs font-semibold">Echa Hause - Jl. R......</div>
+                <div class="w-1/3 text-[10px] text-gray flex justify-end pr-4">-</div>
               </div>
             </div>
           </div>
         </div>
-        <div>
+
+        <div v-for="n in 2" :key="n">
           <div class="border-solid border border-gray rounded-2xl px-4 py-2 mb-4 flex flex-col justify-between">
-            <div class="w-full flex justify-between items-center">
+            <div
+              class="w-full flex justify-between items-center border border-solid border-t-0 border-x-0 border-[#C3C3C3] pb-2 mb-2"
+            >
               <div>
-                <div class="text-xs">No.pengiriman</div>
-                <div class="text-md font-semibold">#S-523-252-2555</div>
+                <div class="text-xs text-[#525964] mb-2">No.pengiriman</div>
+                <div class="text-md font-bold">#S-523-252-2555</div>
               </div>
-              <div class="p-2 text-xs rounded-xl bg-[#F5D8BE] font-bold">Pending</div>
+              <div class="px-2 py-1 text-xs rounded-xl bg-[#F5D8BE] font-bold text-[#E68027]">Pending</div>
             </div>
             <div class="flex items-center">
-              <div class="mr-2">
+              <div class="mr-2 w-1/12">
                 <iconnative icon="circle-dot" color="#E68027" width="24" height="20" />
               </div>
-              <div class="flex justify-between w-56">
-                <div class="text-xs font-semibold">Jl. Raja Isa No.21, Bat..</div>
-                <div class="text-[10px] text-gray">24 Jun, 11:09 PM</div>
+              <div class="w-1/1 flex justify-between">
+                <div class="w-2/3 text-xs font-semibold">Jl. Raja Isa No.21, Bat..</div>
+                <div class="w-1/3 text-[10px] text-gray flex justify-end pr-4">24 Jun, 11:09 PM</div>
               </div>
             </div>
 
@@ -76,15 +82,16 @@
               <div>
                 <iconnative icon="line-dashed" color="#E68027" width="24" height="20" />
               </div>
-              <div class="w-60 h-0.5px bg-gray"></div>
+              <div class="w-68 h-0.5px bg-gray"></div>
             </div>
 
             <div class="flex items-center">
-              <div>
+              <div class="mr-2 w-1/12">
                 <iconnative icon="location-orange" color="#E68027" width="24" height="20" />
               </div>
-              <div class="flex justify-between w-56">
-                <div class="text-xs font-semibold">Echa Hause - Jl. R......</div>
+              <div class="w-1/1 flex justify-between">
+                <div class="w-2/3 text-xs font-semibold">Echa Hause - Jl. R......</div>
+                <div class="w-1/3 text-[10px] text-gray flex justify-end pr-4">-</div>
               </div>
             </div>
           </div>

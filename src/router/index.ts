@@ -140,7 +140,7 @@ const routes: RouteRecordRaw[] = [
         path: "/splashScreen3",
         name: "SplashScreen3",
         component: () => import("../views/SplashScreen/SplashScreen3.vue"),
-      }, 
+      },
       {
         path: "/splashScreen4",
         name: "SplashScreen4",
@@ -336,6 +336,11 @@ const routes: RouteRecordRaw[] = [
         path: "/driver/changeprofile",
         name: "ChangeProfile Driver",
         component: () => import("../views/Driver/ChangeProfile.vue"),
+      },
+      {
+        path: "/mitra/login",
+        name: "Login Mitra",
+        component: () => import("../views/Mitra/Login.vue"),
       },
       {
         path: "/mitra/splashscreen",

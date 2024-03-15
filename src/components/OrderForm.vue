@@ -61,7 +61,7 @@
                   {{ calculateTotalPrice(item.order_details, item) }}
                 </div>
               </div>
-              <div @click="tracking">
+              <div @click="tracking(item)">
                 <div class="px-6 py-2 bg-[#E68027] text-white rounded-xl text-xs font-bold">Track</div>
               </div>
             </div>
@@ -130,6 +130,7 @@
 <script setup lang="ts">
 import { useProdukStore } from "../store/modules/product";
 import { ref, onMounted } from "vue";
+import { useRouter } from "vue-router";
 import iconnative from "../icon/index.vue";
 import { ElNotification } from "element-plus";
 
