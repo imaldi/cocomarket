@@ -5,7 +5,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted, onBeforeUnmount } from "vue";
+import { ref, onMounted, onBeforeUnmount, watch } from "vue";
 import L, { LatLngExpression } from "leaflet";
 import { decode } from '@mapbox/polyline';
 import "leaflet/dist/leaflet.css";
@@ -61,6 +61,10 @@ onMounted(async () => {
 });
 
 onBeforeUnmount(() => { clearInterval(interval) })
+
+watch(courrierLocation, () => {
+  if (interval !== null) map = updateMap()
+})
 
 const currentLocation = () => {
   navigator.geolocation.getCurrentPosition(

@@ -25,13 +25,8 @@
           <div class="mt-2 px-10">
             <div>
               <div class="flex items-center justify-between pb-4 my-4">
-                <img
-                  class="border border-solid border-gray rounded-full bg-white"
-                  src="../../assets/img/profile.svg"
-                  alt="Cocomaret Logo"
-                  width="38"
-                  height="38"
-                />
+                <img class="border border-solid border-gray rounded-full bg-white" src="../../assets/img/profile.svg"
+                  alt="Cocomaret Logo" width="38" height="38" />
 
                 <div class="flex flex-col justify-start mr-20">
                   <div class="font-bold text-md tracking-tighter">Mike Kasari</div>
@@ -134,7 +129,8 @@
           </div>
 
           <div class="flex my-6 px-6">
-            <div v-if="!haveTrack" @click="confirmStart" class="flex p-2 rounded-2xl bg-primary w-full justify-center">
+            <div v-if="!haveTrack" @click="startDialogSwitch"
+              class="flex p-2 rounded-2xl bg-primary w-full justify-center">
               <div class="text-base font-semibold text-white">Start Delivery</div>
             </div>
             <div v-else @click="confirmComplete" class="flex p-2 rounded-2xl bg-primary w-full justify-center">
@@ -163,31 +159,19 @@
       </div>
     </div>
 
-    <dialog-confirm-driver
-      v-model="startDialog"
-      :message="`Are you sure you want to start Delivery?`"
+    <dialog-confirm-driver v-model="startDialog" :message="`Are you sure you want to start Delivery?`"
       :messageDetail="`make sure the groceries are complete and as per with those in the detail!`"
-      @cancel="startDialog = false"
-      @confirm="createTrack"
-    >
+      @cancel="startDialog = false" @confirm="createTrack">
     </dialog-confirm-driver>
 
-    <dialog-confirm-driver
-      v-model="completeDialog"
-      :message="`Are you sure want to complete delivery ?`"
+    <dialog-confirm-driver v-model="completeDialog" :message="`Are you sure want to complete delivery ?`"
       :messageDetail="`make sure the delivered gorceries are complete and payment has been made`"
-      @cancel="completeDialog = false"
-      @confirm="(completeDialog = false), (successCompleteDialog = true)"
-    >
+      @cancel="completeDialog = false" @confirm="(completeDialog = false), (successCompleteDialog = true)">
     </dialog-confirm-driver>
 
-    <dialog-confirm-driver
-      v-model="successCompleteDialog"
-      :message="`Delivery has been Completed ?`"
-      :messageDetail="`You successfully delivered the order to the destination`"
-      @cancel="successCompleteDialog = false"
-      @confirm="completeTrack"
-    >
+    <dialog-confirm-driver v-model="successCompleteDialog" :message="`Delivery has been Completed ?`"
+      :messageDetail="`You successfully delivered the order to the destination`" @cancel="successCompleteDialog = false"
+      @confirm="completeTrack">
     </dialog-confirm-driver>
   </div>
 </template>
@@ -244,8 +228,8 @@ const orderDetails = ref<OrderModel>({
 
 const startDialog = ref(false);
 
-const confirmStart = () => {
-  startDialog.value = true;
+const startDialogSwitch = () => {
+  startDialog.value = !startDialog.value;
 };
 
 const completeDialog = ref(false);
@@ -255,10 +239,6 @@ const confirmComplete = () => {
 };
 
 const successCompleteDialog = ref(false);
-
-const confirmSuccessComplete = () => {
-  successCompleteDialog.value = true;
-};
 
 watch(currLocation, () => {
   if (intervalFunction !== null) updateTrack();
@@ -304,8 +284,8 @@ const getPosition = () => {
 
 const initializeMap = () => {
   const map = L.map("map").setView(currLocation.value, 15);
-  let polylines = null;
   const orderDetail = { ...orderDetails.value };
+  let polylines = null;
 
   L.tileLayer(
     `https://{s}.google.com/vt/lyrs=m@189&hl=en&x={x}&y={y}&z={z}&apistyle=s.t%3A131%7Cs.e%3Alight%7Cs.g%3A%23EAEAEA%7Cs.l%3A%23EAEAEA%7Cs.c%3A%23EAEAEA%7Cs.f%3A%23EAEAEA%7Cs.l%3A%23EAEAEA%7Cs.t%3A60%7Cs.e%3Ag.s%7Cs.g%3A%23E5E5E5%7Cs.l%3A%23E5E5E5%7Cs.f%3A%23E5E5E5%7Cs.f%3Ag.s&scale=2&style=47%2C37%7Csmartmaps&apiKey=${apiKey}`,
@@ -340,14 +320,17 @@ const updateMap = () => {
     const orderDetail = { ...orderDetails.value };
 
     L.marker(currLocation.value).addTo(maps).bindPopup("Kurir");
+    L.marker([1.1354661680715685, 104.0073575377535]).addTo(maps).bindPopup("Tujuan");
 
     if (orderDetail.polyline !== undefined) {
+      console.log('Add Polyline to the map')
       polylines = L.polyline(orderDetail.polyline, { color: "blue" }).addTo(maps);
-      maps.fitBounds(polylines.getBounds());
+      // maps.fitBounds(polylines.getBounds());
       // Ubah isi Marker menjadi Latitude dan Longitude tujuan yang didapatkan dari API Server
       // Gunakan setIcon() untuk mengubah Icon dari Marker
-      L.marker([1.1354661680715685, 104.0073575377535]).addTo(maps).bindPopup("Tujuan");
     }
+
+    if (startDialog.value) startDialogSwitch()
   }
 
   return maps;
@@ -403,10 +386,11 @@ const createTrack = async () => {
       }
     );
     const totalEstimation = Number.parseInt(routes[0].duration.split("s")[0]);
-    const second = totalEstimation % 60;
-    const minute = Number.parseInt(`${totalEstimation / 60}`);
-    const hour = Number.parseInt(`${totalEstimation / 3600}`);
-    estimationTime.value = { second, minute, hour };
+    // const second = totalEstimation % 60;
+    // const minute = Number.parseInt(`${totalEstimation / 60}`);
+    // const hour = Number.parseInt(`${totalEstimation / 3600}`);
+    // estimationTime.value = { second, minute, hour };
+
     const body = {
       polyline: routes[0].polyline.encodedPolyline,
       lat: currentLocation[0],
@@ -415,13 +399,13 @@ const createTrack = async () => {
       distance: routes[0].distanceMeters, // Satuan Meter
       order_id: orderId,
     };
-
-    await apiClient.post("api/orders/tracking", body);
-
     orderDetails.value = {
       ...body,
+      polyline: decode(routes[0].polyline.encodedPolyline),
       orderId: orderId as string,
     };
+
+    await apiClient.post("api/orders/tracking", body);
     maps = updateMap();
   } catch (err) {
     alert("Error When Creating Track" + err);
@@ -456,19 +440,26 @@ const completeTrack = async () => {
 
 const updateTrack = async () => {
   try {
-    const currentLocation = currLocation.value as Array<number>;
-    const body = {
-      lat: currentLocation[0],
-      long: currentLocation[1],
-      order_id: orderId,
-    };
+    const orderDetail = { ...orderDetails.value }
+    if (orderDetail.orderId !== undefined) {
+      const currentLocation = currLocation.value as Array<number>;
+      const body = {
+        lat: currentLocation[0],
+        long: currentLocation[1],
+        order_id: orderId,
+      };
 
-    await apiClient.put("api/orders/tracking", body);
+      await apiClient.put("api/orders/tracking", body);
+    }
   } catch (err) {
     alert(err);
   } finally {
     maps = updateMap();
   }
+};
+
+const confirmSuccessComplete = () => {
+  successCompleteDialog.value = true;
 };
 </script>
 
