@@ -18,7 +18,7 @@
             <div class="flex flex-col justify-center ml-4">
               <div class="font-bold">{{ singleItem?.description ?? "Bakso Campur Enak" }}</div>
               <!--  TODO format tanggalnya yang sesuai -->
-              <div class="text-xs font-normal">{{ singleItem?.date ?? "7 Jan 2023 - 10.00 WIB" }}</div>
+              <div class="text-xs font-normal">{{ (format(singleItem?.date ?? new Date(), 'dd MMM yyyy - hh.mm')  ?? "7 Jan 2023 - 10.00") + " WIB" }}</div>
             </div>
           </div>
         </div>
@@ -143,7 +143,7 @@
           <div class="flex justify-between my-4 py-2 text-sm font-semibold border border-solid border-x-0 border-gray">
             <div>SubTotal</div>
             <!-- Totalkan semuanya disini -->
-            <div class="font-bold">60.000</div>
+            <div class="font-bold">{{sum ?? "60.000"}}</div>
           </div>
 
           <div class="flex justify-between my-4 text-sm font-semibold">
@@ -172,6 +172,7 @@ import iconnative from "../icon/index.vue";
 import { useProdukStore } from '../store/modules/product'; // assuming your store is located in a file named produkStore.js
 import { useRoute } from 'vue-router';
 import { Item } from '../models/history_list_response';
+import { format } from 'date-fns';
 const route = useRoute();
 const router = useRouter();
 
@@ -192,9 +193,16 @@ const fetchHistoryById = async () => {
   }
 };
 
+const sum = ref(0);
+  
 
-onMounted(() => {
-  fetchHistoryById();
+
+onMounted(async() => {
+  await fetchHistoryById();
+  sum.value = singleItem.value?.order_details
+    .map(obj => obj.price)
+    .map(str => parseInt(str))
+    .reduce((acc, curr) => acc + curr, 0) ?? 0;
 });
 
 </script>
