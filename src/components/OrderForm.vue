@@ -131,7 +131,7 @@ import { ref, onMounted } from "vue";
 import { useRouter } from "vue-router";
 import iconnative from "../icon/index.vue";
 import { ElNotification } from "element-plus";
-import { Item } from '../models/history_response';
+import { Item } from '../models/history_list_response';
 const useProduct = useProdukStore();
 
 const dataOrder = ref<Item[]>([]);

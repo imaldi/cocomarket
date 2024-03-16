@@ -21,7 +21,7 @@
               height="28"
             />
             <div class="flex flex-col justify-center ml-4">
-              <div class="font-bold">Bakso Campur Enak</div>
+              <div class="font-bold">{{singleItem?.order_details[0].products.name ?? "Bakso Campur Enak"}}</div>
               <div class="text-xs font-normal">7 Jan 2023 - 10.00 WIB</div>
             </div>
           </div>
@@ -190,20 +190,25 @@
   </div>
 </template>
 <script setup lang="ts">
+import { ref, onMounted } from "vue";
 import { useRouter } from "vue-router";
 import iconnative from "../icon/index.vue";
 import { useProdukStore } from '../store/modules/product'; // assuming your store is located in a file named produkStore.js
 import { useRoute } from 'vue-router';
+import { Item } from '../models/history_list_response';
 const route = useRoute();
 const router = useRouter();
 
 const id = route.params.id;
 
 const produkStore = useProdukStore();
+const singleItem = ref<Item>();
 
 const fetchHistoryById = async () => {
   try {
-    const response = await produkStore.getHistoryByid(id);
+    const response:any = await produkStore.getHistoryByid(id);
+    // singleItem.value = Convert.toHistoryResponse(JSON.stringify(response.data)).data;
+    singleItem.value = response.data;
     // Do something with the response data
     console.log(response.data);
   } catch (error) {
@@ -211,7 +216,11 @@ const fetchHistoryById = async () => {
   }
 };
 
-fetchHistoryById();
+
+onMounted(() => {
+  fetchHistoryById();
+});
+
 </script>
 <style scoped lang="scss">
 .container {

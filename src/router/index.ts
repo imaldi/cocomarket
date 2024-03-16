@@ -202,11 +202,11 @@ const routes: RouteRecordRaw[] = [
         name: "OrderFreshfood",
         component: () => import("../views/OrderFreshfood.vue"),
       },
-      {
-        path: "/orderCocostore",
-        name: "OrderCocostore",
-        component: () => import("../views/OrderCocostore.vue"),
-      },
+      // {
+      //   path: "/orderCocostore",
+      //   name: "OrderCocostore",
+      //   component: () => import("../views/OrderCocostore.vue"),
+      // },
       {
         path: "/trackOrder/:id",
         name: "TrackOrder",

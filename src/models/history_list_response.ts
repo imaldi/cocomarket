@@ -1,33 +1,122 @@
 // To parse this data:
 //
-//   import { Convert, HistoryResponse } from "./file";
+//   import { Convert, HistoryListResponse } from "./file";
 //
-//   const historyResponse = Convert.toHistoryResponse(json);
+//   const historyListResponse = Convert.toHistoryListResponse(json);
 //
 // These functions will throw an error if the JSON doesn't
 // match the expected interface, even if the JSON is valid.
 
-import { Item } from '../models/history_list_response';
-
-export interface HistoryResponse {
+export interface HistoryListResponse {
     message: string;
     status:  boolean;
-    data:    Item;
+    data:    Item[];
+}
+
+export interface Item {
+    id:                  string;
+    code:                string;
+    date:                Date;
+    status:              string;
+    description:         string;
+    user_id:             string;
+    rating:              null;
+    freshshop_vendor_id: string;
+    user_coupon_id:      string;
+    delivery_cost:       string;
+    discount_amount:     string;
+    tax_amount:          string;
+    payment_method:      string;
+    note:                string;
+    to_address_id:       string;
+    deleted_at:          null;
+    other_cost:          string;
+
+    users:               Users;
+    address:             Address;
+    order_details:       OrderDetail[];
+    vendors:             Vendors;
+}
+
+export interface Users {
+    id:                string;
+    name:              string;
+    email:             string;
+    email_verified_at: null;
+    created_at:        Date;
+    updated_at:        Date;
+    phone:             null;
+    profile_picture:   string;
+    date_of_birth:     null;
+    deleted_at:        null;
+    is_active:         number;
+    role_id:           number;
 }
 
 
+export interface Address {
+    id:              string;
+    name:            string;
+    latitude:        string;
+    longitude:       string;
+    address:         string;
+    user_id:         string;
+    default:         number;
+    is_active:       number;
+    created_at:      Date;
+    updated_at:      Date;
+    district:        string;
+    city:            string;
+    deleted_at:      null;
+    google_place_id: string;
+}
 
 
+export interface OrderDetail {
+    id:          string;
+    order_id:    string;
+    price:       string;
+    product_id:  string;
+    description: string;
+    note:        null;
+    rating:      null;
+    quantity:    number;
+    products:    Products;
+}
+
+export interface Products {
+    id:            string;
+    name:          string;
+    subtitle:      string;
+    price:         string;
+    description:   string;
+    categories_id: string;
+    is_active:     number;
+    image:         string;
+}
+
+export interface Vendors {
+    id:              string;
+    name:            string;
+    description:     string;
+    phone:           string;
+    status:          number;
+    deleted_at:      null;
+    latitude:        string;
+    longitude:       string;
+    address:         string;
+    google_place_id: string;
+}
 
 // Converts JSON strings to/from your types
 // and asserts the results of JSON.parse at runtime
 export class Convert {
-    public static toHistoryResponse(json: string): HistoryResponse {
-        return cast(JSON.parse(json), r("HistoryResponse"));
+    public static toHistoryListResponse(json: string): HistoryListResponse {
+        return cast(JSON.parse(json), r("HistoryListResponse"));
     }
 
-    public static historyResponseToJson(value: HistoryResponse): string {
-        return JSON.stringify(uncast(value, r("HistoryResponse")), null, 2);
+    public static historyListResponseToJson(value: HistoryListResponse): string {
+        return JSON.stringify(uncast(value, r("HistoryListResponse")), null, 2);
     }
 }
 
@@ -184,12 +273,12 @@ function r(name: string) {
 }
 
 const typeMap: any = {
-    "HistoryResponse": o([
+    "HistoryListResponse": o([
         { json: "message", js: "message", typ: "" },
         { json: "status", js: "status", typ: true },
-        { json: "data", js: "data", typ: r("Data") },
+        { json: "data", js: "data", typ: a(r("Datum")) },
     ], false),
-    "Data": o([
+    "Datum": o([
         { json: "id", js: "id", typ: "" },
         { json: "code", js: "code", typ: "" },
         { json: "date", js: "date", typ: Date },
@@ -207,26 +296,8 @@ const typeMap: any = {
         { json: "to_address_id", js: "to_address_id", typ: "" },
         { json: "deleted_at", js: "deleted_at", typ: null },
         { json: "other_cost", js: "other_cost", typ: "" },
-        { json: "users", js: "users", typ: r("Users") },
-        { json: "address", js: "address", typ: r("Address") },
         { json: "order_details", js: "order_details", typ: a(r("OrderDetail")) },
         { json: "vendors", js: "vendors", typ: r("Vendors") },
-    ], false),
-    "Address": o([
-        { json: "id", js: "id", typ: "" },
-        { json: "name", js: "name", typ: "" },
-        { json: "latitude", js: "latitude", typ: "" },
-        { json: "longitude", js: "longitude", typ: "" },
-        { json: "address", js: "address", typ: "" },
-        { json: "user_id", js: "user_id", typ: "" },
-        { json: "default", js: "default", typ: 0 },
-        { json: "is_active", js: "is_active", typ: 0 },
-        { json: "created_at", js: "created_at", typ: Date },
-        { json: "updated_at", js: "updated_at", typ: Date },
-        { json: "district", js: "district", typ: "" },
-        { json: "city", js: "city", typ: "" },
-        { json: "deleted_at", js: "deleted_at", typ: null },
-        { json: "google_place_id", js: "google_place_id", typ: "" },
     ], false),
     "OrderDetail": o([
         { json: "id", js: "id", typ: "" },
@@ -248,20 +319,6 @@ const typeMap: any = {
         { json: "categories_id", js: "categories_id", typ: "" },
         { json: "is_active", js: "is_active", typ: 0 },
         { json: "image", js: "image", typ: "" },
-    ], false),
-    "Users": o([
-        { json: "id", js: "id", typ: "" },
-        { json: "name", js: "name", typ: "" },
-        { json: "email", js: "email", typ: "" },
-        { json: "email_verified_at", js: "email_verified_at", typ: null },
-        { json: "created_at", js: "created_at", typ: Date },
-        { json: "updated_at", js: "updated_at", typ: Date },
-        { json: "phone", js: "phone", typ: null },
-        { json: "profile_picture", js: "profile_picture", typ: "" },
-        { json: "date_of_birth", js: "date_of_birth", typ: null },
-        { json: "deleted_at", js: "deleted_at", typ: null },
-        { json: "is_active", js: "is_active", typ: 0 },
-        { json: "role_id", js: "role_id", typ: 0 },
     ], false),
     "Vendors": o([
         { json: "id", js: "id", typ: "" },
