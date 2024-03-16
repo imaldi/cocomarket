@@ -13,16 +13,12 @@
       <div class="mx-8">
         <div class="mt-2">
           <div class="py-6 flex justify-start items-center">
-            <icon
-              class="p-2 rounded-full bg-white border border-solid border-gray"
-              icon="healthicons:market-stall"
-              color="#7ACDD6"
-              width="28"
-              height="28"
-            />
+            <icon class="p-2 rounded-full bg-white border border-solid border-gray" icon="healthicons:market-stall"
+              color="#7ACDD6" width="28" height="28" />
             <div class="flex flex-col justify-center ml-4">
-              <div class="font-bold">{{singleItem?.order_details[0].products.name ?? "Bakso Campur Enak"}}</div>
-              <div class="text-xs font-normal">7 Jan 2023 - 10.00 WIB</div>
+              <div class="font-bold">{{ singleItem?.description ?? "Bakso Campur Enak" }}</div>
+              <!--  TODO format tanggalnya yang sesuai -->
+              <div class="text-xs font-normal">{{ singleItem?.date ?? "7 Jan 2023 - 10.00 WIB" }}</div>
             </div>
           </div>
         </div>
@@ -31,17 +27,13 @@
       <div class="mx-8">
         <div class="border-solid border border-gray rounded-2xl py-4 px-2 mb-4 flex justify-center items-center">
           <div>
-            <iconnative
-              class="p-2 mr-2 border border-black border-solid rounded-full"
-              icon="info-b-black"
-              color="#000"
-              width="28"
-              height="28"
-            />
+            <iconnative class="p-2 mr-2 border border-black border-solid rounded-full" icon="info-b-black" color="#000"
+              width="28" height="28" />
           </div>
           <div>
             <div class="text-[10px] text-black font-300">You are the 11th person to be served out of 11.</div>
-            <div class="text-[10px] text-black font-semibold">Now Bakso Solo Kang Emil is serving the 8th person</div>
+            <div class="text-[10px] text-black font-semibold">Now {{ singleItem?.vendors.name ?? "Bakso Solo Kang Emil" }}
+              is serving the 8th person</div>
           </div>
         </div>
       </div>
@@ -51,13 +43,13 @@
           <div class="font-bold text-sm border border-solid border-x-0 border-t-0 border-gray py-2">Order Details</div>
           <div class="flex justify-between my-2 text-sm">
             <div>No. Order</div>
-            <div class="font-bold">O-2324-6586-678</div>
+            <div class="font-bold">{{ singleItem?.code ?? "O-2324-6586-678" }}</div>
           </div>
           <div class="flex justify-between my-2 text-sm">
             <div>Payment Method</div>
             <div class="flex items-center">
               <iconnative class="mr-2" icon="wallet" color="#E68027" width="24" />
-              <div class="font-bold">Cocopay</div>
+              <div class="font-bold">{{ singleItem?.payment_method ?? "Cocopay" }}</div>
             </div>
           </div>
         </div>
@@ -68,7 +60,8 @@
           </div>
           <div class="flex justify-between my-2 text-sm">
             <div>No. Pengiriman</div>
-            <div class="font-bold">S-523-252-2555</div>
+            <!-- #ASK Ini field yang mana? -->
+            <div class="font-bold">{{ "S-523-252-2555"}}</div>
           </div>
           <div class="flex items-center justify-between mb-2 text-sm">
             <div class="flex items-center">
@@ -111,62 +104,45 @@
             <div class="font-bold text-sm">Product Details</div>
           </div>
 
+
+
           <div class="py-2">
-            <div class="flex py-2">
-              <div class="w-1/4">
-                <img class="rounded-xl" src="../assets/img/bakso2.png" alt="" width="60" />
-              </div>
-              <div class="w-3/4 flex flex-col justify-around">
-                <div class="text-sm font-bold">Bakso Campur Enak</div>
-                <div class="flex justify-between">
-                  <div class="text-xs text-gray">x1</div>
-                  <div class="text-xs font-semibold">Rp.25.000</div>
+            <div v-for="(item, index) in singleItem?.order_details" :key="index">
+              <div class="flex py-2">
+                <div class="w-1/4">
+                  <img class="rounded-xl" src="../assets/img/bakso2.png" alt="" width="60" />
+                </div>
+                <div class="w-3/4 flex flex-col justify-around">
+                  <div class="text-sm font-bold">{{ item.description ?? "Bakso Campur Enak" }}</div>
+                  <div class="flex justify-between">
+                    <div class="text-xs text-gray">{{"x" + (item.quantity ?? "1")}}</div>
+                    <!-- TODO format pricenya -->
+                    <div class="text-xs font-semibold">{{item.price ?? "Rp.25.000"}}</div>
+                  </div>
                 </div>
               </div>
             </div>
-            <div class="flex py-2">
-              <div class="w-1/4">
-                <img class="rounded-xl" src="../assets/img/teh.png" alt="" width="60" />
-              </div>
-              <div class="w-3/4 flex flex-col justify-around">
-                <div class="text-sm font-bold">Teh Obengk</div>
-                <div class="flex justify-between">
-                  <div class="text-xs text-gray">x1</div>
-                  <div class="text-xs font-semibold">Rp.7.000</div>
-                </div>
-              </div>
-            </div>
-            <div class="flex py-2">
-              <div class="w-1/4">
-                <img class="rounded-xl" src="../assets/img/meat 4.png" alt="" width="60" />
-              </div>
-              <div class="w-3/4 flex flex-col justify-around">
-                <div class="text-sm font-bold">Mie Ayam</div>
-                <div class="flex justify-between">
-                  <div class="text-xs text-gray">x1</div>
-                  <div class="text-xs font-semibold">Rp.28.000</div>
-                </div>
-              </div>
-            </div>
+
           </div>
         </div>
 
         <div class="px-4 mt-6">
           <div class="flex justify-between my-4 text-sm font-semibold">
             <div>Delivery Cost</div>
-            <div class="font-bold">15.000</div>
+            <div class="font-bold">{{singleItem?.delivery_cost ?? "15.000"}}</div>
           </div>
           <div class="flex justify-between my-4 text-sm font-semibold">
             <div>Tax</div>
-            <div class="font-bold">2.000</div>
+            <div class="font-bold">{{singleItem?.tax_amount ?? "2.000"}}</div>
           </div>
           <div class="flex justify-between my-4 text-sm font-semibold">
             <div>Other costs</div>
-            <div class="font-bold">2.000</div>
+            <div class="font-bold">{{singleItem?.other_cost ?? "2.000"}}</div>
           </div>
 
           <div class="flex justify-between my-4 py-2 text-sm font-semibold border border-solid border-x-0 border-gray">
             <div>SubTotal</div>
+            <!-- Totalkan semuanya disini -->
             <div class="font-bold">60.000</div>
           </div>
 
@@ -206,7 +182,7 @@ const singleItem = ref<Item>();
 
 const fetchHistoryById = async () => {
   try {
-    const response:any = await produkStore.getHistoryByid(id);
+    const response: any = await produkStore.getHistoryByid(id);
     // singleItem.value = Convert.toHistoryResponse(JSON.stringify(response.data)).data;
     singleItem.value = response.data;
     // Do something with the response data
