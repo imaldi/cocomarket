@@ -1,3 +1,5 @@
+declare module "@mapbox/polyline";
+
 declare var cordova: Cordova;
 declare var global: window;
 declare var google: google;
@@ -16,6 +18,7 @@ interface window {
   routes: any;
   routeMaker: any;
   store: any;
+  plugins: any[];
   searchKey: string;
   resolveLocalFileSystemURL: any;
   OneSignal: any;

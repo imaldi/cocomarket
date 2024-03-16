@@ -58,20 +58,27 @@
     </div> -->
 
     <p class="sign-up-title">Don't Have an account? <a href="#/register" class="sign-up">Sign Up</a></p>
+
+    <transition name="fade">
+      <div v-if="showLoad" class="popupLoad">
+        <div class="loader absolute"></div>
+      </div>
+    </transition>
   </div>
 </template>
 
 <script setup lang="ts">
-import { ref } from "vue";
 import { useRouter } from "vue-router";
+import { ref, onMounted } from "vue";
 import { Form, Field } from "vee-validate";
-import { useAuthStore } from "../store/modules/auth";
 import { ElNotification } from "element-plus";
+import { useAuthStore } from "../store/modules/auth";
 
 const router = useRouter();
 const authStore = useAuthStore();
 const username = ref("");
 const password = ref("");
+const showLoad = ref(false);
 
 const login = async () => {
   const payload = {
@@ -87,7 +94,7 @@ const login = async () => {
         type: "error",
         duration: 2000,
         customClass: "errorNotif",
-        message: "Maaf, tidak bisa Login",
+        message: "Sorry, can't login",
       });
     } else {
       ElNotification({
@@ -95,7 +102,7 @@ const login = async () => {
         type: "success",
         duration: 2000,
         customClass: "successNotif",
-        message: "Berhasil Login!",
+        message: "Login Successfully!",
       });
 
       localStorage.setItem("token", response.access_token);
@@ -112,6 +119,20 @@ const login = async () => {
     });
   }
 };
+
+onMounted(() => {
+  const isAuthenticated = localStorage.getItem("user_id");
+
+  if (isAuthenticated) {
+    showLoad.value = true;
+
+    router.push("/home");
+
+    setTimeout(() => {
+      showLoad.value = false;
+    }, 200);
+  }
+});
 </script>
 
 <style scoped lang="scss">

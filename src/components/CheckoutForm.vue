@@ -105,16 +105,18 @@
           </template>
 
           <div class="border-solid border border-gray rounded-2xl p-4 my-2 flex">
-            <div>
-              <div class="text-black text-xs tracking-tight">Want To Add More Item?</div>
-              <div class="text-gray text-xs tracking-tight">You can still add other items.</div>
+            <div class="w-full flex justify-between">
+              <div>
+                <div class="text-black text-xs tracking-tight">Want To Add More Item?</div>
+                <div class="text-gray text-xs tracking-tight">You can still add other items.</div>
+              </div>
+              <button
+                @click="router.push('/findfreshfood')"
+                class="ml-14 bg-white border-[#E68027] text-color-[#E68027] rounded-full border-2 text-xs py-2 px-4"
+              >
+                Add More
+              </button>
             </div>
-            <button
-              @click="router.push('/findfreshfood')"
-              class="ml-14 bg-white border-[#E68027] text-color-[#E68027] rounded-full border-2 text-xs py-2 px-4"
-            >
-              Add More
-            </button>
           </div>
         </div>
       </div>
@@ -126,11 +128,13 @@
           @click="router.push('/coupon')"
           class="border-solid border border-gray rounded-2xl p-4 my-2 flex items-center justify-between"
         >
-          <div class="my-auto">
-            <iconnative class="bg-[#E6802760] px-2 py-1 rounded-full" icon="coupon" color="white" width="28" />
-          </div>
+          <div class="flex">
+            <div class="my-auto">
+              <iconnative class="bg-[#E6802760] px-2 py-1 rounded-full" icon="coupon" color="white" width="28" />
+            </div>
 
-          <div class="text-black font-bold text-xs tracking-tight">use the promo first, right?</div>
+            <div class="text-black my-auto font-bold text-xs ml-2 tracking-tight">use the promo first, right?</div>
+          </div>
 
           <iconnative class="mt-auto" icon="circle-arrow-right" color="#E68027" width="28" height="28" />
         </div>
@@ -253,6 +257,14 @@
         </div>
       </div>
     </div>
+
+    <dialog-confirm
+      v-model="addressRequiredDialog"
+      :message="`Address not found, Please add address!`"
+      @cancel="addressRequiredDialog = false"
+      @confirm="router.push('/addaddress?checkout=true')"
+    >
+    </dialog-confirm>
   </div>
 </template>
 
@@ -261,6 +273,7 @@ import { useRouter } from "vue-router";
 import { useCartStore } from "../store/modules/cart";
 import { ref, onMounted, computed } from "vue";
 // import { useAddressStore } from "../store/modules/address";
+import DialogConfirm from "../components/dialog/ConfirmDialog.vue";
 import iconnative from "../icon/index.vue";
 
 const router = useRouter();
@@ -269,13 +282,20 @@ const cartStore = useCartStore();
 const namesWithoutNumbers = ref<string[]>([]);
 const totalItem = ref<ItemsTotal | null>(null);
 interface ItemsTotal {
-  price: string;
+  price: number;
+  shipping_cost: number;
+  others_cost: number;
   total: string;
   amount: number;
+  address: any;
+  duration: any;
+  image: any;
+  quantity: string;
   products_subtitle: string;
-  products: { name: string }[];
+  products: { name: string; quantity: number; image: any; subtitle: string; price: string }[];
 }
 
+const addressRequiredDialog = ref(false);
 const total = ref(1);
 const shippingCost = ref(5000);
 const otherCost = ref(2000);
@@ -312,9 +332,12 @@ const getListCart = async () => {
     totalItem.value = res.data as ItemsTotal;
     otherCost.value = totalItem.value.others_cost;
     shippingCost.value = totalItem.value.shipping_cost;
+
     namesWithoutNumbers.value = totalItem.value.products.map((item) => item.name.replace(/\d+/g, ""));
-  } catch (error) {
-    console.log(error);
+  } catch (error: any) {
+    if ((error.response.data.message = "Address not found, Please add address!")) {
+      addressRequiredDialog.value = true;
+    }
   } finally {
   }
 };

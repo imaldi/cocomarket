@@ -25,18 +25,22 @@
 
         <div class="flex flex-col px-4" v-for="(item, index) in dataHistory" :key="index">
           <div class="border border-solid border-gray p-4 rounded-2xl flex flex-col mb-2">
-            <div class="flex items-center justify-between border border-gray border-x-0 border-t-0 border-dashed pb-4">
-              <img
-                class="border border-solid border-gray rounded-full bg-white p-2"
-                src="../assets/img/gerobak.png"
-                alt="Cocomaret Logo"
-                width="28"
-                height="28"
-              />
+            <div
+              class="w-full flex items-center justify-between border border-gray border-x-0 border-t-0 border-dashed pb-4"
+            >
+              <div class="flex w-full">
+                <img
+                  class="border border-solid border-gray rounded-full bg-white p-2"
+                  src="../assets/img/gerobak.png"
+                  alt="Cocomaret Logo"
+                  width="28"
+                  height="28"
+                />
 
-              <div class="flex flex-col justify-center mr-14">
-                <div class="font-bold text-sm tracking-tighter">{{ item.vendors.name }}</div>
-                <div class="font-normal text-xs">{{ item.date }} WIB</div>
+                <div class="flex flex-col justify-center ml-4">
+                  <div class="font-bold text-sm tracking-tighter">{{ item.vendors.name }}</div>
+                  <div class="font-normal text-xs">{{ item.date }} WIB</div>
+                </div>
               </div>
 
               <div>
@@ -49,7 +53,7 @@
               </div>
             </div>
 
-            <div class="flex items-center justify-between my-3">
+            <div class="flex items-center my-3">
               <div class="flex">
                 <img
                   class="bg-white z-1 p-2 border-solid rounded-2xl border border-gray"
@@ -58,16 +62,16 @@
                   width="64"
                 />
               </div>
-              <div class="flex flex-col justify-center mr-8">
+              <div class="flex flex-col justify-center ml-4">
                 <div class="font-bold text-sm">
                   {{ item.code }}
                 </div>
                 <div class="font-normal text-xs text-gray my-[2px]">{{ item.order_details.length }} Produk</div>
-                <div v-if="item.status == 2" class="flex items-center font-normal text-xs text-gray">
+                <div v-if="item.status == '2'" class="flex items-center font-normal text-xs text-gray">
                   <iconnative class="mr-[4px]" icon="circle-checklist" color="#51F862" width="14" height="14" />
                   Groceries has been delivered
                 </div>
-                <div v-else-if="item.status == 3" class="flex items-center font-normal text-xs text-gray">
+                <div v-else-if="item.status == '3'" class="flex items-center font-normal text-xs text-gray">
                   <iconnative class="mr-[4px]" icon="circle-checklist" color="#51F862" width="14" height="14" />
                   Groceries not been delivered
                 </div>
@@ -105,27 +109,20 @@ import iconnative from "../icon/index.vue";
 
 const produkStore = useProdukStore();
 
-const fetchHistoryById = async (id: any) => {
-  try {
-    const response = await produkStore.getHistoryByid(id);
-    console.log(response.data);
-  } catch (error) {
-    console.error(error);
-  }
-};
-
-const useProduct = useProdukStore();
 const dataHistory = ref<Item[]>([]);
 const activeSelect = ref(0);
 // const ordersDetail = ref<Item[]>([]);
 interface Item {
   id: string;
+  code: string;
   name: string;
   date: string;
   image: string;
   price: number;
+  order_details: any;
   description: string;
   status: string;
+  vendors: any;
 }
 // interface ItemOrders {
 //   id: string;
@@ -138,29 +135,26 @@ interface Item {
 const calculateTotalPrice = (item: any, data: any) => {
   let tmp = 0;
   item.forEach((itm: any) => {
-    tmp +=
-      parseFloat(itm.price) * item.length +
-      parseFloat(data.delivery_cost) +
-      parseFloat(data.other_cost) -
-      parseFloat(data.discount_amount);
+    tmp += parseFloat(itm.price) * itm.quantity;
   });
+  tmp = tmp + parseFloat(data.delivery_cost) + parseFloat(data.other_cost) - parseFloat(data.discount_amount);
 
   return Number(tmp).toLocaleString("id-ID", { style: "currency", currency: "IDR" });
 };
 
-const getListHistory = async () => {
-  try {
-    const res = await useProduct.getHistory();
-    dataHistory.value = res.data as Item[];
-  } catch (error) {
-    console.log(error);
-  } finally {
-  }
-};
+// const getListHistory = async () => {
+//   try {
+//     const res = await produkStore.getHistory();
+//     dataHistory.value = res.data as Item[];
+//   } catch (error) {
+//     console.log(error);
+//   } finally {
+//   }
+// };
 
 const getListHistoryComplete = async () => {
   try {
-    const res = await useProduct.getHistoryComplete();
+    const res = await produkStore.getHistoryComplete();
     dataHistory.value = res.data as Item[];
     activeSelect.value = 0;
   } catch (error) {
@@ -171,7 +165,7 @@ const getListHistoryComplete = async () => {
 
 const getListHistoryCanceled = async () => {
   try {
-    const res = await useProduct.getHistoryCanceled();
+    const res = await produkStore.getHistoryCanceled();
     dataHistory.value = res.data as Item[];
     activeSelect.value = 1;
   } catch (error) {

@@ -5,7 +5,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted, onBeforeUnmount } from "vue";
+import { ref, onMounted, onBeforeUnmount, watch } from "vue";
 import L, { LatLngExpression } from "leaflet";
 import { decode } from '@mapbox/polyline';
 import "leaflet/dist/leaflet.css";
@@ -34,10 +34,11 @@ interface GetTrackResponse {
 let map: L.Map | null = null;
 let interval: any = null;
 
-const router = useRoute()
-const { id: orderId } = router.params
+const route = useRoute()
+const { id: orderId } = route.params
 const apiKey = import.meta.env.VITE_GOOGLE_MAPS_API_KEY;
-const currLocation = ref<LatLngExpression>([0, 0])
+const courrierLocation = ref<LatLngExpression>([0, 0])
+const userLocation = ref<LatLngExpression>([0, 0])
 const orderDetails = ref<OrderModel>({
   orderId: undefined,
   distance: undefined,
@@ -49,28 +50,40 @@ const orderDetails = ref<OrderModel>({
 
 onMounted(async () => {
   try {
+    currentLocation();
     await fetchData();
-    map = initializeMap();
   } catch (err) {
-    alert(err)
+    alert(err);
   } finally {
-    interval = setInterval(async () => {
-      try {
-        await fetchData()
-        map = updateMap()
-      } catch (err) {
-        alert("Auto Fetcher API Failed! ")
-      }
-    }, 15000)
+    map = initializeMap();
+    interval = setInterval(fetchData, 15000);
   }
 });
 
 onBeforeUnmount(() => { clearInterval(interval) })
 
+watch(courrierLocation, () => {
+  if (interval !== null) map = updateMap()
+})
+
+const currentLocation = () => {
+  navigator.geolocation.getCurrentPosition(
+    position => {
+      const current = userLocation.value as Array<number>
+      if (current[0] !== position.coords.latitude && current[1] !== position.coords.longitude)
+        userLocation.value = [position.coords.latitude, position.coords.longitude]
+    },
+    error => {
+      console.error('Error getting user location:', error.message);
+    }
+  )
+}
+
 const initializeMap = () => {
-  const map = L.map("map").setView(currLocation.value, 15);
-  let polylines = null
   const orderDetail = { ...orderDetails.value }
+  const courrierLoc = courrierLocation.value as Array<number>
+  const map = L.map("map").setView(courrierLoc[0] === 0 && courrierLoc[1] === 0 ? userLocation.value : courrierLocation.value, 15);
+  let polylines = null
 
   L.tileLayer(
     `https://{s}.google.com/vt/lyrs=m@189&hl=en&x={x}&y={y}&z={z}&apistyle=s.t%3A131%7Cs.e%3Alight%7Cs.g%3A%23EAEAEA%7Cs.l%3A%23EAEAEA%7Cs.c%3A%23EAEAEA%7Cs.f%3A%23EAEAEA%7Cs.l%3A%23EAEAEA%7Cs.t%3A60%7Cs.e%3Ag.s%7Cs.g%3A%23E5E5E5%7Cs.l%3A%23E5E5E5%7Cs.f%3A%23E5E5E5%7Cs.f%3Ag.s&scale=2&style=47%2C37%7Csmartmaps&apiKey=${apiKey}`,
@@ -80,10 +93,17 @@ const initializeMap = () => {
     }
   ).addTo(map);
 
-  L.marker(currLocation.value).addTo(map).bindPopup("Kurir");
+  if (courrierLoc[0] === 0 && courrierLoc[1] === 0)
+    L.marker(userLocation.value).addTo(map).bindPopup("Kamu");
+  else
+    L.marker(courrierLocation.value).addTo(map).bindPopup("Kurir");
+
   if (orderDetail.polyline !== undefined) {
     polylines = L.polyline(orderDetail.polyline, { color: "blue" }).addTo(map);
-    map.fitBounds(polylines.getBounds());
+
+    // Membuat MAP fokus ke keseluruhan perjalanan bukan ke titik mereka
+    // map.fitBounds(polylines.getBounds());
+
     // Ubah isi Marker menjadi Latitude dan Longitude tujuan yang didapatkan dari API Server
     // Gunakan setIcon() untuk mengubah Icon dari Marker
     L.marker([1.1354661680715685, 104.0073575377535]).addTo(map).bindPopup("Tujuan");
@@ -104,7 +124,7 @@ const updateMap = () => {
     let polylines = null
     const orderDetail = { ...orderDetails.value }
 
-    L.marker(currLocation.value).addTo(map).bindPopup("Kurir");
+    L.marker(courrierLocation.value).addTo(map).bindPopup("Kurir");
 
     if (orderDetail.polyline !== undefined) {
       polylines = L.polyline(orderDetail.polyline, { color: "blue" }).addTo(map);
@@ -121,17 +141,18 @@ const updateMap = () => {
 const fetchData = async () => {
   try {
     const responseApi: GetTrackResponse | Array<any> = await apiClient.get(`api/orders/tracking/${orderId}`) as GetTrackResponse
-    currLocation.value = [responseApi.lat, responseApi.long]
-    orderDetails.value = {
-      distance: responseApi.distance,
-      lat: responseApi.lat,
-      long: responseApi.long,
-      orderId: orderId as string,
-      polyline: decode(responseApi.polyline),
-      time: responseApi.time
+    if (Array.isArray(responseApi)) {
+      currentLocation()
+    } else {
+      courrierLocation.value = [responseApi.lat, responseApi.long]
+      orderDetails.value = {
+        ...responseApi,
+        orderId: orderId as string,
+        polyline: decode(responseApi.polyline),
+      }
     }
   } catch (err) {
-    alert(`Error Loading Maps with Code : ${err}`)
+    alert(`Error Loading Maps Module with Code : ${err}`)
   }
 }
 </script>

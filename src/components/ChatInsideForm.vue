@@ -68,7 +68,7 @@
                 </div>
             </div>
 
-            <div v-for="( n) in 10" class="my-10">
+            <div v-for="item in 10" :key="item" class="my-10">
                 <div class="flex justify-end">
                     <div>
                         <div class="text-sm bg-[#20A090] p-2 rounded-b-xl rounded-l-xl text-white">

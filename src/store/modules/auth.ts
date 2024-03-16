@@ -10,7 +10,7 @@ interface AuthState {
   forgotEmail(payload: any): Promise<any>;
 }
 
-export const useAuthStore = defineStore("auth", () => {
+export const useAuthStore = defineStore("authStore", () => {
   const login: AuthState["login"] = async (payload: any) => {
     return axiosClient.post(`/api/auth/login`, payload);
   };

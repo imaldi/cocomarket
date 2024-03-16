@@ -11,7 +11,7 @@ interface CartStore {
   getCartDetail(id: any): Promise<any>;
 }
 
-export const useCartStore = defineStore("cart", () => {
+export const useCartStore = defineStore("cartStore", () => {
   const removeCartDetail: CartStore["removeCartDetail"] = async (carts_id) => {
     return axiosClient.delete(`/api/cart_details/${carts_id}/`);
   };

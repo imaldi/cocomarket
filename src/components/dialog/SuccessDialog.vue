@@ -1,24 +1,21 @@
 <template>
   <el-dialog
-    style="
-      height: 384px;
-      justify-content: center;
-      align-items: center;
-      border-radius: 20px;
-    "
+    style="height: 384px; justify-content: center; align-items: center; border-radius: 20px; margin-top: 14rem"
     :width="width || dialogWidth"
   >
     <div>
-      <div
-        class="d-flex flex-column align-center text-center justify-content-center px-2"
-      >
+      <div class="d-flex flex-column align-center text-center justify-content-center px-2">
         <img
           src="../../assets/icon/icon-success.svg"
           style="width: 120px; cursor: pointer"
           class="w-full justify-end rounded"
           alt=""
         />
-        <p class="text-message font-bold text-xl" style="font-size: 22px; font-weight: 800; font-family: arial;" size="lg">
+        <p
+          class="text-message font-bold text-xl"
+          style="font-size: 22px; font-weight: 800; font-family: arial"
+          size="lg"
+        >
           {{ message }}
         </p>
       </div>
@@ -29,11 +26,7 @@
           type="submit"
           size="lg"
           :loading="loading"
-          style="
-            background-color: #7acdd6;
-            color: #fff;
-            border: 2px solid #7acdd6;
-          "
+          style="background-color: #7acdd6; color: #fff; border: 2px solid #7acdd6"
         >
           {{ title }}
         </button>

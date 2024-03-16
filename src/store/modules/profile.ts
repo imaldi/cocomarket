@@ -8,7 +8,7 @@ interface ProfileStore {
   updatePhotoProfile(formData: FormData): Promise<any>;
 }
 
-export const useProfileStore = defineStore("profile", () => {
+export const useProfileStore = defineStore("profileStore", () => {
   const getProfile: ProfileStore["getProfile"] = async () => {
     return axiosClient.get("/api/user/profile");
   };

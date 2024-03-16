@@ -41,14 +41,14 @@
                 </div>
                 <div class="ml-4 my-auto">
                   <div @click="decreaseQuantity(item)">
-                    <icon icon="mage:minus-square" color="#7ACDD6" width="28" height="28" />
+                    <icon icon="mage:minus-square" color="#7ACDD6" width="20" height="20" />
                   </div>
-                  <div class="p-2 text-gray w-4">{{ item.total }}</div>
+                  <div class="text-gray w-4 ml-1">{{ item.total }}</div>
                   <div @click="increaseQuantity(item)">
-                    <icon icon="mage:plus-square" color="#7ACDD6" width="28" height="28" />
+                    <icon icon="mage:plus-square" color="#7ACDD6" width="20" height="20" />
                   </div>
                   <div @click="removeItem(item.id, index)">
-                    <icon icon="mage:trash" color="#ff0000" width="28" height="28" />
+                    <icon icon="mage:trash" color="#ff0000" width="20" height="20" />
                   </div>
                 </div>
               </div>
@@ -70,12 +70,15 @@
           </div>
         </div>
       </div>
+
+      <div style="display: none">{{ detailCategory2 }}</div>
+      <!-- check hardcode -->
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
-import { onMounted, ref } from "vue";
+import { onMounted, ref, computed } from "vue";
 import { useRoute, useRouter } from "vue-router";
 // import { useCategoryStore } from "../store/modules/category";
 import { useCartStore } from "../store/modules/cart";
@@ -98,7 +101,18 @@ interface Item {
   products_subtitle: string;
   total: number;
   total_stock: string;
+  image: any;
 }
+
+const detailCategory2 = computed(() => {
+  let tmp = 0;
+  detailCategory.value.forEach((item: any) => {
+    if (item.total == 0) {
+      tmp++;
+      if (tmp == detailCategory.value.length) backData(detailCategory.value);
+    }
+  });
+});
 
 const backData = (data: any) => {
   var payload: any = [];
@@ -176,8 +190,6 @@ const decreaseQuantity = (item: any) => {
 
 const removeItem = async (id: any, index: number) => {
   try {
-    let text;
-
     if (confirm("Are you sure delete product ?") == true) {
       const res = await cartStore.removeCartDetail(id);
 
@@ -199,8 +211,6 @@ const removeItem = async (id: any, index: number) => {
           message: "Product berhasil di update",
         });
       }
-    } else {
-      text = "You canceled!";
     }
   } catch (error) {
     console.log(error);

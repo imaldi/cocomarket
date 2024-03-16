@@ -444,6 +444,15 @@
     <div v-else-if="icon == 'info-b-white'">
       <img :src="infoBWhite" :width="width" :height="height" alt="infoBWhite" />
     </div>
+    <div v-else-if="icon == 'mark'">
+      <img :src="mark" :width="width" :height="height" alt="mark" />
+    </div>
+    <div v-else-if="icon == 'icon-success'">
+      <img :src="iconSuccess" :width="width" :height="height" alt="iconSuccess" />
+    </div>
+     <div v-else-if="icon == 'icon-popup'">
+      <img :src="iconPopup" :width="width" :height="height" alt="iconPopup" />
+    </div>
   </div>
 </template>
 
@@ -474,7 +483,7 @@ import camera from "../assets/icon/camera.svg";
 import cardChecklist from "../assets/icon/card-checklist.svg";
 import cart from "../assets/icon/cart.svg";
 import cash from "../assets/icon/cash.svg";
-import catergory from "../assets/icon/category.svg";
+import category from "../assets/icon/category.svg";
 import changeImageProfile from "../assets/icon/change-image-profile.svg";
 import chatSingle from "../assets/icon/chat-single.svg";
 import chat from "../assets/icon/chat.svg";
@@ -596,6 +605,9 @@ import lineBlue from "../assets/icon/line-blue.svg";
 import circleDotBlue from "../assets/icon/circle-dot-blue.svg";
 import outlineLine from "../assets/icon/outline-line.svg";
 import infoBWhite from "../assets/icon/info-b-white.svg";
+import mark from "../assets/icon/mark.svg";
+import iconSuccess from "../assets/icon/icon-success.svg";
+import iconPopup from "../assets/icon/icon-popup.svg";
 
 export default {
   props: {
@@ -639,7 +651,7 @@ export default {
       cardChecklist,
       cart,
       cash,
-      catergory,
+      category,
       changeImageProfile,
       chatSingle,
       chat,
@@ -762,6 +774,9 @@ export default {
       circleDotBlue,
       outlineLine,
       infoBWhite,
+      mark,
+      iconSuccess,
+      iconPopup
     };
   },
 };

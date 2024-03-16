@@ -5,7 +5,7 @@ interface notifStore {
   getListNotification(): Promise<any>;
 }
 
-export const useNotifStore = defineStore("address", () => {
+export const useNotifStore = defineStore("notifStore", () => {
   const getListNotification: notifStore["getListNotification"] = async () => {
     return axiosClient.get("/api/notification/list");
   };

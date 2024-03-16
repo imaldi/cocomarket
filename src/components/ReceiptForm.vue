@@ -43,56 +43,63 @@
                   {{ item.products.name }}
                 </div>
                 <div class="font-300 text-sm w-1/10">{{ item.quantity }}</div>
-                <div class="font-semibold text-sm w-1/3 text-end">{{ Number(item.price).toLocaleString("id-ID") }}</div>
+                <div class="font-semibold text-sm w-1/3 text-end">
+                  {{ Number(item.price * item.quantity).toLocaleString("id-ID") }}
+                </div>
               </div>
             </div>
 
-            <div class="border border-solid border-gray border-x-0 border-t-0 pb-2 mb-2">
+            <div
+              v-if="index == dataDetail.length - 1"
+              class="border border-solid border-gray border-x-0 border-t-0 pb-2 mb-2"
+            >
               <div class="px-4 flex items-center mb-2">
                 <div class="font-300 text-md w-2/3">Sub Total</div>
-                <div class="font-300 text-md w-1/10">{{ item.quantity }}</div>
+                <div class="font-300 text-md w-1/10">{{ totalSubQty }}</div>
                 <div class="font-semibold text-md w-1/3 text-end">
-                  {{ Number(item.price).toLocaleString("id-ID") }}
+                  {{ Number(totalSubPrice).toLocaleString("id-ID") }}
                 </div>
               </div>
 
-              <div v-if="allDataDetail" class="px-4 flex items-center mb-2">
+              <div class="px-4 flex items-center mb-2">
                 <div class="font-300 text-sm w-2/3">Delivery Cost</div>
                 <div class="font-300 text-sm w-1/10"></div>
                 <div class="font-semibold text-sm w-1/3 text-end">
-                  {{ Number(allDataDetail.delivery_cost).toLocaleString("id-ID") }}
+                  {{ Number(allDataDetail?.delivery_cost).toLocaleString("id-ID") }}
                 </div>
               </div>
 
-              <div v-if="allDataDetail" class="px-4 flex items-center mb-2">
+              <div class="px-4 flex items-center mb-2">
                 <div class="font-300 text-sm w-2/3">Other Costs</div>
                 <div class="font-300 text-sm w-1/10"></div>
                 <div class="font-semibold text-sm w-1/3 text-end">
-                  {{ Number(allDataDetail.other_cost).toLocaleString("id-ID") }}
+                  {{ Number(allDataDetail?.other_cost).toLocaleString("id-ID") }}
                 </div>
               </div>
 
-              <div v-if="allDataDetail" class="px-4 flex items-center mb-2">
+              <div class="px-4 flex items-center mb-2">
                 <div class="font-300 text-sm w-2/3">Discount</div>
                 <div class="font-300 text-sm w-1/10"></div>
                 <div class="font-semibold text-sm w-1/3 text-end">
-                  {{ Number(allDataDetail.discount_amount).toLocaleString("id-ID") }}
+                  {{ Number(allDataDetail?.discount_amount).toLocaleString("id-ID") }}
                 </div>
               </div>
             </div>
           </div>
           <div>
-            <div class="px-4 flex items-center mb-2">
-              <div class="font-bold text-md w-2/3">Total Payment</div>
-              <div class="font-300 text-md w-1/10"></div>
-              <div class="font-bold text-md w-1/3 text-end text-[#E68027]">
+            <div class="px-4 flex items-center mb-2 justify-between">
+              <div class="font-bold text-md">Total Payment</div>
+              <div class="font-bold text-md text-end text-[#E68027]">
                 {{ Number(totalPrice).toLocaleString("id-ID", { style: "currency", currency: "IDR" }) }}
               </div>
             </div>
           </div>
           <div class="flex w-full justify-between p-4">
-            <div class="flex p-2 mr-8 rounded-2xl bg-primary w-full justify-center items-center">
-              <div class="text-2xl text-white font-500">Save Receipt</div>
+            <div
+              @click="router.push('/home')"
+              class="flex p-2 mr-8 rounded-2xl bg-primary w-full justify-center items-center"
+            >
+              <div class="text-xl text-white font-500">Back to Home</div>
             </div>
           </div>
         </div>
@@ -106,24 +113,27 @@ import { useProdukStore } from "../store/modules/product";
 import { useRoute, useRouter } from "vue-router";
 import iconnative from "../icon/index.vue";
 
-const receiptStore = useProdukStore();
+const produkStore = useProdukStore();
 const route = useRoute();
 const router = useRouter();
 const allDataDetail = ref<Items | null>(null);
 const dataDetail = ref<Item[]>([]);
 interface Item {
-  price: string;
+  price: any;
   total: string;
   amount: number;
-  quantity: string;
+  quantity: any;
+  discount_amount?: any;
   products: {
     name: string;
   };
 }
 interface Items {
   tax_amount: string;
-  delivery_cost: string;
-  discount_amount: string;
+  delivery_cost?: any;
+  discount_amount?: any;
+  other_cost?: any;
+  vendors: any;
   date: string;
   description: string;
 }
@@ -132,7 +142,7 @@ const totalPrice = computed(() => {
 
   if (dataDetail.value.length > 0 && allDataDetail.value) {
     const totalPrices = dataDetail.value.reduce((acc, item) => {
-      return acc + parseFloat(item.price);
+      return acc + parseFloat(item.price) * item.quantity;
     }, 0);
 
     totalPriceValue =
@@ -144,9 +154,29 @@ const totalPrice = computed(() => {
 
   return totalPriceValue;
 });
+
+const totalSubQty = computed(() => {
+  if (dataDetail.value.length > 0 && allDataDetail.value) {
+    const totalPrices = dataDetail.value.reduce((acc, item) => {
+      return acc + parseFloat(item.quantity);
+    }, 0);
+
+    return totalPrices;
+  }
+});
+
+const totalSubPrice = computed(() => {
+  if (dataDetail.value.length > 0 && allDataDetail.value) {
+    const totalPrices = dataDetail.value.reduce((acc, item) => {
+      return acc + parseFloat(item.price) * item.quantity;
+    }, 0);
+
+    return totalPrices;
+  }
+});
 const getReceipt = async (id: any) => {
   try {
-    const res = await receiptStore.getHistoryByid(id);
+    const res = await produkStore.getHistoryByid(id);
 
     dataDetail.value = res.data.order_details as Item[];
     allDataDetail.value = res.data as Items;
