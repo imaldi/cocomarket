@@ -5,36 +5,38 @@
   >
     <div>
       <div class="d-flex flex-column align-center text-center justify-content-center px-2">
-        <img
-          src="../../assets/icon/icon-popup.svg"
-          style="width: 120px; cursor: pointer"
-          class="w-full justify-end rounded"
-          alt=""
+        <iconnative
+          :icon="message == 'Delivery has been Completed ?' ? 'icon-success' : 'mark'"
+          color="#E68027"
+          width="110"
+          height="110"
         />
-        <p class="text-message">
+
+        <p class="font-semibold text-2xl text-black">
           {{ message }}
         </p>
+        <p class="text-gray">
+          {{ messageDetail }}
+        </p>
       </div>
-      <div class="d-flex flex-col flex justify-center mt-5">
-        <button
+      <div class="flex justify-center w-full">
+        <div
+          v-if="message !== 'Delivery has been Completed ?'"
           @click="$emit('cancel', true)"
-          size="lg"
-          type="button"
+          class="border-dotted border-2 border-danger text-danger w-1/2 text-center rounded-lg my-auto p-2 mr-2"
           :loading="loading"
-          style="background-color: #fff; color: #7acdd6; border: 2px solid #7acdd6"
         >
           No
-        </button>
-        <button
+        </div>
+        <div
           @click="$emit('confirm', true)"
-          class="mt-2"
-          type="submit"
-          size="lg"
+          :class="message == 'Delivery has been Completed ?' ? 'w-full' : 'w-1/2'"
+          class="border-solid bg-primary text-white border-2 border-primary text-center rounded-lg my-auto p-2"
           :loading="loading"
-          style="background-color: #7acdd6; color: #fff; border: 2px solid #7acdd6"
         >
-          Yes
-        </button>
+          {{ message == "Delivery has been Completed ?" ? "Okey" : "Yes" }}
+        </div>
+        <!-- <button @click="$emit('confirm', true)" class="mt-2 bg-primary w-1/2" type="submit" :loading="loading">Yes</button> -->
       </div>
     </div>
   </el-dialog>
@@ -42,8 +44,14 @@
 
 <script setup lang="ts">
 import { computed } from "vue";
+import iconnative from "../../icon/index.vue";
 
 const props = defineProps({
+  messageDetail: {
+    type: String,
+    require: true,
+    prop: String,
+  },
   message: {
     type: String,
     require: true,
@@ -59,7 +67,6 @@ const props = defineProps({
     require: false,
   },
 });
-console.log(props);
 const screenWidth = computed(() => screen.width);
 const dialogWidth = computed(() => (screenWidth.value > 768 ? "30%" : "80%"));
 </script>

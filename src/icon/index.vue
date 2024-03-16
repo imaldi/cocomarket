@@ -444,6 +444,12 @@
     <div v-else-if="icon == 'info-b-white'">
       <img :src="infoBWhite" :width="width" :height="height" alt="infoBWhite" />
     </div>
+    <div v-else-if="icon == 'mark'">
+      <img :src="mark" :width="width" :height="height" alt="mark" />
+    </div>
+    <div v-else-if="icon == 'icon-success'">
+      <img :src="iconSuccess" :width="width" :height="height" alt="iconSuccess" />
+    </div>
   </div>
 </template>
 
@@ -596,6 +602,8 @@ import lineBlue from "../assets/icon/line-blue.svg";
 import circleDotBlue from "../assets/icon/circle-dot-blue.svg";
 import outlineLine from "../assets/icon/outline-line.svg";
 import infoBWhite from "../assets/icon/info-b-white.svg";
+import mark from "../assets/icon/mark.svg";
+import iconSuccess from "../assets/icon/icon-success.svg";
 
 export default {
   props: {
@@ -762,6 +770,8 @@ export default {
       circleDotBlue,
       outlineLine,
       infoBWhite,
+      mark,
+      iconSuccess,
     };
   },
 };

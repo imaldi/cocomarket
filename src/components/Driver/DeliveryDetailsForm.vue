@@ -39,13 +39,6 @@
                 </div>
 
                 <div class="flex">
-                  <div
-                    v-if="!haveTrack"
-                    class="p2 bg-white rounded-full text-[8px] font-bold border border-solid border-#E68027 mr-2"
-                    @click="createTrack"
-                  >
-                    <p>Create Track</p>
-                  </div>
                   <div class="p2 bg-white rounded-full text-[8px] font-bold border border-solid border-#E68027 mr-2">
                     <iconnative icon="chat-single" color="#E68027" width="24" height="20" />
                   </div>
@@ -141,50 +134,64 @@
           </div>
 
           <div class="flex my-6 px-6">
-            <div @click="selectItem" class="flex p-2 rounded-2xl bg-primary w-full justify-center">
+            <div v-if="!haveTrack" @click="confirmStart" class="flex p-2 rounded-2xl bg-primary w-full justify-center">
               <div class="text-base font-semibold text-white">Start Delivery</div>
+            </div>
+            <div v-else @click="confirmComplete" class="flex p-2 rounded-2xl bg-primary w-full justify-center">
+              <div class="text-base font-semibold text-white">Complete delivery</div>
             </div>
 
             <!-- <div
-                class="flex rounded-2xl bg-white w-full items-center justify-center border border-solid border-[#32BA7C] rounded-xl"
-                >
-                    <div class="mr-2 pt-2">
-                        <iconnative
-                            icon="circle-checklist"
-                            color="#000"
-                            width="28"
-
-                        />
-                    </div>
-                    <div class="text-base font-semibold text-#32BA7C">Delivery has been Compeleted</div>
-                </div> -->
+              class="flex rounded-2xl bg-white w-full items-center justify-center border border-solid border-[#32BA7C] rounded-xl"
+            >
+              <div class="mr-2 pt-2">
+                <iconnative icon="circle-checklist" color="#000" width="28" />
+              </div>
+              <div class="text-base font-semibold text-#32BA7C">Delivery has been Compeleted</div>
+            </div> -->
 
             <!-- <div
-                class="flex rounded-2xl bg-white w-full items-center justify-center border border-solid border-[#F44336] rounded-xl"
-                >
-                    <div class="mr-2 pt-2">
-                        <iconnative
-                            icon="circle-close"
-                            color="#000"
-                            width="28"
-
-                        />
-                    </div>
-                    <div class="text-base font-semibold text-#F44336">You did not complete this delivery</div>
-                </div> -->
+              class="flex rounded-2xl bg-white w-full items-center justify-center border border-solid border-[#F44336] rounded-xl"
+            >
+              <div class="mr-2 pt-2">
+                <iconnative icon="circle-close" color="#000" width="28" />
+              </div>
+              <div class="text-base font-semibold text-#F44336">You did not complete this delivery</div>
+            </div> -->
           </div>
         </div>
       </div>
     </div>
-    <dialog-confirm
+
+    <dialog-confirm-driver
       v-model="deleteDialog"
       :message="`Are you sure you want to start Delivery?`"
+      :messageDetail="`make sure the groceries are complete and as per with those in the detail!`"
       @cancel="deleteDialog = false"
-      @confirm="logout"
+      @confirm="createTrack"
     >
-    </dialog-confirm>
+    </dialog-confirm-driver>
+
+    <dialog-confirm-driver
+      v-model="completeDialog"
+      :message="`Are you sure want to complete delivery ?`"
+      :messageDetail="`make sure the delivered gorceries are complete and payment has been made`"
+      @cancel="completeDialog = false"
+      @confirm="(completeDialog = false), (successCompleteDialog = true)"
+    >
+    </dialog-confirm-driver>
+
+    <dialog-confirm-driver
+      v-model="successCompleteDialog"
+      :message="`Delivery has been Completed ?`"
+      :messageDetail="`You successfully delivered the order to the destination`"
+      @cancel="successCompleteDialog = false"
+      @confirm="completeTrack"
+    >
+    </dialog-confirm-driver>
   </div>
 </template>
+
 <script setup lang="ts">
 import { onMounted, ref, watch, onBeforeUnmount } from "vue";
 import iconnative from "../../icon/index.vue";
@@ -194,8 +201,8 @@ import axios from "axios";
 import L, { LatLngExpression } from "leaflet";
 import { dayjs } from "element-plus";
 import { decode } from "@mapbox/polyline";
-import DialogConfirm from "../../components/dialog/ConfirmDialog.vue";
-
+import DialogConfirmDriver from "../../components/dialog/ConfirmDialogDriver.vue";
+import { ElNotification } from "element-plus";
 
 interface OrderModel {
   orderId: string | undefined;
@@ -234,6 +241,24 @@ const orderDetails = ref<OrderModel>({
   polyline: undefined,
   time: undefined,
 });
+
+const startDialog = ref(false);
+
+const confirmStart = () => {
+  startDialog.value = true;
+};
+
+const completeDialog = ref(false);
+
+const confirmComplete = () => {
+  completeDialog.value = true;
+};
+
+const successCompleteDialog = ref(false);
+
+const confirmSuccessComplete = () => {
+  successCompleteDialog.value = true;
+};
 
 watch(currLocation, () => {
   if (intervalFunction !== null) updateTrack();
@@ -403,6 +428,32 @@ const createTrack = async () => {
   }
 };
 
+const completeTrack = async () => {
+  try {
+    const body = {
+      polyline:
+        "ow}E_b|yRDJ@PxBItA?~DHnBDhK`@lEJnAF`@Dn@Rj@Vr@b@dAfAh@~@Zr@x@zCvAdEnAbDd@`Ah@z@pA~A_@XoDpDMLGPeAtEc@|AI~@ATBb@X~AZjB`@nBdDrQb@hBV|ANl@Fn@@p@Eh@G^K`@q@xAmBdDY`@aD}Ae@WkBq@oC}A}As@_@MKTIBTBJNeAnB",
+      lat: "1.140572",
+      long: "104.02341",
+      time: 486,
+      distance: 3291,
+      order_id: "9b925357-84ef-428a-a1a9-ee8f9309336b",
+    };
+
+    await apiClient.post(`api/orders/complete${body.order_id}`, body);
+    ElNotification({
+      title: "Completed Delivery",
+      type: "success",
+      duration: 2000,
+      customClass: "errorNotif",
+      message: "Success Delivery !!!",
+    });
+  } catch (err) {
+    console.log(err);
+  } finally {
+  }
+};
+
 const updateTrack = async () => {
   try {
     const currentLocation = currLocation.value as Array<number>;
@@ -418,12 +469,6 @@ const updateTrack = async () => {
   } finally {
     maps = updateMap();
   }
-};
-
-const deleteDialog = ref(false);
-
-const selectItem = () => {
-  deleteDialog.value = true;
 };
 </script>
 
