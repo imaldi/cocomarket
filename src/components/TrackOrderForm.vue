@@ -17,34 +17,42 @@
       </div>
 
       <div class="relative">
-        <div class="fixed w-full h-[54vh] bg-white rounded-lg shadow-md" style="bottom: 0">
+        <div class="fixed w-full h-[54vh] bg-white rounded-lg shadow-md overflow-scroll" style="bottom: 0">
           <div class="flex justify-center">
             <div class="bg-gray rounded-full w-20 h-1 m-2"></div>
           </div>
 
           <div class="mt-2 px-10">
             <div>
-              <div class="flex font-300 justify-center text-gray">
-                Estimated Arrival Time
-              </div>
+              <div class="flex font-300 justify-center text-gray">Estimated Arrival Time</div>
               <div class="flex font-bold justify-center text-xl">
-                {{ dayjs().add(orderDetails.time || 0, 's').format("HH:mm") }}
-                - {{ dayjs().add((orderDetails.time || 0) + 300, 's').format("HH:mm") }}
+                {{
+                  dayjs()
+                    .add(orderDetails.time || 0, "s")
+                    .format("HH:mm")
+                }}
+                -
+                {{
+                  dayjs()
+                    .add((orderDetails.time || 0) + 300, "s")
+                    .format("HH:mm")
+                }}
               </div>
             </div>
 
             <div>
               <div class="flex items-center justify-between pb-4 my-4">
-                <img class="border border-solid border-gray rounded-full bg-white p-2" src="../assets/img/gerobak.png"
-                  alt="Cocomaret Logo" width="28" height="28" />
+                <img
+                  class="border border-solid border-gray rounded-full bg-white p-2"
+                  src="../assets/img/gerobak.png"
+                  alt="Cocomaret Logo"
+                  width="28"
+                  height="28"
+                />
 
                 <div class="flex flex-col justify-center mr-2">
-                  <div class="font-bold text-md tracking-tighter">
-                    Bakso Solo Kang Em...
-                  </div>
-                  <div class="font-normal text-gray text-sm">
-                    Pedagang Gerobak
-                  </div>
+                  <div class="font-bold text-md tracking-tighter">{{ dataOrder.vendors?.name }}</div>
+                  <div class="font-normal text-gray text-sm">{{ dataOrder.vendors?.description }}</div>
                 </div>
 
                 <div class="flex">
@@ -64,9 +72,7 @@
                   <div class="mr-2">
                     <iconnative icon="circle-dot" color="#E68027" width="24" height="20" />
                   </div>
-                  <div class="text-xs font-semibold">
-                    Jl. Raja Isa No.21, Batam Center, Keca...
-                  </div>
+                  <div class="text-xs font-semibold">{{ dataOrder.vendors?.address }}</div>
                 </div>
 
                 <div class="flex items-center">
@@ -80,9 +86,7 @@
                   <div>
                     <iconnative icon="location-orange" color="#E68027" width="24" height="20" />
                   </div>
-                  <div class="text-xs font-semibold">
-                    Echa Hause - Jl. Raya Batam Centre Blo...
-                  </div>
+                  <div class="text-xs font-semibold">{{ dataOrder.address?.address }}</div>
                 </div>
               </div>
             </div>
@@ -93,40 +97,23 @@
                   <div class="font-bold text-sm">Product Details</div>
                 </div>
 
-                <div class="py-2">
+                <div v-for="(item, index) in dataOrder.order_details" :key="index" class="py-2">
                   <div class="flex py-2">
                     <div class="w-1/4">
                       <img class="rounded-xl" src="../assets/img/bakso2.png" alt="" width="60" />
                     </div>
                     <div class="w-3/4 flex flex-col justify-around">
-                      <div class="text-sm font-bold">Bakso Campur Enak</div>
+                      <div class="text-sm font-bold">{{ item.products.name }}</div>
                       <div class="flex justify-between">
-                        <div class="text-xs text-gray">x1</div>
-                        <div class="text-xs font-semibold">Rp.25.000</div>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="flex py-2">
-                    <div class="w-1/4">
-                      <img class="rounded-xl" src="../assets/img/teh.png" alt="" width="60" />
-                    </div>
-                    <div class="w-3/4 flex flex-col justify-around">
-                      <div class="text-sm font-bold">Teh Obengk</div>
-                      <div class="flex justify-between">
-                        <div class="text-xs text-gray">x1</div>
-                        <div class="text-xs font-semibold">Rp.7.000</div>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="flex py-2">
-                    <div class="w-1/4">
-                      <img class="rounded-xl" src="../assets/img/meat 4.png" alt="" width="60" />
-                    </div>
-                    <div class="w-3/4 flex flex-col justify-around">
-                      <div class="text-sm font-bold">Mie Ayam</div>
-                      <div class="flex justify-between">
-                        <div class="text-xs text-gray">x1</div>
-                        <div class="text-xs font-semibold">Rp.28.000</div>
+                        <div class="text-xs text-gray">x {{ item.quantity }}</div>
+                        <div class="text-xs font-semibold">
+                          {{
+                            Number(item.products.price).toLocaleString("id-ID", {
+                              style: "currency",
+                              currency: "IDR",
+                            })
+                          }}
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -137,7 +124,9 @@
             <div>
               <div class="flex justify-between my-4 text-sm font-semibold px-4">
                 <div>Total Payment</div>
-                <div class="font-bold text-[#E68027]">72.900</div>
+                <div class="font-bold text-[#E68027]">
+                  {{ totalPrice }}
+                </div>
               </div>
               <div class="flex w-full justify-between my-6">
                 <div class="flex p-2 rounded-2xl bg-primary w-full justify-center">
@@ -158,57 +147,98 @@
   </div>
 </template>
 <script setup lang="ts">
-import { onMounted, ref } from "vue";
+import { onMounted, ref, computed } from "vue";
 import { useRoute, useRouter } from "vue-router";
-import Map from "./mapsTracker.vue"
+import Map from "./mapsTracker.vue";
 import { useTrackingStore } from "../store/modules/tracking";
+import { useProdukStore } from "../store/modules/product";
 import iconnative from "../icon/index.vue";
 import L, { LatLngExpression } from "leaflet";
 import apiClient from "../store/apiClient";
-import { decode } from '@mapbox/polyline';
+import { decode } from "@mapbox/polyline";
 import { dayjs } from "element-plus";
 
+const produkStore = useProdukStore();
+const dataOrder = ref<Item[]>([]);
+
+interface Item {
+  price: any;
+  total: string;
+  amount: number;
+  quantity: any;
+  discount_amount?: any;
+  products: {
+    name: string;
+  };
+}
+
 interface GetTrackResponse {
-  order_id?: string | undefined
-  orderId: string
-  lat: number
-  long: number
-  polyline: string
-  time: number
-  distance: number
+  order_id?: string | undefined;
+  orderId: string;
+  lat: number;
+  long: number;
+  polyline: string;
+  time: number;
+  distance: number;
 }
 
 interface OrderModel {
-  orderId: string | undefined
-  lat: number | undefined
-  long: number | undefined
-  time: number | undefined
-  distance: number | undefined
-  polyline: LatLngExpression[] | undefined
+  orderId: string | undefined;
+  lat: number | undefined;
+  long: number | undefined;
+  time: number | undefined;
+  distance: number | undefined;
+  polyline: LatLngExpression[] | undefined;
 }
 
+const totalPrice = computed(() => {
+  const order = dataOrder.value;
+  const totalPriceValue = calculateTotalPrice(order);
+  return formatCurrency(totalPriceValue);
+});
+
+const calculateTotalPrice = (order: any) => {
+  let totalPrice = 0;
+
+  if (order?.order_details !== undefined) {
+    order.order_details.forEach((item: any) => {
+      totalPrice += parseFloat(item.price) * item.quantity;
+    });
+  }
+
+  totalPrice += parseFloat(order.delivery_cost) + parseFloat(order.other_cost) - parseFloat(order.discount_amount);
+
+  return totalPrice;
+};
+
+const formatCurrency = (amount: any) => {
+  return Number(amount).toLocaleString("id-ID", { style: "currency", currency: "IDR" });
+};
+
 onMounted(async () => {
-  await fetchData()
-  getListAddress();
+  await fetchData();
+  getDetailOrder(route.params.id);
 });
 
 const router = useRouter();
 const route = useRoute();
-const { id: orderId } = route.params
+const { id: orderId } = route.params;
 const trackingStore = useTrackingStore();
-const currLocation = ref<LatLngExpression>([0, 0])
+const currLocation = ref<LatLngExpression>([0, 0]);
 const orderDetails = ref<OrderModel>({
   orderId: undefined,
   distance: undefined,
   lat: undefined,
   long: undefined,
   polyline: undefined,
-  time: undefined
-})
+  time: undefined,
+});
 
-const getListAddress = async () => {
+const getDetailOrder = async (id: any) => {
   try {
-    // await trackingStore.allTrackingByOrderId();
+    const res = await produkStore.getHistoryByid(id);
+
+    dataOrder.value = res.data as Item[];
   } catch (error) {
     console.log(error);
   } finally {
@@ -217,17 +247,19 @@ const getListAddress = async () => {
 
 const fetchData = async () => {
   try {
-    const responseApi: GetTrackResponse | Array<any> = await apiClient.get(`api/orders/tracking/${orderId}`) as GetTrackResponse
+    const responseApi: GetTrackResponse | Array<any> = (await apiClient.get(
+      `api/orders/tracking/${orderId}`
+    )) as GetTrackResponse;
     if (!Array.isArray(responseApi)) {
-      currLocation.value = [responseApi.lat, responseApi.long]
+      currLocation.value = [responseApi.lat, responseApi.long];
       orderDetails.value = {
         distance: responseApi.distance,
         lat: responseApi.lat,
         long: responseApi.long,
         orderId: orderId as string,
         polyline: decode(responseApi.polyline),
-        time: responseApi.time
-      }
+        time: responseApi.time,
+      };
     } else {
       orderDetails.value = {
         distance: 0,
@@ -235,13 +267,13 @@ const fetchData = async () => {
         long: 0,
         orderId: orderId as string,
         polyline: undefined,
-        time: 3600
-      }
+        time: 3600,
+      };
     }
   } catch (err) {
-    alert(`Error Loading Track Order Form with Code : ${err}`)
+    alert(`Error Loading Track Order Form with Code : ${err}`);
   }
-}
+};
 </script>
 
 <style scoped lang="scss">
@@ -253,4 +285,5 @@ const fetchData = async () => {
   height: 100vh;
   color: #000000;
 }
-</style>./mapsTracker.vue
+</style>
+./mapsTracker.vue

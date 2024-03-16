@@ -89,7 +89,6 @@
           <div>
             <div class="px-4 flex items-center mb-2 justify-between">
               <div class="font-bold text-md">Total Payment</div>
-              <!-- <div class="font-300 text-md w-1/10"></div> -->
               <div class="font-bold text-md text-end text-[#E68027]">
                 {{ Number(totalPrice).toLocaleString("id-ID", { style: "currency", currency: "IDR" }) }}
               </div>

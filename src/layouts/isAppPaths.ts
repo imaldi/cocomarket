@@ -33,7 +33,7 @@ export const isAppPaths = (routerPath: string, id: string) => {
     '/changeprofile',
     '/orderfreshfood',
     '/orderCocoStore',
-    '/trackOrder',
+    `/trackOrder/${id}`,
     '/reviewOrderTrack',
     '/orderCompleted',
     '/reviewOrderList',
