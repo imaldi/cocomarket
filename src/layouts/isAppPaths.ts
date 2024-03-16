@@ -1,0 +1,88 @@
+export const isAppPaths = (routerPath: string, id: string) => {
+  const PATHS = [
+    '/',
+    '/register',
+    '/splashscreen',
+    '/splashscreen1',
+    '/splashscreen2',
+    '/splashscreen3',
+    '/splashscreen4',
+    '/completeyourprofile',
+    '/newpassword',
+    '/verifycode',
+    '/allowlocationaccess',
+    '/findfreshfood',
+    `/freshfooddetail/${id}`,
+    '/addfreshfood',
+    `/configaddfreshfood/${id}`,
+    '/checkout',
+    '/paymentmethod',
+    '/coupon',
+    '/forgotpassword',
+    '/resetPassword',
+    '/checkout',
+    '/gmaps',
+    '/reviewsummary',
+    '/cocolingmitra',
+    '/cart',
+    '/coupondetail',
+    '/revieworder',
+    '/pedagangdetail',
+    '/rating',
+    '/changepassword',
+    '/changeprofile',
+    '/orderfreshfood',
+    '/orderCocoStore',
+    '/trackOrder',
+    '/reviewOrderTrack',
+    '/orderCompleted',
+    '/reviewOrderList',
+    '/myaddress',
+    '/addaddress',
+    '/chooseprovince',
+    '/choosecity',
+    '/choosecdistrict',
+    '/chooseczipcode',
+    '/storling',
+    '/revieworder2',
+    '/receipt',
+    '/cocopay',
+    '/cocopayselectmethod',
+    `/detailcategory/${id}`,
+    `/ordersuccess/${id}`,
+    '/notification',
+    `/receipt/${id}`,
+    `/detailcategory/${id}`,
+    '/chatinside',
+    '/driver/login',
+    '/driver/home',
+    '/driver/delivery',
+    `/driver/deliverydetails/${id}`,
+    '/driver/changepassword',
+    '/driver/changeprofile',
+    '/mitra/login',
+    '/mitra/splashscreen',
+    '/mitra/verifycode',
+    '/mitra/completeyourstoreprofile',
+    '/mitra/businessdataverified',
+    '/mitra/successfulverification',
+    '/mitra/completestoredata',
+    '/mitra/storeprofile',
+    '/mitra/openinghours',
+    '/mitra/changeschedule',
+    '/mitra/storemenu',
+    '/mitra/category',
+  ]
+  const DYNAMIC_PATHS = ['/coupondetail']
+  const is_paths = PATHS.includes(routerPath)
+  const is_dynamic_path = DYNAMIC_PATHS.find((p) => {
+    const split = routerPath.split('/')
+    if (split.length > 2) {
+      const the_path = `/${split[1]}`
+      return the_path === p
+    }
+    return false
+  })
+
+  return !is_paths && !is_dynamic_path
+}
