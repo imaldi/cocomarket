@@ -27,16 +27,16 @@
               <div class="flex font-300 justify-center text-gray">Estimated Arrival Time</div>
               <div class="flex font-bold justify-center text-xl">
                 {{
-                  dayjs()
-                    .add(orderDetails.time || 0, "s")
-                    .format("HH:mm")
-                }}
+          dayjs()
+            .add(orderDetails.time || 0, "s")
+            .format("HH:mm")
+        }}
                 -
                 {{
-                  dayjs()
-                    .add((orderDetails.time || 0) + 300, "s")
-                    .format("HH:mm")
-                }}
+            dayjs()
+              .add((orderDetails.time || 0) + 300, "s")
+              .format("HH:mm")
+          }}
               </div>
             </div>
 
@@ -108,10 +108,10 @@
                         <div class="text-xs text-gray">x{{ item.quantity }}</div>
                         <div class="text-xs font-semibold">
                           {{
-                            Number(item.products.price).toLocaleString("id-ID", {
-                              style: "currency",
-                              currency: "IDR",
-                            })
+          Number(item.products.price).toLocaleString("id-ID", {
+            style: "currency",
+            currency: "IDR",
+          })
                           }}
                         </div>
                       </div>
@@ -158,9 +158,6 @@ import apiClient from "../store/apiClient";
 import { decode } from "@mapbox/polyline";
 import { dayjs } from "element-plus";
 
-const produkStore = useProdukStore();
-const dataOrder = ref<Item[]>([]);
-
 interface Item {
   price: any;
   total: string;
@@ -190,6 +187,97 @@ interface OrderModel {
   distance: number | undefined;
   polyline: LatLngExpression[] | undefined;
 }
+
+interface AddressModel {
+  "id": string
+  "name": string
+  "latitude": number
+  "longitude": number
+  "address": string
+  "user_id": string
+  "default": number
+  "is_active": number
+  "created_at": Date
+  "updated_at": Date
+  "district": string
+  "city": string
+  "deleted_at": string
+  "google_place_id": string
+}
+
+interface OrderDetailsModel {
+  "id": string
+  "order_id": string
+  "price": number
+  "product_id": string
+  "description": string
+  "note": string
+  "rating": any
+  "quantity": number
+  "products": {
+    "id": string
+    "name": string
+    "subtitle": string
+    "price": number
+    "description": string
+    "categories_id": string
+    "is_active": number
+    "image": string
+  }
+}
+
+interface VendorModel {
+  "id": string
+  "name": string
+  "description": string
+  "phone": number
+  "status": number
+  "deleted_at": null,
+  "latitude": number
+  "longitude": number
+  "address": string
+  "google_place_id": string
+}
+
+interface OrderResponseModel {
+  id: string
+  code: string
+  date: Date
+  status: string
+  description: string
+  user_id: string
+  rating: any
+  freshshop_vendor_id: string
+  user_coupon_id: number
+  delivery_cost: number
+  discount_amount: number
+  tax_amount: number
+  payment_method: string
+  note: string
+  to_address_id: string
+  deleted_at: any
+  other_cost: number
+  users: any
+  address: AddressModel
+  order_details: OrderDetailsModel
+  vendors: VendorModel
+}
+
+const router = useRouter();
+const route = useRoute();
+const produkStore = useProdukStore();
+const dataOrder = ref<OrderResponseModel>([]);
+const trackingStore = useTrackingStore();
+const { id: orderId } = route.params;
+const currLocation = ref<LatLngExpression>([0, 0]);
+const orderDetails = ref<OrderModel>({
+  orderId: undefined,
+  distance: undefined,
+  lat: undefined,
+  long: undefined,
+  polyline: undefined,
+  time: undefined,
+});
 
 const totalPrice = computed(() => {
   const order = dataOrder.value;
@@ -237,9 +325,8 @@ const orderDetails = ref<OrderModel>({
 
 const getDetailOrder = async (id: any) => {
   try {
-    const res = await produkStore.getHistoryByid(id);
-
-    dataOrder.value = res.data as Item[];
+    const { data } = await produkStore.getHistoryByid(id);
+    dataOrder.value = data as OrderResponseModel;
   } catch (error) {
     console.log(error);
   } finally {
