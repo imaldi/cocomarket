@@ -257,6 +257,14 @@
         </div>
       </div>
     </div>
+
+    <dialog-confirm
+      v-model="addressRequiredDialog"
+      :message="`Address not found, Please add address!`"
+      @cancel="addressRequiredDialog = false"
+      @confirm="router.push('/addaddress?checkout=true')"
+    >
+    </dialog-confirm>
   </div>
 </template>
 
@@ -265,6 +273,7 @@ import { useRouter } from "vue-router";
 import { useCartStore } from "../store/modules/cart";
 import { ref, onMounted, computed } from "vue";
 // import { useAddressStore } from "../store/modules/address";
+import DialogConfirm from "../components/dialog/ConfirmDialog.vue";
 import iconnative from "../icon/index.vue";
 
 const router = useRouter();
@@ -286,6 +295,7 @@ interface ItemsTotal {
   products: { name: string; quantity: number; image: any; subtitle: string; price: string }[];
 }
 
+const addressRequiredDialog = ref(false);
 const total = ref(1);
 const shippingCost = ref(5000);
 const otherCost = ref(2000);
@@ -322,9 +332,12 @@ const getListCart = async () => {
     totalItem.value = res.data as ItemsTotal;
     otherCost.value = totalItem.value.others_cost;
     shippingCost.value = totalItem.value.shipping_cost;
+
     namesWithoutNumbers.value = totalItem.value.products.map((item) => item.name.replace(/\d+/g, ""));
-  } catch (error) {
-    console.log(error);
+  } catch (error: any) {
+    if ((error.response.data.message = "Address not found, Please add address!")) {
+      addressRequiredDialog.value = true;
+    }
   } finally {
   }
 };

@@ -1,22 +1,27 @@
 <template>
   <el-dialog
-    style="height: 384px; justify-content: center; align-items: center; border-radius: 20px; margin-top: 14rem"
+    :style="message !== 'Address not found, Please add address!' ? 'height: 384px;' : 'height: 324px;'"
+    style="justify-content: center; align-items: center; border-radius: 20px; margin-top: 14rem"
     :width="width || dialogWidth"
   >
     <div>
       <div class="d-flex flex-column align-center text-center justify-content-center px-2">
-        <img
-          src="../../assets/icon/icon-popup.svg"
-          style="width: 120px; cursor: pointer"
-          class="w-full justify-end rounded"
-          alt=""
+        <iconnative
+          :icon="message !== 'Address not found, Please add address!' ? 'icon-popup' : 'mark'"
+          color="#E68027"
+          width="110"
+          height="110"
         />
         <p class="text-message">
           {{ message }}
         </p>
       </div>
-      <div class="d-flex flex-col flex justify-center mt-5">
+      <div
+        :class="message !== 'Address not found, Please add address!' ? 'mt-5' : 'mt-10'"
+        class="d-flex flex-col flex justify-center"
+      >
         <button
+          v-if="message !== 'Address not found, Please add address!'"
           @click="$emit('cancel', true)"
           size="lg"
           type="button"
@@ -31,7 +36,11 @@
           type="submit"
           size="lg"
           :loading="loading"
-          style="background-color: #7acdd6; color: #fff; border: 2px solid #7acdd6"
+          :style="
+            message !== 'Address not found, Please add address!'
+              ? 'background-color: #7acdd6; color: #fff; border: 2px solid #7acdd6'
+              : 'background-color: #ff7675; color: #fff; border: 2px solid #7acdd6'
+          "
         >
           Yes
         </button>
@@ -42,6 +51,7 @@
 
 <script setup lang="ts">
 import { computed } from "vue";
+import iconnative from "../../icon/index.vue";
 
 const props = defineProps({
   message: {

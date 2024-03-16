@@ -2,7 +2,7 @@
   <div>
     <div class="container">
       <div class="bg-white shadow-md rounded-xl p-8">
-        <div class="flex" @click="router.push('profile')">
+        <div class="flex" @click="route?.query.checkout ? router.back() : router.push('profile')">
           <div>
             <iconnative icon="arrow-circle-black" color="#000" width="28" height="28" />
           </div>
@@ -98,7 +98,7 @@
 </template>
 
 <script setup lang="ts">
-import { useRouter } from "vue-router";
+import { useRouter, useRoute } from "vue-router";
 import { onMounted, ref } from "vue";
 import { useAddressStore } from "../store/modules/address";
 import { Form, Field } from "vee-validate";
@@ -112,6 +112,9 @@ const addressStore = useAddressStore();
 const namaJalan = ref("");
 const latitude = ref(0);
 const longitude = ref(0);
+
+const router = useRouter();
+const route = useRoute();
 
 const addAddress = async () => {
   if (!latitude || !longitude) {
@@ -140,7 +143,6 @@ const goToProfile = () => {
   router.push("/profile");
 };
 
-const router = useRouter();
 const autocompleteInput = ref<HTMLInputElement | null>(null);
 let map: typeof google.maps.Map | null = null;
 let marker: typeof google.maps.Marker | null = null;

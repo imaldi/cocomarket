@@ -450,6 +450,9 @@
     <div v-else-if="icon == 'icon-success'">
       <img :src="iconSuccess" :width="width" :height="height" alt="iconSuccess" />
     </div>
+     <div v-else-if="icon == 'icon-popup'">
+      <img :src="iconPopup" :width="width" :height="height" alt="iconPopup" />
+    </div>
   </div>
 </template>
 
@@ -604,6 +607,7 @@ import outlineLine from "../assets/icon/outline-line.svg";
 import infoBWhite from "../assets/icon/info-b-white.svg";
 import mark from "../assets/icon/mark.svg";
 import iconSuccess from "../assets/icon/icon-success.svg";
+import iconPopup from "../assets/icon/icon-popup.svg";
 
 export default {
   props: {
@@ -772,6 +776,7 @@ export default {
       infoBWhite,
       mark,
       iconSuccess,
+      iconPopup
     };
   },
 };

@@ -30,12 +30,12 @@ apiClient.interceptors.response.use(
   },
   (error) => {
     const isAuthenticated = localStorage.getItem("user_id");
+    
     if (isAuthenticated == null) return window.open("/", "_self");
+
     if (error.response && error.response.status === 401) {
       localStorage.clear();
       router.push("/");
-    } else {
-      router.push("./home");
     }
     return Promise.reject(error);
   }
