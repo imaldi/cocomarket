@@ -41,7 +41,7 @@
             </div>
 
             <div>
-              <div class="flex items-center justify-between pb-4 my-4">
+              <div class="flex items-center pb-4 my-4">
                 <img
                   class="border border-solid border-gray rounded-full bg-white p-2"
                   src="../assets/img/gerobak.png"
@@ -50,19 +50,19 @@
                   height="28"
                 />
 
-                <div class="flex flex-col justify-center mr-2">
+                <div class="flex flex-col justify-center mr-2 ml-4">
                   <div class="font-bold text-md tracking-tighter">{{ dataOrder.vendors?.name }}</div>
                   <div class="font-normal text-gray text-sm">{{ dataOrder.vendors?.description }}</div>
                 </div>
 
-                <div class="flex">
+                <!-- <div class="flex">
                   <div class="p2 bg-white rounded-full text-[8px] font-bold border border-solid border-#E68027 mr-2">
                     <iconnative icon="chat-single" color="#E68027" width="24" height="20" />
                   </div>
                   <div class="p-2 bg-white rounded-full text-[8px] font-bold border border-solid border-#E68027">
                     <iconnative icon="phone" color="#E68027" width="24" height="20" />
                   </div>
-                </div>
+                </div> -->
               </div>
             </div>
 
@@ -105,7 +105,7 @@
                     <div class="w-3/4 flex flex-col justify-around">
                       <div class="text-sm font-bold">{{ item.products.name }}</div>
                       <div class="flex justify-between">
-                        <div class="text-xs text-gray">x {{ item.quantity }}</div>
+                        <div class="text-xs text-gray">x{{ item.quantity }}</div>
                         <div class="text-xs font-semibold">
                           {{
                             Number(item.products.price).toLocaleString("id-ID", {
@@ -223,6 +223,7 @@ onMounted(async () => {
 const router = useRouter();
 const route = useRoute();
 const { id: orderId } = route.params;
+
 const trackingStore = useTrackingStore();
 const currLocation = ref<LatLngExpression>([0, 0]);
 const orderDetails = ref<OrderModel>({

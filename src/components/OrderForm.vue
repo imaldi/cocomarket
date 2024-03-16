@@ -154,7 +154,7 @@ interface Item {
 
 
 const tracking = async (id: any) => {
-  router.push(`trackOrder/${id.id}`);
+  router.push(`driver/deliverydetails/${id.id}`);
 };
 
 const calculateTotalPrice = (item: any, data: any) => {

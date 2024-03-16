@@ -24,23 +24,30 @@
 
           <div class="mt-2 px-10">
             <div>
-              <div class="flex items-center justify-between pb-4 my-4">
-                <img class="border border-solid border-gray rounded-full bg-white" src="../../assets/img/profile.svg"
-                  alt="Cocomaret Logo" width="38" height="38" />
+              <div class="flex items-center pb-4 my-4">
+                <img
+                  class="border border-solid border-gray rounded-full bg-white"
+                  :src="
+                    dataOrder.users?.profile_picture ? dataOrder.users?.profile_picture : '../../assets/img/profile.svg'
+                  "
+                  alt="Cocomaret Logo"
+                  width="38"
+                  height="38"
+                />
 
-                <div class="flex flex-col justify-start mr-20">
-                  <div class="font-bold text-md tracking-tighter">Mike Kasari</div>
-                  <div class="font-normal text-gray text-sm">Customers</div>
+                <div class="flex flex-col justify-start mr-20 ml-4">
+                  <div class="font-bold text-md tracking-tighter">{{ dataOrder.users?.name }}</div>
+                  <div class="font-normal text-gray text-sm">{{ dataOrder.users?.description }}</div>
                 </div>
 
-                <div class="flex">
+                <!-- <div class="flex">
                   <div class="p2 bg-white rounded-full text-[8px] font-bold border border-solid border-#E68027 mr-2">
                     <iconnative icon="chat-single" color="#E68027" width="24" height="20" />
                   </div>
                   <div class="p-2 bg-white rounded-full text-[8px] font-bold border border-solid border-#E68027">
                     <iconnative icon="phone" color="#E68027" width="24" height="20" />
                   </div>
-                </div>
+                </div> -->
               </div>
             </div>
 
@@ -50,7 +57,7 @@
                   <div class="mr-2">
                     <iconnative icon="circle-dot" color="#E68027" width="24" height="20" />
                   </div>
-                  <div class="text-xs font-semibold">Jl. Raja Isa No.21, Batam Center, Keca...</div>
+                  <div class="text-xs font-semibold">{{ dataOrder.address?.address }}</div>
                 </div>
 
                 <div class="flex items-center">
@@ -64,7 +71,7 @@
                   <div>
                     <iconnative icon="location-orange" color="#E68027" width="24" height="20" />
                   </div>
-                  <div class="text-xs font-semibold">Echa Hause - Jl. Raya Batam Centre Blo...</div>
+                  <div class="text-xs font-semibold">{{ dataOrder.vendors?.address }}</div>
                 </div>
               </div>
             </div>
@@ -75,40 +82,23 @@
                   <div class="font-bold text-sm">Product Details</div>
                 </div>
 
-                <div class="py-2">
+                <div v-for="(item, index) in dataOrder.order_details" :key="index" class="py-2">
                   <div class="flex py-2">
                     <div class="w-1/4">
                       <img class="rounded-xl" src="../../assets/img/bakso2.png" alt="" width="60" />
                     </div>
                     <div class="w-3/4 flex flex-col justify-around">
-                      <div class="text-sm font-bold">Bakso Campur Enak</div>
+                      <div class="text-sm font-bold">{{ item.products.name }}</div>
                       <div class="flex justify-between">
-                        <div class="text-xs text-gray">x1</div>
-                        <div class="text-xs font-semibold">Rp.25.000</div>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="flex py-2">
-                    <div class="w-1/4">
-                      <img class="rounded-xl" src="../../assets/img/teh.png" alt="" width="60" />
-                    </div>
-                    <div class="w-3/4 flex flex-col justify-around">
-                      <div class="text-sm font-bold">Teh Obengk</div>
-                      <div class="flex justify-between">
-                        <div class="text-xs text-gray">x1</div>
-                        <div class="text-xs font-semibold">Rp.7.000</div>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="flex py-2">
-                    <div class="w-1/4">
-                      <img class="rounded-xl" src="../../assets/img/meat 4.png" alt="" width="60" />
-                    </div>
-                    <div class="w-3/4 flex flex-col justify-around">
-                      <div class="text-sm font-bold">Mie Ayam</div>
-                      <div class="flex justify-between">
-                        <div class="text-xs text-gray">x1</div>
-                        <div class="text-xs font-semibold">Rp.28.000</div>
+                        <div class="text-xs text-gray">x{{ item.quantity }}</div>
+                        <div class="text-xs font-semibold">
+                          {{
+                            Number(item.products.price).toLocaleString("id-ID", {
+                              style: "currency",
+                              currency: "IDR",
+                            })
+                          }}
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -119,7 +109,7 @@
             <div>
               <div class="flex justify-between my-4 text-sm font-semibold px-4">
                 <div>Total Payment</div>
-                <div class="font-bold text-[#E68027]">72.900</div>
+                <div class="font-bold text-[#E68027]">{{ totalPrice }}</div>
               </div>
               <div class="flex justify-between my-4 text-sm font-semibold px-4">
                 <div>Payment Method</div>
@@ -129,8 +119,11 @@
           </div>
 
           <div class="flex my-6 px-6">
-            <div v-if="!haveTrack" @click="startDialogSwitch"
-              class="flex p-2 rounded-2xl bg-primary w-full justify-center">
+            <div
+              v-if="!haveTrack"
+              @click="startDialogSwitch"
+              class="flex p-2 rounded-2xl bg-primary w-full justify-center"
+            >
               <div class="text-base font-semibold text-white">Start Delivery</div>
             </div>
             <div v-else @click="confirmComplete" class="flex p-2 rounded-2xl bg-primary w-full justify-center">
@@ -159,25 +152,37 @@
       </div>
     </div>
 
-    <dialog-confirm-driver v-model="startDialog" :message="`Are you sure you want to start Delivery?`"
+    <dialog-confirm-driver
+      v-model="startDialog"
+      :message="`Are you sure you want to start Delivery?`"
       :messageDetail="`make sure the groceries are complete and as per with those in the detail!`"
-      @cancel="startDialog = false" @confirm="createTrack">
+      @cancel="startDialog = false"
+      @confirm="createTrack"
+    >
     </dialog-confirm-driver>
 
-    <dialog-confirm-driver v-model="completeDialog" :message="`Are you sure want to complete delivery ?`"
+    <dialog-confirm-driver
+      v-model="completeDialog"
+      :message="`Are you sure want to complete delivery ?`"
       :messageDetail="`make sure the delivered gorceries are complete and payment has been made`"
-      @cancel="completeDialog = false" @confirm="(completeDialog = false), (successCompleteDialog = true)">
+      @cancel="completeDialog = false"
+      @confirm="(completeDialog = false), (successCompleteDialog = true)"
+    >
     </dialog-confirm-driver>
 
-    <dialog-confirm-driver v-model="successCompleteDialog" :message="`Delivery has been Completed ?`"
-      :messageDetail="`You successfully delivered the order to the destination`" @cancel="successCompleteDialog = false"
-      @confirm="completeTrack">
+    <dialog-confirm-driver
+      v-model="successCompleteDialog"
+      :message="`Delivery has been Completed ?`"
+      :messageDetail="`You successfully delivered the order to the destination`"
+      @cancel="successCompleteDialog = false"
+      @confirm="completeTrack"
+    >
     </dialog-confirm-driver>
   </div>
 </template>
 
 <script setup lang="ts">
-import { onMounted, ref, watch, onBeforeUnmount } from "vue";
+import { onMounted, ref, watch, onBeforeUnmount, computed } from "vue";
 import iconnative from "../../icon/index.vue";
 import apiClient from "../../store/apiClient";
 import { useRoute, useRouter } from "vue-router";
@@ -187,6 +192,7 @@ import { dayjs } from "element-plus";
 import { decode } from "@mapbox/polyline";
 import DialogConfirmDriver from "../../components/dialog/ConfirmDialogDriver.vue";
 import { ElNotification } from "element-plus";
+import { useProdukStore } from "../../store/modules/product";
 
 interface OrderModel {
   orderId: string | undefined;
@@ -214,6 +220,7 @@ const router = useRoute();
 const routerUse = useRouter();
 
 const { id: orderId } = router.params;
+
 const haveTrack = ref<boolean | null>(null);
 const currLocation = ref<LatLngExpression>([0, 0]);
 const estimationTime = ref({ second: 0, minute: 0, hour: 0 });
@@ -227,6 +234,43 @@ const orderDetails = ref<OrderModel>({
 });
 
 const startDialog = ref(false);
+const produkStore = useProdukStore();
+const dataOrder = ref<Item[]>([]);
+
+interface Item {
+  price: any;
+  total: string;
+  amount: number;
+  quantity: any;
+  discount_amount?: any;
+  products: {
+    name: string;
+  };
+}
+
+const totalPrice = computed(() => {
+  const order = dataOrder.value;
+  const totalPriceValue = calculateTotalPrice(order);
+  return formatCurrency(totalPriceValue);
+});
+
+const calculateTotalPrice = (order: any) => {
+  let totalPrice = 0;
+
+  if (order?.order_details !== undefined) {
+    order.order_details.forEach((item: any) => {
+      totalPrice += parseFloat(item.price) * item.quantity;
+    });
+  }
+
+  totalPrice += parseFloat(order.delivery_cost) + parseFloat(order.other_cost) - parseFloat(order.discount_amount);
+
+  return totalPrice;
+};
+
+const formatCurrency = (amount: any) => {
+  return Number(amount).toLocaleString("id-ID", { style: "currency", currency: "IDR" });
+};
 
 const startDialogSwitch = () => {
   startDialog.value = !startDialog.value;
@@ -245,6 +289,22 @@ watch(currLocation, () => {
 });
 
 onMounted(async () => {
+  await fetchLocation();
+  getDetailOrder(router.params.id);
+});
+
+const getDetailOrder = async (id: any) => {
+  try {
+    const res = await produkStore.getHistoryByid(id);
+
+    dataOrder.value = res.data as Item[];
+  } catch (error) {
+    console.log(error);
+  } finally {
+  }
+};
+
+const fetchLocation = async () => {
   try {
     getPosition();
     const responseApi: GetTrackResponse | Array<any> = (await apiClient.get(
@@ -263,7 +323,7 @@ onMounted(async () => {
     maps = initializeMap();
     intervalFunction = setInterval(getPosition, 15000);
   }
-});
+};
 
 onBeforeUnmount(() => {
   clearInterval(intervalFunction);
@@ -323,14 +383,14 @@ const updateMap = () => {
     L.marker([1.1354661680715685, 104.0073575377535]).addTo(maps).bindPopup("Tujuan");
 
     if (orderDetail.polyline !== undefined) {
-      console.log('Add Polyline to the map')
+      console.log("Add Polyline to the map");
       polylines = L.polyline(orderDetail.polyline, { color: "blue" }).addTo(maps);
       // maps.fitBounds(polylines.getBounds());
       // Ubah isi Marker menjadi Latitude dan Longitude tujuan yang didapatkan dari API Server
       // Gunakan setIcon() untuk mengubah Icon dari Marker
     }
 
-    if (startDialog.value) startDialogSwitch()
+    if (startDialog.value) startDialogSwitch();
   }
 
   return maps;
@@ -440,7 +500,7 @@ const completeTrack = async () => {
 
 const updateTrack = async () => {
   try {
-    const orderDetail = { ...orderDetails.value }
+    const orderDetail = { ...orderDetails.value };
     if (orderDetail.orderId !== undefined) {
       const currentLocation = currLocation.value as Array<number>;
       const body = {
