@@ -117,7 +117,7 @@
                   <div class="flex justify-between">
                     <div class="text-xs text-gray">{{"x" + (item.quantity ?? "1")}}</div>
                     <!-- TODO format pricenya -->
-                    <div class="text-xs font-semibold">{{item.price ?? "Rp.25.000"}}</div>
+                    <div class="text-xs font-semibold">{{formatCurrency(parseInt(item.price)) ?? "Rp.25.000"}}</div>
                   </div>
                 </div>
               </div>
@@ -129,21 +129,21 @@
         <div class="px-4 mt-6">
           <div class="flex justify-between my-4 text-sm font-semibold">
             <div>Delivery Cost</div>
-            <div class="font-bold">{{singleItem?.delivery_cost ?? "15.000"}}</div>
+            <div class="font-bold">{{formatCurrency(parseInt(singleItem?.delivery_cost ?? "0"))}}</div>
           </div>
           <div class="flex justify-between my-4 text-sm font-semibold">
             <div>Tax</div>
-            <div class="font-bold">{{singleItem?.tax_amount ?? "2.000"}}</div>
+            <div class="font-bold">{{formatCurrency(parseInt(singleItem?.tax_amount ?? "0"))}}</div>
           </div>
           <div class="flex justify-between my-4 text-sm font-semibold">
             <div>Other costs</div>
-            <div class="font-bold">{{singleItem?.other_cost ?? "2.000"}}</div>
+            <div class="font-bold">{{formatCurrency(parseInt(singleItem?.other_cost ?? "0"))}}</div>
           </div>
 
           <div class="flex justify-between my-4 py-2 text-sm font-semibold border border-solid border-x-0 border-gray">
             <div>SubTotal</div>
             <!-- Totalkan semuanya disini -->
-            <div class="font-bold">{{sum ?? "60.000"}}</div>
+            <div class="font-bold">{{formatCurrency(sum)}}</div>
           </div>
 
           <div class="flex justify-between my-4 text-sm font-semibold">
@@ -194,6 +194,13 @@ const fetchHistoryById = async () => {
 };
 
 const sum = ref(0);
+
+const formatCurrency = (amount:number) => {
+  return Intl.NumberFormat('id-ID', {
+        style: 'currency',
+        currency: 'IDR',
+      }).format(amount);
+}
   
 
 
