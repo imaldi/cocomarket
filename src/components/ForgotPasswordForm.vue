@@ -17,13 +17,9 @@
             </div>
             <div class="ml-4">
               <div class="font-bold">Email</div>
-              <input
-                v-model="forgot"
-                type="text"
+              <input v-model="forgot" type="text"
                 class="bg-transparent outline-none focus:outline-none border-none text-gray placeholder-gray-400"
-                style="width: 140%"
-                placeholder="*****@mail.com"
-              />
+                style="width: 140%" placeholder="*****@mail.com" />
             </div>
           </div>
         </div>

@@ -11,29 +11,17 @@
     <div class="d-flex flex-column mt-5 pt-5 justify-content-center">
       <label>
         <div class="d-flex flex justify-center rounded-full">
-          <img
-            v-if="dataProfile && dataProfile.profile_picture"
-            :src="dataProfile.profile_picture"
+          <img v-if="dataProfile && dataProfile.profile_picture" :src="dataProfile.profile_picture"
             style="width: 106px; height: 106px; border-radius: 50%; cursor: pointer; object-fit: cover"
-            class="w-full justify-center rounded-full"
-            alt="image"
-          />
-          <iconnative
-            v-else
-            icon="profile-picture"
+            class="w-full justify-center rounded-full" alt="image" />
+          <iconnative v-else icon="profile-picture"
             style="width: 106px; height: 106px; border-radius: 50%; cursor: pointer"
-            class="w-full justify-center rounded-full"
-            alt="image"
-          />
+            class="w-full justify-center rounded-full" alt="image" />
         </div>
 
         <div class="d-flex flex text-center justify-center ml-10 mt-0">
-          <iconnative
-            icon="edit-image-orange"
-            style="width: 27px; margin-top: -2em; margin-left: 2em; cursor: pointer"
-            class="w-full justify-end rounded"
-            alt=""
-          />
+          <iconnative icon="edit-image-orange" style="width: 27px; margin-top: -2em; margin-left: 2em; cursor: pointer"
+            class="w-full justify-end rounded" alt="" />
           <input type="file" accept="image/*" ref="imageInput" style="display: none" @change="handleImageChange" />
         </div>
       </label>
@@ -81,12 +69,8 @@
         <iconnative icon="sign-out" class="justify-center" alt="" />
         <div class="ml-4 my-auto text-dark fw-bold">Sign Out</div>
       </div>
-      <dialog-confirm
-        v-model="deleteDialog"
-        :message="`Are you sure want to Sign Out?`"
-        @cancel="deleteDialog = false"
-        @confirm="logout"
-      >
+      <dialog-confirm v-model="deleteDialog" :message="`Are you sure want to Sign Out?`" @cancel="deleteDialog = false"
+        @confirm="logout">
       </dialog-confirm>
       <div class="my-auto ml-2">
         <div class="bg-light rounded-md p-1">
@@ -125,12 +109,10 @@ const logout = async () => {
       customClass: "successNotif",
       message: "Berhasil Logout!",
     });
-
     localStorage.clear();
-
-    router.push(`/`);
+    router.push('/login');
   } catch (error: any) {
-    router.push(`/`);
+    router.push('/');
     ElNotification({
       title: "Error",
       type: "error",

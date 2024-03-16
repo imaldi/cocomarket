@@ -7,7 +7,7 @@ const routes: RouteRecordRaw[] = [
     component: () => import('../layouts/Main.vue'),
     children: [
       {
-        path: '/',
+        path: '/login',
         name: 'Login',
         component: () => import('../views/Login.vue'),
       },
@@ -404,6 +404,31 @@ const routes: RouteRecordRaw[] = [
 const router = createRouter({
   history: createWebHashHistory(),
   routes,
+})
+
+const BOTTOM_NAVBAR_PATHS = ['/home', '/history', '/order', '/profile']
+router.afterEach((to, from) => {
+  if (
+    (from.path === '/login' && to.path === '/home') ||
+    (from.path === '/profile' && to.path === '/login') ||
+    (BOTTOM_NAVBAR_PATHS.includes(from.path) &&
+      !BOTTOM_NAVBAR_PATHS.includes(to.path)) ||
+    (!BOTTOM_NAVBAR_PATHS.includes(from.path) &&
+      !BOTTOM_NAVBAR_PATHS.includes(to.path))
+  ) {
+    to.meta.transition = 'fade'
+  }
+})
+
+router.beforeEach((to, from) => {
+  if (from.path === '/' && to.path === '/') {
+    const isAuthenticated = localStorage.getItem('user_id')
+    if (isAuthenticated) {
+      return { path: '/home' }
+    } else {
+      return { path: '/login' }
+    }
+  }
 })
 
 export default router
