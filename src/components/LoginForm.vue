@@ -5,26 +5,22 @@
       <h5>Hi Welcome Back, you've been missed</h5>
     </div>
 
-    <Form v-slot="{ errors }" autocomplete="off" @submit="login" class="login-form">
+    <Form v-slot="{ errors }" autocomplete="off" @submit="onLogin" class="login-form">
       <p class="input-title">Email</p>
       <Field v-model="username" name="Username" type="text" class="input-field" placeholder="Email" rules="required" />
       <p v-if="errors.Username" class="text-danger text-left text-sm mt-0">
         {{ errors.Username }}
       </p>
       <p class="input-title">Password</p>
-      <Field
-        type="password"
-        name="password"
-        v-model="password"
-        placeholder="Password"
-        class="input-field"
-        rules="required|minLength:6|maxLength:20"
-      />
+      <Field type="password" name="password" v-model="password" placeholder="Password" class="input-field"
+        rules="required|minLength:6|maxLength:20" />
       <p v-if="errors.password" class="text-danger text-left text-sm mt-0">
         {{ errors.password }}
       </p>
       <a href="#/forgotpassword" class="forgot-password">Forgot Password?</a>
-      <button type="submit" class="submit-button">Sign In</button>
+      <button type="submit" class="submit-button">
+        Sign In
+      </button>
     </Form>
 
     <!-- <div class="or-sign-section">
@@ -60,7 +56,7 @@
     <p class="sign-up-title">Don't Have an account? <a href="#/register" class="sign-up">Sign Up</a></p>
 
     <transition name="fade">
-      <div v-if="showLoad" class="popupLoad">
+      <div v-if="showLoader" class="popupLoad">
         <div class="loader absolute"></div>
       </div>
     </transition>
@@ -69,7 +65,7 @@
 
 <script setup lang="ts">
 import { useRouter } from "vue-router";
-import { ref, onMounted } from "vue";
+import { ref } from "vue";
 import { Form, Field } from "vee-validate";
 import { ElNotification } from "element-plus";
 import { useAuthStore } from "../store/modules/auth";
@@ -78,15 +74,15 @@ const router = useRouter();
 const authStore = useAuthStore();
 const username = ref("");
 const password = ref("");
-const showLoad = ref(false);
+const showLoader = ref(false);
 
-const login = async () => {
-  const payload = {
-    email: username.value,
-    password: password.value,
-  };
-
+const onLogin = async () => {
   try {
+    showLoader.value = true;
+    const payload = {
+      email: username.value,
+      password: password.value,
+    };
     const response = await authStore.login(payload);
     if (!response.access_token) {
       ElNotification({
@@ -117,22 +113,11 @@ const login = async () => {
       customClass: "errorNotif",
       message: "Incorrect email or password!",
     });
+  } finally {
+    showLoader.value = false
   }
 };
 
-onMounted(() => {
-  const isAuthenticated = localStorage.getItem("user_id");
-
-  if (isAuthenticated) {
-    showLoad.value = true;
-
-    router.push("/home");
-
-    setTimeout(() => {
-      showLoad.value = false;
-    }, 200);
-  }
-});
 </script>
 
 <style scoped lang="scss">
@@ -211,6 +196,7 @@ onMounted(() => {
   cursor: pointer;
   transition: background-color 0.3s;
 }
+
 .or-sign-section {
   width: 80%;
   display: flex;
@@ -247,9 +233,11 @@ onMounted(() => {
 .apple {
   border: solid black 1.5px;
 }
+
 .google {
   border: solid red 1.5px;
 }
+
 .facebook {
   border: solid blue 1.5px;
 }

@@ -1,6 +1,10 @@
 <template>
   <div>
-    <router-view></router-view>
+    <router-view v-slot="{ Component, route }">
+      <transition :name="route.meta.transition + '' || 'fade'">
+        <component :is="Component" />
+      </transition>
+    </router-view>
     <div v-if="isAppPaths($route.path, $route.params.id as string)"
       class="bottom-navigation justify-between w-full z-2">
       <div class="flex w-full justify-between px-4">
@@ -52,4 +56,4 @@ const chat = async () => {
     message: "Chat, Not Available !!!",
   });
 };
-</script>./isAppPaths
+</script>

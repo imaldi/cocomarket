@@ -1,6 +1,7 @@
 export const isAppPaths = (routerPath: string, id: string) => {
   const PATHS = [
     '/',
+    '/login',
     '/register',
     '/splashscreen',
     '/splashscreen1',

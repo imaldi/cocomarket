@@ -135,3 +135,14 @@ hr {
     background-color: #f9f9f9;
   }
 }
+
+/* screen transition */
+.fade-enter-active,
+.fade-leave-active {
+  transition: all 0.15s ease;
+}
+.fade-enter-from,
+.fade-leave-to {
+  opacity: 0;
+  scale: 0.95;
+}

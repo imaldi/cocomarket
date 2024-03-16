@@ -7,38 +7,20 @@
 
     <Form v-slot="{ errors }" @submit="register" class="register-form">
       <p class="input-title">Name</p>
-      <Field
-        name="name"
-        type="text"
-        v-model="name"
-        placeholder="Please type your name"
-        class="input-field"
-        rules="required"
-      />
+      <Field name="name" type="text" v-model="name" placeholder="Please type your name" class="input-field"
+        rules="required" />
       <p v-if="errors.name" class="text-danger text-left text-sm mt-0">
         {{ errors.name }}
       </p>
       <p class="input-title">Email</p>
-      <Field
-        name="email"
-        type="text"
-        v-model="email"
-        placeholder="Please type your email"
-        class="input-field"
-        rules="required"
-      />
+      <Field name="email" type="text" v-model="email" placeholder="Please type your email" class="input-field"
+        rules="required" />
       <p v-if="errors.email" class="text-danger text-left text-sm mt-0">
         {{ errors.email }}
       </p>
       <p class="input-title">Password</p>
-      <Field
-        name="password"
-        type="password"
-        v-model="password"
-        placeholder="Please type your password"
-        class="input-field"
-        rules="required|minLength:6|maxLength:12"
-      />
+      <Field name="password" type="password" v-model="password" placeholder="Please type your password"
+        class="input-field" rules="required|minLength:6|maxLength:12" />
       <p v-if="errors.password" class="text-danger text-left text-sm mt-0">
         {{ errors.password }}
       </p>
@@ -82,7 +64,7 @@
       </div>
     </div> -->
 
-    <p class="sign-up-title">Already Have an account? <a href="#" class="sign-up">Sign In</a></p>
+    <p class="sign-up-title">Already Have an account? <a @click="$router.back()" class="sign-up">Sign In</a></p>
   </div>
 </template>
 
@@ -217,6 +199,7 @@ const register = async () => {
   cursor: pointer;
   transition: background-color 0.3s;
 }
+
 .or-sign-section {
   width: 80%;
   display: flex;
@@ -253,9 +236,11 @@ const register = async () => {
 .apple {
   border: solid black 1.5px;
 }
+
 .google {
   border: solid red 1.5px;
 }
+
 .facebook {
   border: solid blue 1.5px;
 }

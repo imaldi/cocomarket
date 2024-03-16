@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <div class="mt-20 mx-8">
-      <div @click="router.push('/')">
+      <div @click="router.back()">
         <iconnative icon="outline-arrow-left" color="#7ACDD6" width="53" height="53" />
       </div>
       <div class="mt-4 text-center">
@@ -17,13 +17,9 @@
             </div>
             <div class="ml-4">
               <div class="font-bold">Email</div>
-              <input
-                v-model="forgot"
-                type="text"
+              <input v-model="forgot" type="text"
                 class="bg-transparent outline-none focus:outline-none border-none text-gray placeholder-gray-400"
-                style="width: 140%"
-                placeholder="*****@mail.com"
-              />
+                style="width: 140%" placeholder="*****@mail.com" />
             </div>
           </div>
         </div>
