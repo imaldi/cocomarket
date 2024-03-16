@@ -13,7 +13,7 @@
 
       <div v-if="dataOrder?.length > 0">
         <div v-for="(item, index) in dataOrder" :key="index" class="flex flex-col px-4">
-          <div class="border border-solid border-gray p-4 rounded-2xl flex flex-col mb-2">
+          <div class="border border-solid border-gray p-4 rounded-2xl flex flex-col mb-2" @click="showReviewDetail(item.id)">
             <div class="flex items-center justify-between border border-gray border-x-0 border-t-0 border-dashed pb-4">
               <img
                 class="border border-solid border-gray rounded-full bg-white p-2"
@@ -128,22 +128,28 @@
 <script setup lang="ts">
 import { useProdukStore } from "../store/modules/product";
 import { ref, onMounted } from "vue";
+import { useRouter } from "vue-router";
 import iconnative from "../icon/index.vue";
 import { ElNotification } from "element-plus";
-
+import { Item } from '../models/history_response';
 const useProduct = useProdukStore();
 
 const dataOrder = ref<Item[]>([]);
 
-interface Item {
-  id: string;
-  name: string;
-  date: string;
-  image: string;
-  price: number;
-  description: string;
-  status: string;
-}
+const router = useRouter();
+
+const produkStore = useProdukStore();
+
+const showReviewDetail = async (id: any) => {
+  try {
+    // const response = await produkStore.getHistoryByid(id);
+    // Do something with the response data
+    // console.log(response.data);
+    router.push({ name: 'ReviewOrder', params: { id } });
+  } catch (error) {
+    console.error(error);
+  }
+};
 
 const storling = async () => {
   ElNotification({

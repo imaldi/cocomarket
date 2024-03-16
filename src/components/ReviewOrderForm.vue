@@ -192,8 +192,26 @@
 <script setup lang="ts">
 import { useRouter } from "vue-router";
 import iconnative from "../icon/index.vue";
-
+import { useProdukStore } from '../store/modules/product'; // assuming your store is located in a file named produkStore.js
+import { useRoute } from 'vue-router';
+const route = useRoute();
 const router = useRouter();
+
+const id = route.params.id;
+
+const produkStore = useProdukStore();
+
+const fetchHistoryById = async () => {
+  try {
+    const response = await produkStore.getHistoryByid(id);
+    // Do something with the response data
+    console.log(response.data);
+  } catch (error) {
+    console.error(error);
+  }
+};
+
+fetchHistoryById();
 </script>
 <style scoped lang="scss">
 .container {

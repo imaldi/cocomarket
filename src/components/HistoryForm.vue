@@ -103,6 +103,17 @@ import { useProdukStore } from "../store/modules/product";
 import { ref, onMounted } from "vue";
 import iconnative from "../icon/index.vue";
 
+const produkStore = useProdukStore();
+
+const fetchHistoryById = async (id: any) => {
+  try {
+    const response = await produkStore.getHistoryByid(id);
+    console.log(response.data);
+  } catch (error) {
+    console.error(error);
+  }
+};
+
 const useProduct = useProdukStore();
 const dataHistory = ref<Item[]>([]);
 const activeSelect = ref(0);
