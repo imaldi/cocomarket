@@ -263,21 +263,8 @@ interface OrderResponseModel {
   vendors: VendorModel
 }
 
-const router = useRouter();
-const route = useRoute();
 const produkStore = useProdukStore();
 const dataOrder = ref<OrderResponseModel>([]);
-const trackingStore = useTrackingStore();
-const { id: orderId } = route.params;
-const currLocation = ref<LatLngExpression>([0, 0]);
-const orderDetails = ref<OrderModel>({
-  orderId: undefined,
-  distance: undefined,
-  lat: undefined,
-  long: undefined,
-  polyline: undefined,
-  time: undefined,
-});
 
 const totalPrice = computed(() => {
   const order = dataOrder.value;
