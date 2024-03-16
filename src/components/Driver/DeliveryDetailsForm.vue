@@ -164,10 +164,10 @@
     </div>
 
     <dialog-confirm-driver
-      v-model="deleteDialog"
+      v-model="startDialog"
       :message="`Are you sure you want to start Delivery?`"
       :messageDetail="`make sure the groceries are complete and as per with those in the detail!`"
-      @cancel="deleteDialog = false"
+      @cancel="startDialog = false"
       @confirm="createTrack"
     >
     </dialog-confirm-driver>
