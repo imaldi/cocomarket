@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <div class="mt-20 mx-8">
-      <div @click="router.push('/')">
+      <div @click="router.back()">
         <iconnative icon="outline-arrow-left" color="#7ACDD6" width="53" height="53" />
       </div>
       <div class="mt-4 text-center">
